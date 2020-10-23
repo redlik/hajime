@@ -14,6 +14,7 @@ class CreateClubsTable extends Migration
     public function up()
     {
         Schema::create('clubs', function (Blueprint $table) {
+            // TODO add all fields to the clubs table
             $table->id();
             $table->string('name');
             $table->timestamps();
