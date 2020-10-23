@@ -12,8 +12,11 @@
 
                 <div class="w-full p-6">
                     <p class="text-gray-700">
-                        <x-button class="button-success" href="/">
+                        <x-button class="button-primary" href="/">
                             Click me
+                        </x-button>
+                        <x-button class="button-danger" href="/">
+                            Click me hot
                         </x-button>
                     </p>
                 </div>
