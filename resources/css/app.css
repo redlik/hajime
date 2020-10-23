@@ -3,3 +3,25 @@
 @import "tailwindcss/components";
 
 @import "tailwindcss/utilities";
+
+@layer components {
+    .button {
+        @apply px-6 py-3 text-white rounded shadow;
+    }
+
+    .button-success {
+        @apply px-6 py-3 text-white rounded shadow bg-green-600 font-semibold;
+    }
+
+    .button-success:hover {
+        @apply bg-green-900
+    }
+
+    .button-danger {
+        @apply px-6 py-3 text-white rounded shadow bg-red-600 font-semibold;
+    }
+
+    .button-danger:hover {
+        @apply bg-red-900
+    }
+}

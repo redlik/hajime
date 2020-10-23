@@ -19,6 +19,7 @@
         "spatie/laravel-permission": "^3.17"
     },
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "^2.8",
         "facade/ignition": "^2.3.6",
         "fzaninotto/faker": "^1.9.1",
         "laravel-frontend-presets/tailwindcss": "^4.3",
