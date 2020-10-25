@@ -16,7 +16,21 @@ class CreateClubsTable extends Migration
         Schema::create('clubs', function (Blueprint $table) {
             // TODO add all fields to the clubs table
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
+            $table->string("address1");
+            $table->string("address2");
+            $table->string("town");
+            $table->string("county");
+            $table->string("eircode");
+            $table->string("province");
+            $table->string("type");
+            $table->integer("phone");
+            $table->string("email");
+            $table->string("website");
+            $table->string("facebook");
+            $table->boolean('compliant')->default(0);
+            $table->boolean('voting_rights')->default(0);
+
             $table->timestamps();
         });
     }

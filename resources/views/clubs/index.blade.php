@@ -7,16 +7,13 @@
             <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
 
                 <header class="font-semibold bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
-                    Clubs
+                    Clubs Index
                 </header>
 
                 <div class="w-full p-6">
                     <p class="text-gray-700">
-                        <x-button class="button-primary" href="/">
-                            Click me
-                        </x-button>
-                        <x-button class="button-danger" href="/">
-                            Click me hot
+                        <x-button class="button-success" href="{{ route('club.add') }}">
+                            + Add new club
                         </x-button>
                     </p>
                 </div>
