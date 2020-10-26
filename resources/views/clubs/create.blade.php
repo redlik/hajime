@@ -11,20 +11,30 @@
             </header>
 
             <div class="w-full p-6">
-                <form>
+                @if ($errors->any())
+                <div class="alert alert-danger" role="alert">
+                    <ul id="errors list-unstyled">
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+                <form method="POST" action="{{ action('App\Http\Controllers\ClubController@store') }}" role="form">
+                    @csrf
                     <div class="w-full border-2 border-gray-300 rounded-xl mb-4 p-8">
                         <div class="mb-4">
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="name">
                                 Club Name
                             </label>
                             <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-grey-darker"
-                                id="name" type="text" placeholder="Club name">
+                                id="name" name="name" type="text" placeholder="Club name">
                         </div>
                         <div>
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="type">
                                 Club Type
                             </label>
-                            <select class="shadow border rounded w-64 py-2 px-3 text-grey-darker" id="town" type="text"
+                            <select class="shadow border rounded w-64 py-2 px-3 text-grey-darker" id="type" name="type" type="text"
                                 placeholder="Club type">
                                 <option value="" disabled selected>Select club type</option>
                                 <option value="ordinary club">Ordinary Club</option>
@@ -39,27 +49,27 @@
                                 Address Line 1
                             </label>
                             <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-grey-darker"
-                                id="address1" type="text" placeholder="Address Line 1">
+                                id="address1" name="address1" type="text" placeholder="Address Line 1">
                         </div>
                         <div class="mb-4">
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="address2">
                                 Address Line 2
                             </label>
                             <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-grey-darker"
-                                id="address2" type="text" placeholder="Address Line 2">
+                                id="address2" name="address2" type="text" placeholder="Address Line 2">
                         </div>
                         <div class="mb-4">
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="town">
                                 Town / City
                             </label>
                             <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-grey-darker"
-                                id="town" type="text" placeholder="Town/City">
+                                id="town" name="town" type="text" placeholder="Town/City">
                         </div>
                         <div class="mb-4">
-                            <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="town">
+                            <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="county">
                                 County
                             </label>
-                            <select class="shadow border rounded w-64 py-2 px-3 text-grey-darker" id="town" type="text"
+                            <select class="shadow border rounded w-64 py-2 px-3 text-grey-darker" id="county" name="county" type="text"
                                 placeholder="County">
                                 <option value="" disabled selected>Select county</option>
                                 <option value="antrim">Antrim</option>
@@ -100,8 +110,8 @@
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="province">
                                 Province
                             </label>
-                            <select class="shadow border rounded w-64 py-2 px-3 text-grey-darker" id="province" type="text"
-                                placeholder="Province">
+                            <select class="shadow border rounded w-64 py-2 px-3 text-grey-darker" id="province"
+                                type="text" placeholder="Province" name="province">
                                 <option value="" disabled selected>Select province</option>
                                 <option value="connaught">Connaught</option>
                                 <option value="leinster">Leinster</option>
@@ -114,12 +124,7 @@
                                 Eircode / Postcode
                             </label>
                             <input class="shadow appearance-none border rounded w-64 py-2 px-3 text-grey-darker"
-                                id="eircode" type="text" placeholder="Eircode / Post Code">
-                        </div>
-                        <div class="mt-8">
-                            <x-button class="button-success" href="/">
-                                + Additional training venue
-                            </x-button>
+                                id="eircode" name="eircode" type="text" placeholder="Eircode / Post Code">
                         </div>
                     </div>
                     <div class="w-full border-2 border-gray-300 rounded-xl mb-4 p-8">
@@ -128,74 +133,31 @@
                                 Telephone
                             </label>
                             <input class="shadow appearance-none border rounded w-64 py-2 px-3 text-grey-darker"
-                                id="phone" type="text" placeholder="Telephone">
+                                id="phone" name="phone" type="text" placeholder="Telephone">
                         </div>
                         <div class="mb-4">
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="email">
                                 Email
                             </label>
                             <input class="shadow appearance-none border rounded w-64 py-2 px-3 text-grey-darker"
-                                id="email" type="email" placeholder="Email">
+                                id="email" name="email" type="email" placeholder="Email">
                         </div>
                         <div class="mb-4">
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="website">
                                 Website
                             </label>
                             <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-grey-darker"
-                                id="website" type="text" placeholder="Website">
+                                id="website" name="website" type="text" placeholder="Website">
                         </div>
                         <div>
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="facebook">
                                 Facebook
                             </label>
                             <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-grey-darker"
-                                id="facebook" type="text" placeholder="Facebook page">
+                                id="facebook" name="facebook" type="text" placeholder="Facebook page">
                         </div>
                     </div>
-                    <div class="w-full border-2 border-gray-300 rounded-xl mb-4 p-8">
-                        <div class="mb-8">
-                            <x-button class="button-success mr-3" href="/">
-                                + Add Head Coach
-                            </x-button>
-                            <x-button class="button-primary mr-3" href="/">
-                                + Add Secretary
-                            </x-button>
-                            <x-button class="button-success mr-3" href="/">
-                                + Add Designated Person
-                            </x-button>
-                            <x-button class="button-primary" href="/">
-                                + Add Children's Officer
-                            </x-button>
-                        </div>
-                        <div class="mb-4">
-                            <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="head-coach">
-                                Head Coach
-                            </label>
-                            <div class="inline-block border rounded w-64 py-2 px-3 text-gray-400 bg-gray-200"
-                                x-model="head-coach">Not set</div>
-                        </div>
-                        <div class="mb-4">
-                            <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="head-coach">
-                                Secretary
-                            </label>
-                            <div class="inline-block border rounded w-64 py-2 px-3 text-gray-400 bg-gray-200"
-                            x-model="secretary">Not set</div>
-                        </div>
-                        <div class="mb-4">
-                            <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="head-coach">
-                                Designated person
-                            </label>
-                            <div class="inline-block border rounded w-64 py-2 px-3 text-gray-400 bg-gray-200"
-                            x-model="designated-person">Not set</div>
-                        </div>
-                        <div>
-                            <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="head-coach">
-                                Children's officer
-                            </label>
-                            <div class="inline-block border rounded w-64 py-2 px-3 text-gray-400 bg-gray-200"
-                            x-model="children-officer">Not set</div>
-                        </div>
-                    </div>
+                   
                     <div class="w-full border-2 border-gray-300 rounded-xl mb-4 p-8">
                         <div class="mb-4">
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="compliant">
@@ -203,11 +165,11 @@
                             </label>
                             <div class="inline-block w-64">
                                 <div class="inline-block mr-6">
-                                    <input class="inline-block" type="radio" id="yes" name="compliant" value="yes">
+                                    <input class="inline-block" type="radio" id="yes" name="compliant" value="1">
                                     <label for="yes" class="inline-block">Yes</label><br>
                                 </div>
                                 <div class="inline-block">
-                                    <input class="inline-block" type="radio" id="no" name="compliant" value="no">
+                                    <input class="inline-block" type="radio" id="no" name="compliant" value="0">
                                     <label for="no">No</label><br>
                                 </div>
                             </div>
@@ -218,24 +180,22 @@
                             </label>
                             <div class="inline-block w-64">
                                 <div class="inline-block mr-6">
-                                    <input class="inline-block" type="radio" id="yes" name="voting" value="yes">
+                                    <input class="inline-block" type="radio" id="yes" name="voting_rights" value="1">
                                     <label for="yes" class="inline-block">Yes</label><br>
                                 </div>
                                 <div class="inline-block">
-                                    <input class="inline-block" type="radio" id="no" name="voting" value="no">
+                                    <input class="inline-block" type="radio" id="no" name="voting_rights" value="0">
                                     <label for="no">No</label><br>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="mt-6">
-                        <x-button class="button-success" href="/">
-                            + Add Club
-                        </x-button>
+                        <input type="submit" value="+ Add new club" class="button-success">
                     </div>
                 </form>
                 <p class="text-gray-700 mt-6">
-                    
+
                 </p>
             </div>
         </section>

@@ -14,7 +14,8 @@ class ClubController extends Controller
      */
     public function index()
     {
-        return view('clubs.index');
+        $clubs = Club::paginate(25);
+        return view('clubs.index', compact('clubs'));
     }
 
     /**
@@ -35,7 +36,12 @@ class ClubController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(['name' => 'required|unique:clubs']);
+        // dd($request);
+        $club = Club::create($request->all());
+
+        return redirect()->route('clubs.show', $club);;
+
     }
 
     /**
@@ -46,7 +52,7 @@ class ClubController extends Controller
      */
     public function show(Club $club)
     {
-        //
+        return view('clubs.show', compact('club'));
     }
 
     /**

@@ -14,13 +14,10 @@ use App\Http\Controllers\ClubController;
 |
 */
 
-Route::get('/', function () {
-    return view('clubs.index');
-});
+Route::get('/', [ClubController::class, 'index']);
 Auth::routes();
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/clubs', [ClubController::class, 'index'])->name('clubs');
-Route::get('/add-club', [ClubController::class, 'create'])->name('club.add');
+Route::resource('clubs', ClubController::class);
 

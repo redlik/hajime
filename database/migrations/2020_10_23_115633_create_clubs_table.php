@@ -18,16 +18,16 @@ class CreateClubsTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string("address1");
-            $table->string("address2");
+            $table->string("address2")->nullable();
             $table->string("town");
             $table->string("county");
-            $table->string("eircode");
+            $table->string("eircode")->nullable();
             $table->string("province");
             $table->string("type");
-            $table->integer("phone");
-            $table->string("email");
-            $table->string("website");
-            $table->string("facebook");
+            $table->string("phone")->nullable();
+            $table->string("email")->nullable();
+            $table->string("website")->nullable();
+            $table->string("facebook")->nullable();
             $table->boolean('compliant')->default(0);
             $table->boolean('voting_rights')->default(0);
 
