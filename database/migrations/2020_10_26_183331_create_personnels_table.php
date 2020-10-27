@@ -17,6 +17,8 @@ class CreatePersonnelsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('role');
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
             $table->date('vetting_completion');
             $table->date('vetting_expiry');
             $table->date('safeguarding_completion');
