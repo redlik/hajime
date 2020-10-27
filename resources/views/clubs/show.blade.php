@@ -46,8 +46,9 @@
                 <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
                     <h4 class="font-bold text-xl text-black mb-4">Club Personel:</h4>
                     <div class="w-full">
-                        <a href="{{ route }}"></a>
-                        <button class="button-primary">+ Insert details</button>
+                        <a href="{{ route('club.addPersonnel', $club->id ) }}">
+                            <button class="button-primary">+ Insert details</button>
+                        </a>
                     </div>
                 </div>
                 <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">

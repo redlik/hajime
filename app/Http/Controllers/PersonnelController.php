@@ -24,9 +24,14 @@ class PersonnelController extends Controller
      */
     public function create()
     {
-        //
+        echo("Yollo!");
     }
 
+    public function addPersonnel($club) {
+        
+        return view('personnel.create', compact('club'));
+
+    }
     /**
      * Store a newly created resource in storage.
      *

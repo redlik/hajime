@@ -15,7 +15,20 @@ class CreatePersonnelsTable extends Migration
     {
         Schema::create('personnels', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('role');
+            $table->date('vetting_completion');
+            $table->date('vetting_expiry');
+            $table->date('safeguarding_completion');
+            $table->date('safeguarding_expiry');
+            $table->date('first_aid_completion')->nullable();
+            $table->date('first_aid_expiry')->nullable();
+            $table->date('coaching_completion')->nullable();
+            $table->date('coaching_expiry')->nullable();
+            $table->unsignedBigInteger('club_id');
             $table->timestamps();
+
+            $table->foreign('club_id')->references('id')->on('clubs');
         });
     }
 
