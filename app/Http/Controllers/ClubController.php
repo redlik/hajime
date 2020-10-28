@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Club;
+use App\Models\Personnel;
 use Illuminate\Http\Request;
+use DB;
 
 class ClubController extends Controller
 {
@@ -39,8 +41,8 @@ class ClubController extends Controller
         $request->validate(['name' => 'required|unique:clubs']);
         // dd($request);
         $club = Club::create($request->all());
-
-        return redirect()->route('clubs.show', $club);;
+        $personnel = Personnel::where('club_id', $club->id)->get();
+        return redirect()->route('clubs.show', $club, $personnel);
 
     }
 
@@ -52,7 +54,9 @@ class ClubController extends Controller
      */
     public function show(Club $club)
     {
-        return view('clubs.show', compact('club'));
+        $personnel = self::personnel($club);
+
+        return view('clubs.show', compact('club', 'personnel'));
     }
 
     /**
@@ -87,5 +91,17 @@ class ClubController extends Controller
     public function destroy(Club $club)
     {
         //
+    }
+
+    public function personnel(Club $club) {
+        $personnel = array(
+            'Head Coach'=>Personnel::headcoach()->where('club_id', $club->id)->first(),
+            'Secretary' => Personnel::secretary()->where('club_id', $club->id)->first(),
+            'Designated Officer' => Personnel::designatedofficer()->where('club_id', $club->id)->first(),
+            'Children Officer' => Personnel::childrenofficer()->where('club_id', $club->id)->first(),
+            'Coach' => Personnel::childrenofficer()->where('club_id', $club->id)->first(),
+            'Volunteer' => Personnel::volunteer()->where('club_id', $club->id)->first(),
+            );
+        return $personnel;
     }
 }

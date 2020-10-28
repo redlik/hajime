@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Personnel;
 use Illuminate\Http\Request;
+use DB;
 
 class PersonnelController extends Controller
 {
@@ -40,7 +41,13 @@ class PersonnelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $role = $request->input('role');
+        DB::table('personnels')->where('role', '=', $role)->delete();
+        $club = $request->input('club_id');
+        $head_coach = Personnel::where('club_id', $club)->where('role', 'Head Coach')->first();
+
+        return redirect()->route('clubs.show', $club);
+
     }
 
     /**

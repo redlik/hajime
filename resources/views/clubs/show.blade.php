@@ -45,11 +45,14 @@
                 </div>
                 <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
                     <h4 class="font-bold text-xl text-black mb-4">Club Personel:</h4>
-                    <div class="w-full">
+                    <div class="w-full mb-4">
                         <a href="{{ route('club.addPersonnel', $club->id ) }}">
                             <button class="button-primary">+ Insert details</button>
                         </a>
                     </div>
+                    <div class="w-36 inline-block font-bold mb-2 text-blue-500 p-2">Head Coach:</div>
+                    <div class="w-48 bg-gray-100 p-2 rounded inline-block font-semibold">{{ $personnel['Head Coach']->name ?? 'Not set' }}</div>
+
                 </div>
                 <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
                     <h4 class="font-bold text-xl text-black mb-4">Members:</h4>
