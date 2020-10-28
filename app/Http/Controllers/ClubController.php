@@ -99,7 +99,7 @@ class ClubController extends Controller
             'Secretary' => Personnel::secretary()->where('club_id', $club->id)->first(),
             'Designated Officer' => Personnel::designatedofficer()->where('club_id', $club->id)->first(),
             'Children Officer' => Personnel::childrenofficer()->where('club_id', $club->id)->first(),
-            'Coach' => Personnel::childrenofficer()->where('club_id', $club->id)->first(),
+            'Coach' => Personnel::coach()->where('club_id', $club->id)->first(),
             'Volunteer' => Personnel::volunteer()->where('club_id', $club->id)->first(),
             );
         return $personnel;

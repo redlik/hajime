@@ -44,7 +44,8 @@ class PersonnelController extends Controller
         $role = $request->input('role');
         DB::table('personnels')->where('role', '=', $role)->delete();
         $club = $request->input('club_id');
-        $head_coach = Personnel::where('club_id', $club)->where('role', 'Head Coach')->first();
+        $personnel = Personnel::create($request->all());
+        // $head_coach = Personnel::where('club_id', $club)->where('role', 'Head Coach')->first();
 
         return redirect()->route('clubs.show', $club);
 

@@ -50,8 +50,17 @@
                             <button class="button-primary">+ Insert details</button>
                         </a>
                     </div>
-                    <div class="w-36 inline-block font-bold mb-2 text-blue-500 p-2">Head Coach:</div>
+                    <div class="w-36 inline-block font-bold mb-2 text-gray-500 p-2">Head Coach:</div>
                     <div class="w-48 bg-gray-100 p-2 rounded inline-block font-semibold">{{ $personnel['Head Coach']->name ?? 'Not set' }}</div>
+                    <div class="w-24 inline-block font-bold mb-2 text-gray-500 p-2 text-right">Email:</div>
+                    <div class="w-56 bg-gray-100 p-2 rounded inline-block font-semibold">{{ $personnel['Head Coach']->email ?? 'Not set' }}</div>
+                    <div class="w-24 inline-block font-bold mb-2 text-gray-500 p-2 text-right">Phone:</div>
+                    <div class="w-48 bg-gray-100 p-2 rounded inline-block font-semibold">{{ $personnel['Head Coach']->phone ?? 'Not set' }}</div>
+                    <div class="w-48 inline-block font-bold mb-2 p-2 text-right">
+                        <a href=""><i class="far fa-eye text-green-500 mr-2"></i></a>
+                        <a href=""><i class="far fa-edit text-blue-500 mr-2"></i></a>
+                        <a href="" title="Delete person record"><i class="far fa-trash-alt text-red-600"></i></a>
+                    </div>
 
                 </div>
                 <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
