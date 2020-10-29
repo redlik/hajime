@@ -78,7 +78,7 @@
                                     id="vetting_expiry" name="vetting_expiry" type="text" placeholder="2020-01-01">
                             </div>
                             <h4 class="w-auto text-gray-500 text-xl font-bold mb-6 mt-16">Safeguarding information:</h4>
-                            <div>
+                            <div class="mb-4">
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="safeguarding_completion">
                                     Safeguarding completion
                                 </label>
