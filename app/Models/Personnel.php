@@ -36,7 +36,7 @@ class Personnel extends Model
 
     public function scopeChildrenofficer($query) {
         return $query->where([
-            ['role','=', "Children's Officer"],
+            ['role','=', "Childrens Officer"],
         ]);
     }
     public function scopeCoach($query) {

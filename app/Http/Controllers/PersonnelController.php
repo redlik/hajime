@@ -91,8 +91,9 @@ class PersonnelController extends Controller
      * @param  \App\Models\Personnel  $personnel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Personnel $personnel)
+    public function destroy($personnel)
     {
-        //
+        Personnel::destroy($personnel);
+        return redirect()->back();
     }
 }

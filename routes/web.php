@@ -23,5 +23,6 @@ Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->nam
 Route::resource('clubs', ClubController::class);
 
 Route::resource('personnel', PersonnelController::class);
+Route::get('personnel/delete/{id}', [PersonnelController::class, 'destroy'])->name('personnel.delete');
 Route::get('club/{id}/add-personnel', [PersonnelController::class, 'addPersonnel'])->name('club.addPersonnel');
 

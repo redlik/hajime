@@ -45,21 +45,136 @@
                 </div>
                 <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
                     <h4 class="font-bold text-xl text-black mb-4">Club Personel:</h4>
-                    <div class="w-full mb-4">
+                    {{-- <div class="w-full mb-4">
                         <a href="{{ route('club.addPersonnel', $club->id ) }}">
                             <button class="button-primary">+ Insert details</button>
                         </a>
+                    </div> --}}
+                    <div class="w-full">
+                        <div class="w-36 inline-block font-bold mb-2 text-gray-500 p-2">Head Coach:</div>
+                        <div class="w-56 bg-gray-100 p-2 rounded inline-block font-semibold">{{ $personnel['Head Coach']->name ?? 'Not set' }}</div>
+                        <div class="w-24 inline-block font-bold mb-2 text-gray-500 p-2 text-right">Email:</div>
+                        <div class="w-56 bg-gray-100 p-2 rounded inline-block font-semibold">{{ $personnel['Head Coach']->email ?? 'Not set' }}</div>
+                        <div class="w-24 inline-block font-bold mb-2 text-gray-500 p-2 text-right">Phone:</div>
+                        <div class="w-48 bg-gray-100 p-2 rounded inline-block font-semibold">{{ $personnel['Head Coach']->phone ?? 'Not set' }}</div>
+                        @if ($personnel['Head Coach'])
+                        <div class="w-auto inline-block font-bold mb-2 p-2 text-right">
+                            <a href="" title="View details"><i class="far fa-eye text-green-500 mr-2"></i></a>
+                            <a href="" title="Edit"><i class="far fa-edit text-blue-500 mr-2"></i></a>
+                        <a href="{{ route('personnel.delete', [$personnel['Head Coach']->id]) }}" title="Delete person record" onclick="return confirm('Do you want to delete the record completely?')"><i class="far fa-trash-alt text-red-600"></i></a>
+                        </div>
+                        @else
+                        <div class="w-auto inline-block font-bold mb-2 p-2 text-right text-green-500">
+                            <a href="{{ route('club.addPersonnel', $club->id ) }}">
+                                <i class="fas fa-user-plus text-green-500"></i> Add new
+                            </a>
+                        </div>
+                        @endif
                     </div>
-                    <div class="w-36 inline-block font-bold mb-2 text-gray-500 p-2">Head Coach:</div>
-                    <div class="w-48 bg-gray-100 p-2 rounded inline-block font-semibold">{{ $personnel['Head Coach']->name ?? 'Not set' }}</div>
-                    <div class="w-24 inline-block font-bold mb-2 text-gray-500 p-2 text-right">Email:</div>
-                    <div class="w-56 bg-gray-100 p-2 rounded inline-block font-semibold">{{ $personnel['Head Coach']->email ?? 'Not set' }}</div>
-                    <div class="w-24 inline-block font-bold mb-2 text-gray-500 p-2 text-right">Phone:</div>
-                    <div class="w-48 bg-gray-100 p-2 rounded inline-block font-semibold">{{ $personnel['Head Coach']->phone ?? 'Not set' }}</div>
-                    <div class="w-48 inline-block font-bold mb-2 p-2 text-right">
-                        <a href=""><i class="far fa-eye text-green-500 mr-2"></i></a>
-                        <a href=""><i class="far fa-edit text-blue-500 mr-2"></i></a>
-                        <a href="" title="Delete person record"><i class="far fa-trash-alt text-red-600"></i></a>
+                    <div class="w-full mt-2">
+                        <div class="w-36 inline-block font-bold mb-2 text-gray-500 p-2">Secretary:</div>
+                        <div class="w-56 bg-gray-100 p-2 rounded inline-block font-semibold">{{ $personnel['Secretary']->name ?? 'Not set' }}</div>
+                        <div class="w-24 inline-block font-bold mb-2 text-gray-500 p-2 text-right">Email:</div>
+                        <div class="w-56 bg-gray-100 p-2 rounded inline-block font-semibold">{{ $personnel['Secretary']->email ?? 'Not set' }}</div>
+                        <div class="w-24 inline-block font-bold mb-2 text-gray-500 p-2 text-right">Phone:</div>
+                        <div class="w-48 bg-gray-100 p-2 rounded inline-block font-semibold">{{ $personnel['Secretary']->phone ?? 'Not set' }}</div>
+                        @if ($personnel['Secretary'])
+                        <div class="w-auto inline-block font-bold mb-2 p-2 text-right">
+                            <a href="" title="View details"><i class="far fa-eye text-green-500 mr-2"></i></a>
+                            <a href="" title="Edit"><i class="far fa-edit text-blue-500 mr-2"></i></a>
+                        <a href="{{ route('personnel.delete', [$personnel['Secretary']->id]) }}" title="Delete person record" onclick="return confirm('Do you want to delete the record completely?')"><i class="far fa-trash-alt text-red-600"></i></a>
+                        </div>
+                        @else
+                        <div class="w-auto inline-block font-bold mb-2 p-2 text-right text-green-500">
+                            <a href="{{ route('club.addPersonnel', $club->id ) }}">
+                                <i class="fas fa-user-plus text-green-500"></i> Add new
+                            </a>
+                        </div>
+                        @endif
+                    </div>
+                    <div class="w-full mt-2">
+                        <div class="w-36 inline-block font-bold mb-2 text-gray-500 p-2">Designated Off:</div>
+                        <div class="w-56 bg-gray-100 p-2 rounded inline-block font-semibold">{{ $personnel['Designated Officer']->name ?? 'Not set' }}</div>
+                        <div class="w-24 inline-block font-bold mb-2 text-gray-500 p-2 text-right">Email:</div>
+                        <div class="w-56 bg-gray-100 p-2 rounded inline-block font-semibold">{{ $personnel['Designated Officer']->email ?? 'Not set' }}</div>
+                        <div class="w-24 inline-block font-bold mb-2 text-gray-500 p-2 text-right">Phone:</div>
+                        <div class="w-48 bg-gray-100 p-2 rounded inline-block font-semibold">{{ $personnel['Designated Officer']->phone ?? 'Not set' }}</div>
+                        @if ($personnel['Designated Officer'])
+                        <div class="w-auto inline-block font-bold mb-2 p-2 text-right">
+                            <a href="" title="View details"><i class="far fa-eye text-green-500 mr-2"></i></a>
+                            <a href="" title="Edit"><i class="far fa-edit text-blue-500 mr-2"></i></a>
+                        <a href="{{ route('personnel.delete', [$personnel['Designated Officer']->id]) }}" title="Delete person record" onclick="return confirm('Do you want to delete the record completely?')"><i class="far fa-trash-alt text-red-600"></i></a>
+                        </div>
+                        @else
+                        <div class="w-auto inline-block font-bold mb-2 p-2 text-right text-green-500">
+                            <a href="{{ route('club.addPersonnel', $club->id ) }}">
+                                <i class="fas fa-user-plus text-green-500"></i> Add new
+                            </a>
+                        </div>
+                        @endif
+                    </div>
+                    <div class="w-full mt-2">
+                        <div class="w-36 inline-block font-bold mb-2 text-gray-500 p-2">Childrens Off:</div>
+                        <div class="w-56 bg-gray-100 p-2 rounded inline-block font-semibold">{{ $personnel['Childrens Officer']->name ?? 'Not set' }}</div>
+                        <div class="w-24 inline-block font-bold mb-2 text-gray-500 p-2 text-right">Email:</div>
+                        <div class="w-56 bg-gray-100 p-2 rounded inline-block font-semibold">{{ $personnel['Childrens Officer']->email ?? 'Not set' }}</div>
+                        <div class="w-24 inline-block font-bold mb-2 text-gray-500 p-2 text-right">Phone:</div>
+                        <div class="w-48 bg-gray-100 p-2 rounded inline-block font-semibold">{{ $personnel['Childrens Officer']->phone ?? 'Not set' }}</div>
+                        @if ($personnel['Childrens Officer'])
+                        <div class="w-auto inline-block font-bold mb-2 p-2 text-right">
+                            <a href="" title="View details"><i class="far fa-eye text-green-500 mr-2"></i></a>
+                            <a href="" title="Edit"><i class="far fa-edit text-blue-500 mr-2"></i></a>
+                        <a href="{{ route('personnel.delete', [$personnel['Childrens Officer']->id]) }}" title="Delete person record" onclick="return confirm('Do you want to delete the record completely?')"><i class="far fa-trash-alt text-red-600"></i></a>
+                        </div>
+                        @else
+                        <div class="w-auto inline-block font-bold mb-2 p-2 text-right text-green-500">
+                            <a href="{{ route('club.addPersonnel', $club->id ) }}">
+                                <i class="fas fa-user-plus text-green-500"></i> Add new
+                            </a>
+                        </div>
+                        @endif
+                    </div>
+                    <div class="w-full mt-2">
+                        <div class="w-36 inline-block font-bold mb-2 text-gray-500 p-2">Coach:</div>
+                        <div class="w-56 bg-gray-100 p-2 rounded inline-block font-semibold">{{ $personnel['Coach']->name ?? 'Not set' }}</div>
+                        <div class="w-24 inline-block font-bold mb-2 text-gray-500 p-2 text-right">Email:</div>
+                        <div class="w-56 bg-gray-100 p-2 rounded inline-block font-semibold">{{ $personnel['Coach']->email ?? 'Not set' }}</div>
+                        <div class="w-24 inline-block font-bold mb-2 text-gray-500 p-2 text-right">Phone:</div>
+                        <div class="w-48 bg-gray-100 p-2 rounded inline-block font-semibold">{{ $personnel['Coach']->phone ?? 'Not set' }}</div>
+                        @if ($personnel['Coach'])
+                        <div class="w-auto inline-block font-bold mb-2 p-2 text-right">
+                            <a href="" title="View details"><i class="far fa-eye text-green-500 mr-2"></i></a>
+                            <a href="" title="Edit"><i class="far fa-edit text-blue-500 mr-2"></i></a>
+                        <a href="{{ route('personnel.delete', [$personnel['Coach']->id]) }}" title="Delete person record" onclick="return confirm('Do you want to delete the record completely?')"><i class="far fa-trash-alt text-red-600"></i></a>
+                        </div>
+                        @else
+                        <div class="w-auto inline-block font-bold mb-2 p-2 text-right text-green-500">
+                            <a href="{{ route('club.addPersonnel', $club->id ) }}">
+                                <i class="fas fa-user-plus text-green-500"></i> Add new
+                            </a>
+                        </div>
+                        @endif
+                    </div>
+                    <div class="w-full mt-2">
+                        <div class="w-36 inline-block font-bold mb-2 text-gray-500 p-2">Volunteer:</div>
+                        <div class="w-56 bg-gray-100 p-2 rounded inline-block font-semibold">{{ $personnel['Volunteer']->name ?? 'Not set' }}</div>
+                        <div class="w-24 inline-block font-bold mb-2 text-gray-500 p-2 text-right">Email:</div>
+                        <div class="w-56 bg-gray-100 p-2 rounded inline-block font-semibold">{{ $personnel['Volunteer']->email ?? 'Not set' }}</div>
+                        <div class="w-24 inline-block font-bold mb-2 text-gray-500 p-2 text-right">Phone:</div>
+                        <div class="w-48 bg-gray-100 p-2 rounded inline-block font-semibold">{{ $personnel['Volunteer']->phone ?? 'Not set' }}</div>
+                        @if ($personnel['Volunteer'])
+                        <div class="w-auto inline-block font-bold mb-2 p-2 text-right">
+                            <a href="" title="View details"><i class="far fa-eye text-green-500 mr-2"></i></a>
+                            <a href="" title="Edit"><i class="far fa-edit text-blue-500 mr-2"></i></a>
+                        <a href="{{ route('personnel.delete', [$personnel['Volunteer']->id]) }}" title="Delete person record" onclick="return confirm('Do you want to delete the record completely?')"><i class="far fa-trash-alt text-red-600"></i></a>
+                        </div>
+                        @else
+                        <div class="w-auto inline-block font-bold mb-2 p-2 text-right text-green-500">
+                            <a href="{{ route('club.addPersonnel', $club->id ) }}">
+                                <i class="fas fa-user-plus text-green-500"></i> Add new
+                            </a>
+                        </div>
+                        @endif
                     </div>
 
                 </div>
