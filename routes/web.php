@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\PersonnelController;
+use App\Http\Controllers\MemberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,7 @@ Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->nam
 Route::resource('clubs', ClubController::class);
 
 Route::resource('personnel', PersonnelController::class);
+Route::resource('member', MemberController::class);
 Route::get('personnel/delete/{id}', [PersonnelController::class, 'destroy'])->name('personnel.delete');
 Route::get('club/{id}/add-personnel', [PersonnelController::class, 'addPersonnel'])->name('club.addPersonnel');
 
