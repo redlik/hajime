@@ -23,11 +23,13 @@ class MemberController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $clubs = Club::get();
+        $selectedClub = $request->query('club');
 
-        return view('member.create', compact('clubs'));
+
+        return view('member.create', compact('clubs', 'selectedClub'));
     }
 
     /**
@@ -38,7 +40,10 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $club = Club::find($request->input('club_id'));
+        $member = Member::create($request->all());
+
+        return redirect()->action('App\Http\Controllers\ClubController@show', ['club' => $club->id]);
     }
 
     /**

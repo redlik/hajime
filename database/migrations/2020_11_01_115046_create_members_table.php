@@ -29,8 +29,12 @@ class CreateMembersTable extends Migration
             $table->string('mobile')->nullable();
             $table->string('email')->nullable();
             $table->boolean('adaptive')->default(0);
-            $table->bigInteger('club_id')->nullable();
+            $table->string('special')->nullable();
+            $table->boolean('active')->default(1);
+            $table->unsignedBigInteger('club_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('club_id')->references('id')->on('clubs');
         });
     }
 

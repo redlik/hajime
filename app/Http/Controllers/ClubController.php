@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Club;
 use App\Models\Personnel;
 use Illuminate\Http\Request;
+use App\Models\Member;
 use DB;
 
 class ClubController extends Controller
@@ -55,8 +56,9 @@ class ClubController extends Controller
     public function show(Club $club)
     {
         $personnel = self::personnel($club);
+        $members = Member::where('club_id', $club->id)->get();
 
-        return view('clubs.show', compact('club', 'personnel'));
+        return view('clubs.show', compact('club', 'personnel', 'members'));
     }
 
     /**

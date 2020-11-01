@@ -11,12 +11,12 @@
                 </header>
 
                 <div class="w-full p-6">
-                    <p class="text-gray-700">
-                        <x-button class="button-success" href="{{ route('clubs.create') }}">
+                    <p class="text-gray-700 block">
+                        <x-button class="button-success mb-8" href="{{ route('clubs.create') }}">
                             + Add new club
                         </x-button>
                     </p>
-                    <table class="min-w-full leading-normal mt-6">
+                    <table class="min-w-full leading-normal mt-8">
                         <thead>
                             <tr>
                                 <th
@@ -68,7 +68,7 @@
                                 </td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <p class="text-gray-900 whitespace-no-wrap">
-                                        <a href="{{ route('clubs.show', $club) }}">VIEW</a> 
+                                        <a href="{{ route('clubs.show', $club) }}">VIEW</a>
                                         <a href="{{ route('clubs.edit', $club) }}">EDIT</a>
                                     </p>
                                 </td>

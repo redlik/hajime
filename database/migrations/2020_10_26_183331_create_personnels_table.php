@@ -19,14 +19,14 @@ class CreatePersonnelsTable extends Migration
             $table->string('role');
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
-            $table->date('vetting_completion');
+            $table->string('vetting_qualification');
             $table->date('vetting_expiry');
-            $table->date('safeguarding_completion');
-            $table->date('safeguarding_expiry');
-            $table->date('first_aid_completion')->nullable();
-            $table->date('first_aid_expiry')->nullable();
-            $table->date('coaching_completion')->nullable();
-            $table->date('coaching_expiry')->nullable();
+            $table->string('safeguarding_qualification');
+            $table->date('safeguarding_date');
+            $table->string('first_aid_qualification')->nullable();
+            $table->date('first_aid_date')->nullable();
+            $table->string('coaching_qualification')->nullable();
+            $table->date('coaching_date')->nullable();
             $table->unsignedBigInteger('club_id');
             $table->timestamps();
 

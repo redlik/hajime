@@ -266,9 +266,16 @@
 
             </div>
             <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
-                <h4 class="font-bold text-xl text-black mb-4">Members:</h4>
-                <div class="w-full">
-                    <button class="button-primary">+ Add new member</button>
+                <h4 class="font-bold text-xl text-black mb-4 block w-full">Members:</h4>
+                <div class="w-full block mb-8">
+                @foreach($members  as $member)
+                    <p>{{ $member->first_name }} {{ $member->last_name }}</p>
+                @endforeach
+                </div>
+                <div class="w-full block">
+                    <a href="{{ route('member.createWithClub', ['club' => $club->id]) }}">
+                        <button class="button-primary">+ Add new member</button>
+                    </a>
                 </div>
             </div>
     </div>

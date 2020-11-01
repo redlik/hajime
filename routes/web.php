@@ -25,6 +25,7 @@ Route::resource('clubs', ClubController::class);
 
 Route::resource('personnel', PersonnelController::class);
 Route::resource('member', MemberController::class);
+Route::get('member/create/{club_id?}', [MemberController::class, 'create'])->name('member.createWithClub');
 Route::get('personnel/delete/{id}', [PersonnelController::class, 'destroy'])->name('personnel.delete');
 Route::get('club/{id}/add-personnel', [PersonnelController::class, 'addPersonnel'])->name('club.addPersonnel');
 
