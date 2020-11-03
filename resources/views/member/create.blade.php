@@ -45,8 +45,8 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="mb-4 flex flex-row">
-                                <div class="w-full sm:w-full md:w-1/2 flex-grow ">
+                            <div class="mb-4 flex flex-wrap">
+                                <div class="w-full md:w-1/2 ">
                                     <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
                                            for="first_name">
                                         First Name
@@ -55,7 +55,7 @@
                                         class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                         id="first_name" name="first_name" type="text" placeholder="First name" required>
                                 </div>
-                                <div class="w-full sm:w-full md:w-1/2 ">
+                                <div class="w-full md:w-1/2">
                                     <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
                                            for="last_name">
                                         Last Name
@@ -65,8 +65,8 @@
                                         id="last_name" name="last_name" type="text" placeholder="Last name" required>
                                 </div>
                             </div>
-                            <div class="mb-4 flex flex-row content-center">
-                                <div class="w-full sm:w-full md:w-1/2 flex-grow ">
+                            <div class="mb-4 flex flex-wrap">
+                                <div class="w-full md:w-1/2">
                                     <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2" for="dob">
                                         Date of Birth
                                     </label>
@@ -74,7 +74,7 @@
                                         class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                         id="dob" name="dob" type="text" placeholder="2020-01-01">
                                 </div>
-                                <div class="w-full sm:w-full md:w-1/2 flex-grow ">
+                                <div class="w-full md:w-1/2 mt-4 md:mt-0">
                                     <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
                                            for="gender">
                                         Gender
@@ -95,8 +95,8 @@
                             </div>
                         </div>
                         <div class="w-full border-2 border-gray-300 rounded-xl p-8 mb-4">
-                            <div class="mb-4 flex flex-row">
-                                <div class="w-full sm:w-full md:w-1/2 flex-grow ">
+                            <div class="mb-4 flex flex-wrap">
+                                <div class="w-full md:w-1/2">
                                     <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
                                            for="address1">
                                         Address 1
@@ -105,7 +105,7 @@
                                         class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                         id="address1" name="address1" type="text" placeholder="Address 1" required>
                                 </div>
-                                <div class="w-full sm:w-full md:w-1/2 ">
+                                <div class="w-full md:w-1/2">
                                     <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
                                            for="address2">
                                         Address 2
@@ -115,8 +115,8 @@
                                         id="address2" name="address2" type="text" placeholder="Address 2">
                                 </div>
                             </div>
-                            <div class="mb-4 flex flex-row">
-                                <div class="w-full sm:w-full md:w-1/2 ">
+                            <div class="mb-4 flex flex-wrap">
+                                <div class="w-full md:w-1/2">
                                     <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
                                            for="city">
                                         Town / City
@@ -125,7 +125,7 @@
                                         class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                         id="city" name="city" type="text" placeholder="Town / City">
                                 </div>
-                                <div class="w-full sm:w-full md:w-1/2 flex-grow ">
+                                <div class="w-full md:w-1/2">
                                     <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
                                            for="address1">
                                         County
@@ -169,8 +169,8 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="mb-4 flex flex-row">
-                                <div class="w-full sm:w-full md:w-1/2 ">
+                            <div class="mb-4 flex flex-wrap">
+                                <div class="w-full md:w-1/2">
                                     <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
                                            for="eircode">
                                         Eircode
@@ -179,7 +179,7 @@
                                         class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                         id="eircode" name="eircode" type="text" placeholder="Eircode / Postcode">
                                 </div>
-                                <div class="w-full sm:w-full md:w-1/2 ">
+                                <div class="w-full md:w-1/2">
                                     <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
                                            for="province">
                                         Province
@@ -194,7 +194,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="mb-4 flex flex-row">
+                            <div class="mb-4 flex flex-wrap">
                                 <div class="w-full sm:w-full md:w-1/2 ">
                                     <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
                                            for="email">
@@ -214,8 +214,8 @@
                                         id="phone" name="phone" type="text" placeholder="Phone">
                                 </div>
                             </div>
-                            <div class="mb-4 flex flex-row">
-                                <div class="w-full sm:w-full md:w-1/2 ">
+                            <div class="mb-4 flex flex-wrap">
+                                <div class="w-full md:w-1/2">
                                     <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
                                            for="mobile">
                                         Mobile
