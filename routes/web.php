@@ -16,8 +16,11 @@ use App\Http\Controllers\MemberController;
 |
 */
 
-Route::get('/', [ClubController::class, 'index']);
-Auth::routes();
+Route::get('/', function() {
+    return view('home');
+});
+
+Auth::routes(['register' => false]);
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

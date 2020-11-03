@@ -68,7 +68,7 @@
                                     Vetting completion
                                 </label>
                                 <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
-                                    id="vetting_completion" name="vetting_completion" type="text" placeholder="2020-01-01">
+                                    id="vetting_completion" name="vetting_completion" type="date" placeholder="2020-01-01">
                             </div>
                             <div>
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="vetting_expiry">
