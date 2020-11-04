@@ -68,7 +68,9 @@
                 {{-- GRADING SECTION --}}
                 <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
                     <h4 class="font-bold text-xl text-gray-500 mb-4">Grading details:</h4>
-                    <form action="">
+                    <form method="POST" action="{{ action('App\Http\Controllers\GradeController@store') }}" role="form">
+                        @csrf
+                        <input type="hidden" name="member_id" value="{{ $member->id }}">
                         <div class="flex flex-wrap justify-between">
                             <div class="flex flex-wrap">
                                 <div>
@@ -91,16 +93,67 @@
 
                             </div>
                             <div>
-                                <input type="button" value="Submit" class="button-judo">
+                                <input type="submit" value="Submit" class="button-judo">
     
                             </div>
                         </div>
                     </form>
+
+                    <div class="w-full">
+                        <table class="min-w-full table leading-normal mt-8">
+                            <thead>
+                                <tr>
+                                    <th
+                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        Grade level
+                                    </th>
+                                    <th
+                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        Grade date
+                                    </th>
+                                    <th
+                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        Points to next
+                                    </th>
+                                    <th
+                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-red-500 uppercase tracking-wider">
+                                        Remove
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($grades as $grade)
+                            <tr>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    <p class="text-gray-900 whitespace-no-wrap">
+                                        {{ $grade->grade_level}}
+                                    </p>
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    <p class="text-gray-900 whitespace-no-wrap">
+                                        {{ $grade->grade_date}}
+                                    </p>
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    <p class="text-gray-900 whitespace-no-wrap">
+                                        {{ $grade->grade_points}}
+                                    </p>
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    <a href="" class="text-red-600 hover:text-red-300 whitespace-no-wrap" onclick="return confirm('Do you want to delete the record completely?')">
+                                        <i class="far fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </div>
+                </table>
                 </div>
                 {{-- MEMBERSHIP SECTION --}}
                 <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
                     <h4 class="font-bold text-xl text-gray-500 mb-4">Membership details:</h4>
-                    <form action="">
+                    <form method="POST" action="{{ action('App\Http\Controllers\MembershipController@store') }}" role="form">
                         <div class="flex flex-wrap justify-between">
                             <div class="flex flex-wrap">
                                 <div>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Member;
+use App\Models\Grade;
+use App\Models\Membership;
 use Illuminate\Http\Request;
 use App\Models\Club;
 
@@ -54,8 +56,9 @@ class MemberController extends Controller
      */
     public function show(Member $member)
     {
-
-        return view('member.show', compact('member'));
+        $grades = Grade::where('member_id', $member->id)->orderby('grade_date', 'desc')->get();
+        $memberships = Membership::where('member_id', $member->id)->get();
+        return view('member.show', compact('member', 'grades', 'memberships'));
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Grade;
+use App\Models\Member;
 use Illuminate\Http\Request;
 
 class GradeController extends Controller
@@ -35,7 +36,10 @@ class GradeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $grade = Grade::create($request->all());
+        $member = Member::find($request->input('member_id'));
+
+        return redirect()->action('App\Http\Controllers\MemberController@show', ['member' => $member]);
     }
 
     /**

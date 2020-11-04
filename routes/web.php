@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\PersonnelController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\MembershipController;
+use App\Http\Controllers\GradeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +30,8 @@ Route::resource('clubs', ClubController::class);
 
 Route::resource('personnel', PersonnelController::class);
 Route::resource('member', MemberController::class);
+Route::resource('membership', MembershipController::class);
+Route::resource('grade', GradeController::class);
 Route::get('member/create/{club_id?}', [MemberController::class, 'create'])->name('member.createWithClub');
 Route::get('personnel/delete/{id}', [PersonnelController::class, 'destroy'])->name('personnel.delete');
 Route::get('club/{id}/add-personnel', [PersonnelController::class, 'addPersonnel'])->name('club.addPersonnel');
