@@ -14,16 +14,17 @@ class MembersTable extends Component
 
     public function mount() {
         $this->searchQuery = '';
-        $this->members = Member::paginate(25);
+        $this->members = Member::paginate(50);
     }
     
     public function render()
     {
         $members = Member::when($this->searchQuery != '', function($query) {
-            $query->where('name', 'like', '%'.$this->searchQuery.'%');
+            $query->where('first_name', 'like', '%'.$this->searchQuery.'%')
+            ->orWhere('last_name', 'like', '%'.$this->searchQuery.'%');
         })
-        ->orderBy('name', 'asc')
-        ->paginate(25);
+        ->orderBy('last_name', 'asc')
+        ->paginate(50);
         
         return view('livewire.members-table', ['members' => $members ]);
     }
