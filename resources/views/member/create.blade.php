@@ -72,7 +72,7 @@
                                     </label>
                                     <input
                                         class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
-                                        id="dob" name="dob" type="text" placeholder="2020-01-01">
+                                        id="dob" name="dob" type="date" placeholder="2020-01-01">
                                 </div>
                                 <div class="w-full md:w-1/2 mt-4 md:mt-0">
                                     <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
@@ -255,7 +255,7 @@
                             </div>
                         </div>
                         <div class="mt-6">
-                            <input type="submit" value="+ Add new member" class="button-success">
+                            <input type="submit" value="+ Add new member" class="button-judo">
                         </div>
                     </form>
                     <p class="text-gray-700 mt-6">

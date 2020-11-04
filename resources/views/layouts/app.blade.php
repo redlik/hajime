@@ -20,17 +20,20 @@
 
 </head>
 <body class="bg-gray-100 h-screen antialiased leading-none font-sans">
-    <div id="app" class="h-full">
-        <header class="bg-blue-900 py-6">
+    <div id="app" class="h-full pb-12">
+        <header class="bg-judo-green py-6">
             <div class="container mx-auto flex justify-between items-center px-6">
                 <div>
                     <a href="{{ url('/') }}" class="text-lg font-semibold text-gray-100 no-underline">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
-                <nav class="space-x-4 text-gray-300 text-sm sm:text-base">
+                <nav class="space-x-4 text-white text-sm sm:text-base font-semibold">
+                    <a class="no-underline hover:underline hover:text-orange-200" href="/">Home</a>
+                    <a class="no-underline hover:underline hover:text-orange-200" href="{{ route('clubs.index') }}">Clubs</a>
+                    <a class="no-underline hover:underline hover:text-orange-200" href="{{ route('member.index') }}">Members</a>
                     @guest
-                        <a class="no-underline hover:underline" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="no-underline hover:underline hover:text-orange-200" href="{{ route('login') }}">{{ __('Login') }}</a>
                         @if (Route::has('register'))
                             <a class="no-underline hover:underline" href="{{ route('register') }}">{{ __('Register') }}</a>
                         @endif

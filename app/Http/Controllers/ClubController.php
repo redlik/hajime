@@ -69,7 +69,9 @@ class ClubController extends Controller
      */
     public function edit(Club $club)
     {
-        //
+        $club = DB::table('clubs')->find($club->id);;
+
+        return view('clubs.edit', compact('club'));
     }
 
     /**
@@ -81,7 +83,9 @@ class ClubController extends Controller
      */
     public function update(Request $request, Club $club)
     {
-        //
+        $input = $request->all();
+        $club->fill($input)->save();
+        return back()->with('message', 'Record Successfully Updated!');
     }
 
     /**

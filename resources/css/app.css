@@ -32,4 +32,21 @@
     .button-primary:hover {
         @apply bg-blue-900
     }
+
+    .judo-green {
+        color: #48962b;
+    }
+
+    .bg-judo-green {
+        background-color: #48962b;
+    }
+
+    .button-judo {
+        @apply px-6 py-3 text-white rounded shadow font-semibold cursor-pointer;
+        background-color: #48962b;
+    }
+
+    .button-judo:hover {
+        background-color: #2e5b1b;
+    }
 }

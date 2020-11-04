@@ -12,7 +12,7 @@
 
             <div class="w-full p-6">
                 <div class="text-gray-700 block py-4">
-                    <x-button class="button-success mb-8" href="{{ route('clubs.create') }}">
+                    <x-button class="button-judo mb-8" href="{{ route('clubs.create') }}">
                         + Add new club
                     </x-button>
                 </div>

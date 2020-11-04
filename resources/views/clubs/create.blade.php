@@ -37,9 +37,9 @@
                             <select class="shadow border rounded w-64 py-2 px-3 text-grey-darker" id="type" name="type" type="text"
                                 placeholder="Club type">
                                 <option value="" disabled selected>Select club type</option>
-                                <option value="ordinary club">Ordinary Club</option>
-                                <option value="school club">School Club</option>
-                                <option value="university club">University Club</option>
+                                <option value="ordinary club">Ordinary club</option>
+                                <option value="school club">School club</option>
+                                <option value="university club">University club</option>
                             </select>
                         </div>
                     </div>
@@ -191,7 +191,7 @@
                         </div>
                     </div>
                     <div class="mt-6">
-                        <input type="submit" value="+ Add new club" class="button-success">
+                        <input type="submit" value="+ Add new club" class="button-judo">
                     </div>
                 </form>
                 <p class="text-gray-700 mt-6">

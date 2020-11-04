@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<main class="sm:container sm:mx-auto sm:mt-10 md:mt-0 h-full">
-    <div class="w-full sm:px-6 flex flex-col justify-center h-full">
+<main class="sm:container sm:mx-auto sm:mt-10 md:mt-0">
+    <div class="w-full sm:px-6 flex flex-col mt-10">
 
         @if (session('status'))
             <div class="text-sm border border-t-8 rounded text-green-700 border-green-600 bg-green-100 px-3 py-4 mb-4" role="alert">
@@ -10,18 +10,19 @@
             </div>
         @endif
 
-        <section class="w-full align-middle break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg rounded-lg" style="height:60%">
+        <section class="w-full align-middle break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg rounded-lg" style="min-height:60%">
 
             <div class="w-full p-6">
-                <h1 class="text-gray-700 text-4xl font-bold text-center mb-4">
-                    Welcome to Judo Membership portal
+                <img src="images/ija-logo.jpg" alt="Irihs Judo Logo" class="mx-auto w-24 h-24">
+                <h1 class="judo-green text-4xl font-bold text-center my-6">
+                    Welcome to Judo Membership Portal
                 </h1>
                 <p class="text-gray-500 text-lg text-center leading-8">
-                    You need to be a registered user to use it.</br>
-                    If you have an account already use the login form below, otherwise contact the administrator of the page.
+                    You need to be a registered user to access it.</br>
+                    If you have an account already use the login form below, otherwise contact the administrators of the page.
                 </p>
                 <div class="text-center">
-                    <form class="w-1/2 px-6 space-y-6 sm:px-10 sm:space-y-8 mx-auto" method="POST" action="{{ route('login') }}">
+                    <form class="w-full lg:w-1/2 px-6 py-2 pb-8 rounded space-y-6 sm:px-10 sm:space-y-8 mt-6 mx-auto bg-gray-100" method="POST" action="{{ route('login') }}">
                         @csrf
     
                         <div class="flex flex-wrap">
@@ -64,7 +65,7 @@
                             </label>
     
                             @if (Route::has('password.request'))
-                            <a class="text-sm text-blue-500 hover:text-blue-700 whitespace-no-wrap no-underline hover:underline ml-auto"
+                            <a class="text-sm text-green-500 hover:text-green-700 whitespace-no-wrap no-underline hover:underline ml-auto"
                                 href="{{ route('password.request') }}">
                                 {{ __('Forgot Your Password?') }}
                             </a>
@@ -73,7 +74,7 @@
     
                         <div class="flex flex-wrap">
                             <button type="submit"
-                            class="w-full select-none font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-blue-500 hover:bg-blue-700 sm:py-4">
+                            class="w-1/2 mx-auto select-none font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-judo-green hover:bg-green-600 sm:py-4">
                                 {{ __('Login') }}
                             </button>
     

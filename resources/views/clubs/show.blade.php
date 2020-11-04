@@ -8,7 +8,10 @@
 
             <header
                 class="font-bold text-xl bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md flex justify-between align-middle">
-                <div> {{ $club->name }} </div>
+                <div> 
+                    {{ $club->name }} 
+                    <a href="{{ route('clubs.edit', $club) }}" class="text-green-600 font-bold ml-3" title="Edit club details"><i class="far fa-edit"></i></a>
+                </div>
                 <div class="font-bold text-sm"> {{ ucfirst($club->type) }} </div>
             </header>
 
@@ -81,9 +84,9 @@
                                     class="far fa-trash-alt text-red-600"></i></a>
                         </div>
                         @else
-                        <div class="w-auto inline-block font-bold mb-2 p-2 text-right text-green-500">
+                        <div class="w-auto inline-block font-bold mb-2 p-2 text-right judo-green">
                             <a href="{{ route('club.addPersonnel', $club->id ) }}">
-                                <i class="fas fa-user-plus text-green-500"></i> Add new
+                                <i class="fas fa-user-plus"></i> Add new
                             </a>
                         </div>
                         @endif
@@ -108,9 +111,9 @@
                                     class="far fa-trash-alt text-red-600"></i></a>
                         </div>
                         @else
-                        <div class="w-auto inline-block font-bold mb-2 p-2 text-right text-green-500">
+                        <div class="w-auto inline-block font-bold mb-2 p-2 text-right judo-green">
                             <a href="{{ route('club.addPersonnel', $club->id ) }}">
-                                <i class="fas fa-user-plus text-green-500"></i> Add new
+                                <i class="fas fa-user-plus"></i> Add new
                             </a>
                         </div>
                         @endif
@@ -135,9 +138,9 @@
                                     class="far fa-trash-alt text-red-600"></i></a>
                         </div>
                         @else
-                        <div class="w-auto inline-block font-bold mb-2 p-2 text-right text-green-500">
+                        <div class="w-auto inline-block font-bold mb-2 p-2 text-right judo-green">
                             <a href="{{ route('club.addPersonnel', $club->id ) }}">
-                                <i class="fas fa-user-plus text-green-500"></i> Add new
+                                <i class="fas fa-user-plus"></i> Add new
                             </a>
                         </div>
                         @endif
@@ -162,9 +165,9 @@
                                     class="far fa-trash-alt text-red-600"></i></a>
                         </div>
                         @else
-                        <div class="w-auto inline-block font-bold mb-2 p-2 text-right text-green-500">
+                        <div class="w-auto inline-block font-bold mb-2 p-2 text-right judo-green">
                             <a href="{{ route('club.addPersonnel', $club->id ) }}">
-                                <i class="fas fa-user-plus text-green-500"></i> Add new
+                                <i class="fas fa-user-plus"></i> Add new
                             </a>
                         </div>
                         @endif
@@ -189,9 +192,9 @@
                                     class="far fa-trash-alt text-red-600"></i></a>
                         </div>
                         @else
-                        <div class="w-auto inline-block font-bold mb-2 p-2 text-right text-green-500">
+                        <div class="w-auto inline-block font-bold mb-2 p-2 text-right judo-green">
                             <a href="{{ route('club.addPersonnel', $club->id ) }}">
-                                <i class="fas fa-user-plus text-green-500"></i> Add new
+                                <i class="fas fa-user-plus"></i> Add new
                             </a>
                         </div>
                         @endif
@@ -216,9 +219,9 @@
                                     class="far fa-trash-alt text-red-600"></i></a>
                         </div>
                         @else
-                        <div class="w-auto inline-block font-bold mb-2 p-2 text-right text-green-500">
+                        <div class="w-auto inline-block font-bold mb-2 p-2 text-right judo-green">
                             <a href="{{ route('club.addPersonnel', $club->id ) }}">
-                                <i class="fas fa-user-plus text-green-500"></i> Add new
+                                <i class="fas fa-user-plus judo-green"></i> Add new
                             </a>
                         </div>
                         @endif
@@ -268,13 +271,11 @@
             <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
                 <h4 class="font-bold text-xl text-black mb-4 block w-full">Members:</h4>
                 <div class="w-full block mb-8">
-                @foreach($members  as $member)
-                    <p>{{ $member->first_name }} {{ $member->last_name }}</p>
-                @endforeach
+                    @livewire('club-members', ['club_id' => $club->id])
                 </div>
                 <div class="w-full block">
                     <a href="{{ route('member.createWithClub', ['club' => $club->id]) }}">
-                        <button class="button-primary">+ Add new member</button>
+                        <button class="button-judo">+ Add new member</button>
                     </a>
                 </div>
             </div>

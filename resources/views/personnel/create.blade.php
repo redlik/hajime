@@ -75,7 +75,7 @@
                                     Vetting expiry
                                 </label>
                                 <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
-                                    id="vetting_expiry" name="vetting_expiry" type="text" placeholder="2020-01-01">
+                                    id="vetting_expiry" name="vetting_expiry" type="date" placeholder="2020-01-01">
                             </div>
                             <h4 class="w-auto text-gray-500 text-xl font-bold mb-6 mt-16">Safeguarding information:</h4>
                             <div class="mb-4">
@@ -83,14 +83,14 @@
                                     Safeguarding completion
                                 </label>
                                 <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
-                                id="safeguarding_completion" name="safeguarding_completion" type="text" placeholder="2020-01-01">
+                                id="safeguarding_completion" name="safeguarding_completion" type="date" placeholder="2020-01-01">
                             </div>
                             <div class="mb-4">
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="safeguarding_expiry">
                                     Safeguarding expiry
                                 </label>
                                 <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
-                                    id="safeguarding_expiry" name="safeguarding_expiry" type="text" placeholder="2020-01-01">
+                                    id="safeguarding_expiry" name="safeguarding_expiry" type="date" placeholder="2020-01-01">
                             </div>
                         </div>
                         <div class="w-full md:w-1/2 sm:w-full mt-16 md:mt-0">
@@ -100,34 +100,43 @@
                                     First Aid completion
                                 </label>
                                 <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
-                                    id="first_aid_completion" name="first_aid_completion" type="text" placeholder="2020-01-01">
+                                    id="first_aid_completion" name="first_aid_completion" type="date" placeholder="2020-01-01">
                             </div>
                             <div>
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="first_aid_expiry">
                                     First Aid expiry
                                 </label>
                                 <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
-                                    id="first_aid_expiry" name="first_aid_expiry" type="text" placeholder="2020-01-01">
+                                    id="first_aid_expiry" name="first_aid_expiry" type="date" placeholder="2020-01-01">
                             </div>
                             <h4 class="w-auto text-gray-500 text-xl font-bold mb-6 mt-16">Coaching information:</h4>
                             <div class="mb-4">
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="coaching_completion">
-                                    Coaching completion
+                                    Coaching Qualification
                                 </label>
-                                <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
-                                    id="coaching_completion" name="coaching_completion" type="text" placeholder="2020-01-01">
+                                <select name="coaching_qualification" id="coaching_qualification" class="shadow border rounded w-64 py-2 px-3 text-grey-darker">
+                                    <option value="" disabled selected>Select level of qualifications</option>
+                                    <option value="Level 1">Level 1</option>
+                                    <option value="Level 1">Level 2</option>
+                                    <option value="Level 1">Level 3</option>
+                                    <option value="UKCC Level 1">UKCC Level 1</option>
+                                    <option value="UKCC Level 2">UKCC Level 2</option>
+                                    <option value="UKCC Level 3">UKCC Level 3</option>
+                                    <option value="UKCC Level 4">UKCC Level 4</option>
+                                    <option value="UKCC Level 5">UKCC Level 5</option>
+                                </select>
                             </div>
                             <div>
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="coaching_expiry">
                                     Coaching expiry
                                 </label>
                                 <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
-                                    id="coaching_expiry" name="coaching_expiry" type="text" placeholder="2020-01-01">
+                                    id="coaching_date" name="coaching_date" type="date" placeholder="2020-01-01">
                             </div>
                         </div>
                     </div>
                     <div class="mt-6">
-                        <input type="submit" value="+ Add new person" class="button-success">
+                        <input type="submit" value="+ Add new person" class="button-judo">
                     </div>
                 </form>
                 <p class="text-gray-700 mt-6">
