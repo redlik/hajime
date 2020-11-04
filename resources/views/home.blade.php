@@ -13,7 +13,7 @@
         <section class="w-full align-middle break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg rounded-lg" style="min-height:60%">
 
             <div class="w-full p-6">
-                <img src="{{ asset(images/ija-logo.jpg) }}" alt="Irihs Judo Logo" class="mx-auto w-24 h-24">
+                <img src="{{ asset('images/ija-logo.jpg') }}" alt="Irihs Judo Logo" class="mx-auto w-24 h-24">
                 <h1 class="judo-green text-4xl font-bold text-center my-6">
                     Welcome to Judo Membership Portal
                 </h1>
