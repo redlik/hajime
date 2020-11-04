@@ -82,9 +82,11 @@ class MembershipController extends Controller
      * @param  \App\Models\Membership  $membership
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Membership $membership)
+    public function destroy(Request $request, Membership $membership)
     {
-        Membership::destroy($membership);
-        return redirect()->back();
+        $member = member::find($request->input('member_id'));
+        $membership = Membership::where('id', $membership->id)->delete();
+        
+        return redirect()->action('App\Http\Controllers\MemberController@show', ['member' => $member]);
     }
 }

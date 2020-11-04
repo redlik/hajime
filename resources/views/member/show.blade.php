@@ -19,50 +19,58 @@
             <div class="w-full p-6">
                 <a href="{{ route('clubs.show', $member->club) }}"
                     class="text-blue-500 font-bold hover:text-blue-300 mb-4" title="View club page">
-                    << Back to club view</a> <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
-                        <h4 class="font-bold text-xl text-gray-500 mb-4">Personal details:</h4>
-                        <div class="flex flex-wrap mb-8">
-                            <div class="w-full md:w-1/2 flex flex-wrap mb-4">
-                                <div class="w-full flex flex-wrap mb-2">
-                                    <div class="w-36 font-bold">Date of birth:</div>
-                                    <div class="w-auto">{{ $member->dob }}
+                    << Back to club view</a> <div
+                        class="w-full border border-gray-300 flex flex-wrap rounded-xl my-4 p-4">
+                        <div class="w-full md:w-1/2">
+                            <h4 class="font-bold text-xl text-gray-500 mb-4">Personal details:</h4>
+                            <div class="mb-8">
+                                <div class="w-full md:w-1/2 mb-4">
+                                    <div class="w-full flex flex-wrap mb-4">
+                                        <div class="w-36 font-bold">Date of birth:</div>
+                                        <div class="w-auto">{{ $member->dob }}
+                                        </div>
+                                    </div>
+                                    <div class="w-full flex flex-wrap mb-4">
+                                        <div class="w-36 font-bold">Current age:</div>
+                                        <div class="w-auto">{{ $member->age }}
+                                        </div>
+                                    </div>
+                                    <div class="w-full flex flex-wrap mb-4">
+                                        <div class="w-36 font-bold">Gender:</div>
+                                        <div class="w-auto">{{ $member->gender }}</div>
                                     </div>
                                 </div>
-                                <div class="w-full flex flex-wrap">
-                                    <div class="w-36 font-bold">Current age:</div>
-                                    <div class="w-auto">{{ $member->age }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w-full md:w-1/2 flex flex-wrap mb-4">
-                                <div class="w-36 font-bold">Gender:</div>
-                                <div class="w-auto">{{ $member->gender }}</div>
                             </div>
                         </div>
-                        <h4 class="font-bold text-xl text-gray-500 mb-4 ">Address:</h4>
-                        <div class="w-full md:w-1/2 flex flex-wrap mb-8">
-                            {{ $member->address1}}, @if ($member->address2)
-                            , {{ $member->address2}}
-                            @endif
-                            {{ $member->city}}, {{ $member->county}}, {{ $member->province}}
-                        </div>
-                        <h4 class="font-bold text-xl text-gray-500 mb-4">Contact details:</h4>
-                        <div class="flex flex-wrap">
-                            <div class="w-full md:w-1/2 flex flex-wrap">
-                                <div class="w-full flex flex-wrap mb-2">
-                                    <div class="w-36 font-bold">Phone:</div>
-                                    <div class="w-auto">{{ $member->phone }}
+                        <div class="w-full md:w-1/2">
+                            <h4 class="font-bold text-xl text-gray-500 mb-4">Contact details:</h4>
+                            <div class="flex flex-wrap">
+                                <div class="w-full flex flex-wrap">
+                                    <div class="w-full flex flex-wrap mb-4">
+                                        <div class="w-36 font-bold">Phone:</div>
+                                        <div class="w-auto">{{ $member->phone }}
+                                        </div>
+                                    </div>
+                                    <div class="w-full flex flex-wrap mb-4">
+                                        <div class="w-36 font-bold">Mobile:</div>
+                                        <div class="w-auto">{{ $member->mobile }}
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="w-full flex flex-wrap">
-                                    <div class="w-36 font-bold">Mobile:</div>
-                                    <div class="w-auto">{{ $member->mobile }}
-                                    </div>
+                                <div class="w-full flex flex-wrap mb-4">
+                                    <div class="w-36 font-bold">Email:</div>
+                                    <div class="w-auto">{{ $member->email }}</div>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="w-full mb-2">
+                            <h4 class="font-bold text-xl text-gray-500 mb-4 ">Address:</h4>
                             <div class="w-full md:w-1/2 flex flex-wrap">
-                                <div class="w-36 font-bold">Email:</div>
-                                <div class="w-auto">{{ $member->email }}</div>
+                                {{ $member->address1}}, @if ($member->address2)
+                                , {{ $member->address2}}
+                                @endif
+                                {{ $member->city}}, {{ $member->county}}, {{ $member->province}}
                             </div>
                         </div>
             </div>
@@ -144,10 +152,12 @@
                                     </p>
                                 </td>
                                 <td class="px-5 py-2 border-b border-gray-200 text-sm">
-                                    <a href="{{ route('grade.destroy', [$grade->id]) }}" class="text-red-600 hover:text-red-300 whitespace-no-wrap"
-                                        onclick="return confirm('Do you want to delete the record completely?')">
-                                        <i class="far fa-trash-alt"></i>
-                                    </a>
+                                    <form action="{{ route('grade.destroy' , $grade)}}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="DELETE" />
+                                        <input type="hidden" name="member_id" value="{{$member->id }}" />
+                                        <button type="submit" class="text-red-600 hover:text-red-300 whitespace-no-wrap" onclick="return confirm('Do you want to delete the record completely?')"><i class="far fa-trash-alt"></i></button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
@@ -230,10 +240,12 @@
                                     </p>
                                 </td>
                                 <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm">
-                                    <a href="{{ route('membership.destroy', [$membership->id]) }}" class="text-red-600 hover:text-red-300 whitespace-no-wrap"
-                                        onclick="return confirm('Do you want to delete the record completely?')">
-                                        <i class="far fa-trash-alt"></i>
-                                    </a>
+                                    <form action="{{ route('membership.destroy' , $membership)}}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="DELETE" />
+                                        <input type="hidden" name="member_id" value="{{$member->id }}" />
+                                        <button type="submit" class="text-red-600 hover:text-red-300 whitespace-no-wrap" onclick="return confirm('Do you want to delete the record completely?')"><i class="far fa-trash-alt"></i></button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach

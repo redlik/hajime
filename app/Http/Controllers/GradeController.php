@@ -82,9 +82,11 @@ class GradeController extends Controller
      * @param  \App\Models\Grade  $grade
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Grade $grade)
+    public function destroy(Request $request, Grade $grade)
     {
-        Grade::destroy($grade);
-        return redirect()->back();
+        $member = member::find($request->input('member_id'));
+        $grade = Grade::where('id', $grade->id)->delete();
+        
+        return redirect()->action('App\Http\Controllers\MemberController@show', ['member' => $member]);
     }
 }
