@@ -12,6 +12,7 @@ class ClubMembers extends Component
     use WithPagination;
     
     public $club_id;
+    public $searchQuery = '';
 
     // public function mount($club_id) {
     //     $this->club_id = $club_id;
@@ -19,7 +20,7 @@ class ClubMembers extends Component
 
     public function render()
     {
-        $members = Club::find($this->club_id)->member;
+        $members = Member::where('club_id',$this->club_id)->paginate(10);
         return view('livewire.club-members', compact('members'));
     }
 }

@@ -1,0 +1,136 @@
+@extends('layouts.app')
+
+@section('content')
+<main class="sm:container sm:mx-auto sm:mt-10">
+    <div class="w-full sm:px-6">
+
+        <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
+
+            <header
+                class="font-bold text-xl bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md flex justify-between align-middle">
+                <div>
+                    {{ $member->first_name }} {{ $member->last_name }}
+                    <a href="{{ route('clubs.edit', $member) }}" class="text-green-600 font-bold ml-3"
+                        title="Edit club details"><i class="far fa-edit"></i></a>
+                </div>
+                <div class="font-bold text-sm"> Club: {{ $member->club->name }} </div>
+            </header>
+
+            <div class="w-full p-6">
+                <a href="{{ route('clubs.show', $member->club) }}" class="text-blue-500 font-bold hover:text-blue-300 mb-4" title="View club page"><< Back to club view</a>
+                <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
+                    <h4 class="font-bold text-xl text-gray-500 mb-4">Personal details:</h4>
+                    <div class="flex flex-wrap mb-8">
+                        <div class="w-full md:w-1/2 flex flex-wrap mb-4">
+                            <div class="w-full flex flex-wrap mb-2">
+                                <div class="w-36 font-bold">Date of birth:</div>
+                                <div class="w-auto">{{ $member->dob }}
+                                </div>
+                            </div>
+                            <div class="w-full flex flex-wrap">
+                                <div class="w-36 font-bold">Current age:</div>
+                                <div class="w-auto">{{ $member->age }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/2 flex flex-wrap mb-4">
+                            <div class="w-36 font-bold">Gender:</div>
+                            <div class="w-auto">{{ $member->gender }}</div>
+                        </div>
+                    </div>
+                    <h4 class="font-bold text-xl text-gray-500 mb-4 ">Address:</h4>
+                    <div class="w-full md:w-1/2 flex flex-wrap mb-8">
+                        {{ $member->address1}}, @if ($member->address2)
+                        , {{ $member->address2}}
+                        @endif
+                        {{ $member->city}}, {{ $member->county}}, {{ $member->province}}
+                    </div>
+                    <h4 class="font-bold text-xl text-gray-500 mb-4">Contact details:</h4>
+                    <div class="flex flex-wrap">
+                        <div class="w-full md:w-1/2 flex flex-wrap">
+                            <div class="w-full flex flex-wrap mb-2">
+                                <div class="w-36 font-bold">Phone:</div>
+                                <div class="w-auto">{{ $member->phone }}
+                                </div>
+                            </div>
+                            <div class="w-full flex flex-wrap">
+                                <div class="w-36 font-bold">Mobile:</div>
+                                <div class="w-auto">{{ $member->mobile }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/2 flex flex-wrap">
+                            <div class="w-36 font-bold">Email:</div>
+                            <div class="w-auto">{{ $member->email }}</div>
+                        </div>
+                    </div>
+                </div>
+                {{-- GRADING SECTION --}}
+                <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
+                    <h4 class="font-bold text-xl text-gray-500 mb-4">Grading details:</h4>
+                    <form action="">
+                        <div class="flex flex-wrap justify-between">
+                            <div class="flex flex-wrap">
+                                <div>
+                                    <label for="grade_level" class="block text-sm text-gray-400 mb-2 font-bold">Grade level</label>
+                                    <input type="text" name="grade_level" id="grade_level"
+                                        class="shadow appearance-none border rounded w-64 py-2 px-3 text-grey-darker mr-2"
+                                        placeholder="Grade">
+                                </div>
+                                <div>
+                                    <label for="type" class="block text-sm text-gray-400 mb-2 font-bold">Date attained</label>
+                                    <input type="date" name="grade_date" id="grade_date"
+                                        class="shadow appearance-none border rounded w-48 py-2 px-3 text-grey-darker mr-2">
+                                </div>
+                                <div>
+                                    <label for="type" class="block text-sm text-gray-400 mb-2 font-bold">Points to next grade</label>
+                                    <input type="text" name="grade_points" id="grade_points"
+                                        class="shadow appearance-none border rounded w-64 py-2 px-3 text-grey-darker mr-2"
+                                        placeholder="Points to next grade">
+                                </div>
+
+                            </div>
+                            <div>
+                                <input type="button" value="Submit" class="button-judo">
+    
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                {{-- MEMBERSHIP SECTION --}}
+                <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
+                    <h4 class="font-bold text-xl text-gray-500 mb-4">Membership details:</h4>
+                    <form action="">
+                        <div class="flex flex-wrap justify-between">
+                            <div class="flex flex-wrap">
+                                <div>
+                                    <label for="type" class="block text-sm text-gray-400 mb-2 font-bold">Membership type</label>
+                                    <input type="text" name="type" id="type"
+                                        class="shadow appearance-none border rounded w-64 py-2 px-3 text-grey-darker mr-2"
+                                        placeholder="Membership type">
+                                </div>
+                                    <div>
+                                        <label for="type" class="block text-sm text-gray-400 mb-2 font-bold">Joining date</label>
+                                        <input type="date" name="join_date" id="join_date"
+                                        class="shadow appearance-none border rounded w-48 py-2 px-3 text-grey-darker mr-2">
+                                    </div>
+                                <div>
+                                    <label for="type" class="block text-sm text-gray-400 mb-2 font-bold">Expiry date</label>
+                                    <input type="date" name="expiry_date" id="expiry_date"
+                                        class="shadow appearance-none border rounded w-48 py-2 px-3 text-grey-darker mr-2">
+                                </div>
+                            </div>
+                            <div>
+                                <input type="button" value="Submit" class="button-judo">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
+        </section>
+    </div>
+</main>
+@endsection
