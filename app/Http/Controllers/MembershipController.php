@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Membership;
 use Illuminate\Http\Request;
+use App\Models\Member;
 
 class MembershipController extends Controller
 {
@@ -35,7 +36,10 @@ class MembershipController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $membership = Membership::create($request->all());
+        $member = Member::find($request->input('member_id'));
+
+        return redirect()->action('App\Http\Controllers\MemberController@show', ['member' => $member]);
     }
 
     /**
@@ -80,6 +84,7 @@ class MembershipController extends Controller
      */
     public function destroy(Membership $membership)
     {
-        //
+        Membership::destroy($membership);
+        return redirect()->back();
     }
 }
