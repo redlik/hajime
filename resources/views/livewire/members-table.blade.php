@@ -32,7 +32,7 @@
             <tbody>
                 @foreach ($members as $member)
                 <tr>
-                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                    <td class="px-5 py-5 border-b border-gray-200 text-sm">
                         <div class="flex items-center">
                             <div class="ml-3">
                                 <p class="text-gray-900 whitespace-no-wrap font-bold">
@@ -41,10 +41,10 @@
                             </div>
                         </div>
                     </td>
-                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden md:block">
+                    <td class="px-5 py-5 border-b border-gray-200 text-sm hidden md:block">
                         <p class="text-gray-900 whitespace-no-wrap">{{ $member->club->name }}
                     </td>
-                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                    <td class="px-5 py-5 border-b border-gray-200 text-sm">
                         <p class="text-gray-900 whitespace-no-wrap">
                             @if ($member->membership()->exists())
                             <span class="p-1 px-2 rounded bg-green-200 text-green-700">Active</span>
@@ -54,10 +54,10 @@
                             
                         </p>
                     </td>
-                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                    <td class="px-5 py-5 border-b border-gray-200 text-sm">
                         <p class="text-gray-900 whitespace-no-wrap">
-                            <a href="{{ route('member.show', $member) }}" class="text-blue-600 font-bold hover:text-blue-300" title="View club page"><i class="far fa-eye"></i></a>
-                            <a href="{{ route('member.edit', $member) }}" class="text-green-600 font-bold ml-3" title="Edit club details"><i class="far fa-edit"></i></a>
+                            <a href="{{ route('member.show', $member) }}" class="text-blue-600 font-bold hover:text-blue-300" title="View member page"><i class="far fa-eye"></i></a>
+                            <a href="{{ route('member.edit', $member) }}" class="text-green-600 font-bold ml-3" title="Edit member details"><i class="far fa-edit"></i></a>
                         </p>
                     </td>
                 </tr>

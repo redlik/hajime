@@ -10,7 +10,7 @@
                 class="font-bold text-xl bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md flex justify-between align-middle">
                 <div>
                     {{ $member->first_name }} {{ $member->last_name }}
-                    <a href="{{ route('clubs.edit', $member) }}" class="text-green-600 font-bold ml-3"
+                    <a href="{{ route('member.edit', $member) }}" class="text-green-600 font-bold ml-3"
                         title="Edit club details"><i class="far fa-edit"></i></a>
                 </div>
                 <div class="font-bold text-sm"> Club: {{ $member->club->name }} </div>

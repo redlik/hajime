@@ -49,4 +49,9 @@
     .button-judo:hover {
         background-color: #2e5b1b;
     }
+
+    tr:nth-child(even)
+    {
+        background-color: #f6f6f6;
+    }
 }

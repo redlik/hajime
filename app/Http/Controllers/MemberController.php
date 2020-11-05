@@ -7,6 +7,7 @@ use App\Models\Grade;
 use App\Models\Membership;
 use Illuminate\Http\Request;
 use App\Models\Club;
+use Illuminate\Support\Facades\DB;
 
 class MemberController extends Controller
 {
@@ -69,7 +70,10 @@ class MemberController extends Controller
      */
     public function edit(Member $member)
     {
-        //
+        $member = DB::table('members')->find($member->id);;
+        $clubs = Club::all();
+
+        return view('member.edit', compact('member', 'clubs'));
     }
 
     /**
@@ -81,7 +85,9 @@ class MemberController extends Controller
      */
     public function update(Request $request, Member $member)
     {
-        //
+        $input = $request->all();
+        $member->fill($input)->save();
+        return back()->with('message', 'Record Successfully Updated!');
     }
 
     /**
