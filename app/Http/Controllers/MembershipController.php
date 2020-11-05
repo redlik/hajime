@@ -38,6 +38,10 @@ class MembershipController extends Controller
     {
         $membership = Membership::create($request->all());
         $member = Member::find($request->input('member_id'));
+        if (\Carbon\Carbon::now()->lessThan($membership->expiry_date)) {
+            $member->active = 1;
+            $member->save();
+        }
 
         return redirect()->action('App\Http\Controllers\MemberController@show', ['member' => $member]);
     }
@@ -86,6 +90,17 @@ class MembershipController extends Controller
     {
         $member = member::find($request->input('member_id'));
         $membership = Membership::where('id', $membership->id)->delete();
+        $memberships = Membership::where('member_id', $request->input('member_id'))->get();
+        if ($memberships->isEmpty()) {
+            $member->active = 0;
+            $member->save();
+        }
+        foreach ($memberships as $existing_membership) {
+            if (\Carbon\Carbon::now()->greaterThan($existing_membership->expiry_date)) {
+                $member->active = 0;
+                $member->save();
+            }
+        }
         
         return redirect()->action('App\Http\Controllers\MemberController@show', ['member' => $member]);
     }

@@ -46,7 +46,7 @@
                     </td>
                     <td class="px-5 py-5 border-b border-gray-200 text-sm">
                         <p class="text-gray-900 whitespace-no-wrap">
-                            @if ($member->membership()->exists())
+                            @if ($member->active == true)
                             <span class="p-1 px-2 rounded bg-green-200 text-green-700">Active</span>
                             @else
                             <span class="p-1 px-2 rounded bg-red-200 text-red-700">Inactive</span>

@@ -24,6 +24,7 @@ class MemberFactory extends Factory
         return [
             'first_name' => $this->faker->firstName,
             'last_name' => $this->faker->lastName,
+            'number' => $this->faker->numberBetween(1, 500),
             'address1' => $this->faker->streetAddress,
             'city' => $this->faker->city,
             'county' => $this->faker->state,

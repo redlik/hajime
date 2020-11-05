@@ -17,6 +17,7 @@ class CreateMembersTable extends Migration
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('number');
             $table->string('address1');
             $table->string('address2')->nullable();
             $table->string('city');
@@ -30,7 +31,7 @@ class CreateMembersTable extends Migration
             $table->string('email')->nullable();
             $table->boolean('adaptive')->default(0);
             $table->string('special')->nullable();
-            $table->boolean('active')->default(1);
+            $table->boolean('active')->default(0);
             $table->unsignedBigInteger('club_id')->nullable();
             $table->timestamps();
 

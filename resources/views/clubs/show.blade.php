@@ -21,7 +21,7 @@
                         <h4 class="font-bold text-xl text-black mb-4">Location data:</h4>
                         <p class="mb-2">{{ $club->address1 }}</p>
                         <p class="mb-2">{{ $club->address2 }}</p>
-                        <p class="mb-2">{{ ucfirst($club->town) }}</p>
+                        <p class="mb-2">{{ ucfirst($club->city) }}</p>
                         <p class="mb-2">{{ ucfirst($club->county) }}</p>
                         <p class="mb-2">{{ ucfirst($club->province) }}</p>
                         <p class="mb-2">{{ $club->eircode }}</p>

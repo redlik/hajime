@@ -19,7 +19,7 @@ class CreateClubsTable extends Migration
             $table->string('name')->unique();
             $table->string("address1");
             $table->string("address2")->nullable();
-            $table->string("town");
+            $table->string("city");
             $table->string("county");
             $table->string("eircode")->nullable();
             $table->string("province");

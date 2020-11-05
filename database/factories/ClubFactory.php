@@ -24,7 +24,7 @@ class ClubFactory extends Factory
         return [
             'name' => $this->faker->unique()->company,
             'address1' => $this->faker->streetAddress,
-            'town' => $this->faker->city,
+            'city' => $this->faker->city,
             'county' => $this->faker->state,
             'province' => $this->faker->state,
             'type' => $this->faker->randomElement(['School Club', 'Ordinary Club', 'University Club']),

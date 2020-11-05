@@ -42,7 +42,7 @@
                         </div>
                     </td>
                     <td class="px-5 py-5 border-b border-gray-200 text-sm hidden md:block">
-                        <p class="text-gray-900 whitespace-no-wrap">{{ $club->address1}}, {{$club->town}}
+                        <p class="text-gray-900 whitespace-no-wrap">{{ $club->address1}}, {{$club->city}}
                         </p>
                     </td>
                     <td class="px-5 py-5 border-b border-gray-200 text-sm">
