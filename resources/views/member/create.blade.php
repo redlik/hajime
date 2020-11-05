@@ -24,26 +24,37 @@
                           role="form">
                         @csrf
                         <div class="w-full border-2 border-gray-300 rounded-xl p-8 mb-4">
-                            <div class="mb-4">
-                                <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2" for="role">
-                                    Club
-                                </label>
-                                <select name="club_id" id="club_id"
-                                        class="shadow border rounded w-56 py-2 px-3 text-grey-darker">
-                                    @if (!$selectedClub)
-                                        <option value="" disabled selected>Select Club</option>
-                                    @endif
+                            <div class="mb-4 flex flex-wrap">
+                                <div class="w-full md:w-1/2 ">
+                                    <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2" for="role">
+                                        Club
+                                    </label>
+                                    <select name="club_id" id="club_id"
+                                            class="shadow border rounded w-56 py-2 px-3 text-grey-darker">
+                                        @if (!$selectedClub)
+                                            <option value="" disabled selected>Select Club</option>
+                                        @endif
 
-                                    @foreach ($clubs as $club)
-                                        <option value="{{ $club->id }}"
-                                                @if ($selectedClub == $club->id)
-                                                selected
-                                            @endif
+                                        @foreach ($clubs as $club)
+                                            <option value="{{ $club->id }}"
+                                                    @if ($selectedClub == $club->id)
+                                                    selected
+                                                @endif
 
-                                        >{{ $club->name}}</option>
+                                            >{{ $club->name}}</option>
 
-                                    @endforeach
-                                </select>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="w-full md:w-1/2 ">
+                                    <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
+                                           for="number">
+                                        Membership no
+                                    </label>
+                                    <input
+                                        class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                        id="number" name="number" type="text" placeholder="Membership number" required>
+                                </div>
                             </div>
                             <div class="mb-4 flex flex-wrap">
                                 <div class="w-full md:w-1/2 ">

@@ -29,23 +29,34 @@
                     @csrf
                     <input name="_method" type="hidden" value="PUT">
                     <div class="w-full border-2 border-gray-300 rounded-xl p-8 mb-4">
-                        <div class="mb-4">
-                            <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2" for="role">
-                                Club
-                            </label>
-                            <select name="club_id" id="club_id"
-                                    class="shadow border rounded w-56 py-2 px-3 text-grey-darker">
-
-                                @foreach ($clubs as $club)
-                                    <option value="{{ $club->id }}"
-                                            @if ($member->club_id == $club->id)
-                                            selected
-                                        @endif
-
-                                    >{{ $club->name}}</option>
-
-                                @endforeach
-                            </select>
+                        <div class="mb-4 flex flex-wrap">
+                            <div class="w-full md:w-1/2">
+                                <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2" for="role">
+                                    Club
+                                </label>
+                                <select name="club_id" id="club_id"
+                                        class="shadow border rounded w-56 py-2 px-3 text-grey-darker">
+    
+                                    @foreach ($clubs as $club)
+                                        <option value="{{ $club->id }}"
+                                                @if ($member->club_id == $club->id)
+                                                selected
+                                            @endif
+    
+                                        >{{ $club->name}}</option>
+    
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="w-full md:w-1/2">
+                                <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
+                                           for="number">
+                                        Membership no
+                                    </label>
+                                    <input
+                                        class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                id="number" name="number" type="text" value="{{ $member->number }}" required>
+                            </div>
                         </div>
                         <div class="mb-4 flex flex-wrap">
                             <div class="w-full md:w-1/2 ">

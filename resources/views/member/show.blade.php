@@ -9,8 +9,15 @@
             <header
                 class="font-bold text-xl bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md flex justify-between align-middle">
                 <div>
-                    {{ $member->first_name }} {{ $member->last_name }} 
-                <span class="text-sm text-gray-500">{{ $member->active }}</span>
+                    {{ ucfirst($member->first_name) }} {{ ucfirst($member->last_name) }} 
+                <span class="text-sm text-gray-500 ml-2">No: {{ $member->number }}</span>
+                
+                @if ($member->active) 
+                <span class="text-sm text-green-700 bg-green-300 p-2 rounded ml-2">Active</span>
+                @else
+                <span class="text-sm text-red-700 bg-red-300 p-2 rounded ml-2">Inactive</span>
+                @endif    
+                </span>
                     <a href="{{ route('member.edit', $member) }}" class="text-green-600 font-bold ml-3"
                         title="Edit club details"><i class="far fa-edit"></i></a>
                 </div>
