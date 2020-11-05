@@ -43,9 +43,11 @@
                         <p class="text-gray-900 whitespace-no-wrap">{{ $member->age }} years
                     </td>
                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <p class="text-gray-900 whitespace-no-wrap">
-                            Active
-                        </p>
+                        @if ($member->active == true)
+                            <span class="p-1 px-2 rounded bg-green-200 text-green-700">Active</span>
+                            @else
+                            <span class="p-1 px-2 rounded bg-red-200 text-red-700">Inactive</span>
+                            @endif
                     </td>
                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p class="text-gray-900 whitespace-no-wrap">
