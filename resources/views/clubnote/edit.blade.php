@@ -11,6 +11,9 @@
                 </header>
 
                 <div class="w-full p-6">
+                    @if(Session::has('message'))
+                        <p class="bg-green-100 text-green-700 p-6 rounded mb-4">{{ Session::get('message') }}</p>
+                    @endif
                     @if ($errors->any())
                         <div class="alert alert-danger" role="alert">
                             <ul id="errors list-unstyled">
@@ -20,7 +23,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form method="POST" action=""
+                    <form method="POST" action="{{ action('App\Http\Controllers\ClubnoteController@update', ['clubnote' => $note->id]) }}"
                           role="form">
                         @csrf
                         <input name="_method" type="hidden" value="PUT">

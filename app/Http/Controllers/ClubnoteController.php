@@ -90,7 +90,10 @@ class ClubnoteController extends Controller
      */
     public function update(Request $request, Clubnote $clubnote)
     {
-        //
+        $input = $request->all();
+        $clubnote->slug = Str::slug($clubnote->id."-".$request->input('title'), '-');
+        $clubnote->fill($input)->save();
+        return back()->with('message', 'Record Successfully Updated!');
     }
 
     /**
