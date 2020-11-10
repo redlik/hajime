@@ -82,7 +82,7 @@
                         </div>
             </div>
             {{-- MEMBERSHIP SECTION --}}
-            <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
+            <div class="w-full border-2 border-gray-300 rounded-xl my-4 p-4">
                     <h4 class="font-bold text-xl text-gray-500 mb-4">Membership details:</h4>
                     <form method="POST" action="{{ action('App\Http\Controllers\MembershipController@store') }}"
                           role="form">
@@ -170,7 +170,7 @@
                     </div>
                 </div>
             {{-- GRADING SECTION --}}
-            <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
+            <div class="w-full border-2 border-gray-300 rounded-xl my-4 p-4">
                 <h4 class="font-bold text-xl text-gray-500 mb-4">Grading details:</h4>
                 <form method="POST" action="{{ action('App\Http\Controllers\GradeController@store') }}" role="form">
                     @csrf
@@ -294,7 +294,7 @@
                 </div>
             </div>
             {{-- NOTES SECTION --}}
-            <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
+            <div class="w-full border-2 border-gray-300 rounded-xl my-4 p-4">
                     <h4 class="font-bold text-xl text-gray-500 mb-4" id="notes">Member notes:</h4>
                     <a href="{{ route('membernote.create.member', [$member->id]) }}">
                         <button class="button-judo">+ Add new note</button>
