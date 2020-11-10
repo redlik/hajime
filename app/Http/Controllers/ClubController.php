@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Club;
 use App\Models\Personnel;
+use App\Models\Clubnote;
 use Illuminate\Http\Request;
 use App\Models\Member;
 use DB;
@@ -56,10 +57,11 @@ class ClubController extends Controller
      */
     public function show(Club $club)
     {
-        $personnel = self::personnel($club);
+        $personnel = $this->personnel($club);
         $members = Member::where('club_id', $club->id)->get();
+        $notes = Clubnote::where('club_id', $club->id)->get();
 
-        return view('clubs.show', compact('club', 'personnel', 'members'));
+        return view('clubs.show', compact('club', 'personnel', 'members', 'notes'));
     }
 
     /**
@@ -70,7 +72,7 @@ class ClubController extends Controller
      */
     public function edit(Club $club)
     {
-        $club = DB::table('clubs')->find($club->id);;
+        $club = DB::table('clubs')->find($club->id);
 
         return view('clubs.edit', compact('club'));
     }

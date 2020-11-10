@@ -4,8 +4,8 @@
             <div class="w-full">
                 {{ $members->links() }}</div>
         </div>
-        
-        
+
+
         <table class="min-w-full table leading-normal mt-8">
             <thead>
                 <tr>
@@ -59,8 +59,6 @@
                 @endforeach
             </tbody>
         </table>
-        <div class="mt-4">
-            
-        </div>
+
     </div>
 </div>
