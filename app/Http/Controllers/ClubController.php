@@ -43,7 +43,8 @@ class ClubController extends Controller
         $request->validate(['name' => 'required|unique:clubs']);
         // dd($request);
         $club = Club::create($request->all());
-        $personnel = self::personnel($club);
+//        $personnel = self::personnel($club);
+        $personnel = $this->personnel($club);
 
         return redirect()->action('App\Http\Controllers\ClubController@show', ['club' => $club]);
 

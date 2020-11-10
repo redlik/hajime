@@ -22,7 +22,10 @@ class ClubnoteFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->sentence(4),
+            'body' => $this->faker->realText(120),
+            'slug' => $this->faker->slug(4),
+            'club_id' => $this->faker->numberBetween(1,50),
         ];
     }
 }

@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             ClubSeeder::class,
             PermissionsSeeder::class,
             MembersSeeder::class,
+            ClubnoteSeeder::class,
         ]);
     }
 }
