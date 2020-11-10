@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Database\Seeders\ClubnoteSeeder;
 use App\Models\Clubnote;
 
 class ClubnoteSeeder extends Seeder
