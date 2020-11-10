@@ -81,6 +81,94 @@
                             </div>
                         </div>
             </div>
+            {{-- MEMBERSHIP SECTION --}}
+            <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
+                    <h4 class="font-bold text-xl text-gray-500 mb-4">Membership details:</h4>
+                    <form method="POST" action="{{ action('App\Http\Controllers\MembershipController@store') }}"
+                          role="form">
+                        @csrf
+                        <input type="hidden" name="member_id" value="{{ $member->id }}">
+                        <div class="flex flex-wrap justify-between">
+                            <div class="flex flex-wrap">
+                                <div>
+                                    <label for="membership_type"
+                                           class="block text-sm text-gray-400 mb-2 font-bold">Membership type</label>
+                                    <input type="text" name="membership_type" id="membership_type"
+                                           class="shadow appearance-none border rounded w-64 py-2 px-3 text-grey-darker mr-2"
+                                           placeholder="Membership type">
+                                </div>
+                                <div>
+                                    <label for="join_date" class="block text-sm text-gray-400 mb-2 font-bold">Joining
+                                        date</label>
+                                    <input type="date" name="join_date" id="join_date"
+                                           class="shadow appearance-none border rounded w-48 py-2 px-3 text-grey-darker mr-2">
+                                </div>
+                                <div>
+                                    <label for="expiry_date" class="block text-sm text-gray-400 mb-2 font-bold">Expiry
+                                        date</label>
+                                    <input type="date" name="expiry_date" id="expiry_date"
+                                           class="shadow appearance-none border rounded w-48 py-2 px-3 text-grey-darker mr-2">
+                                </div>
+                            </div>
+                            <div>
+                                <input type="submit" value="Submit" class="button-judo">
+                            </div>
+                        </div>
+                    </form>
+                    <div class="w-full">
+                        <table class="min-w-full table leading-normal mt-8">
+                            <thead>
+                            <tr>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Membership type
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Join date
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Expiry date
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-red-500 uppercase tracking-wider">
+                                    Remove
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($memberships as $membership)
+                                <tr>
+                                    <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm">
+                                        <p class="text-gray-900 whitespace-no-wrap">
+                                            {{ $membership->membership_type }}
+                                        </p>
+                                    </td>
+                                    <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm">
+                                        <p class="text-gray-900 whitespace-no-wrap">
+                                            {{ $membership->join_date }}
+                                        </p>
+                                    </td>
+                                    <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm">
+                                        <p class="text-gray-900 whitespace-no-wrap">
+                                            {{ $membership->expiry_date }}
+                                        </p>
+                                    </td>
+                                    <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm">
+                                        <form action="{{ route('membership.destroy' , $membership)}}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="_method" value="DELETE" />
+                                            <input type="hidden" name="member_id" value="{{$member->id }}" />
+                                            <button type="submit" class="text-red-600 hover:text-red-300 whitespace-no-wrap" onclick="return confirm('Do you want to delete the record completely?')"><i class="far fa-trash-alt"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             {{-- GRADING SECTION --}}
             <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
                 <h4 class="font-bold text-xl text-gray-500 mb-4">Grading details:</h4>
@@ -92,9 +180,42 @@
                             <div>
                                 <label for="grade_level" class="block text-sm text-gray-400 mb-2 font-bold">Grade
                                     level</label>
-                                <input type="text" name="grade_level" id="grade_level"
-                                    class="shadow appearance-none border rounded w-64 py-2 px-3 text-grey-darker mr-2"
-                                    placeholder="Grade">
+                                <select name="grade_level" id="grade_level" class="shadow appearance-none border rounded w-48 py-2 px-3 text-grey-darker mr-2">>
+                                    <optgroup label="Junior Grades">
+                                        <option value="1st Mon White">1st Mon White</option>
+                                        <option value="2nd Mon Red">2nd Mon Red</option>
+                                        <option value="3rd Mon White/Yellow">3rd Mon White/Yellow</option>
+                                        <option value="4th Mon Yellow">4th Mon Yellow</option>
+                                        <option value="5th Mon Yellow/Orange">5th Mon Yellow/Orange</option>
+                                        <option value="6th Mon Orange">6th Mon Orange</option>
+                                        <option value="7th Mon Orange/Green">7th Mon Orange/Green</option>
+                                        <option value="8th Mon Green">8th Mon Green</option>
+                                        <option value="9th Mon Green/Blue">9th Mon Green/Blue</option>
+                                        <option value="10th Mon Blue">10th Mon Blue</option>
+                                        <option value="11th Mon Blue/Brown">11th Mon Blue/Brown</option>
+                                        <option value="12th Mon Brown">12th Mon Brown</option>
+                                    </optgroup>
+                                    <optgroup label="Senior Grades">
+                                        <option value="6th Kyu White">6th Kyu White</option>
+                                        <option value="5th Kyu Yellow">5th Kyu Yellow</option>
+                                        <option value="4th Kyu Orange">4th Kyu Orange</option>
+                                        <option value="3rd Kyu Green">3rd Kyu Green</option>
+                                        <option value="2nd Kyu Blue">2nd Kyu Blue</option>
+                                        <option value="1st Kyu Brown">1st Kyu Brown</option>
+                                    </optgroup>
+                                    <optgroup label="Dan Grades">
+                                        <option value="1st Dan">1st Dan</option>
+                                        <option value="2nd Dan">2nd Dan</option>
+                                        <option value="3rd Dan">3rd Dan</option>
+                                        <option value="4th Dan">4th Dan</option>
+                                        <option value="5th Dan">5th Dan</option>
+                                        <option value="6th Dan">6th Dan</option>
+                                        <option value="6th Dan">6th Dan</option>
+                                        <option value="7th Dan">7th Dan</option>
+                                        <option value="7th Dan">7th Dan</option>
+                                        <option value="8th Dan">8th Dan</option>
+                                    </optgroup>
+                                </select>
                             </div>
                             <div>
                                 <label for="type" class="block text-sm text-gray-400 mb-2 font-bold">Date
@@ -172,95 +293,8 @@
                     </table>
                 </div>
             </div>
-            {{-- MEMBERSHIP SECTION --}}
+            {{-- NOTES SECTION --}}
             <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
-                <h4 class="font-bold text-xl text-gray-500 mb-4">Membership details:</h4>
-                <form method="POST" action="{{ action('App\Http\Controllers\MembershipController@store') }}"
-                    role="form">
-                    @csrf
-                    <input type="hidden" name="member_id" value="{{ $member->id }}">
-                    <div class="flex flex-wrap justify-between">
-                        <div class="flex flex-wrap">
-                            <div>
-                                <label for="membership_type"
-                                    class="block text-sm text-gray-400 mb-2 font-bold">Membership type</label>
-                                <input type="text" name="membership_type" id="membership_type"
-                                    class="shadow appearance-none border rounded w-64 py-2 px-3 text-grey-darker mr-2"
-                                    placeholder="Membership type">
-                            </div>
-                            <div>
-                                <label for="join_date" class="block text-sm text-gray-400 mb-2 font-bold">Joining
-                                    date</label>
-                                <input type="date" name="join_date" id="join_date"
-                                    class="shadow appearance-none border rounded w-48 py-2 px-3 text-grey-darker mr-2">
-                            </div>
-                            <div>
-                                <label for="expiry_date" class="block text-sm text-gray-400 mb-2 font-bold">Expiry
-                                    date</label>
-                                <input type="date" name="expiry_date" id="expiry_date"
-                                    class="shadow appearance-none border rounded w-48 py-2 px-3 text-grey-darker mr-2">
-                            </div>
-                        </div>
-                        <div>
-                            <input type="submit" value="Submit" class="button-judo">
-                        </div>
-                    </div>
-                </form>
-                <div class="w-full">
-                    <table class="min-w-full table leading-normal mt-8">
-                        <thead>
-                            <tr>
-                                <th
-                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                    Membership type
-                                </th>
-                                <th
-                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                    Join date
-                                </th>
-                                <th
-                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                    Expiry date
-                                </th>
-                                <th
-                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-red-500 uppercase tracking-wider">
-                                    Remove
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($memberships as $membership)
-                            <tr>
-                                <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm">
-                                    <p class="text-gray-900 whitespace-no-wrap">
-                                        {{ $membership->membership_type }}
-                                    </p>
-                                </td>
-                                <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm">
-                                    <p class="text-gray-900 whitespace-no-wrap">
-                                        {{ $membership->join_date }}
-                                    </p>
-                                </td>
-                                <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm">
-                                    <p class="text-gray-900 whitespace-no-wrap">
-                                        {{ $membership->expiry_date }}
-                                    </p>
-                                </td>
-                                <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm">
-                                    <form action="{{ route('membership.destroy' , $membership)}}" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="_method" value="DELETE" />
-                                        <input type="hidden" name="member_id" value="{{$member->id }}" />
-                                        <button type="submit" class="text-red-600 hover:text-red-300 whitespace-no-wrap" onclick="return confirm('Do you want to delete the record completely?')"><i class="far fa-trash-alt"></i></button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-                <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
                     <h4 class="font-bold text-xl text-gray-500 mb-4" id="notes">Member notes:</h4>
                     <a href="{{ route('membernote.create.member', [$member->id]) }}">
                         <button class="button-judo">+ Add new note</button>
