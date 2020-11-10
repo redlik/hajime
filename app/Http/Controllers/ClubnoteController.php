@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Club;
 use App\Models\Clubnote;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 
@@ -87,7 +89,7 @@ class ClubnoteController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Clubnote  $clubnote
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Clubnote $clubnote)
     {
@@ -101,7 +103,7 @@ class ClubnoteController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Clubnote  $clubnote
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Clubnote $clubnote)
     {
@@ -110,7 +112,8 @@ class ClubnoteController extends Controller
 
         $clubnote->delete();
 
-        return redirect()->action('App\Http\Controllers\ClubController@show', ['club' => $club]);
+//        return redirect()->action('App\Http\Controllers\ClubController@show', ['club' => $club]);
+        return Redirect::to(URL::previous() . "#notes");
 
     }
 }

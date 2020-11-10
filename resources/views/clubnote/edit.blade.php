@@ -44,11 +44,14 @@
                                           class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker">{{ $note->body }}</textarea>
                             </div>
                             <div class="mt-6">
-                                <input type="submit" value="Save changes" class="button-judo">
+                                <input type="submit" value="Save changes" class="button-success">
                             </div>
                         </div>
 
                     </form>
+                </div>
+                <div class="w-full p-8 mb-4">
+                    <a href="{{ url()->previous().'#notes' }} "class="button-judo mt-8"><< Back to Club page</a>
                 </div>
             </section>
         </div>

@@ -12,9 +12,13 @@
 
                 <div class="w-full p-6">
                     <div class="w-full border-2 border-gray-300 rounded-xl p-8 mb-4">
-                        <p>
-                            {{ $note->body }}
-                        </p>
+                        <div class="w-full"><p>
+                                {{ $note->body }}
+                            </p></div>
+
+                    </div>
+                    <div class="w-full p-8 mb-4">
+                        <a href="{{ url()->previous().'#notes' }} "class="button-judo mt-8"><< Back to Club page</a>
                     </div>
                 </div>
             </section>

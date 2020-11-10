@@ -281,7 +281,7 @@
             </div>
 
             <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
-                <h4 class="font-bold text-xl text-gray-500 mb-4">Club notes:</h4>
+                <h4 class="font-bold text-xl text-gray-500 mb-4" id="notes">Club notes:</h4>
                 <a href="{{ route('clubnote.create.club', [$club->id]) }}">
                     <button class="button-judo">+ Add new note</button>
                 </a>
