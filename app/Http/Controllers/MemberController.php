@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Member;
 use App\Models\Grade;
+use App\Models\Membernote;
 use App\Models\Membership;
 use Illuminate\Http\Request;
 use App\Models\Club;
@@ -53,13 +54,14 @@ class MemberController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Member  $member
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function show(Member $member)
     {
         $grades = Grade::where('member_id', $member->id)->orderby('grade_date', 'desc')->get();
         $memberships = Membership::where('member_id', $member->id)->get();
-        return view('member.show', compact('member', 'grades', 'memberships'));
+        $notes = Membernote::where('member_id', $member->id)->get();
+        return view('member.show', compact('member', 'grades', 'memberships', 'notes'));
     }
 
     /**

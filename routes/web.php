@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MembernoteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\PersonnelController;
@@ -34,7 +35,9 @@ Route::resource('member', MemberController::class);
 Route::resource('membership', MembershipController::class);
 Route::resource('grade', GradeController::class);
 Route::resource('clubnote', ClubnoteController::class);
+Route::resource('membernote', MembernoteController::class);
 Route::get('clubnote/create/{club}', [ClubnoteController::class, 'createWithClub'])->name('clubnote.create.club');
+Route::get('membernote/create/{club}', [MembernoteController::class, 'createWithmember'])->name('membernote.create.member');
 
 
 Route::get('member/create/{club_id?}', [MemberController::class, 'create'])->name('member.createWithClub');

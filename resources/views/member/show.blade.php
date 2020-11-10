@@ -260,13 +260,53 @@
                     </table>
                 </div>
             </div>
+                <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
+                    <h4 class="font-bold text-xl text-gray-500 mb-4" id="notes">Member notes:</h4>
+                    <a href="{{ route('membernote.create.member', [$member->id]) }}">
+                        <button class="button-judo">+ Add new note</button>
+                    </a>
+                    <div class="w-full mt-8">
+                        <table class="min-w-full table leading-normal mt-8">
+                            <thead>
+                            <tr>
+                                <th
+                                    class="w-3/4 px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Title
+                                </th>
+                                <th
+                                    class="w-1/4 px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Operations
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($notes as $note)
+                                <tr>
+                                    <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                        <div class="flex items-center">
+                                            <div class="ml-3">
+                                                <p class="text-gray-900 whitespace-no-wrap font-bold">
+                                                    <a href="{{ route('membernote.show', $note->slug) }}" class="hover:text-cool-gray-400" title="View full note">{{ $note->title }}</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 text-sm flex flex-wrap">
+                                        <a href="{{ route('membernote.show', $note->slug) }}" class="text-blue-600 font-bold hover:text-blue-300" title="View full note"><i class="far fa-eye"></i></a>
+                                        <a href="{{ route('membernote.edit', $note) }}" class="text-green-600 font-bold ml-3" title="Edit note"><i class="far fa-edit"></i></a>
+                                        <form action="{{ route('membernote.destroy' , $note)}}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="_method" value="DELETE" />
+                                            <button type="submit" class="text-red-600 hover:text-red-300 whitespace-no-wrap ml-3" onclick="return confirm('Do you want to delete the record completely?')"><i class="far fa-trash-alt"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
     </div>
-
-            <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
-                <h4 class="font-bold text-xl text-gray-500 mb-4">Member's notes:</h4>
-
-
-
     </section>
     </div>
 </main>
