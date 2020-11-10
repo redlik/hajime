@@ -8,8 +8,8 @@
 
             <header
                 class="font-bold text-xl bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md flex justify-between align-middle">
-                <div> 
-                    {{ $club->name }} 
+                <div>
+                    {{ $club->name }}
                     <a href="{{ route('clubs.edit', $club) }}" class="text-green-600 font-bold ml-3" title="Edit club details"><i class="far fa-edit"></i></a>
                 </div>
                 <div class="font-bold text-sm"> {{ ucfirst($club->type) }} </div>
@@ -278,6 +278,52 @@
                         <button class="button-judo">+ Add new member</button>
                     </a>
                 </div>
+            </div>
+
+            <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
+                <h4 class="font-bold text-xl text-gray-500 mb-4">Club notes:</h4>
+                <a href="{{ route('clubnote.create.club', [$club->id]) }}">
+                    <button class="button-judo">+ Add new note</button>
+                </a>
+                <div class="w-full mt-8">
+                    <table class="min-w-full table leading-normal mt-8">
+                        <thead>
+                        <tr>
+                            <th
+                                class="w-3/4 px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                Title
+                            </th>
+                            <th
+                                class="w-1/4 px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                Operations
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ($notes as $note)
+                            <tr>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    <div class="flex items-center">
+                                        <div class="ml-3">
+                                            <p class="text-gray-900 whitespace-no-wrap font-bold">
+                                                <a href="{{ route('clubnote.show', $note->slug) }}" class="hover:text-cool-gray-400" title="View full note">{{ $note->title }}</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    <p class="text-gray-900 whitespace-no-wrap">
+                                        <a href="{{ route('clubnote.show', $note->slug) }}" class="text-blue-600 font-bold hover:text-blue-300" title="View full note"><i class="far fa-eye"></i></a>
+                                        <a href="{{ route('clubnote.edit', $note) }}" class="text-green-600 font-bold ml-3" title="Edit note"><i class="far fa-edit"></i></a>
+                                    </p>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+
+
             </div>
     </div>
     </section>
