@@ -60,7 +60,7 @@ class MemberController extends Controller
     {
         $grades = Grade::where('member_id', $member->id)->orderby('grade_date', 'desc')->get();
         $memberships = Membership::where('member_id', $member->id)->get();
-        $notes = Membernote::where('member_id', $member->id)->get();
+        $notes = Membernote::where('member_id', $member->id)->orderBy('created_at', 'desc')->get();
         return view('member.show', compact('member', 'grades', 'memberships', 'notes'));
     }
 

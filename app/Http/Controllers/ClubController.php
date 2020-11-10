@@ -60,7 +60,7 @@ class ClubController extends Controller
     {
         $personnel = $this->personnel($club);
         $members = Member::where('club_id', $club->id)->get();
-        $notes = Clubnote::where('club_id', $club->id)->get();
+        $notes = Clubnote::where('club_id', $club->id)->orderBy('created_at', 'desc')->get();
 
         return view('clubs.show', compact('club', 'personnel', 'members', 'notes'));
     }
