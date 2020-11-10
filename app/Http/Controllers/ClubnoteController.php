@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Club;
 use App\Models\Clubnote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -104,6 +105,12 @@ class ClubnoteController extends Controller
      */
     public function destroy(Clubnote $clubnote)
     {
-        //
+        $club = Club::where('id', $clubnote->club_id)->first();
+        $clubnote = Clubnote::findOrFail($clubnote->id);
+
+        $clubnote->delete();
+
+        return redirect()->action('App\Http\Controllers\ClubController@show', ['club' => $club]);
+
     }
 }

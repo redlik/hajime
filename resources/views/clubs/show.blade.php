@@ -311,11 +311,14 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <p class="text-gray-900 whitespace-no-wrap">
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm flex flex-wrap">
                                         <a href="{{ route('clubnote.show', $note->slug) }}" class="text-blue-600 font-bold hover:text-blue-300" title="View full note"><i class="far fa-eye"></i></a>
                                         <a href="{{ route('clubnote.edit', $note) }}" class="text-green-600 font-bold ml-3" title="Edit note"><i class="far fa-edit"></i></a>
-                                    </p>
+                                        <form action="{{ route('clubnote.destroy' , $note)}}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="_method" value="DELETE" />
+                                            <button type="submit" class="text-red-600 hover:text-red-300 whitespace-no-wrap ml-3" onclick="return confirm('Do you want to delete the record completely?')"><i class="far fa-trash-alt"></i></button>
+                                        </form>
                                 </td>
                             </tr>
                         @endforeach
