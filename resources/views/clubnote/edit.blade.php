@@ -51,7 +51,7 @@
                     </form>
                 </div>
                 <div class="w-full p-8 mb-4">
-                    <a href="{{ url()->previous().'#notes' }} "class="button-judo mt-8"><< Back to Club page</a>
+                    <a href="{{ route('clubs.show', $note->club_id) }} " class="button-judo mt-8"><< Back to Club page</a>
                 </div>
             </section>
         </div>
