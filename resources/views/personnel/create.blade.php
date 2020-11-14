@@ -33,9 +33,8 @@
                                 <option value="Head Coach">Head Coach</option>
                                 <option value="Secretary">Secretary</option>
                                 <option value="Designated Officer">Designated Officer</option>
-                                <option value="Children's Officer">Children's Officer</option>
+                                <option value="Childrens Officer">Childrens Officer</option>
                                 <option value="Coach">Coach</option>
-                                <option value="Volunteer">Volunteer</option>
                             </select>
                         </div>
                         <div class="mb-4">
