@@ -48,15 +48,157 @@
                 </div>
                 <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
                     <h4 class="font-bold text-xl text-black mb-4">Club Personnel:</h4>
-                    {{-- <div class="w-full mb-4">
-                        <a href="{{ route('club.addPersonnel', $club->id ) }}">
-                    <button class="button-primary">+ Insert details</button>
-                    </a>
-                </div> --}}
                 {{-- Alpine JS Modal starts here--}}
-                @livewire('personnel')
+                    <div x-data="{headCoach: false, secretary: false, designated: false, childrens:false, coach: false}" x-cloak class="w-full flex flex-wrap">
 
-            </div>
+                        <div class="w-full md:w-1/2">
+                            <div class="w-full mb-3">
+                                <div class="w-36 inline-block font-bold mb-2 text-gray-500 p-2">Head Coach:</div>
+                                <div class="w-56 bg-gray-100 p-2 rounded inline-block font-semibold">
+                                    {{ $headCoach->name ?? 'Not set' }}</div>
+                                @if ($headCoach)
+                                    <div class="w-auto inline-block font-bold mb-2 p-2 text-right">
+                                        <button type="button" title="View details"
+                                                @click="headCoach = ! headCoach">
+                                            <i class="far fa-eye text-green-500 mr-2"></i></button>
+                                        <a href="" title="Edit"><i class="far fa-edit text-blue-500 mr-2"></i></a>
+                                        <a href="{{ route('personnel.delete', [$headCoach->id]) }}"
+                                           title="Delete person record"
+                                           onclick="return confirm('Do you want to delete the record completely?')"><i
+                                                class="far fa-trash-alt text-red-600"></i></a>
+                                    </div>
+                                @else
+                                    <div class="w-auto inline-block font-bold mb-2 p-2 text-right judo-green">
+                                        <a href="{{ route('club.addPersonnel', $club->id ) }}">
+                                            <i class="fas fa-user-plus"></i> Add new
+                                        </a>
+                                    </div>
+                                @endif
+                                <div x-show="headCoach" @keydown.escape="headCoach = false" class="absolute w-auto p-2 bg-green-100 rounded-lg w-auto flex flex-wrap border border-gray-300 shadow-lg">
+                                    <div class="w-1/2 flex flex-wrap">
+                                        <div class="w-24 text-sm text-gray-500">Phone:</div>
+                                        <div class="w-56 font-semibold">
+                                            {{ $headCoach->phone ?? 'Not set' }}</div>
+                                    </div>
+                                    <div class="w-1/2 flex flex-wrap">
+                                        <div class="w-24 text-sm inline-block text-gray-500">Email:</div>
+                                        <div class="w-56 inline-block font-semibold">
+                                            {{ $headCoach->email ?? 'Not set' }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full mb-3">
+                                <div class="w-36 inline-block font-bold mb-2 text-gray-500 p-2">Secretary:</div>
+                                <div class="w-56 bg-gray-100 p-2 rounded inline-block font-semibold">
+                                    {{ $secretary->name ?? 'Not set' }}</div>
+                                @if ($secretary)
+                                    <div class="w-auto inline-block font-bold mb-2 p-2 text-right">
+                                        <button type="button" title="View details"
+                                                @click="secretary = ! secretary">
+                                            <i class="far fa-eye text-green-500 mr-2"></i></button>
+                                        <a href="" title="Edit"><i class="far fa-edit text-blue-500 mr-2"></i></a>
+                                        <a href="{{ route('personnel.delete', [$secretary->id]) }}"
+                                           title="Delete person record"
+                                           onclick="return confirm('Do you want to delete the record completely?')"><i
+                                                class="far fa-trash-alt text-red-600"></i></a>
+                                    </div>
+                                @else
+                                    <div class="w-auto inline-block font-bold mb-2 p-2 text-right judo-green">
+                                        <a href="{{ route('club.addPersonnel', $club->id ) }}">
+                                            <i class="fas fa-user-plus"></i> Add new
+                                        </a>
+                                    </div>
+                                @endif
+                                <div x-show="secretary" @keydown.escape="headCoach = false" class="absolute w-auto p-2 bg-green-100 rounded-lg w-auto flex flex-wrap border border-gray-300 shadow-lg">
+                                    <div class="w-1/2 flex flex-wrap">
+                                        <div class="w-24 text-sm text-gray-500">Phone:</div>
+                                        <div class="w-56 font-semibold">
+                                            {{ $headCoach->phone ?? 'Not set' }}</div>
+                                    </div>
+                                    <div class="w-1/2 flex flex-wrap">
+                                        <div class="w-24 text-sm inline-block text-gray-500">Email:</div>
+                                        <div class="w-56 inline-block font-semibold">
+                                            {{ $headCoach->email ?? 'Not set' }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full mb-3">
+                                <div class="w-36 inline-block font-bold mb-2 text-gray-500 p-2">Designated Off:</div>
+                                <div class="w-56 bg-gray-100 p-2 rounded inline-block font-semibold">
+                                    {{ $designatedOfficer->name ?? 'Not set' }}</div>
+                                @if ($designatedOfficer)
+                                    <div class="w-auto inline-block font-bold mb-2 p-2 text-right">
+                                        <a href="" title="View details"><i
+                                                class="far fa-eye text-green-500 mr-2"></i></a>
+                                        <a href="" title="Edit"><i class="far fa-edit text-blue-500 mr-2"></i></a>
+                                        <a href="{{ route('personnel.delete', [$designatedOfficer->id]) }}"
+                                           title="Delete person record"
+                                           onclick="return confirm('Do you want to delete the record completely?')"><i
+                                                class="far fa-trash-alt text-red-600"></i></a>
+                                    </div>
+                                @else
+                                    <div class="w-auto inline-block font-bold mb-2 p-2 text-right judo-green">
+                                        <a href="{{ route('club.addPersonnel', $club->id ) }}">
+                                            <i class="fas fa-user-plus"></i> Add new
+                                        </a>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/2">
+                            <div class="w-1/2 mb-3">
+                                <div class="w-36 inline-block font-bold mb-2 text-gray-500 p-2">Childrens Off:</div>
+                                <div class="w-56 bg-gray-100 p-2 rounded inline-block font-semibold">
+                                    {{ $childrensOfficer->name ?? 'Not set' }}</div>
+                                @if ($childrensOfficer)
+                                    <div class="w-auto inline-block font-bold mb-2 p-2 text-right">
+                                        <a href="" title="View details"><i
+                                                class="far fa-eye text-green-500 mr-2"></i></a>
+                                        <a href="" title="Edit"><i class="far fa-edit text-blue-500 mr-2"></i></a>
+                                        <a href="{{ route('personnel.delete', [$childrensOfficer->id]) }}"
+                                           title="Delete person record"
+                                           onclick="return confirm('Do you want to delete the record completely?')"><i
+                                                class="far fa-trash-alt text-red-600"></i></a>
+                                    </div>
+                                @else
+                                    <div class="w-auto inline-block font-bold mb-2 p-2 text-right judo-green">
+                                        <a href="{{ route('club.addPersonnel', $club->id ) }}">
+                                            <i class="fas fa-user-plus"></i> Add new
+                                        </a>
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="w-1/2 mb-3">
+                                <div class="w-36 inline-block font-bold mb-2 text-gray-500 p-2">Coach:</div>
+                                <div class="w-56 bg-gray-100 p-2 rounded inline-block font-semibold">
+                                    {{ $coach->name ?? 'Not set' }}</div>
+                                @if ($coach)
+                                    <div class="w-auto inline-block font-bold mb-2 p-2 text-right">
+                                        <a href="" title="View details"><i
+                                                class="far fa-eye text-green-500 mr-2"></i></a>
+                                        <a href="" title="Edit"><i class="far fa-edit text-blue-500 mr-2"></i></a>
+                                        <a href="{{ route('personnel.delete', [$coach->id]) }}"
+                                           title="Delete person record"
+                                           onclick="return confirm('Do you want to delete the record completely?')"><i
+                                                class="far fa-trash-alt text-red-600"></i></a>
+                                    </div>
+                                @else
+                                    <div class="w-auto inline-block font-bold mb-2 p-2 text-right judo-green">
+                                        <a href="{{ route('club.addPersonnel', $club->id ) }}">
+                                            <i class="fas fa-user-plus"></i> Add new
+                                        </a>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="w-full mt-4">
+                            <h4 class="font-bold text-xl text-black mb-4">Volunteers:</h4>
+                        </div>
+
+                    </div>
+
+
+                </div>
             <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
                 <h4 class="font-bold text-xl text-black mb-4 block w-full">Members:</h4>
                 <div class="w-full block mb-8">
@@ -119,4 +261,14 @@
     </section>
     </div>
 </main>
+@endsection
+
+@section('bottomScripts')
+    <script>
+        function showPerson(person) {
+            var selected_person = person;
+            console.log(selected_person);
+            return this.selected_person;
+        }
+    </script>
 @endsection
