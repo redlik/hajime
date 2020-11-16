@@ -60,7 +60,8 @@
                                     <div class="w-auto inline-block font-bold mb-2 p-2 text-right">
                                         <button type="button" title="View details"
                                                 @click="headCoach = ! headCoach">
-                                            <i class="far fa-eye text-green-500 mr-2"></i></button>
+                                            <i class="far fa-eye text-green-500 mr-2"
+                                               :class="{ 'text-gray-300' : headCoach, 'text-green-500' : ! headCoach}"></i></button>
                                         <a href="" title="Edit"><i class="far fa-edit text-blue-500 mr-2"></i></a>
                                         <a href="{{ route('personnel.delete', [$headCoach->id]) }}"
                                            title="Delete person record"
@@ -74,16 +75,57 @@
                                         </a>
                                     </div>
                                 @endif
-                                <div x-show="headCoach" @keydown.escape="headCoach = false" class="absolute w-auto p-2 bg-green-100 rounded-lg w-auto flex flex-wrap border border-gray-300 shadow-lg">
+                                <div x-show="headCoach" @keydown.escape="headCoach = false" class="p-2 bg-green-100 rounded w-auto flex flex-wrap shadow-lg relative">
+                                    <div class="absolute right-2">
+                                        <button @click="headCoach = false" title="Close panel">
+                                            <i class="fas fa-window-close text-red-800"></i>
+                                        </button>
+                                    </div>
                                     <div class="w-1/2 flex flex-wrap">
                                         <div class="w-24 text-sm text-gray-500">Phone:</div>
-                                        <div class="w-56 font-semibold">
+                                        <div class="w-auto font-semibold">
                                             {{ $headCoach->phone ?? 'Not set' }}</div>
                                     </div>
                                     <div class="w-1/2 flex flex-wrap">
                                         <div class="w-24 text-sm inline-block text-gray-500">Email:</div>
-                                        <div class="w-56 inline-block font-semibold">
+                                        <div class="w-auto inline-block font-semibold">
                                             {{ $headCoach->email ?? 'Not set' }}</div>
+                                    </div>
+                                    <div class="w-1/2 flex flex-wrap">
+                                        <div class="w-full font-bold text-gray-500 mt-4 mb-2">Vetting:</div>
+                                        <div class="w-24 text-sm inline-block text-gray-500">Completion:</div>
+                                        <div class="w-auto inline-block font-semibold">
+                                            {{ $headCoach->vetting_completion ?? 'Not set' }}</div>
+                                        <div class="w-24 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
+                                        <div class="w-auto inline-block font-semibold mt-2">
+                                            {{ $headCoach->vetting_expiry ?? 'Not set' }}</div>
+                                    </div>
+                                    <div class="w-1/2 flex flex-wrap">
+                                        <div class="w-full font-bold text-gray-500 mt-4 mb-2">Safeguarding:</div>
+                                        <div class="w-24 text-sm inline-block text-gray-500">Completion:</div>
+                                        <div class="w-auto inline-block font-semibold">
+                                            {{ $headCoach->safeguarding_completion ?? 'Not set' }}</div>
+                                        <div class="w-24 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
+                                        <div class="w-auto inline-block font-semibold mt-2">
+                                            {{ $headCoach->safeguarding_expiry ?? 'Not set' }}</div>
+                                    </div>
+                                    <div class="w-1/2 flex flex-wrap">
+                                        <div class="w-full font-bold text-gray-500 mt-4 mb-2">First Aid:</div>
+                                        <div class="w-24 text-sm inline-block text-gray-500">Completion:</div>
+                                        <div class="w-auto inline-block font-semibold">
+                                            {{ $headCoach->first_aid_completion ?? 'Not set' }}</div>
+                                        <div class="w-24 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
+                                        <div class="w-auto inline-block font-semibold mt-2">
+                                            {{ $headCoach->first_aid_expiry ?? 'Not set' }}</div>
+                                    </div>
+                                    <div class="w-1/2 flex flex-wrap">
+                                        <div class="w-full font-bold text-gray-500 mt-4 mb-2">Coaching:</div>
+                                        <div class="w-24 text-sm inline-block text-gray-500">Qualification:</div>
+                                        <div class="w-auto inline-block font-semibold">
+                                            {{ $headCoach->coaching_qualification ?? 'Not set' }}</div>
+                                        <div class="w-24 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
+                                        <div class="w-auto inline-block font-semibold mt-2">
+                                            {{ $headCoach->coaching_date ?? 'Not set' }}</div>
                                     </div>
                                 </div>
                             </div>
@@ -95,7 +137,7 @@
                                     <div class="w-auto inline-block font-bold mb-2 p-2 text-right">
                                         <button type="button" title="View details"
                                                 @click="secretary = ! secretary">
-                                            <i class="far fa-eye text-green-500 mr-2"></i></button>
+                                            <i class="far fa-eye text-green-500 mr-2" :class="{ 'text-gray-300' : secretary, 'text-green-500' : ! secretary}"></i></button>
                                         <a href="" title="Edit"><i class="far fa-edit text-blue-500 mr-2"></i></a>
                                         <a href="{{ route('personnel.delete', [$secretary->id]) }}"
                                            title="Delete person record"
@@ -109,29 +151,55 @@
                                         </a>
                                     </div>
                                 @endif
-                                <div x-show="secretary" @keydown.escape="headCoach = false" class="absolute w-auto p-2 bg-green-100 rounded-lg w-auto flex flex-wrap border border-gray-300 shadow-lg">
+                                <div x-show="secretary" @keydown.escape="secretary = false" class="p-2 bg-green-100 rounded w-auto flex flex-wrap shadow-lg relative">
+                                    <div class="absolute right-2">
+                                        <button @click="secretary = false" title="Close panel">
+                                            <i class="fas fa-window-close text-red-800"></i>
+                                        </button>
+                                    </div>
                                     <div class="w-1/2 flex flex-wrap">
                                         <div class="w-24 text-sm text-gray-500">Phone:</div>
-                                        <div class="w-56 font-semibold">
-                                            {{ $headCoach->phone ?? 'Not set' }}</div>
+                                        <div class="w-auto font-semibold">
+                                            {{ $secretary->phone ?? 'Not set' }}</div>
                                     </div>
                                     <div class="w-1/2 flex flex-wrap">
                                         <div class="w-24 text-sm inline-block text-gray-500">Email:</div>
-                                        <div class="w-56 inline-block font-semibold">
-                                            {{ $headCoach->email ?? 'Not set' }}</div>
+                                        <div class="w-auto inline-block font-semibold">
+                                            {{ $secretary->email ?? 'Not set' }}</div>
+                                    </div>
+                                    <div class="w-1/2 flex flex-wrap">
+                                        <div class="w-full font-bold text-gray-500 mt-4 mb-2">Vetting:</div>
+                                        <div class="w-24 text-sm inline-block text-gray-500">Completion:</div>
+                                        <div class="w-auto inline-block font-semibold">
+                                            {{ $secretary->vetting_completion ?? 'Not set' }}</div>
+                                        <div class="w-24 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
+                                        <div class="w-auto inline-block font-semibold mt-2">
+                                            {{ $secretary->vetting_expiry ?? 'Not set' }}</div>
+                                    </div>
+                                    <div class="w-1/2 flex flex-wrap">
+                                        <div class="w-full font-bold text-gray-500 mt-4 mb-2">Safeguarding:</div>
+                                        <div class="w-24 text-sm inline-block text-gray-500">Completion:</div>
+                                        <div class="w-auto inline-block font-semibold">
+                                            {{ $secretary->safeguarding_completion ?? 'Not set' }}</div>
+                                        <div class="w-24 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
+                                        <div class="w-auto inline-block font-semibold mt-2">
+                                            {{ $secretary->safeguarding_expiry ?? 'Not set' }}</div>
                                     </div>
                                 </div>
+
                             </div>
                             <div class="w-full mb-3">
                                 <div class="w-36 inline-block font-bold mb-2 text-gray-500 p-2">Designated Off:</div>
                                 <div class="w-56 bg-gray-100 p-2 rounded inline-block font-semibold">
-                                    {{ $designatedOfficer->name ?? 'Not set' }}</div>
-                                @if ($designatedOfficer)
+                                    {{ $designated->name ?? 'Not set' }}</div>
+                                @if ($designated)
                                     <div class="w-auto inline-block font-bold mb-2 p-2 text-right">
-                                        <a href="" title="View details"><i
-                                                class="far fa-eye text-green-500 mr-2"></i></a>
+                                        <button type="button" title="View details"
+                                                @click="designated = ! designated">
+                                            <i class="far fa-eye text-green-500 mr-2" :class="{ 'text-gray-300' : designated, 'text-green-500' : ! designated}"></i></button>
+
                                         <a href="" title="Edit"><i class="far fa-edit text-blue-500 mr-2"></i></a>
-                                        <a href="{{ route('personnel.delete', [$designatedOfficer->id]) }}"
+                                        <a href="{{ route('personnel.delete', [$designated->id]) }}"
                                            title="Delete person record"
                                            onclick="return confirm('Do you want to delete the record completely?')"><i
                                                 class="far fa-trash-alt text-red-600"></i></a>
@@ -143,19 +211,56 @@
                                         </a>
                                     </div>
                                 @endif
+                                <div x-show="designated" @keydown.escape="designated = false" class="p-2 bg-green-100 rounded w-auto flex flex-wrap shadow-lg relative">
+                                    <div class="absolute right-2">
+                                        <button @click="designated = false" title="Close panel">
+                                            <i class="fas fa-window-close text-red-800"></i>
+                                        </button>
+                                    </div>
+                                    <div class="w-1/2 flex flex-wrap">
+                                        <div class="w-24 text-sm text-gray-500">Phone:</div>
+                                        <div class="w-auto font-semibold">
+                                            {{ $designated->phone ?? 'Not set' }}</div>
+                                    </div>
+                                    <div class="w-1/2 flex flex-wrap">
+                                        <div class="w-24 text-sm inline-block text-gray-500">Email:</div>
+                                        <div class="w-auto inline-block font-semibold">
+                                            {{ $designated->email ?? 'Not set' }}</div>
+                                    </div>
+                                    <div class="w-1/2 flex flex-wrap">
+                                        <div class="w-full font-bold text-gray-500 mt-4 mb-2">Vetting:</div>
+                                        <div class="w-24 text-sm inline-block text-gray-500">Completion:</div>
+                                        <div class="w-auto inline-block font-semibold">
+                                            {{ $designated->vetting_completion ?? 'Not set' }}</div>
+                                        <div class="w-24 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
+                                        <div class="w-auto inline-block font-semibold mt-2">
+                                            {{ $designated->vetting_expiry ?? 'Not set' }}</div>
+                                    </div>
+                                    <div class="w-1/2 flex flex-wrap">
+                                        <div class="w-full font-bold text-gray-500 mt-4 mb-2">Safeguarding:</div>
+                                        <div class="w-24 text-sm inline-block text-gray-500">Completion:</div>
+                                        <div class="w-auto inline-block font-semibold">
+                                            {{ $secretary->safeguarding_completion ?? 'Not set' }}</div>
+                                        <div class="w-24 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
+                                        <div class="w-auto inline-block font-semibold mt-2">
+                                            {{ $secretary->safeguarding_expiry ?? 'Not set' }}</div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <div class="w-full md:w-1/2">
-                            <div class="w-1/2 mb-3">
+                            <div class="w-full mb-3">
                                 <div class="w-36 inline-block font-bold mb-2 text-gray-500 p-2">Childrens Off:</div>
                                 <div class="w-56 bg-gray-100 p-2 rounded inline-block font-semibold">
-                                    {{ $childrensOfficer->name ?? 'Not set' }}</div>
-                                @if ($childrensOfficer)
+                                    {{ $childrens->name ?? 'Not set' }}</div>
+                                @if ($childrens)
                                     <div class="w-auto inline-block font-bold mb-2 p-2 text-right">
-                                        <a href="" title="View details"><i
-                                                class="far fa-eye text-green-500 mr-2"></i></a>
+                                        <button type="button" title="View details"
+                                                @click="childrens = ! childrens">
+                                            <i class="far fa-eye text-green-500 mr-2" :class="{ 'text-gray-300' : childrens, 'text-green-500' : ! childrens}"></i></button>
                                         <a href="" title="Edit"><i class="far fa-edit text-blue-500 mr-2"></i></a>
-                                        <a href="{{ route('personnel.delete', [$childrensOfficer->id]) }}"
+                                        <a href="{{ route('personnel.delete', [$childrens->id]) }}"
                                            title="Delete person record"
                                            onclick="return confirm('Do you want to delete the record completely?')"><i
                                                 class="far fa-trash-alt text-red-600"></i></a>
@@ -167,15 +272,52 @@
                                         </a>
                                     </div>
                                 @endif
+                                <div x-show="childrens" @keydown.escape="childrens = false" class="p-2 bg-green-100 rounded w-auto flex flex-wrap shadow-lg relative">
+                                    <div class="absolute right-2">
+                                        <button @click="childrens = false" title="Close panel">
+                                            <i class="fas fa-window-close text-red-800"></i>
+                                        </button>
+                                    </div>
+                                    <div class="w-1/2 flex flex-wrap">
+                                        <div class="w-24 text-sm text-gray-500">Phone:</div>
+                                        <div class="w-auto font-semibold">
+                                            {{ $childrens->phone ?? 'Not set' }}</div>
+                                    </div>
+                                    <div class="w-1/2 flex flex-wrap">
+                                        <div class="w-24 text-sm inline-block text-gray-500">Email:</div>
+                                        <div class="w-auto inline-block font-semibold">
+                                            {{ $childrens->email ?? 'Not set' }}</div>
+                                    </div>
+                                    <div class="w-1/2 flex flex-wrap">
+                                        <div class="w-full font-bold text-gray-500 mt-4 mb-2">Vetting:</div>
+                                        <div class="w-24 text-sm inline-block text-gray-500">Completion:</div>
+                                        <div class="w-auto inline-block font-semibold">
+                                            {{ $childrens->vetting_completion ?? 'Not set' }}</div>
+                                        <div class="w-24 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
+                                        <div class="w-auto inline-block font-semibold mt-2">
+                                            {{ $childrens->vetting_expiry ?? 'Not set' }}</div>
+                                    </div>
+                                    <div class="w-1/2 flex flex-wrap">
+                                        <div class="w-full font-bold text-gray-500 mt-4 mb-2">Safeguarding:</div>
+                                        <div class="w-24 text-sm inline-block text-gray-500">Completion:</div>
+                                        <div class="w-auto inline-block font-semibold">
+                                            {{ $childrens->safeguarding_completion ?? 'Not set' }}</div>
+                                        <div class="w-24 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
+                                        <div class="w-auto inline-block font-semibold mt-2">
+                                            {{ $childrens->safeguarding_expiry ?? 'Not set' }}</div>
+                                    </div>
+                                </div>
+
                             </div>
-                            <div class="w-1/2 mb-3">
+                            <div class="w-full mb-3">
                                 <div class="w-36 inline-block font-bold mb-2 text-gray-500 p-2">Coach:</div>
                                 <div class="w-56 bg-gray-100 p-2 rounded inline-block font-semibold">
                                     {{ $coach->name ?? 'Not set' }}</div>
                                 @if ($coach)
                                     <div class="w-auto inline-block font-bold mb-2 p-2 text-right">
-                                        <a href="" title="View details"><i
-                                                class="far fa-eye text-green-500 mr-2"></i></a>
+                                        <button type="button" title="View details"
+                                                @click="coach = ! coach">
+                                            <i class="far fa-eye text-green-500 mr-2" :class="{ 'text-gray-300' : coach, 'text-green-500' : ! coach}"></i></button>
                                         <a href="" title="Edit"><i class="far fa-edit text-blue-500 mr-2"></i></a>
                                         <a href="{{ route('personnel.delete', [$coach->id]) }}"
                                            title="Delete person record"
@@ -189,6 +331,60 @@
                                         </a>
                                     </div>
                                 @endif
+                                <div x-show="coach" @keydown.escape="coach = false" class="p-2 bg-green-100 rounded w-auto flex flex-wrap shadow-lg relative">
+                                    <div class="absolute right-2">
+                                        <button @click="coach = false" title="Close panel">
+                                            <i class="fas fa-window-close text-red-800"></i>
+                                        </button>
+                                    </div>
+                                    <div class="w-1/2 flex flex-wrap">
+                                        <div class="w-24 text-sm text-gray-500">Phone:</div>
+                                        <div class="w-auto font-semibold">
+                                            {{ $coach->phone ?? 'Not set' }}</div>
+                                    </div>
+                                    <div class="w-1/2 flex flex-wrap">
+                                        <div class="w-24 text-sm inline-block text-gray-500">Email:</div>
+                                        <div class="w-auto inline-block font-semibold">
+                                            {{ $coach->email ?? 'Not set' }}</div>
+                                    </div>
+                                    <div class="w-1/2 flex flex-wrap">
+                                        <div class="w-full font-bold text-gray-500 mt-4 mb-2">Vetting:</div>
+                                        <div class="w-24 text-sm inline-block text-gray-500">Completion:</div>
+                                        <div class="w-auto inline-block font-semibold">
+                                            {{ $coach->vetting_completion ?? 'Not set' }}</div>
+                                        <div class="w-24 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
+                                        <div class="w-auto inline-block font-semibold mt-2">
+                                            {{ $coach->vetting_expiry ?? 'Not set' }}</div>
+                                    </div>
+                                    <div class="w-1/2 flex flex-wrap">
+                                        <div class="w-full font-bold text-gray-500 mt-4 mb-2">Safeguarding:</div>
+                                        <div class="w-24 text-sm inline-block text-gray-500">Completion:</div>
+                                        <div class="w-auto inline-block font-semibold">
+                                            {{ $coach->safeguarding_completion ?? 'Not set' }}</div>
+                                        <div class="w-24 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
+                                        <div class="w-auto inline-block font-semibold mt-2">
+                                            {{ $coach->safeguarding_expiry ?? 'Not set' }}</div>
+                                    </div>
+                                    <div class="w-1/2 flex flex-wrap">
+                                        <div class="w-full font-bold text-gray-500 mt-4 mb-2">First Aid:</div>
+                                        <div class="w-24 text-sm inline-block text-gray-500">Completion:</div>
+                                        <div class="w-auto inline-block font-semibold">
+                                            {{ $coach->first_aid_completion ?? 'Not set' }}</div>
+                                        <div class="w-24 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
+                                        <div class="w-auto inline-block font-semibold mt-2">
+                                            {{ $coach->first_aid_expiry ?? 'Not set' }}</div>
+                                    </div>
+                                    <div class="w-1/2 flex flex-wrap">
+                                        <div class="w-full font-bold text-gray-500 mt-4 mb-2">Coaching:</div>
+                                        <div class="w-24 text-sm inline-block text-gray-500">Qualification:</div>
+                                        <div class="w-auto inline-block font-semibold">
+                                            {{ $coach->coaching_qualification ?? 'Not set' }}</div>
+                                        <div class="w-24 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
+                                        <div class="w-auto inline-block font-semibold mt-2">
+                                            {{ $coach->coaching_date ?? 'Not set' }}</div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <div class="w-full mt-4">
