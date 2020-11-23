@@ -67,7 +67,9 @@
                                                 @click="headCoach = ! headCoach">
                                             <i class="far fa-eye text-green-500 mr-2"
                                                :class="{ 'text-gray-300' : headCoach, 'text-green-500' : ! headCoach}"></i></button>
-                                        <a href="" title="Edit"><i class="far fa-edit text-blue-500 mr-2"></i></a>
+                                        <a href="{{ route('personnel.edit', $headCoach->id) }}" title="Edit"><i
+                                                class="far fa-edit text-blue-500
+                                        mr-2"></i></a>
                                         <a href="{{ route('personnel.delete', [$headCoach->id]) }}"
                                            title="Delete person record"
                                            onclick="return confirm('Do you want to delete the record completely?')"><i
@@ -323,7 +325,9 @@
                                         <button type="button" title="View details"
                                                 @click="coach = ! coach">
                                             <i class="far fa-eye text-green-500 mr-2" :class="{ 'text-gray-300' : coach, 'text-green-500' : ! coach}"></i></button>
-                                        <a href="" title="Edit"><i class="far fa-edit text-blue-500 mr-2"></i></a>
+                                        <a href="{{ route('personnel.edit', $coach->id) }}" title="Edit"><i class="far
+                                        fa-edit text-blue-500
+                                        mr-2"></i></a>
                                         <a href="{{ route('personnel.delete', [$coach->id]) }}"
                                            title="Delete person record"
                                            onclick="return confirm('Do you want to delete the record completely?')"><i
@@ -393,7 +397,7 @@
                             </div>
                         </div>
                         <div class="w-full mt-4">
-                            <h4 class="font-bold text-xl text-black mb-4">Volunteers:</h4>
+                            <h4 class="font-bold text-xl text-black mb-4" id="volunteers">Volunteers:</h4>
                             <a href="{{ route('volunteer.addVolunteer', [$club->id])}}">
                                 <button class="button-judo">+ Add new volunteer</button>
                             </a>
@@ -454,7 +458,8 @@
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                             <div class="flex items-center">
-                                                    <span class="bg-green-200 rounded-lg py-1 px-2 mr-1">{{ $volunteer->safeguarding_completion }}</span> -
+                                                    <span class="bg-gray-200 rounded-lg py-1 px-2 mr-1">{{
+                                                    $volunteer->safeguarding_completion }}</span> -
                                                 @if($volunteer->safeguarding_expiry < now())
                                                     <span class="bg-red-700 text-white rounded-lg py-1 px-2 ml-2">{{ $volunteer->safeguarding_expiry }}</span>
                                                 @else
@@ -465,7 +470,8 @@
                                         <td class="px-5 py-5 border-b border-gray-200 text-sm flex flex-wrap h-full">
                                             <a href="{{ route('volunteer.edit', $volunteer->id) }}"
                                                class="text-green-600 font-bold ml-3" title="Edit note"><i class="far fa-edit"></i></a>
-                                            <form action="" method="POST">
+                                            <form action="{{ route('volunteer.destroy', $volunteer->id) }}"
+                                                  method="POST">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE" />
                                                 <button type="submit" class="text-red-600 hover:text-red-300 whitespace-no-wrap ml-3" onclick="return confirm('Do you want to delete the record completely?')"><i class="far fa-trash-alt"></i></button>

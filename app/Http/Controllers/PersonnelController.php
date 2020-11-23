@@ -29,7 +29,7 @@ class PersonnelController extends Controller
     }
 
     public function addPersonnel($club) {
-        
+
         return view('personnel.create', compact('club'));
 
     }
@@ -68,9 +68,11 @@ class PersonnelController extends Controller
      * @param  \App\Models\Personnel  $personnel
      * @return \Illuminate\Http\Response
      */
-    public function edit(Personnel $personnel)
+    public function edit($id)
     {
-        //
+        $person = Personnel::find($id);
+
+        return view('personnel.edit', compact('person'));
     }
 
     /**
@@ -82,7 +84,10 @@ class PersonnelController extends Controller
      */
     public function update(Request $request, Personnel $personnel)
     {
-        //
+        $input = $request->all();
+        $personnel->fill($input)->save();
+
+        return back()->with('message', 'Record Successfully Updated!');
     }
 
     /**

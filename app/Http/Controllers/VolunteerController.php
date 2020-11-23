@@ -83,7 +83,7 @@ class VolunteerController extends Controller
         $input = $request->all();
         $volunteer->fill($input)->save();
 
-        return Redirect::to(URL::previous());
+        return back()->with('message', 'Record Successfully Updated!');
 
     }
 
@@ -95,6 +95,8 @@ class VolunteerController extends Controller
      */
     public function destroy($id)
     {
+        Volunteer::where('id', $id)->delete();
 
+        return Redirect::to(URL::previous() . "#volunteers");
     }
 }
