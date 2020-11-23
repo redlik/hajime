@@ -20,9 +20,11 @@
                             </ul>
                         </div>
                     @endif
-                    <form method="POST" action="{{ action('App\Http\Controllers\VolunteerController@store') }}"
+                    <form method="POST" action="{{ action('App\Http\Controllers\VolunteerController@update',
+                    $volunteer->id) }}"
                           role="form">
                         @csrf
+                        <input name="_method" type="hidden" value="PUT">
                         <div class="w-full border-2 border-gray-300 rounded-xl p-8 mb-4">
                             <div class="mb-4">
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2"

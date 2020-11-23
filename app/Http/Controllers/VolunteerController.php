@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Volunteer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\URL;
 
 class VolunteerController extends Controller
 {
@@ -78,7 +80,11 @@ class VolunteerController extends Controller
      */
     public function update(Request $request, Volunteer $volunteer)
     {
-        //
+        $input = $request->all();
+        $volunteer->fill($input)->save();
+
+        return Redirect::to(URL::previous());
+
     }
 
     /**
@@ -87,8 +93,8 @@ class VolunteerController extends Controller
      * @param  \App\Models\Volunteer  $volunteer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Volunteer $volunteer)
+    public function destroy($id)
     {
-        //
+
     }
 }

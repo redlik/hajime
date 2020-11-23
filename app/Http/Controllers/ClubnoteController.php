@@ -112,7 +112,6 @@ class ClubnoteController extends Controller
 
         $clubnote->delete();
 
-//        return redirect()->action('App\Http\Controllers\ClubController@show', ['club' => $club]);
         return Redirect::to(URL::previous() . "#notes");
 
     }
