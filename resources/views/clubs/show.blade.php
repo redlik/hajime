@@ -48,6 +48,11 @@
                 </div>
                 <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
                     <h4 class="font-bold text-xl text-black mb-4">Club Personnel:</h4>
+                    <div class="w-full mb-6">
+                        <a href="{{ route('club.addPersonnel', [$club->id])}}">
+                            <button class="button-judo">+ Add new person</button>
+                        </a>
+                    </div>
                 {{-- Alpine JS Modal starts here--}}
                     <div x-data="{headCoach: false, secretary: false, designated: false, childrens:false, coach: false}" x-cloak class="w-full flex flex-wrap">
 
@@ -389,6 +394,89 @@
                         </div>
                         <div class="w-full mt-4">
                             <h4 class="font-bold text-xl text-black mb-4">Volunteers:</h4>
+                            <a href="{{ route('volunteer.addVolunteer', [$club->id])}}">
+                                <button class="button-judo">+ Add new volunteer</button>
+                            </a>
+                            <table class="min-w-full table leading-normal mt-8">
+                                <thead>
+                                <tr>
+                                    <th
+                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        Name
+                                    </th>
+                                    <th
+                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        Contact
+                                    </th>
+                                    <th
+                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        Vetting
+                                    </th>
+                                    <th
+                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        Safe Guarding
+                                    </th><th
+                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        Actions
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach ($volunteers as $volunteer)
+                                    <tr>
+                                        <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                            <div class="flex items-center">
+                                                <div class="ml-3">
+                                                    <p class="text-gray-900 whitespace-no-wrap font-bold">
+                                                        {{ $volunteer->first_name }} {{ $volunteer->last_name }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                            <div class="flex items-center">
+                                                <div>
+                                                   <span class="font-bold text-gray-500">e:</span> {{ $volunteer->email }} <br><span class="font-bold text-gray-500">t:</span>{{ $volunteer->phone }}
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                            <div class="flex items-center">
+                                                <div>
+                                                    <span class="bg-gray-200 rounded-lg py-1 px-2">{{ $volunteer->vetting_completion }}</span> -
+                                                    @if($volunteer->vetting_expiry < now())
+                                                    <span class="bg-red-700 text-white rounded-lg py-1 px-2">{{ $volunteer->vetting_expiry }}</span>
+                                                    @else
+                                                    <span class="bg-indigo-100 rounded-lg py-1 px-2">{{ $volunteer->vetting_expiry }}</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                            <div class="flex items-center">
+                                                    <span class="bg-green-200 rounded-lg py-1 px-2 mr-1">{{ $volunteer->safeguarding_completion }}</span> -
+                                                @if($volunteer->safeguarding_expiry < now())
+                                                    <span class="bg-red-700 text-white rounded-lg py-1 px-2 ml-2">{{ $volunteer->safeguarding_expiry }}</span>
+                                                @else
+                                                    <span class="bg-indigo-100 rounded-lg py-1 px-2 ml-2">{{ $volunteer->safeguarding_expiry }}</span>
+                                                @endif
+                                            </div>
+                                        </td>
+                                        <td class="px-5 py-5 border-b border-gray-200 text-sm flex flex-wrap h-full">
+                                            <a href="{{ route('volunteer.edit', $volunteer->id) }}"
+                                               class="text-green-600 font-bold ml-3" title="Edit note"><i class="far fa-edit"></i></a>
+                                            <form action="" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="_method" value="DELETE" />
+                                                <button type="submit" class="text-red-600 hover:text-red-300 whitespace-no-wrap ml-3" onclick="return confirm('Do you want to delete the record completely?')"><i class="far fa-trash-alt"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+
+
                         </div>
 
                     </div>

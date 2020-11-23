@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Volunteer;
 use Illuminate\Database\Seeder;
 
 class VolunteerSeeder extends Seeder
@@ -13,6 +14,8 @@ class VolunteerSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Volunteer::factory()
+            ->times(300)
+            ->create();
     }
 }

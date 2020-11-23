@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Volunteer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class VolunteerController extends Controller
 {
@@ -27,6 +28,10 @@ class VolunteerController extends Controller
         //
     }
 
+    public function addVolunteer($club)
+    {
+        return view('volunteer.create', compact('club'));
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -35,7 +40,10 @@ class VolunteerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $volunteer = Volunteer::create($request->all());
+        $club = $request->input('club_id');
+
+        return redirect()->route('clubs.show', $club);
     }
 
     /**
@@ -52,12 +60,13 @@ class VolunteerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Volunteer  $volunteer
+     * @param Volunteer $selectedVolunteer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Volunteer $volunteer)
+    public function edit($id)
     {
-        //
+        $volunteer = Volunteer::findOrFail($id);
+        return view('volunteer.edit', compact('volunteer'));
     }
 
     /**

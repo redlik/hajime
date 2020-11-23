@@ -14,13 +14,15 @@ class CreateVolunteersTable extends Migration
     public function up()
     {
         Schema::create('volunteers', function (Blueprint $table) {
-            $table->string('name');
+            $table->id();
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
-            $table->date('vetting_completion');
-            $table->date('vetting_expiry');
-            $table->date('safeguarding_completion');
-            $table->date('safeguarding_expiry');
+            $table->date('vetting_completion')->nullable();
+            $table->date('vetting_expiry')->nullable();
+            $table->date('safeguarding_completion')->nullable();
+            $table->date('safeguarding_expiry')->nullable();
             $table->unsignedBigInteger('club_id');
             $table->timestamps();
 
@@ -35,6 +37,6 @@ class CreateVolunteersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('volunteers');
+        Schema::dropIfExists('volunteer');
     }
 }

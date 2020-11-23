@@ -1,0 +1,122 @@
+@extends('layouts.app')
+
+@section('content')
+    <main class="sm:container sm:mx-auto sm:mt-10">
+        <div class="w-full sm:px-6">
+
+            <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
+
+                <header class="font-semibold bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
+                    Edit {{ $volunteer->first_name }} {{  $volunteer->last_name }}
+                </header>
+
+                <div class="w-full p-6">
+                    @if ($errors->any())
+                        <div class="alert alert-danger" role="alert">
+                            <ul id="errors list-unstyled">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <form method="POST" action="{{ action('App\Http\Controllers\VolunteerController@store') }}"
+                          role="form">
+                        @csrf
+                        <div class="w-full border-2 border-gray-300 rounded-xl p-8 mb-4">
+                            <div class="mb-4">
+                                <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2"
+                                       for="first_name">
+                                    First Name
+                                </label>
+                                <input
+                                    class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                    id="first_name" name="first_name" type="text" placeholder="Name" value="{{
+                                    $volunteer->first_name }}">
+                            </div>
+                            <div class="mb-4">
+                                <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2"
+                                       for="last_name">
+                                    First Name
+                                </label>
+                                <input
+                                    class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                    id="last_name" name="last_name" type="text"
+                                    value="{{
+                                    $volunteer->last_name }}">
+                            </div>
+                            <div class="mb-4">
+                                <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="phone">
+                                    Phone
+                                </label>
+                                <input
+                                    class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                    id="phone" name="phone" type="text" value="{{ $volunteer->phone }}">
+                            </div>
+                            <div>
+                                <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="email">
+                                    Email
+                                </label>
+                                <input
+                                    class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                    id="email" name="email" type="email" value="{{ $volunteer->email }}">
+                            </div>
+                        </div>
+                        <div class="w-full border-2 border-gray-300 rounded-xl p-8 flex flex-wrap">
+                            <div class="w-full md:w-1/2">
+                                <h4 class="w-auto text-gray-500 text-xl font-bold mb-6">Vetting information:</h4>
+                                <div class="mb-4">
+                                    <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2"
+                                           for="vetting_completion">
+                                        Vetting completion
+                                    </label>
+                                    <input
+                                        class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
+                                        id="vetting_completion" name="vetting_completion" type="date"
+                                        value="{{ $volunteer->vetting_completion }}">
+                                </div>
+                                <div>
+                                    <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2"
+                                           for="vetting_expiry">
+                                        Vetting expiry
+                                    </label>
+                                    <input
+                                        class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
+                                        id="vetting_expiry" name="vetting_expiry" type="date" value="{{
+                                        $volunteer->vetting_expiry }}">
+                                </div>
+                            </div>
+                            <div class="w-full md:w-1/2">
+                                <h4 class="w-auto text-gray-500 text-xl font-bold mb-6">Safeguarding
+                                    information:</h4>
+                                <div class="mb-4">
+                                    <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2"
+                                           for="safeguarding_completion">
+                                        Safeguarding completion
+                                    </label>
+                                    <input
+                                        class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
+                                        id="safeguarding_completion" name="safeguarding_completion" type="date"
+                                        value="{{ $volunteer->safeguarding_completion }}">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2"
+                                           for="safeguarding_expiry">
+                                        Safeguarding expiry
+                                    </label>
+                                    <input
+                                        class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
+                                        id="safeguarding_expiry" name="safeguarding_expiry" type="date"
+                                        value="{{ $volunteer->safeguarding_expiry }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <input type="submit" value="Save changes" class="button-judo">
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+@endsection

@@ -72,7 +72,7 @@ class MemberController extends Controller
      */
     public function edit(Member $member)
     {
-        $member = DB::table('members')->find($member->id);;
+        $member = DB::table('members')->find($member->id);
         $clubs = Club::all();
 
         return view('member.edit', compact('member', 'clubs'));

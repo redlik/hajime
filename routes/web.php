@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MembernoteController;
+use App\Http\Controllers\VolunteerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\PersonnelController;
@@ -36,6 +37,7 @@ Route::resource('membership', MembershipController::class);
 Route::resource('grade', GradeController::class);
 Route::resource('clubnote', ClubnoteController::class);
 Route::resource('membernote', MembernoteController::class);
+Route::resource('volunteer', VolunteerController::class);
 Route::get('clubnote/create/{club}', [ClubnoteController::class, 'createWithClub'])->name('clubnote.create.club');
 Route::get('membernote/create/{club}', [MembernoteController::class, 'createWithmember'])->name('membernote.create.member');
 
@@ -43,4 +45,5 @@ Route::get('membernote/create/{club}', [MembernoteController::class, 'createWith
 Route::get('member/create/{club_id?}', [MemberController::class, 'create'])->name('member.createWithClub');
 Route::get('personnel/delete/{id}', [PersonnelController::class, 'destroy'])->name('personnel.delete');
 Route::get('club/{id}/add-personnel', [PersonnelController::class, 'addPersonnel'])->name('club.addPersonnel');
+Route::get('club/{id}/add-volunteer', [VolunteerController::class, 'addVolunteer'])->name('volunteer.addVolunteer');
 
