@@ -22,8 +22,7 @@ class VolunteerFactory extends Factory
     public function definition()
     {
         return [
-            'first_name' => $this->faker->firstName,
-            'last_name' => $this->faker->lastName,
+            'name' => $this->faker->name,
             'phone' => $this->faker->phoneNumber,
             'email' => $this->faker->safeEmail,
             'vetting_completion' => $this->faker->dateTimeBetween('-2 years', '+1 year'),

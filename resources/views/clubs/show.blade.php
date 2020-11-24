@@ -519,7 +519,7 @@
                                             <div class="flex items-center">
                                                 <div class="ml-3">
                                                     <p class="text-gray-900 whitespace-no-wrap font-bold">
-                                                        {{ $volunteer->first_name }} {{ $volunteer->last_name }}
+                                                        {{ $volunteer->name }}
                                                     </p>
                                                 </div>
                                             </div>

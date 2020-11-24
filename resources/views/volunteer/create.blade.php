@@ -27,21 +27,12 @@
                         <div class="w-full border-2 border-gray-300 rounded-xl p-8 mb-4">
                             <div class="mb-4">
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2"
-                                       for="first_name">
-                                    First Name
+                                       for="name">
+                                    Volunteer's Name
                                 </label>
                                 <input
                                     class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
-                                    id="first_name" name="first_name" type="text" placeholder="First Name" required>
-                            </div>
-                            <div class="mb-4">
-                                <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2"
-                                       for="last_name">
-                                    Last Name
-                                </label>
-                                <input
-                                    class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
-                                    id="last_name" name="last_name" type="text" placeholder="Last Name" required>
+                                    id="name" name="name" type="text" placeholder="Name" required>
                             </div>
                             <div class="mb-4">
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="phone">

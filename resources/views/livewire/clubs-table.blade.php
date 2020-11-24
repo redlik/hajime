@@ -6,8 +6,8 @@
             <div class="w-full md:w-1/2">
                 {{ $clubs->links() }}</div>
         </div>
-        
-        
+
+
         <table class="min-w-full table leading-normal mt-8">
             <thead>
                 <tr>

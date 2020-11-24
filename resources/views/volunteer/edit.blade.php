@@ -17,10 +17,10 @@
                     text-blue-800"><< Back to Club
                         page</a>
                     @if(Session::has('message'))
-                        <p class="bg-green-100 text-green-700 p-6 rounded mb-4">{{ Session::get('message') }}</p>
+                        <p class="bg-green-100 text-green-700 p-6 rounded my-4">{{ Session::get('message') }}</p>
                     @endif
                     @if ($errors->any())
-                        <div class="alert alert-danger" role="alert">
+                        <div class="bg-red-100 text-red-700 p-6 rounded my-4" role="alert">
                             <ul id="errors list-unstyled">
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
@@ -36,24 +36,13 @@
                         <div class="w-full border-2 border-gray-300 rounded-xl p-8 my-4">
                             <div class="mb-4">
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2"
-                                       for="first_name">
+                                       for="name">
                                     First Name
                                 </label>
                                 <input
                                     class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
-                                    id="first_name" name="first_name" type="text" placeholder="Name" value="{{
-                                    $volunteer->first_name }}">
-                            </div>
-                            <div class="mb-4">
-                                <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2"
-                                       for="last_name">
-                                    First Name
-                                </label>
-                                <input
-                                    class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
-                                    id="last_name" name="last_name" type="text"
-                                    value="{{
-                                    $volunteer->last_name }}">
+                                    id="name" name="name" type="text" placeholder="Name" value="{{
+                                    $volunteer->name }}">
                             </div>
                             <div class="mb-4">
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="phone">
