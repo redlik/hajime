@@ -28,7 +28,8 @@
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="role">
                                 Role
                             </label>
-                            <select name="role" id="role" class="shadow border rounded w-64 py-2 px-3 text-grey-darker">
+                            <select name="role" id="role" class="shadow border rounded w-64 py-2 px-3
+                            text-grey-darker" required>
                                 <option value="{{ app('request')->input('position') }}" selected>{{ app('request')->input('position') }}</option>
                                 <option value="Head Coach">Head Coach</option>
                                 <option value="Secretary">Secretary</option>
@@ -67,14 +68,15 @@
                                     Vetting completion
                                 </label>
                                 <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
-                                    id="vetting_completion" name="vetting_completion" type="date" placeholder="2020-01-01">
+                                    id="vetting_completion" name="vetting_completion" type="date"
+                                       placeholder="2020-01-01" required>
                             </div>
                             <div>
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="vetting_expiry">
                                     Vetting expiry
                                 </label>
                                 <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
-                                    id="vetting_expiry" name="vetting_expiry" type="date" placeholder="2020-01-01">
+                                    id="vetting_expiry" name="vetting_expiry" type="date" placeholder="2020-01-01" required>
                             </div>
                             <h4 class="w-auto text-gray-500 text-xl font-bold mb-6 mt-16">Safeguarding information:</h4>
                             <div class="mb-4">
@@ -82,14 +84,16 @@
                                     Safeguarding completion
                                 </label>
                                 <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
-                                id="safeguarding_completion" name="safeguarding_completion" type="date" placeholder="2020-01-01">
+                                id="safeguarding_completion" name="safeguarding_completion" type="date"
+                                       placeholder="2020-01-01" required>
                             </div>
                             <div class="mb-4">
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="safeguarding_expiry">
                                     Safeguarding expiry
                                 </label>
                                 <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
-                                    id="safeguarding_expiry" name="safeguarding_expiry" type="date" placeholder="2020-01-01">
+                                    id="safeguarding_expiry" name="safeguarding_expiry" type="date"
+                                       placeholder="2020-01-01" required>
                             </div>
                         </div>
                         <div class="w-full md:w-1/2 sm:w-full mt-16 md:mt-0">
