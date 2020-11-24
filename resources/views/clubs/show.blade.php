@@ -105,7 +105,10 @@
                                     <div class="flex items-center">
                                         <div>
                                             @if ($venue->attachment)
+                                                <a href="{{ asset('storage/attachments/'.$venue->attachment) }}"
+                                                   target="_blank">
                                                 <i class="fas fa-file-pdf text-2xl text-red-700"></i>
+                                                </a>
                                             @else
                                                 <i class="far fa-times-circle text-2xl text-gray-500"
                                                    title="File not included"></i>
