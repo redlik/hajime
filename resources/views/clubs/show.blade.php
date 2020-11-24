@@ -24,7 +24,7 @@
                         <p class="mb-2">{{ ucfirst($club->city) }}</p>
                         <p class="mb-2">{{ ucfirst($club->county) }}</p>
                         <p class="mb-2">{{ ucfirst($club->province) }}</p>
-                        <p class="mb-2">{{ $club->eircode }}</p>
+                        <p class="mb-2">{{ strtoupper($club->eircode) }}</p>
                     </div>
                     <div class="w-full md:w-1/2 sm:w-full">
                         <h4 class="font-bold text-xl text-black mb-4">Contact details:</h4>
@@ -46,6 +46,90 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
+                    <h4 class="font-bold text-xl text-black mb-4" id="venues">Training Venues:</h4>
+                    <div class="w-full mb-6">
+                        <a href="{{ route('venue.create.club', $club->id) }}">
+                            <button class="button-judo">+ Add new venue</button>
+                        </a>
+                    </div>
+                    <table class="min-w-full table leading-normal mt-8">
+                        <thead>
+                        <tr>
+                            <th
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                Name
+                            </th>
+                            <th
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                Contact
+                            </th>
+                            <th
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                Form
+                            </th>
+                            <th
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                Actions
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ($venues as $venue)
+                            <tr>
+                                <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                    <div class="flex items-center">
+                                        <div class="ml-3">
+                                            <p class="text-gray-900 whitespace-no-wrap font-bold">
+                                                {{ $venue->name }}
+                                                <br/>
+                                                <span class="text-sm text-gray-600 font-medium">{{ $venue->address1
+                                                }} {{
+                                                $venue->address2 }} {{ $venue->city }} {{ ucfirst($venue->county) }} {{
+                                                strtoupper($venue->eircode)
+                                                }}</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                    <div class="flex items-center">
+                                        <div>
+                                            <p class="text-gray-900 whitespace-no-wrap font-bold">{{ $venue->contact }}
+                                                <br><span class="font-bold text-gray-500">t:</span>{{ $venue->phone }}</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                    <div class="flex items-center">
+                                        <div>
+                                            @if ($venue->attachment)
+                                                <i class="fas fa-file-pdf text-2xl text-red-700"></i>
+                                            @else
+                                                <i class="far fa-times-circle text-2xl text-gray-500"
+                                                   title="File not included"></i>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-8 py-8 border-b border-gray-200 text-sm flex flex-wrap h-full">
+                                    <a href="{{ route('venue.edit', $venue->id) }}"
+                                       class="text-green-600 font-bold ml-3" title="Edit note"><i class="far fa-edit"></i></a>
+                                    <form action="{{ route('venue.destroy', $venue->id) }}"
+                                          method="POST">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="DELETE" />
+                                        <button type="submit" class="text-red-600 hover:text-red-300 whitespace-no-wrap ml-3" onclick="return confirm('Do you want to delete the record completely?')"><i class="far fa-trash-alt"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+
+                </div>
+
                 <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
                     <h4 class="font-bold text-xl text-black mb-4">Club Personnel:</h4>
                     <div class="w-full mb-6">
@@ -467,7 +551,7 @@
                                                 @endif
                                             </div>
                                         </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 text-sm flex flex-wrap h-full">
+                                        <td class="px-8 py-8 border-b border-gray-200 text-sm flex flex-wrap h-full">
                                             <a href="{{ route('volunteer.edit', $volunteer->id) }}"
                                                class="text-green-600 font-bold ml-3" title="Edit note"><i class="far fa-edit"></i></a>
                                             <form action="{{ route('volunteer.destroy', $volunteer->id) }}"

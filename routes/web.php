@@ -9,6 +9,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\ClubnoteController;
+use App\Http\Controllers\VenueController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,8 +39,10 @@ Route::resource('grade', GradeController::class);
 Route::resource('clubnote', ClubnoteController::class);
 Route::resource('membernote', MembernoteController::class);
 Route::resource('volunteer', VolunteerController::class);
+Route::resource('venue', VenueController::class);
 Route::get('clubnote/create/{club}', [ClubnoteController::class, 'createWithClub'])->name('clubnote.create.club');
 Route::get('membernote/create/{club}', [MembernoteController::class, 'createWithmember'])->name('membernote.create.member');
+Route::get('venue/create/{club}', [VenueController::class, 'createWithClub'])->name('venue.create.club');
 
 
 Route::get('member/create/{club_id?}', [MemberController::class, 'create'])->name('member.createWithClub');

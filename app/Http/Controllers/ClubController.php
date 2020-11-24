@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Club;
 use App\Models\Personnel;
 use App\Models\Clubnote;
+use App\Models\Venue;
 use App\Models\Volunteer;
 use Illuminate\Http\Request;
 use App\Models\Member;
@@ -66,9 +67,11 @@ class ClubController extends Controller
         $coach = Personnel::coach()->where('club_id', $club->id)->first();
         $members = Member::where('club_id', $club->id)->get();
         $volunteers = Volunteer::where('club_id', $club->id)->get();
+        $venues = Venue::where('club_id', $club->id)->get();
         $notes = Clubnote::where('club_id', $club->id)->orderBy('created_at', 'desc')->get();
 
-        return view('clubs.show', compact('club',  'volunteers', 'members', 'notes', 'headCoach', 'secretary', 'designated', 'childrens', 'coach', ));
+        return view('clubs.show', compact('club', 'venues', 'volunteers', 'members', 'notes', 'headCoach', 'secretary',
+        'designated', 'childrens', 'coach', ));
     }
 
     /**
