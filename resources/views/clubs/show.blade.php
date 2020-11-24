@@ -164,7 +164,7 @@
                                     </div>
                                 @else
                                     <div class="w-auto inline-block font-bold mb-2 p-2 text-right judo-green">
-                                        <a href="{{ route('club.addPersonnel', $club->id ) }}">
+                                        <a href="{{ route('club.addPersonnel', $club->id ) }}?position=Head%20Coach">
                                             <i class="fas fa-user-plus"></i> Add new
                                         </a>
                                     </div>
@@ -240,7 +240,7 @@
                                     </div>
                                 @else
                                     <div class="w-auto inline-block font-bold mb-2 p-2 text-right judo-green">
-                                        <a href="{{ route('club.addPersonnel', $club->id ) }}">
+                                        <a href="{{ route('club.addPersonnel', $club->id ) }}?position=Secretary">
                                             <i class="fas fa-user-plus"></i> Add new
                                         </a>
                                     </div>
@@ -300,7 +300,8 @@
                                     </div>
                                 @else
                                     <div class="w-auto inline-block font-bold mb-2 p-2 text-right judo-green">
-                                        <a href="{{ route('club.addPersonnel', $club->id ) }}">
+                                        <a href="{{ route('club.addPersonnel', $club->id )
+                                        }}?position=Designated%20Officer">
                                             <i class="fas fa-user-plus"></i> Add new
                                         </a>
                                     </div>
@@ -361,7 +362,8 @@
                                     </div>
                                 @else
                                     <div class="w-auto inline-block font-bold mb-2 p-2 text-right judo-green">
-                                        <a href="{{ route('club.addPersonnel', $club->id ) }}">
+                                        <a href="{{ route('club.addPersonnel', $club->id )
+                                        }}?position=Childrens%20Officer">
                                             <i class="fas fa-user-plus"></i> Add new
                                         </a>
                                     </div>
@@ -422,7 +424,7 @@
                                     </div>
                                 @else
                                     <div class="w-auto inline-block font-bold mb-2 p-2 text-right judo-green">
-                                        <a href="{{ route('club.addPersonnel', $club->id ) }}">
+                                        <a href="{{ route('club.addPersonnel', $club->id ) }}?position=Coach">
                                             <i class="fas fa-user-plus"></i> Add new
                                         </a>
                                     </div>

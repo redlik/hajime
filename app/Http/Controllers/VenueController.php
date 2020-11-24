@@ -46,7 +46,7 @@ class VenueController extends Controller
         $fileName = time().'_'.$request->file('attachment')->getClientOriginalName();
         $filePath = $request->file('attachment')->storeAs('attachments', $fileName, 'public');
 
-        $venue->attachment = $filePath;
+        $venue->attachment = $fileName;
         $venue->save();
 
         return redirect()->route('clubs.show', $club);
