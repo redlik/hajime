@@ -43,12 +43,6 @@ class VenueController extends Controller
         $venue = Venue::create($request->all());
         $club = $request->input('club_id');
 
-        $fileName = time().'_'.$request->file('attachment')->getClientOriginalName();
-        $filePath = $request->file('attachment')->storeAs('attachments', $fileName, 'public');
-
-        $venue->attachment = $fileName;
-        $venue->save();
-
         return redirect()->route('clubs.show', $club);
     }
 
@@ -86,22 +80,7 @@ class VenueController extends Controller
     public function update(Request $request, Venue $venue)
     {
         $input = $request->all();
-//        if ($request->file('attachment')) {
-//            Storage::delete('attachments/'.$venue->attachment);
-//        }
-        if(File::exists(public_path('storage/attachments/'.$venue->attachment))){
-            File::delete(public_path('storage/attachments/'.$venue->attachment));
-        }else{
-            dd('File does not exists.');
-        }
-
         $venue->fill($input)->save();
-
-        $fileName = time().'_'.$request->file('attachment')->getClientOriginalName();
-        $filePath = $request->file('attachment')->storeAs('attachments', $fileName, 'public');
-
-        $venue->attachment = $fileName;
-        $venue->save();
 
         return back()->with('message', 'Record Successfully Updated!');
     }
