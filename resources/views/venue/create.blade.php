@@ -56,14 +56,14 @@
                                 </label>
                                 <input
                                     class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
-                                    id="city" name="city" type="text" placeholder="City/Town">
+                                    id="city" name="city" type="text" placeholder="City/Town" required>
                             </div>
                             <div class="mb-4">
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="county">
                                     County
                                 </label>
                                 <select class="shadow border rounded w-64 py-2 px-3 text-grey-darker" id="county" name="county" type="text"
-                                        placeholder="County">
+                                        placeholder="County" required>
                                     <option value="" disabled selected>Select county</option>
                                     <option value="antrim">Antrim</option>
                                     <option value="armagh">Armagh</option>
