@@ -122,15 +122,6 @@
                                     class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                     id="phone" name="phone" type="text" placeholder="Phone">
                             </div>
-                            <div>
-                                <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2"
-                                       for="attachment">
-                                    Affiliation Form
-                                </label>
-                                <input
-                                    class="w-full md:w-1/2 py-2 px-3 text-grey-darker"
-                                    id="attachment" name="attachment" type="file" placeholder="Upload file">
-                            </div>
                         </div>
                         <div class="mt-6">
                             <input type="submit" value="+ Add new venue" class="button-judo">
