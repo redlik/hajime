@@ -79,7 +79,7 @@
                                 </label>
                                 <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                     id="vetting_completion" name="vetting_completion" type="date" value="{{
-                                    $person->vetting_completion }}" required>
+                                    $person->vetting_completion }}">
                             </div>
                             <div>
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="vetting_expiry">
@@ -87,7 +87,7 @@
                                 </label>
                                 <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                     id="vetting_expiry" name="vetting_expiry" type="date" value="{{
-                                    $person->vetting_expiry }}" required>
+                                    $person->vetting_expiry }}">
                             </div>
                             <h4 class="w-auto text-gray-500 text-xl font-bold mb-6 mt-16">Safeguarding information:</h4>
                             <div class="mb-4">
@@ -96,7 +96,7 @@
                                 </label>
                                 <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                 id="safeguarding_completion" name="safeguarding_completion" type="date" value="{{
-                                    $person->safeguarding_completion }}" required>
+                                    $person->safeguarding_completion }}">
                             </div>
                             <div class="mb-4">
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="safeguarding_expiry">
@@ -104,7 +104,7 @@
                                 </label>
                                 <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                     id="safeguarding_expiry" name="safeguarding_expiry" type="date" value="{{
-                                    $person->safeguarding_expiry }}" required>
+                                    $person->safeguarding_expiry }}">
                             </div>
                         </div>
                         <div class="w-full md:w-1/2 sm:w-full mt-16 md:mt-0">

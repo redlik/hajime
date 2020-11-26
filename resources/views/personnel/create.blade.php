@@ -61,6 +61,13 @@
                         </div>
                     </div>
                     <div class="w-full border-2 border-gray-300 rounded-xl p-8 flex flex-wrap">
+                        <div class="w-full mb-8">
+                            <span class="bg-gray-100 p-3 rounded text-gray-500 font-semibold text-sm">All fields in
+                                this section are
+                                optional
+                                so make sure you fill in the correct ones for a specific role.
+                            </span>
+                        </div>
                         <div class="w-full md:w-1/2 sm:w-full">
                             <h4 class="w-auto text-gray-500 text-xl font-bold mb-6">Vetting information:</h4>
                             <div class="mb-4">
@@ -69,14 +76,14 @@
                                 </label>
                                 <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                     id="vetting_completion" name="vetting_completion" type="date"
-                                       placeholder="2020-01-01" required>
+                                       placeholder="2020-01-01">
                             </div>
                             <div>
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="vetting_expiry">
                                     Vetting expiry
                                 </label>
                                 <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
-                                    id="vetting_expiry" name="vetting_expiry" type="date" placeholder="2020-01-01" required>
+                                    id="vetting_expiry" name="vetting_expiry" type="date" placeholder="2020-01-01">
                             </div>
                             <h4 class="w-auto text-gray-500 text-xl font-bold mb-6 mt-16">Safeguarding information:</h4>
                             <div class="mb-4">
@@ -85,7 +92,7 @@
                                 </label>
                                 <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                 id="safeguarding_completion" name="safeguarding_completion" type="date"
-                                       placeholder="2020-01-01" required>
+                                       placeholder="2020-01-01">
                             </div>
                             <div class="mb-4">
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="safeguarding_expiry">
@@ -93,7 +100,7 @@
                                 </label>
                                 <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                     id="safeguarding_expiry" name="safeguarding_expiry" type="date"
-                                       placeholder="2020-01-01" required>
+                                       placeholder="2020-01-01">
                             </div>
                         </div>
                         <div class="w-full md:w-1/2 sm:w-full mt-16 md:mt-0">
