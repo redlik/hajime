@@ -520,23 +520,35 @@
                                         <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                             <div class="flex items-center">
                                                 <div>
-                                                    <span class="bg-gray-200 rounded-lg py-1 px-2">{{ $volunteer->vetting_completion }}</span> -
-                                                    @if($volunteer->vetting_expiry < now())
-                                                    <span class="bg-red-700 text-white rounded-lg py-1 px-2">{{ $volunteer->vetting_expiry }}</span>
+                                                    <span class="bg-gray-200 rounded-lg py-1 px-2">{{
+                                                    $volunteer->vetting_completion ?? 'Not set' }}</span> -
+                                                    @if ( $volunteer->vetting_expiry)
+                                                        @if($volunteer->vetting_expiry < now())
+                                                        <span class="bg-red-700 text-white rounded-lg py-1 px-2">{{ $volunteer->vetting_expiry }}</span>
+                                                        @else
+                                                        <span class="bg-indigo-100 rounded-lg py-1 px-2">{{ $volunteer->vetting_expiry }}</span>
+                                                        @endif
                                                     @else
-                                                    <span class="bg-indigo-100 rounded-lg py-1 px-2">{{ $volunteer->vetting_expiry }}</span>
+                                                        <span class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">Not
+                                                                set</span>
                                                     @endif
+
                                                 </div>
                                             </div>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                             <div class="flex items-center">
                                                     <span class="bg-gray-200 rounded-lg py-1 px-2 mr-1">{{
-                                                    $volunteer->safeguarding_completion }}</span> -
-                                                @if($volunteer->safeguarding_expiry < now())
-                                                    <span class="bg-red-700 text-white rounded-lg py-1 px-2 ml-2">{{ $volunteer->safeguarding_expiry }}</span>
+                                                    $volunteer->safeguarding_completion ?? 'Not set'}}</span> -
+                                                @if ( $volunteer->safeguarding_expiry)
+                                                    @if($volunteer->safeguarding_expiry < now())
+                                                        <span class="bg-red-700 text-white rounded-lg py-1 px-2 ml-2">{{ $volunteer->safeguarding_expiry }}</span>
+                                                    @else
+                                                        <span class="bg-indigo-100 rounded-lg py-1 px-2 ml-2">{{ $volunteer->safeguarding_expiry }}</span>
+                                                    @endif
                                                 @else
-                                                    <span class="bg-indigo-100 rounded-lg py-1 px-2 ml-2">{{ $volunteer->safeguarding_expiry }}</span>
+                                                    <span class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">Not
+                                                                set</span>
                                                 @endif
                                             </div>
                                         </td>

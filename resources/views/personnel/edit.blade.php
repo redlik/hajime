@@ -131,7 +131,11 @@
                                     Coaching Qualification
                                 </label>
                                 <select name="coaching_qualification" id="coaching_qualification" class="shadow border rounded w-64 py-2 px-3 text-grey-darker">
+                                    @if ( $person->coaching_qualification)
                                     <option value="{{ $person->coaching_qualification }}" selected>{{ $person->coaching_qualification }}</option>
+                                    @else
+                                        <option value="" selected disabled>Select qualification level</option>
+                                    @endif
                                     <option value="Level 1">Level 1</option>
                                     <option value="Level 1">Level 2</option>
                                     <option value="Level 1">Level 3</option>
