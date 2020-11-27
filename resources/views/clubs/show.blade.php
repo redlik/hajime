@@ -115,7 +115,7 @@
                 </div>
 
                 <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
-                    <h4 class="font-bold text-xl text-black mb-4">Club Personnel:</h4>
+                    <h4 class="font-bold text-xl text-black mb-4" id="personnel">Club Personnel:</h4>
                     <div class="w-full mb-6">
                         <a href="{{ route('club.addPersonnel', [$club->id])}}">
                             <button class="button-judo">+ Add new person</button>
@@ -162,44 +162,44 @@
                                             {{ $headCoach->phone ?? 'Not set' }}</div>
                                     </div>
                                     <div class="w-1/2 flex flex-wrap">
-                                        <div class="w-24 text-sm inline-block text-gray-500">Email:</div>
-                                        <div class="w-auto inline-block font-semibold">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500">Email:</div>
+                                        <div class="w-2/3 inline-block font-semibold">
                                             {{ $headCoach->email ?? 'Not set' }}</div>
                                     </div>
                                     <div class="w-1/2 flex flex-wrap">
                                         <div class="w-full font-bold text-gray-500 mt-4 mb-2">Vetting:</div>
-                                        <div class="w-24 text-sm inline-block text-gray-500">Completion:</div>
-                                        <div class="w-auto inline-block font-semibold">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500">Completion:</div>
+                                        <div class="w-2/3 inline-block font-semibold">
                                             {{ $headCoach->vetting_completion ?? 'Not set' }}</div>
-                                        <div class="w-24 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
-                                        <div class="w-auto inline-block font-semibold mt-2">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
+                                        <div class="w-2/3 inline-block font-semibold mt-2">
                                             {{ $headCoach->vetting_expiry ?? 'Not set' }}</div>
                                     </div>
                                     <div class="w-1/2 flex flex-wrap">
                                         <div class="w-full font-bold text-gray-500 mt-4 mb-2">Safeguarding:</div>
-                                        <div class="w-24 text-sm inline-block text-gray-500">Completion:</div>
-                                        <div class="w-auto inline-block font-semibold">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500">Completion:</div>
+                                        <div class="w-2/3 inline-block font-semibold">
                                             {{ $headCoach->safeguarding_completion ?? 'Not set' }}</div>
-                                        <div class="w-24 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
-                                        <div class="w-auto inline-block font-semibold mt-2">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
+                                        <div class="w-2/3 inline-block font-semibold mt-2">
                                             {{ $headCoach->safeguarding_expiry ?? 'Not set' }}</div>
                                     </div>
                                     <div class="w-1/2 flex flex-wrap">
                                         <div class="w-full font-bold text-gray-500 mt-4 mb-2">First Aid:</div>
-                                        <div class="w-24 text-sm inline-block text-gray-500">Completion:</div>
-                                        <div class="w-auto inline-block font-semibold">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500">Completion:</div>
+                                        <div class="w-2/3 inline-block font-semibold">
                                             {{ $headCoach->first_aid_completion ?? 'Not set' }}</div>
-                                        <div class="w-24 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
-                                        <div class="w-auto inline-block font-semibold mt-2">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
+                                        <div class="w-2/3 inline-block font-semibold mt-2">
                                             {{ $headCoach->first_aid_expiry ?? 'Not set' }}</div>
                                     </div>
                                     <div class="w-1/2 flex flex-wrap">
                                         <div class="w-full font-bold text-gray-500 mt-4 mb-2">Coaching:</div>
-                                        <div class="w-24 text-sm inline-block text-gray-500">Qualification:</div>
-                                        <div class="w-auto inline-block font-semibold">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500">Qualification:</div>
+                                        <div class="w-2/3 inline-block font-semibold">
                                             {{ $headCoach->coaching_qualification ?? 'Not set' }}</div>
-                                        <div class="w-24 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
-                                        <div class="w-auto inline-block font-semibold mt-2">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
+                                        <div class="w-2/3 inline-block font-semibold mt-2">
                                             {{ $headCoach->coaching_date ?? 'Not set' }}</div>
                                     </div>
                                 </div>
@@ -213,7 +213,8 @@
                                         <button type="button" title="View details"
                                                 @click="secretary = ! secretary">
                                             <i class="far fa-eye text-green-500 mr-2" :class="{ 'text-gray-300' : secretary, 'text-green-500' : ! secretary}"></i></button>
-                                        <a href="" title="Edit"><i class="far fa-edit text-blue-500 mr-2"></i></a>
+                                        <a href="{{ route('personnel.edit', $secretary->id) }}" title="Edit"><i
+                                                class="far fa-edit text-blue-500 mr-2"></i></a>
                                         <a href="{{ route('personnel.delete', [$secretary->id]) }}"
                                            title="Delete person record"
                                            onclick="return confirm('Do you want to delete the record completely?')"><i
@@ -234,30 +235,30 @@
                                     </div>
                                     <div class="w-1/2 flex flex-wrap">
                                         <div class="w-24 text-sm text-gray-500">Phone:</div>
-                                        <div class="w-auto font-semibold">
+                                        <div class="w-2/3 font-semibold">
                                             {{ $secretary->phone ?? 'Not set' }}</div>
                                     </div>
                                     <div class="w-1/2 flex flex-wrap">
-                                        <div class="w-24 text-sm inline-block text-gray-500">Email:</div>
-                                        <div class="w-auto inline-block font-semibold">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500">Email:</div>
+                                        <div class="w-2/3 inline-block font-semibold">
                                             {{ $secretary->email ?? 'Not set' }}</div>
                                     </div>
                                     <div class="w-1/2 flex flex-wrap">
                                         <div class="w-full font-bold text-gray-500 mt-4 mb-2">Vetting:</div>
-                                        <div class="w-24 text-sm inline-block text-gray-500">Completion:</div>
-                                        <div class="w-auto inline-block font-semibold">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500">Completion:</div>
+                                        <div class="w-2/3 inline-block font-semibold">
                                             {{ $secretary->vetting_completion ?? 'Not set' }}</div>
-                                        <div class="w-24 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
-                                        <div class="w-auto inline-block font-semibold mt-2">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
+                                        <div class="w-2/3 inline-block font-semibold mt-2">
                                             {{ $secretary->vetting_expiry ?? 'Not set' }}</div>
                                     </div>
                                     <div class="w-1/2 flex flex-wrap">
                                         <div class="w-full font-bold text-gray-500 mt-4 mb-2">Safeguarding:</div>
-                                        <div class="w-24 text-sm inline-block text-gray-500">Completion:</div>
-                                        <div class="w-auto inline-block font-semibold">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500">Completion:</div>
+                                        <div class="w-2/3 inline-block font-semibold">
                                             {{ $secretary->safeguarding_completion ?? 'Not set' }}</div>
-                                        <div class="w-24 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
-                                        <div class="w-auto inline-block font-semibold mt-2">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
+                                        <div class="w-2/3 inline-block font-semibold mt-2">
                                             {{ $secretary->safeguarding_expiry ?? 'Not set' }}</div>
                                     </div>
                                 </div>
@@ -273,7 +274,8 @@
                                                 @click="designated = ! designated">
                                             <i class="far fa-eye text-green-500 mr-2" :class="{ 'text-gray-300' : designated, 'text-green-500' : ! designated}"></i></button>
 
-                                        <a href="" title="Edit"><i class="far fa-edit text-blue-500 mr-2"></i></a>
+                                        <a href="{{ route('personnel.edit', $designated->id) }}" title="Edit"><i
+                                                class="far fa-edit text-blue-500 mr-2"></i></a>
                                         <a href="{{ route('personnel.delete', [$designated->id]) }}"
                                            title="Delete person record"
                                            onclick="return confirm('Do you want to delete the record completely?')"><i
@@ -294,31 +296,31 @@
                                         </button>
                                     </div>
                                     <div class="w-1/2 flex flex-wrap">
-                                        <div class="w-24 text-sm text-gray-500">Phone:</div>
-                                        <div class="w-auto font-semibold">
+                                        <div class="w-1/3 text-sm text-gray-500">Phone:</div>
+                                        <div class="w-2/3 font-semibold">
                                             {{ $designated->phone ?? 'Not set' }}</div>
                                     </div>
                                     <div class="w-1/2 flex flex-wrap">
-                                        <div class="w-24 text-sm inline-block text-gray-500">Email:</div>
-                                        <div class="w-auto inline-block font-semibold">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500">Email:</div>
+                                        <div class="w-2/3 inline-block font-semibold">
                                             {{ $designated->email ?? 'Not set' }}</div>
                                     </div>
                                     <div class="w-1/2 flex flex-wrap">
                                         <div class="w-full font-bold text-gray-500 mt-4 mb-2">Vetting:</div>
-                                        <div class="w-24 text-sm inline-block text-gray-500">Completion:</div>
-                                        <div class="w-auto inline-block font-semibold">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500">Completion:</div>
+                                        <div class="w-2/3 inline-block font-semibold">
                                             {{ $designated->vetting_completion ?? 'Not set' }}</div>
-                                        <div class="w-24 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
-                                        <div class="w-auto inline-block font-semibold mt-2">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
+                                        <div class="w-2/3 inline-block font-semibold mt-2">
                                             {{ $designated->vetting_expiry ?? 'Not set' }}</div>
                                     </div>
                                     <div class="w-1/2 flex flex-wrap">
                                         <div class="w-full font-bold text-gray-500 mt-4 mb-2">Safeguarding:</div>
-                                        <div class="w-24 text-sm inline-block text-gray-500">Completion:</div>
-                                        <div class="w-auto inline-block font-semibold">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500">Completion:</div>
+                                        <div class="w-2/3 inline-block font-semibold">
                                             {{ $secretary->safeguarding_completion ?? 'Not set' }}</div>
-                                        <div class="w-24 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
-                                        <div class="w-auto inline-block font-semibold mt-2">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
+                                        <div class="w-2/3 inline-block font-semibold mt-2">
                                             {{ $secretary->safeguarding_expiry ?? 'Not set' }}</div>
                                     </div>
                                 </div>
@@ -335,7 +337,8 @@
                                         <button type="button" title="View details"
                                                 @click="childrens = ! childrens">
                                             <i class="far fa-eye text-green-500 mr-2" :class="{ 'text-gray-300' : childrens, 'text-green-500' : ! childrens}"></i></button>
-                                        <a href="" title="Edit"><i class="far fa-edit text-blue-500 mr-2"></i></a>
+                                        <a href="{{ route('personnel.edit', $childrens->id) }}" title="Edit"><i
+                                                class="far fa-edit text-blue-500 mr-2"></i></a>
                                         <a href="{{ route('personnel.delete', [$childrens->id]) }}"
                                            title="Delete person record"
                                            onclick="return confirm('Do you want to delete the record completely?')"><i
@@ -356,31 +359,31 @@
                                         </button>
                                     </div>
                                     <div class="w-1/2 flex flex-wrap">
-                                        <div class="w-24 text-sm text-gray-500">Phone:</div>
-                                        <div class="w-auto font-semibold">
+                                        <div class="w-1/3 text-sm text-gray-500">Phone:</div>
+                                        <div class="w-2/3 font-semibold">
                                             {{ $childrens->phone ?? 'Not set' }}</div>
                                     </div>
                                     <div class="w-1/2 flex flex-wrap">
-                                        <div class="w-24 text-sm inline-block text-gray-500">Email:</div>
-                                        <div class="w-auto inline-block font-semibold">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500">Email:</div>
+                                        <div class="w-2/3 inline-block font-semibold">
                                             {{ $childrens->email ?? 'Not set' }}</div>
                                     </div>
                                     <div class="w-1/2 flex flex-wrap">
                                         <div class="w-full font-bold text-gray-500 mt-4 mb-2">Vetting:</div>
-                                        <div class="w-24 text-sm inline-block text-gray-500">Completion:</div>
-                                        <div class="w-auto inline-block font-semibold">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500">Completion:</div>
+                                        <div class="w-2/3 inline-block font-semibold">
                                             {{ $childrens->vetting_completion ?? 'Not set' }}</div>
-                                        <div class="w-24 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
-                                        <div class="w-auto inline-block font-semibold mt-2">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
+                                        <div class="w-2/3 inline-block font-semibold mt-2">
                                             {{ $childrens->vetting_expiry ?? 'Not set' }}</div>
                                     </div>
                                     <div class="w-1/2 flex flex-wrap">
                                         <div class="w-full font-bold text-gray-500 mt-4 mb-2">Safeguarding:</div>
-                                        <div class="w-24 text-sm inline-block text-gray-500">Completion:</div>
-                                        <div class="w-auto inline-block font-semibold">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500">Completion:</div>
+                                        <div class="w-2/3 inline-block font-semibold">
                                             {{ $childrens->safeguarding_completion ?? 'Not set' }}</div>
-                                        <div class="w-24 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
-                                        <div class="w-auto inline-block font-semibold mt-2">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
+                                        <div class="w-2/3 inline-block font-semibold mt-2">
                                             {{ $childrens->safeguarding_expiry ?? 'Not set' }}</div>
                                     </div>
                                 </div>
@@ -417,49 +420,49 @@
                                         </button>
                                     </div>
                                     <div class="w-1/2 flex flex-wrap">
-                                        <div class="w-24 text-sm text-gray-500">Phone:</div>
-                                        <div class="w-auto font-semibold">
+                                        <div class="w-1/3 text-sm text-gray-500">Phone:</div>
+                                        <div class="w-2/3 font-semibold">
                                             {{ $coach->phone ?? 'Not set' }}</div>
                                     </div>
                                     <div class="w-1/2 flex flex-wrap">
-                                        <div class="w-24 text-sm inline-block text-gray-500">Email:</div>
-                                        <div class="w-auto inline-block font-semibold">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500">Email:</div>
+                                        <div class="w-2/3 inline-block font-semibold">
                                             {{ $coach->email ?? 'Not set' }}</div>
                                     </div>
                                     <div class="w-1/2 flex flex-wrap">
                                         <div class="w-full font-bold text-gray-500 mt-4 mb-2">Vetting:</div>
-                                        <div class="w-24 text-sm inline-block text-gray-500">Completion:</div>
-                                        <div class="w-auto inline-block font-semibold">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500">Completion:</div>
+                                        <div class="w-2/3 inline-block font-semibold">
                                             {{ $coach->vetting_completion ?? 'Not set' }}</div>
-                                        <div class="w-24 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
-                                        <div class="w-auto inline-block font-semibold mt-2">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
+                                        <div class="w-2/3 inline-block font-semibold mt-2">
                                             {{ $coach->vetting_expiry ?? 'Not set' }}</div>
                                     </div>
                                     <div class="w-1/2 flex flex-wrap">
                                         <div class="w-full font-bold text-gray-500 mt-4 mb-2">Safeguarding:</div>
-                                        <div class="w-24 text-sm inline-block text-gray-500">Completion:</div>
-                                        <div class="w-auto inline-block font-semibold">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500">Completion:</div>
+                                        <div class="w-2/3 inline-block font-semibold">
                                             {{ $coach->safeguarding_completion ?? 'Not set' }}</div>
-                                        <div class="w-24 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
-                                        <div class="w-auto inline-block font-semibold mt-2">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
+                                        <div class="w-2/3 inline-block font-semibold mt-2">
                                             {{ $coach->safeguarding_expiry ?? 'Not set' }}</div>
                                     </div>
                                     <div class="w-1/2 flex flex-wrap">
                                         <div class="w-full font-bold text-gray-500 mt-4 mb-2">First Aid:</div>
-                                        <div class="w-24 text-sm inline-block text-gray-500">Completion:</div>
-                                        <div class="w-auto inline-block font-semibold">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500">Completion:</div>
+                                        <div class="w-2/3 inline-block font-semibold">
                                             {{ $coach->first_aid_completion ?? 'Not set' }}</div>
-                                        <div class="w-24 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
-                                        <div class="w-auto inline-block font-semibold mt-2">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
+                                        <div class="w-2/3 inline-block font-semibold mt-2">
                                             {{ $coach->first_aid_expiry ?? 'Not set' }}</div>
                                     </div>
                                     <div class="w-1/2 flex flex-wrap">
                                         <div class="w-full font-bold text-gray-500 mt-4 mb-2">Coaching:</div>
-                                        <div class="w-24 text-sm inline-block text-gray-500">Qualification:</div>
-                                        <div class="w-auto inline-block font-semibold">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500">Qualification:</div>
+                                        <div class="w-2/3 inline-block font-semibold">
                                             {{ $coach->coaching_qualification ?? 'Not set' }}</div>
-                                        <div class="w-24 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
-                                        <div class="w-auto inline-block font-semibold mt-2">
+                                        <div class="w-1/3 text-sm inline-block text-gray-500 mt-2">Expiry:</div>
+                                        <div class="w-2/3 inline-block font-semibold mt-2">
                                             {{ $coach->coaching_date ?? 'Not set' }}</div>
                                     </div>
                                 </div>

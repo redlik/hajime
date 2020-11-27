@@ -11,13 +11,13 @@
             </header>
 
             <div class="w-full p-6">
-                <a href="{{ route('clubs.show', $person->club_id) }}" class="rounded px-2 py-1
+                <a href="{{ route('clubs.show', $person->club_id) }}#personnel" class="rounded px-2 py-1
                     bg-blue-100 my-8
                     mb-16 font-semibold
                     text-blue-800"><< Back to Club
                     page</a>
                 @if(Session::has('message'))
-                    <p class="bg-green-100 text-green-700 p-6 rounded mb-4">{{ Session::get('message') }}</p>
+                    <p class="bg-green-100 text-green-700 p-6 rounded my-6">{{ Session::get('message') }}</p>
                 @endif
                 @if ($errors->any())
                 <div class="alert alert-danger" role="alert">
