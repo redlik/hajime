@@ -725,8 +725,6 @@
                                         {{ $form->created_at->format('d-m-Y') }}
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm flex flex-wrap">
-                                        <a href="" class="text-blue-600
-                                        font-bold hover:text-blue-300" title="View full note"><i class="far fa-eye"></i></a>
                                         <a href="" class="text-green-600 font-bold
                                         ml-3" title="Edit note"><i class="far fa-edit"></i></a>
                                         <form action="" method="POST">
@@ -745,9 +743,23 @@
                 <!-- Documents Section -->
                 <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
                     <h4 class="font-bold text-xl mb-4" id="documents">Club Documents:</h4>
-                    <a href="">
+                    <a onclick="showDocForm()">
                         <button class="button-judo">+ Add new document</button>
                     </a>
+                    <div class="w-full my-4 hidden bg-gray-100 p-2 rounded" id="addDocument">
+                        <form action="" method="POST" role="form" class="w-full">
+                            @csrf
+                            <input type="hidden" name="club_id" value="{{ $club->id }}">
+                            <div class="flex flex=wrap w-1/2">
+                                <label class="inline-block text-gray-600 text-sm font-bold mr-4 py-2" for="title">
+                                    Title
+                                </label>
+                                <input
+                                    class="shadow appearance-none border w-5/6 rounded py-2 px-3 text-grey-darker"
+                                    id="title" name="title" type="text" required>
+                            </div>
+                        </form>
+                    </div>
                     <div class="w-full mt-8">
                         <table class="min-w-full table leading-normal mt-8">
                             <thead>
@@ -796,8 +808,6 @@
                                         {{ $document->created_at->format('d-m-Y') }}
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm flex flex-wrap">
-                                        <a href="" class="text-blue-600
-                                        font-bold hover:text-blue-300" title="View full note"><i class="far fa-eye"></i></a>
                                         <a href="" class="text-green-600 font-bold
                                         ml-3" title="Edit note"><i class="far fa-edit"></i></a>
                                         <form action="" method="POST">
@@ -822,10 +832,9 @@
 
 @section('bottomScripts')
     <script>
-        function showPerson(person) {
-            var selected_person = person;
-            console.log(selected_person);
-            return this.selected_person;
+        function showDocForm() {
+            let docForm = document.getElementById('addDocument');
+            docForm.classList.remove("hidden");
         }
     </script>
 @endsection
