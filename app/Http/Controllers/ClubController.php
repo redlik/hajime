@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Club;
+use App\Models\ClubDocument;
 use App\Models\Personnel;
 use App\Models\Clubnote;
 use App\Models\Venue;
@@ -69,9 +70,11 @@ class ClubController extends Controller
         $volunteers = Volunteer::where('club_id', $club->id)->get();
         $venues = Venue::where('club_id', $club->id)->get();
         $notes = Clubnote::where('club_id', $club->id)->orderBy('created_at', 'desc')->get();
+        $forms = ClubDocument::form($club->id)->get();
+        $documents = ClubDocument::document($club->id)->get();
 
         return view('clubs.show', compact('club', 'venues', 'volunteers', 'members', 'notes', 'headCoach', 'secretary',
-        'designated', 'childrens', 'coach', ));
+        'designated', 'childrens', 'coach', 'forms', 'documents' ));
     }
 
     /**

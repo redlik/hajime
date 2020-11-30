@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             ClubnoteSeeder::class,
             VolunteerSeeder::class,
             MembernoteSeeder::class,
+            VenueSeeder::class,
         ]);
     }
 }

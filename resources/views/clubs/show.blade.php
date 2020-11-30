@@ -14,8 +14,33 @@
                 </div>
                 <div class="font-bold text-sm"> {{ ucfirst($club->type) }} </div>
             </header>
-
-            <div class="w-full p-6">
+            <div class="w-full px-6">
+                <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex justify-between">
+                    <span>Navigate to: </span>
+                    <a href="#venues" class="text-blue-600 font-semibold hover:underline"><i class="fas
+                    fa-arrow-down"></i>
+                        Venues</a>
+                    <a href="#personnel" class="text-blue-600 font-semibold hover:underline"><i class="fas
+                    fa-arrow-down"></i>
+                        Personnel</a>
+                    <a href="#volunteers" class="text-blue-600 font-semibold hover:underline"><i class="fas
+                    fa-arrow-down"></i>
+                        Volunteers</a>
+                    <a href="#members" class="text-blue-600 font-semibold hover:underline"><i class="fas
+                    fa-arrow-down"></i>
+                        Members</a>
+                    <a href="#notes" class="text-blue-600 font-semibold hover:underline"><i class="fas
+                    fa-arrow-down"></i>
+                        Notes</a>
+                    <a href="#forms" class="text-blue-600 font-semibold hover:underline"><i class="fas
+                    fa-arrow-down"></i>
+                        Forms</a>
+                    <a href="#documents" class="text-blue-600 font-semibold hover:underline"><i class="fas
+                    fa-arrow-down"></i>
+                        Documents</a>
+                </div>
+            </div>
+            <div class="w-full px-6">
                 <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
                     <div class="w-full md:w-1/2 sm:w-full">
                         <h4 class="font-bold text-xl text-black mb-4">Location data:</h4>
@@ -575,19 +600,19 @@
 
                 </div>
             <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
-                <h4 class="font-bold text-xl text-black mb-4 block w-full">Members:</h4>
-                <div class="w-full block mb-8">
-                    @livewire('club-members', ['club_id' => $club->id])
-                </div>
+                <h4 class="font-bold text-xl text-black mb-4 block w-full" id="members">Members:</h4>
                 <div class="w-full block">
                     <a href="{{ route('member.createWithClub', ['club' => $club->id]) }}">
                         <button class="button-judo">+ Add new member</button>
                     </a>
                 </div>
+                <div class="w-full block mb-8">
+                    @livewire('club-members', ['club_id' => $club->id])
+                </div>
             </div>
 
             <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
-                <h4 class="font-bold text-xl text-gray-500 mb-4" id="notes">Club notes:</h4>
+                <h4 class="font-bold text-xl mb-4" id="notes">Club notes:</h4>
                 <a href="{{ route('clubnote.create.club', [$club->id]) }}">
                     <button class="button-judo">+ Add new note</button>
                 </a>
@@ -646,7 +671,150 @@
                     </table>
                 </div>
             </div>
-    </div>
+                <!-- Forms Section -->
+            <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
+                    <h4 class="font-bold text-xl mb-4" id="forms">Club forms:</h4>
+                    <a href="">
+                        <button class="button-judo">+ Add new form</button>
+                    </a>
+                    <div class="w-full mt-8">
+                        <table class="min-w-full table leading-normal mt-8">
+                            <thead>
+                            <tr>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Title
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Created by
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Link
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Created on
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Operations
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($forms as $form)
+                                <tr>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <div class="flex items-center">
+                                            <div class="ml-3">
+                                                <p class="text-gray-900 whitespace-no-wrap font-bold">
+                                                    {{ $form->title }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        Author
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <a href="{{ $form->link }}" target="_blank">{{ $form->link }}</a>
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        {{ $form->created_at->format('d-m-Y') }}
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm flex flex-wrap">
+                                        <a href="" class="text-blue-600
+                                        font-bold hover:text-blue-300" title="View full note"><i class="far fa-eye"></i></a>
+                                        <a href="" class="text-green-600 font-bold
+                                        ml-3" title="Edit note"><i class="far fa-edit"></i></a>
+                                        <form action="" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="_method" value="DELETE" />
+                                            <button type="submit" class="text-red-600 hover:text-red-300 whitespace-no-wrap ml-3" onclick="return confirm('Do you want to delete the record completely?')"><i class="far fa-trash-alt"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Documents Section -->
+                <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
+                    <h4 class="font-bold text-xl mb-4" id="documents">Club Documents:</h4>
+                    <a href="">
+                        <button class="button-judo">+ Add new document</button>
+                    </a>
+                    <div class="w-full mt-8">
+                        <table class="min-w-full table leading-normal mt-8">
+                            <thead>
+                            <tr>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Title
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Created by
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Link
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Created on
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Operations
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($documents as $document)
+                                <tr>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <div class="flex items-center">
+                                            <div class="ml-3">
+                                                <p class="text-gray-900 whitespace-no-wrap font-bold">
+                                                    {{ $document->title }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        Author
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <a href="{{ $document->link }}" target="_blank">{{ $document->link }}</a>
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        {{ $document->created_at->format('d-m-Y') }}
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm flex flex-wrap">
+                                        <a href="" class="text-blue-600
+                                        font-bold hover:text-blue-300" title="View full note"><i class="far fa-eye"></i></a>
+                                        <a href="" class="text-green-600 font-bold
+                                        ml-3" title="Edit note"><i class="far fa-edit"></i></a>
+                                        <form action="" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="_method" value="DELETE" />
+                                            <button type="submit" class="text-red-600 hover:text-red-300 whitespace-no-wrap ml-3" onclick="return confirm('Do you want to delete the record completely?')"><i class="far fa-trash-alt"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
     </section>
     </div>
 </main>

@@ -22,7 +22,15 @@ class VenueFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->company,
+            'address1' => $this->faker->streetAddress,
+            'city' => $this->faker->city,
+            'county' => $this->faker->state,
+            'eircode' => $this->faker->postcode,
+            'phone' => $this->faker->phoneNumber,
+            'contact' => $this->faker->name,
+            'club_id' => $this->faker->numberBetween(1, 50),
+
         ];
     }
 }

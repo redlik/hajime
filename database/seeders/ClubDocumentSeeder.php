@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Venue;
 use Illuminate\Database\Seeder;
+use App\Models\ClubDocument;
 
-class VenueSeeder extends Seeder
+class ClubDocumentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,8 +14,8 @@ class VenueSeeder extends Seeder
      */
     public function run()
     {
-        Venue::factory()
-            ->times(200)
+        ClubDocument::factory()
+            ->times(300)
             ->create();
     }
 }
