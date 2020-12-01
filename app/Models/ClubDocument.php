@@ -9,6 +9,8 @@ class ClubDocument extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function scopeForm($query, $club) {
         return $query->where('type', 'Form')->where('club_id', $club)->orderBy('created_at', 'desc');
     }

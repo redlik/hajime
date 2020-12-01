@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ClubDocumentController;
+use App\Http\Controllers\MemberDocumentController;
 use App\Http\Controllers\MembernoteController;
 use App\Http\Controllers\VolunteerController;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +42,8 @@ Route::resource('clubnote', ClubnoteController::class);
 Route::resource('membernote', MembernoteController::class);
 Route::resource('volunteer', VolunteerController::class);
 Route::resource('venue', VenueController::class);
+Route::resource('clubdoc', ClubDocumentController::class);
+Route::resource('memberdoc', MemberDocumentController::class);
 Route::get('clubnote/create/{club}', [ClubnoteController::class, 'createWithClub'])->name('clubnote.create.club');
 Route::get('membernote/create/{club}', [MembernoteController::class, 'createWithmember'])->name('membernote.create.member');
 Route::get('venue/create/{club}', [VenueController::class, 'createWithClub'])->name('venue.create.club');

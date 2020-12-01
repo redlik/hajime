@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\ClubDocument;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\URL;
 
 class ClubDocumentController extends Controller
 {
@@ -35,7 +37,9 @@ class ClubDocumentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $document = ClubDocument::create($request->all());
+
+        return Redirect::to(URL::previous()."#documents");
     }
 
     /**
@@ -78,8 +82,11 @@ class ClubDocumentController extends Controller
      * @param  \App\Models\ClubDocument  $clubDocument
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ClubDocument $clubDocument)
+    public function destroy($id)
     {
-        //
+        ClubDocument::where('id', $id)->delete();
+
+        return Redirect::to(URL::previous()."#documents");
+
     }
 }
