@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\ClubDocument;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
 
 class ClubDocumentController extends Controller
@@ -38,6 +40,11 @@ class ClubDocumentController extends Controller
     public function store(Request $request)
     {
         $document = ClubDocument::create($request->all());
+        $fileName = time().'_'.$request->file('link')->getClientOriginalName();
+        $filePath = $request->file('link')->storeAs('attachments', $fileName, 'public');
+
+        $document->link = $fileName;
+        $document->save();
 
         return Redirect::to(URL::previous()."#documents");
     }
@@ -84,7 +91,9 @@ class ClubDocumentController extends Controller
      */
     public function destroy($id)
     {
-        ClubDocument::where('id', $id)->delete();
+        $document = ClubDocument::where('id', $id)->first();
+        File::delete(public_path('storage/attachments/'.$document->link));
+        $document->delete();
 
         return Redirect::to(URL::previous()."#documents");
 

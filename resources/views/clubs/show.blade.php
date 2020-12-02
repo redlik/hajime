@@ -680,7 +680,7 @@
                 <div class="w-full my-4 hidden bg-gray-100 p-2 rounded" id="addForm">
                     <form action="{{ route('clubdoc.store') }}" method="POST" role="form" class="w-full flex
                         flex-wrap
-                        justify-between">
+                        justify-between" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="club_id" value="{{ $club->id }}">
                         <input type="hidden" name="type" value="Form">
@@ -749,7 +749,9 @@
                                         Author
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <a href="{{ $form->link }}" target="_blank">{{ $form->link }}</a>
+                                        <a href="{{ asset('/storage/attachments/'.$form->link) }}" target="_blank">
+                                            <i class="fas fa-file-pdf text-2xl text-red-700"></i>
+                                        </a>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         {{ $form->created_at->format('d-m-Y') }}
@@ -778,7 +780,7 @@
                     <div class="w-full my-4 hidden bg-gray-100 p-2 rounded" id="addDocument">
                         <form action="{{ route('clubdoc.store') }}" method="POST" role="form" class="w-full flex
                         flex-wrap
-                        justify-between">
+                        justify-between" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="club_id" value="{{ $club->id }}">
                             <input type="hidden" name="type" value="Document">
@@ -846,7 +848,9 @@
                                         Author
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <a href="{{ $document->link }}" target="_blank">{{ $document->link }}</a>
+                                        <a href="{{ asset('/storage/attachments/'.$document->link) }}" target="_blank">
+                                            <i class="fas fa-file-pdf text-2xl text-red-700"></i>
+                                        </a>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         {{ $document->created_at->format('d-m-Y') }}
