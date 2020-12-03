@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MemberDocument;
 use Illuminate\Http\Request;
+use App\Models\MemberDocument;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Redirect;
 
 class MemberDocumentController extends Controller
 {
@@ -35,7 +38,14 @@ class MemberDocumentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $document = MemberDocument::create($request->all());
+        $fileName = time().'_'.$request->file('link')->getClientOriginalName();
+        $filePath = $request->file('link')->storeAs('attachments', $fileName, 'public');
+
+        $document->link = $fileName;
+        $document->save();
+
+        return Redirect::to(URL::previous()."#documents");
     }
 
     /**
@@ -78,8 +88,12 @@ class MemberDocumentController extends Controller
      * @param  \App\Models\MemberDocument  $memberDocument
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MemberDocument $memberDocument)
+    public function destroy($id)
     {
-        //
+        $document = MemberDocument::where('id', $id)->first();
+        File::delete(public_path('storage/attachments/'.$document->link));
+        $document->delete();
+
+        return Redirect::to(URL::previous()."#documents");
     }
 }

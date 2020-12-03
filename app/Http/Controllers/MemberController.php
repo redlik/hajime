@@ -8,6 +8,7 @@ use App\Models\Membernote;
 use App\Models\Membership;
 use Illuminate\Http\Request;
 use App\Models\Club;
+use App\Models\MemberDocument;
 use Illuminate\Support\Facades\DB;
 
 class MemberController extends Controller
@@ -61,7 +62,9 @@ class MemberController extends Controller
         $grades = Grade::where('member_id', $member->id)->orderby('grade_date', 'desc')->get();
         $memberships = Membership::where('member_id', $member->id)->get();
         $notes = Membernote::where('member_id', $member->id)->orderBy('created_at', 'desc')->get();
-        return view('member.show', compact('member', 'grades', 'memberships', 'notes'));
+        $forms = MemberDocument::form($member->id)->get();
+        $documents = MemberDocument::document($member->id)->get();
+        return view('member.show', compact('member', 'grades', 'memberships', 'notes', 'forms', 'documents'));
     }
 
     /**
