@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Membership;
 use Illuminate\Http\Request;
 use App\Models\Member;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\URL;
 
 class MembershipController extends Controller
 {
@@ -43,7 +45,8 @@ class MembershipController extends Controller
             $member->save();
         }
 
-        return redirect()->action('App\Http\Controllers\MemberController@show', ['member' => $member]);
+//        return redirect()->action('App\Http\Controllers\MemberController@show', ['member' => $member]);
+        return Redirect::to(URL::previous() . "#membership");
     }
 
     /**
@@ -101,7 +104,7 @@ class MembershipController extends Controller
                 $member->save();
             }
         }
-        
+
         return redirect()->action('App\Http\Controllers\MemberController@show', ['member' => $member]);
     }
 }

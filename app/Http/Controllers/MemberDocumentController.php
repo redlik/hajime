@@ -45,7 +45,11 @@ class MemberDocumentController extends Controller
         $document->link = $fileName;
         $document->save();
 
-        return Redirect::to(URL::previous()."#documents");
+        if ($document->type === 'Form') {
+            return Redirect::to(URL::previous()."#forms");
+        } else {
+            return Redirect::to(URL::previous()."#documents");
+        }
     }
 
     /**
@@ -91,9 +95,15 @@ class MemberDocumentController extends Controller
     public function destroy($id)
     {
         $document = MemberDocument::where('id', $id)->first();
+        $type = $document->type;
         File::delete(public_path('storage/attachments/'.$document->link));
         $document->delete();
 
-        return Redirect::to(URL::previous()."#documents");
+        if ($type === 'Document') {
+            return Redirect::to(URL::previous() . "#documents");
+        }
+        else {
+            return Redirect::to(URL::previous()."#forms");
+            }
     }
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Grade;
 use App\Models\Member;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\URL;
 
 class GradeController extends Controller
 {
@@ -39,7 +41,7 @@ class GradeController extends Controller
         $grade = Grade::create($request->all());
         $member = Member::find($request->input('member_id'));
 
-        return redirect()->action('App\Http\Controllers\MemberController@show', ['member' => $member]);
+        return Redirect::to(URL::previous() . "#grading");
     }
 
     /**
@@ -86,7 +88,7 @@ class GradeController extends Controller
     {
         $member = member::find($request->input('member_id'));
         $grade = Grade::where('id', $grade->id)->delete();
-        
+
         return redirect()->action('App\Http\Controllers\MemberController@show', ['member' => $member]);
     }
 }
