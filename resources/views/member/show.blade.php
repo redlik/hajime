@@ -340,8 +340,230 @@
                         </table>
                     </div>
                 </div>
-    </div>
+
+            <!-- Forms Section -->
+            <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
+                <h4 class="font-bold text-xl mb-4" id="forms">Club forms:</h4>
+                <div>
+                    <button class="button-judo" onclick="showForm()">+ Add new form</button>
+                </div>
+                <div class="w-full my-4 hidden bg-gray-100 p-2 rounded" id="addForm">
+                    <form action="{{ route('memberdoc.store') }}" method="POST" role="form" class="w-full flex
+                    flex-wrap
+                    justify-between" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" name="member_id" value="{{ $member->id }}">
+                        <input type="hidden" name="type" value="Form">
+                        <div class="flex flex-wrap w-1/2 mr-4">
+                            <label class="inline-block text-gray-600 text-sm font-bold mr-4 py-2" for="title">
+                                Title
+                            </label>
+                            <input
+                                class="shadow appearance-none border w-5/6 rounded px-3 text-grey-darker"
+                                id="title" name="title" type="text" required>
+                        </div>
+                        <div class="flex flex-wrap align-middle">
+                            <label class="inline-block text-gray-600 text-sm font-bold mr-4 py-2" for="link">
+                                Attachment
+                            </label>
+                            <input class="py-2" id="link" name="link" type="file" required>
+                        </div>
+                        <div class="mr-8 py-2">
+                            <input type="submit" value="Submit" class="button-judo">
+                        </div>
+                        <div class="mr-8 py-2">
+                            <button class="button-danger" onclick="hideForm()">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="w-full mt-8">
+                    <table class="min-w-full table leading-normal mt-8">
+                        <thead>
+                        <tr>
+                            <th
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                Title
+                            </th>
+                            <th
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                Created by
+                            </th>
+                            <th
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                Link
+                            </th>
+                            <th
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                Created on
+                            </th>
+                            <th
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                Operations
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ($forms as $form)
+                            <tr>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    <div class="flex items-center">
+                                        <div class="ml-3">
+                                            <p class="text-gray-900 whitespace-no-wrap font-bold">
+                                                {{ $form->title }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    Author
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    <a href="{{ asset('/storage/attachments/'.$form->link) }}" target="_blank">
+                                        <i class="fas fa-file-pdf text-2xl text-red-700"></i>
+                                    </a>
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    {{ $form->created_at->format('d-m-Y') }}
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm flex flex-wrap">
+                                    <form action="{{ route('memberdoc.destroy', $form->id) }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="DELETE" />
+                                        <button type="submit" class="text-red-600 hover:text-red-300 whitespace-no-wrap ml-3" onclick="return confirm('Do you want to delete the record completely?')"><i class="far fa-trash-alt"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Documents Section -->
+            <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
+                    <h4 class="font-bold text-xl mb-4" id="documents">Club Documents:</h4>
+                    <div>
+                        <button class="button-judo" onclick="showDocForm()">+ Add new document</button>
+
+                    </div>
+                    <div class="w-full my-4 hidden bg-gray-100 p-2 rounded shadow" id="addDocument">
+                        <form action="{{ route('memberdoc.store') }}" method="POST" role="form" class="w-full flex
+                        flex-wrap
+                        justify-between" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" name="member_id" value="{{ $member->id }}">
+                            <input type="hidden" name="type" value="Document">
+                            <div class="flex flex-wrap w-1/2 mr-4">
+                                <label class="inline-block text-gray-600 text-sm font-bold mr-4 py-2" for="title">
+                                    Title
+                                </label>
+                                <input
+                                    class="shadow appearance-none border w-5/6 rounded px-3 text-grey-darker"
+                                    id="title" name="title" type="text" required>
+                            </div>
+                            <div class="flex flex-wrap align-middle">
+                                <label class="inline-block text-gray-600 text-sm font-bold mr-4 py-2" for="link">
+                                    Attachment
+                                </label>
+                                <input class="py-2" id="link" name="link" type="file" required>
+                            </div>
+                            <div class="mr-8 py-2">
+                                <input type="submit" value="Submit" class="button-judo">
+                            </div>
+                            <div class="mr-8 py-2">
+                                <button class="button-danger" onclick="hideDocForm()">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="w-full mt-8">
+                        <table class="min-w-full table leading-normal mt-8">
+                            <thead>
+                            <tr>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Title
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Created by
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Link
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Created on
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Operations
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($documents as $document)
+                                <tr>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <div class="flex items-center">
+                                            <div class="ml-3">
+                                                <p class="text-gray-900 whitespace-no-wrap font-bold">
+                                                    {{ $document->title }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        Author
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <a href="{{ asset('/storage/attachments/'.$document->link) }}" target="_blank">
+                                            <i class="fas fa-file-pdf text-2xl text-red-700"></i>
+                                        </a>
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        {{ $document->created_at->format('d-m-Y') }}
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm flex flex-wrap">
+                                        <form action="{{ route('memberdoc.destroy', $document->id) }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="_method" value="DELETE" />
+                                            <button type="submit" class="text-red-600 hover:text-red-300 whitespace-no-wrap ml-3" onclick="return confirm('Do you want to delete the record completely?')"><i class="far fa-trash-alt"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
     </section>
     </div>
 </main>
+@endsection
+
+
+@section('bottomScripts')
+    <script>
+        function showForm() {
+            let docForm = document.getElementById('addForm');
+            docForm.classList.remove("hidden");
+        }
+        function hideForm() {
+            let docForm = document.getElementById('addForm');
+            docForm.classList.add("hidden");
+        }
+        function showDocForm() {
+            let docForm = document.getElementById('addDocument');
+            docForm.classList.remove("hidden");
+        }
+        function hideDocForm() {
+            let docForm = document.getElementById('addDocument');
+            docForm.classList.add("hidden");
+        }
+    </script>
 @endsection
