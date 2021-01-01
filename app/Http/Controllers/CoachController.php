@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\URL;
 
 class CoachController extends Controller
 {
-    public function addCoach($club) {
-        return view('coach.create', compact('club'));
+    public function addCoach($club_id) {
+        return view('coach.create', compact('club_id'));
     }
 
     public function store(Request $request)

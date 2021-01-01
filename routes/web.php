@@ -49,6 +49,7 @@ Route::resource('memberdoc', MemberDocumentController::class);
 Route::get('clubnote/create/{club}', [ClubnoteController::class, 'createWithClub'])->name('clubnote.create.club');
 Route::get('membernote/create/{club}', [MembernoteController::class, 'createWithmember'])->name('membernote.create.member');
 Route::get('venue/create/{club}', [VenueController::class, 'createWithClub'])->name('venue.create.club');
+Route::get('coach/add/{club}', [CoachController::class, 'addCoach'])->name('coach.addCoach');
 
 
 Route::get('member/create/{club_id?}', [MemberController::class, 'create'])->name('member.createWithClub');
