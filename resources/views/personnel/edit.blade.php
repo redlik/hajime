@@ -45,7 +45,6 @@
                                 <option value="Secretary">Secretary</option>
                                 <option value="Designated Officer">Designated Officer</option>
                                 <option value="Childrens Officer">Childrens Officer</option>
-                                <option value="Coach">Coach</option>
                             </select>
                         </div>
                         <div class="mb-4">

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClubDocumentController;
+use App\Http\Controllers\CoachController;
 use App\Http\Controllers\MemberDocumentController;
 use App\Http\Controllers\MembernoteController;
 use App\Http\Controllers\VolunteerController;
@@ -36,6 +37,7 @@ Route::resource('clubs', ClubController::class);
 
 Route::resource('personnel', PersonnelController::class);
 Route::resource('member', MemberController::class);
+Route::resource('coach', CoachController::class);
 Route::resource('membership', MembershipController::class);
 Route::resource('grade', GradeController::class);
 Route::resource('clubnote', ClubnoteController::class);

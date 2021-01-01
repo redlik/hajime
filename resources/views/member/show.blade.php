@@ -343,7 +343,7 @@
 
             <!-- Forms Section -->
             <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
-                <h4 class="font-bold text-xl mb-4" id="forms">Club forms:</h4>
+                <h4 class="font-bold text-xl mb-4" id="forms">Member forms:</h4>
                 <div>
                     <button class="button-judo" onclick="showForm()">+ Add new form</button>
                 </div>
@@ -442,7 +442,7 @@
 
             <!-- Documents Section -->
             <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
-                    <h4 class="font-bold text-xl mb-4" id="documents">Club Documents:</h4>
+                    <h4 class="font-bold text-xl mb-4" id="documents">Member Documents:</h4>
                     <div>
                         <button class="button-judo" onclick="showDocForm()">+ Add new document</button>
 
