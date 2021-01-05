@@ -300,26 +300,17 @@
                                             <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                                 <div class="flex items-center">
                                                     <div>
-                                                        <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">{{
-                                                                            $coach->coaching_qualification ?? 'Not set'}}</div>
-                                                        @if ( $coach->coaching_date)
-                                                            @if($coach->coaching_date < now())
-                                                                <div class="bg-red-700 text-white rounded-lg py-1
-                                                                                    px-2">{{ $coach->coaching_date }}</div>
-                                                            @else
-                                                                <div class="bg-indigo-100 rounded-lg py-1 px-2">{{
-                                                                                                                               $coach->coaching_date
-                                                                                                                               }}</div>
-                                                            @endif
-                                                        @else
-                                                            <div
-                                                                class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">
-                                                                Not set
-                                                            </div>
-                                                        @endif</div>
+                                                        <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
+                                                            {{$coach->coaching_qualification ?? 'Not set'}}
+                                                        </div>
+                                                        <div class="bg-gray-200 rounded-lg py-1 px-2 text-center">
+                                                            {{ $coach->coaching_date ?? 'Not set'}}
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </td>
-                                            <td class="px-8 py-8 border-b border-gray-200 text-sm flex flex-wrap h-full">
+                                            <td class="px-8 py-12 border-b border-gray-200 text-sm flex flex-wrap
+                                            h-full">
                                                 <a href="{{ route('coach.edit', $coach->id) }}"
                                                    class="text-green-600 font-bold ml-3" title="Edit coach details"><i
                                                         class="far fa-edit"></i></a>

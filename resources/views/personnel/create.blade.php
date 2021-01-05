@@ -62,9 +62,7 @@
                     <div class="w-full border-2 border-gray-300 rounded-xl p-8 flex flex-wrap">
                         <div class="w-full mb-8">
                             <span class="bg-gray-100 p-3 rounded text-gray-500 font-semibold text-sm">All fields in
-                                this section are
-                                optional
-                                so make sure you fill in the correct ones for a specific role.
+                                this section are optional so make sure you fill in the correct ones for a specific role.
                             </span>
                         </div>
                         <div class="w-full md:w-1/2 sm:w-full">
@@ -89,7 +87,7 @@
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="safeguarding_completion">
                                     Safeguarding completion
                                 </label>
-                                <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
+                                <input class="shadow border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                 id="safeguarding_completion" name="safeguarding_completion" type="date"
                                        placeholder="2020-01-01">
                             </div>
@@ -137,9 +135,9 @@
                             </div>
                             <div>
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="coaching_expiry">
-                                    Coaching expiry
+                                    Date attained
                                 </label>
-                                <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
+                                <input class="shadow border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                     id="coaching_date" name="coaching_date" type="date" placeholder="2020-01-01">
                             </div>
                         </div>

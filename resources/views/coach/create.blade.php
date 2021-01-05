@@ -117,7 +117,7 @@
                                 </div>
                                 <div>
                                     <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="coaching_expiry">
-                                        Data attained
+                                        Date attained
                                     </label>
                                     <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                            id="coaching_date" name="coaching_date" type="date" placeholder="2020-01-01">
