@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use App\Models\Club;
 use App\Models\MemberDocument;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\URL;
 
 class MemberController extends Controller
 {
@@ -48,7 +50,8 @@ class MemberController extends Controller
         $club = Club::find($request->input('club_id'));
         $member = Member::create($request->all());
 
-        return redirect()->action('App\Http\Controllers\ClubController@show', ['club' => $club->id]);
+//        return redirect()->action('App\Http\Controllers\ClubController@show', ['club' => $club->id]);
+        return back()->with('message', 'Record Successfully Updated!');
     }
 
     /**

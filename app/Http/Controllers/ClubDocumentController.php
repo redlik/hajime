@@ -46,7 +46,11 @@ class ClubDocumentController extends Controller
         $document->link = $fileName;
         $document->save();
 
-        return Redirect::to(URL::previous()."#documents");
+        if ($document->type === 'Form') {
+            return Redirect::to(URL::previous()."#forms");
+        } else {
+            return Redirect::to(URL::previous()."#documents");
+        }
     }
 
     /**

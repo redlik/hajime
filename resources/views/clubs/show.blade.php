@@ -321,7 +321,7 @@
                                             </td>
                                             <td class="px-8 py-8 border-b border-gray-200 text-sm flex flex-wrap h-full">
                                                 <a href="{{ route('coach.edit', $coach->id) }}"
-                                                   class="text-green-600 font-bold ml-3" title="Edit note"><i
+                                                   class="text-green-600 font-bold ml-3" title="Edit coach details"><i
                                                         class="far fa-edit"></i></a>
                                                 <form action="{{ route('coach.destroy', $coach->id) }}"
                                                       method="POST">
@@ -448,7 +448,8 @@
                                                 </td>
                                                 <td class="px-8 py-8 border-b border-gray-200 text-sm flex flex-wrap h-full">
                                                     <a href="{{ route('volunteer.edit', $volunteer->id) }}"
-                                                       class="text-green-600 font-bold ml-3" title="Edit note"><i
+                                                       class="text-green-600 font-bold ml-3"
+                                                       title="Edit volunteer details"><i
                                                             class="far fa-edit"></i></a>
                                                     <form action="{{ route('volunteer.destroy', $volunteer->id) }}"
                                                           method="POST">
