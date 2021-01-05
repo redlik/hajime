@@ -59,8 +59,8 @@ class MemberController extends Controller
      */
     public function show(Member $member)
     {
-        $grades = Grade::where('member_id', $member->id)->orderby('grade_date', 'desc')->get();
-        $memberships = Membership::where('member_id', $member->id)->get();
+        $grades = Grade::where('member_id', $member->id)->orderBy('grade_date', 'desc')->get();
+        $memberships = Membership::where('member_id', $member->id)->orderBy('expiry_date', 'desc')->get();
         $notes = Membernote::where('member_id', $member->id)->orderBy('created_at', 'desc')->get();
         $forms = MemberDocument::form($member->id)->get();
         $documents = MemberDocument::document($member->id)->get();

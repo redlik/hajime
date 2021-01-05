@@ -50,6 +50,7 @@ Route::get('clubnote/create/{club}', [ClubnoteController::class, 'createWithClub
 Route::get('membernote/create/{club}', [MembernoteController::class, 'createWithmember'])->name('membernote.create.member');
 Route::get('venue/create/{club}', [VenueController::class, 'createWithClub'])->name('venue.create.club');
 Route::get('coach/add/{club}', [CoachController::class, 'addCoach'])->name('coach.addCoach');
+Route::get('club/check-membership/{club}', [ClubController::class, 'checkMemberships'])->name('club.checkMemberships');
 
 
 Route::get('member/create/{club_id?}', [MemberController::class, 'create'])->name('member.createWithClub');

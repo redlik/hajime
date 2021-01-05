@@ -1,14 +1,49 @@
 <div class="container">
+
     <div class="w-full">
-        <div class="w-full flex flex-wrap">
+        <div class="w-full flex flex-wrap items-center">
+            <div class="w-full md:w-1/4">
+                <input type="search" wire:model.debounce.500ms="searchQuery"
+                       class="shadow appearance-none border rounded w-full md:w-3/4 py-2 px-3 text-grey-darker mt-4"
+                       placeholder="Filter by name, number or eircode">
+            </div>
+            <div class="w-full md:w-1/4">
+                <label for="sort">Sort by:</label>
+                <select wire:model="sortby" name="sort" id="sort" class="shadow border rounded w-48
+                py-2
+                px-3
+                text-grey-darker ml-2">
+                    <option value="last_name" selected>Last Name</option>
+                    <option value="number">Memership No</option>
+                </select>
+            </div>
+            <div class="w-full md:w-1/4">
+                <input type="checkbox" wire:model="active" id="showActive" name="showActive" value="1" checked>
+                <label for="showActive">Show only active members</label>
+            </div>
+            <div class="w-full md:w-1/4">
+                <a href="{{ route('club.checkMemberships', ['club' => $club_id]) }}" class="button-judo"> <i
+                        class="fas
+                fa-sync-alt
+                mr-2"></i>
+                    Check
+                    memberships</a>
+            </div>
             <div class="w-full">
+                @if(Session::has('message'))
+                    <p class="bg-green-100 text-green-700 p-6 rounded mb-4">{{ Session::get('message') }}</p>
+                @endif
+            </div>
+            <div class="w-full my-4">
                 {{ $members->links() }}</div>
         </div>
-
-
-        <table class="min-w-full table leading-normal mt-8">
+        <table class="min-w-full table leading-normal">
             <thead>
                 <tr>
+                    <th
+                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        Memb. No
+                    </th>
                     <th
                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                         Name
@@ -19,7 +54,15 @@
                     </th>
                     <th
                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        Membership
+                        Status
+                    </th>
+                    <th
+                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        Membership Type
+                    </th>
+                    <th
+                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        Grade
                     </th>
                     <th
                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
@@ -30,7 +73,10 @@
             <tbody>
                 @foreach ($members as $member)
                 <tr>
-                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                    <td class="px-5 py-5 border-b border-gray-200 text-sm hidden md:block">
+                        <p class="text-gray-900 whitespace-no-wrap">{{ $member->number }}
+                    </td>
+                    <td class="py-5 border-b border-gray-200 text-sm">
                         <div class="flex items-center">
                             <div class="ml-3">
                                 <p class="text-gray-900 whitespace-no-wrap font-bold">
@@ -39,20 +85,33 @@
                             </div>
                         </div>
                     </td>
-                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden md:block">
+                    <td class="px-5 py-5 border-b border-gray-200 text-sm hidden md:block">
                         <p class="text-gray-900 whitespace-no-wrap">{{ $member->age }} years
                     </td>
-                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                    <td class="px-5 py-5 border-b border-gray-200 text-sm">
                         @if ($member->active == true)
                             <span class="p-1 px-2 rounded bg-green-200 text-green-700">Active</span>
                             @else
                             <span class="p-1 px-2 rounded bg-red-200 text-red-700">Inactive</span>
                             @endif
                     </td>
-                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                    <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                        @if($member->membership()->exists())
+                        <p class="text-gray-900">{{ $member->membership->last()->membership_type }}</p>
+                        @endif
+                    </td>
+                    <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                        @if($member->grade()->exists())
+                        <p class="text-gray-900">{{ $member->grade->last()->grade_level }}</p>
+                        @endif
+                    </td>
+
+                    <td class="px-5 py-5 border-b border-gray-200 text-sm">
                         <p class="text-gray-900 whitespace-no-wrap">
-                            <a href="{{ route('member.show', $member) }}" class="text-blue-600 font-bold hover:text-blue-300" title="View club page"><i class="far fa-eye"></i></a>
-                            <a href="{{ route('member.edit', $member) }}" class="text-green-600 font-bold ml-3" title="Edit club details"><i class="far fa-edit"></i></a>
+                            <a href="{{ route('member.show', $member) }}" class="text-blue-600 font-bold
+                            hover:text-blue-300" title="View member details"><i class="far fa-eye"></i></a>
+                            <a href="{{ route('member.edit', $member) }}" class="text-green-600 font-bold ml-3"
+                               title="Edit member details"><i class="far fa-edit"></i></a>
                         </p>
                     </td>
                 </tr>

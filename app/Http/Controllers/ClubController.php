@@ -11,6 +11,7 @@ use App\Models\Venue;
 use App\Models\Volunteer;
 use Illuminate\Http\Request;
 use App\Models\Member;
+use App\Models\Membership;
 use DB;
 
 class ClubController extends Controller
@@ -127,5 +128,19 @@ class ClubController extends Controller
             'Volunteer' => Personnel::volunteer()->where('club_id', $club->id)->first(),
             );
         return $personnel;
+    }
+
+    public function checkMemberships($club) {
+        $members = Member::where('club_id', $club)->where('active', True)->with('membership')->get();
+        foreach ($members as $member) {
+            $memberships = Membership::where('member_id', $member->id)->get();
+            foreach ($memberships as $membership) {
+                if (\Carbon\Carbon::now()->greaterThan($membership->expiry_date)) {
+                    $member->active = 0;
+                    $member->save();
+                }
+            }
+        }
+        return back()->with('message', 'Memberships updated successfully');
     }
 }

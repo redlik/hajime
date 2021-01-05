@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  class MemberDocument extends Model
 {
     use HasFactory;
-    
+
     protected $guarded = [];
 
     public function scopeForm($query, $club) {
@@ -22,4 +22,5 @@ use Illuminate\Database\Eloquent\Model;
     public function scopeDocument($query, $club) {
         return $query->where('type', 'Document')->where('member_id', $club)->orderBy('created_at', 'desc');
     }
+
 }

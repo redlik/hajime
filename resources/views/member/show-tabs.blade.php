@@ -139,9 +139,16 @@
                                         <label for="membership_type"
                                                class="block text-sm text-gray-400 mb-2 font-bold">Membership
                                             type</label>
-                                        <input type="text" name="membership_type" id="membership_type"
-                                               class="shadow appearance-none border rounded w-64 py-2 px-3 text-grey-darker mr-2"
+                                        <select type="text" name="membership_type" id="membership_type"
+                                               class="shadow border rounded w-64 py-2 px-3 text-grey-darker mr-2"
                                                placeholder="Membership type" required>
+                                            <option value="" disabled selected>Select type</option>
+                                            <option value="Under 12 – Junior Membership">Under 12 – Junior Membership</option>
+                                            <option value="Under 18 – Youth Membership">Under 18 – Youth Membership</option>
+                                            <option value="Over 18 – Adult Membership">Over 18 – Adult Membership</option>
+                                            <option value="Student Membership">Student Membership</option>
+                                            <option value="Life Membership">Life Membership</option>
+                                        </select>
                                     </div>
                                     <div>
                                         <label for="join_date" class="block text-sm text-gray-400 mb-2 font-bold">Joining

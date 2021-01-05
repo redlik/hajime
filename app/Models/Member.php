@@ -28,4 +28,8 @@ class Member extends Model
     {
         return Carbon::parse($this->attributes['dob'])->age;
     }
+
+    public function scopeActive($query) {
+        return $query->where('active', 1);
+    }
 }
