@@ -19,4 +19,9 @@ class Club extends Model
     public function member() {
         return $this->hasMany('App\Models\Member');
     }
+
+    public function activeMembers()
+    {
+        return $this->member->where('active', 1)->count();
+    }
 }

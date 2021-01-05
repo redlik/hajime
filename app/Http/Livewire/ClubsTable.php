@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Club;
+USE App\Models\Member;
 
 class ClubsTable extends Component
 {
@@ -24,6 +25,7 @@ class ClubsTable extends Component
         })
         ->orderBy('name', 'asc')
         ->paginate(25);
+
 
         return view('livewire.clubs-table', [
             'clubs' => $clubs,
