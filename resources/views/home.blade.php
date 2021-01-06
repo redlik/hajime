@@ -34,7 +34,8 @@
                             </label>
 
                             <input id="email" type="email"
-                                class="form-input w-full @error('email') border-red-500 @enderror" name="email"
+                                class="w-full rounded border-gray-300 shadow @error('email') border-red-500 @enderror"
+                                   name="email"
                                 value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                             @error('email')
@@ -50,7 +51,8 @@
                             </label>
 
                             <input id="password" type="password"
-                                class="form-input w-full @error('password') border-red-500 @enderror" name="password"
+                                class="w-full rounded border-gray-300 shadow @error('password') border-red-500
+@enderror" name="password"
                                 required>
 
                             @error('password')
@@ -62,13 +64,16 @@
 
                         <div class="flex items-center">
                             <label class="inline-flex items-center text-sm text-gray-700" for="remember">
-                                <input type="checkbox" name="remember" id="remember" class="form-checkbox"
+                                <input type="checkbox" name="remember" id="remember" class="rounded border-judo-300
+                                text-judo-600 shadow-sm focus:border-judo-300 focus:ring focus:ring-judo-200
+                                focus:ring-opacity-50"
                                     {{ old('remember') ? 'checked' : '' }}>
                                 <span class="ml-2">{{ __('Remember Me') }}</span>
                             </label>
 
                             @if (Route::has('password.request'))
-                            <a class="text-sm text-green-500 hover:text-green-700 whitespace-no-wrap no-underline hover:underline ml-auto"
+                            <a class="text-sm text-judo-600 hover:text-judo-800 whitespace-no-wrap no-underline
+                            hover:underline ml-auto"
                                 href="{{ route('password.request') }}">
                                 {{ __('Forgot Your Password?') }}
                             </a>

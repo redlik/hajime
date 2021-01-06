@@ -28,7 +28,7 @@
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="role">
                                 Role
                             </label>
-                            <select name="role" id="role" class="shadow border rounded w-64 py-2 px-3
+                            <select name="role" id="role" class="shadow border-gray-300 rounded w-64 py-2 px-3
                             text-grey-darker" required>
                                 <option value="" selected disabled>Select role</option>
                                 <option value="Head Coach">Head Coach</option>
@@ -39,23 +39,23 @@
                         </div>
                         <div class="mb-4">
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="name">
-                                Person's Name
+                                Full Name
                             </label>
-                            <input class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                            <input class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                 id="name" name="name" type="text" placeholder="Name" required>
                         </div>
                         <div class="mb-4">
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="phone">
                                 Phone
                             </label>
-                            <input class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                            <input class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                 id="phone" name="phone" type="text" placeholder="Phone">
                         </div>
                         <div>
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="email">
                                 Email
                             </label>
-                            <input class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                            <input class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                 id="email" name="email" type="email" placeholder="Email">
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="vetting_completion">
                                     Vetting completion
                                 </label>
-                                <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
+                                <input class="shadow border-gray-300 rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                     id="vetting_completion" name="vetting_completion" type="date"
                                        placeholder="2020-01-01">
                             </div>
@@ -79,7 +79,7 @@
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="vetting_expiry">
                                     Vetting expiry
                                 </label>
-                                <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
+                                <input class="shadow border-gray-300 rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                     id="vetting_expiry" name="vetting_expiry" type="date" placeholder="2020-01-01">
                             </div>
                             <h4 class="w-auto text-gray-500 text-xl font-bold mb-6 mt-16">Safeguarding information:</h4>
@@ -87,7 +87,7 @@
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="safeguarding_completion">
                                     Safeguarding completion
                                 </label>
-                                <input class="shadow border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
+                                <input class="shadow border-gray-300 rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                 id="safeguarding_completion" name="safeguarding_completion" type="date"
                                        placeholder="2020-01-01">
                             </div>
@@ -95,7 +95,7 @@
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="safeguarding_expiry">
                                     Safeguarding expiry
                                 </label>
-                                <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
+                                <input class="shadow border-gray-300 rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                     id="safeguarding_expiry" name="safeguarding_expiry" type="date"
                                        placeholder="2020-01-01">
                             </div>
@@ -106,14 +106,14 @@
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="first_aid_completion">
                                     First Aid completion
                                 </label>
-                                <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
+                                <input class="shadow border-gray-300 rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                     id="first_aid_completion" name="first_aid_completion" type="date" placeholder="2020-01-01">
                             </div>
                             <div>
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="first_aid_expiry">
                                     First Aid expiry
                                 </label>
-                                <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
+                                <input class="shadow border-gray-300 rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                     id="first_aid_expiry" name="first_aid_expiry" type="date" placeholder="2020-01-01">
                             </div>
                             <h4 class="w-auto text-gray-500 text-xl font-bold mb-6 mt-16">Coaching information:</h4>
@@ -121,7 +121,7 @@
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="coaching_completion">
                                     Coaching Qualification
                                 </label>
-                                <select name="coaching_qualification" id="coaching_qualification" class="shadow border rounded w-64 py-2 px-3 text-grey-darker">
+                                <select name="coaching_qualification" id="coaching_qualification" class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker">
                                     <option value="" disabled selected>Select level of qualifications</option>
                                     <option value="Level 1">Level 1</option>
                                     <option value="Level 1">Level 2</option>
@@ -137,7 +137,7 @@
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="coaching_expiry">
                                     Date attained
                                 </label>
-                                <input class="shadow border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
+                                <input class="shadow border-gray-300 rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                     id="coaching_date" name="coaching_date" type="date" placeholder="2020-01-01">
                             </div>
                         </div>
