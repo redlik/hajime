@@ -125,11 +125,13 @@
                                                     <p class="text-gray-900 whitespace-no-wrap font-bold">
                                                         {{ $venue->name }}
                                                         <br/>
-                                                        <span class="text-sm text-gray-600 font-medium">{{ $venue->address1
-                                                }} {{
-                                                $venue->address2 }} {{ $venue->city }} {{ ucfirst($venue->county) }} {{
-                                                strtoupper($venue->eircode)
-                                                }}</span>
+                                                        <span class="text-sm text-gray-600 font-medium">
+                                                            {{ $venue->address1 }}
+                                                            {{ $venue->address2 }}
+                                                            {{ $venue->city }}
+                                                            {{ ucfirst ($venue->county) }}
+                                                            {{ strtoupper($venue->eircode) }}
+                                                        </span>
                                                     </p>
                                                 </div>
                                             </div>
@@ -171,12 +173,471 @@
                     <div class="w-full px-6 py-2" x-show="openTab === '#personnel'">
                         <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
                             <h4 class="font-bold text-xl text-black mb-4" id="personnel">Club Personnel:</h4>
-                            <div class="w-full mb-6">
-                                <a href="{{ route('club.addPersonnel', [$club->id])}}">
-                                    <button class="button-judo">+ Add new person</button>
-                                </a>
+                            <div class="w-full my-4">
+                                <table class="min-w-full table leading-normal">
+                                    <thead>
+                                    <tr>
+                                        <th
+                                            class="w-48 pl-5 py-3 border-b-2 border-gray-200 bg-gray-100
+                                            text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            Role
+                                        </th>
+                                        <th
+                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100
+                                            text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            Name
+                                        </th>
+                                        <th
+                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100
+                                            text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            Safeguarding
+                                        </th>
+                                        <th
+                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100
+                                            text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            Vetting
+                                        </th>
+                                        <th
+                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100
+                                            text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            First Aid
+                                        </th>
+                                        <th
+                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100
+                                            text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            Qualifications
+                                        </th>
+                                        <th
+                                            class="w-24 py-3 border-b-2 border-gray-200 bg-gray-100
+                                            text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            Actions
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="px-5 py-5 border-b border-gray-200 font-bold
+                                                text-judo-700">
+                                                Head Coach
+                                            </td>
+                                            @if(!$headCoach)
+                                            <td class="px-5 py-5 border-b border-gray-200">
+                                                <a href="{{ route('club.addPersonnel', [$club->id, 'Head Coach'])}}"
+                                                   class="font-medium text-judo-700">+ Add new Headcoach</a>
+                                            </td>
+                                            @else
+                                                <td class="px-5 py-5 border-b border-gray-200
+                                                text-gray-700 font-bold">
+                                                    {{ $headCoach->name }}
+                                                </td>
+                                                <td class="px-5 py-5 border-b border-gray-200">
+                                                    <div class="flex items-center">
+                                                        <div>
+                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
+                                                                {{ $headCoach->safeguarding_completion ?? 'Not set' }}</div>
+                                                            @if ( $headCoach->safeguarding_expiry)
+                                                                @if($headCoach->safeguarding_expiry < now())
+                                                                    <div class="bg-red-700 text-white rounded-lg py-1
+                                                                                px-2">{{ $headCoach->safeguarding_expiry }}</div>
+                                                                @else
+                                                                    <div class="bg-indigo-100 rounded-lg py-1 px-2">
+                                                                        {{ $headCoach->safeguarding_expiry }}
+                                                                    </div>
+                                                                @endif
+                                                            @else
+                                                                <div
+                                                                    class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">
+                                                                    Not set
+                                                                </div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="px-5 py-5 border-b border-gray-200">
+                                                    <div class="flex items-center">
+                                                        <div>
+                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
+                                                                {{ $headCoach->vetting_completion ?? 'Not set' }}</div>
+                                                            @if ( $headCoach->vetting_expiry)
+                                                                @if($headCoach->vetting_expiry < now())
+                                                                    <div class="bg-red-700 text-white rounded-lg py-1
+                                                                                px-2">{{ $headCoach->vetting_expiry }}</div>
+                                                                @else
+                                                                    <div class="bg-indigo-100 rounded-lg py-1 px-2">
+                                                                        {{ $headCoach->vetting_expiry }}
+                                                                    </div>
+                                                                @endif
+                                                            @else
+                                                                <div
+                                                                    class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">
+                                                                    Not set
+                                                                </div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="px-5 py-5 border-b border-gray-200">
+                                                    <div class="flex items-center">
+                                                        <div>
+                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
+                                                                {{ $headCoach->first_aid_completion ?? 'Not set' }}</div>
+                                                            @if ( $headCoach->first_aid_expiry)
+                                                                @if($headCoach->first_aid_expiry < now())
+                                                                    <div class="bg-red-700 text-white rounded-lg py-1
+                                                                                px-2">{{ $headCoach->first_aid_expiry }}</div>
+                                                                @else
+                                                                    <div class="bg-indigo-100 rounded-lg py-1 px-2">
+                                                                        {{ $headCoach->first_aid_expiry }}
+                                                                    </div>
+                                                                @endif
+                                                            @else
+                                                                <div
+                                                                    class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">
+                                                                    Not set
+                                                                </div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                                    <div class="flex items-center">
+                                                        <div>
+                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
+                                                                {{$headCoach->coaching_qualification ?? 'Not set'}}
+                                                            </div>
+                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 text-center">
+                                                                {{ $headCoach->coaching_date ?? 'Not set'}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="py-12 border-b border-gray-200 text-sm flex flex-wrap h-full">
+                                                    <a href="{{ route('personnel.edit', $headCoach->id) }}"
+                                                       class="text-green-600 font-bold ml-3" title="Edit details"><i
+                                                            class="far fa-edit"></i></a>
+                                                    <form action="{{ route('personnel.destroy', $headCoach->id) }}"
+                                                          method="POST">
+                                                        @csrf
+                                                        <input type="hidden" name="_method" value="DELETE"/>
+                                                        <button type="submit"
+                                                                class="text-red-600 hover:text-red-300 whitespace-no-wrap ml-3"
+                                                                onclick="return confirm('Do you want to delete the record completely?')">
+                                                            <i class="far fa-trash-alt"></i></button>
+                                                    </form>
+                                                </td>
+                                            @endif
+                                        </tr>
+                                        <tr><td class="px-5 py-5 border-b border-gray-200 font-bold
+                                                text-judo-700">
+                                                Secretary
+                                            </td>
+                                            @if(!$secretary)
+                                            <td colspan="6" class="px-5 py-5 border-b border-gray-200">
+                                                <a href="{{ route('club.addPersonnel', [$club->id, 'Secretary'])}}"
+                                                   class="font-medium text-judo-700">+ Add new Secretary</a>
+                                            </td>
+                                            @else
+                                                <td class="px-5 py-5 border-b border-gray-200 text-gray-700 font-bold">
+                                                    {{ $secretary->name }}
+                                                </td>
+                                                <td class="px-5 py-5 border-b border-gray-200">
+                                                    <div class="flex items-center">
+                                                        <div>
+                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
+                                                                {{ $secretary->safeguarding_completion ?? 'Not set' }}</div>
+                                                            @if ( $secretary->safeguarding_expiry)
+                                                                @if($secretary->safeguarding_expiry < now())
+                                                                    <div class="bg-red-700 text-white rounded-lg py-1
+                                                                                px-2">{{ $secretary->safeguarding_expiry }}</div>
+                                                                @else
+                                                                    <div class="bg-indigo-100 rounded-lg py-1 px-2">
+                                                                        {{ $secretary->safeguarding_expiry }}
+                                                                    </div>
+                                                                @endif
+                                                            @else
+                                                                <div
+                                                                    class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">
+                                                                    Not set
+                                                                </div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="px-5 py-5 border-b border-gray-200">
+                                                    <div class="flex items-center">
+                                                        <div>
+                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
+                                                                {{ $secretary->vetting_completion ?? 'Not set' }}</div>
+                                                            @if ( $secretary->vetting_expiry)
+                                                                @if($secretary->vetting_expiry < now())
+                                                                    <div class="bg-red-700 text-white rounded-lg py-1
+                                                                                px-2">{{ $secretary->vetting_expiry }}</div>
+                                                                @else
+                                                                    <div class="bg-indigo-100 rounded-lg py-1 px-2">
+                                                                        {{ $secretary->vetting_expiry }}
+                                                                    </div>
+                                                                @endif
+                                                            @else
+                                                                <div
+                                                                    class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">
+                                                                    Not set
+                                                                </div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="px-5 py-5 border-b border-gray-200">
+
+                                                </td>
+                                                <td class="px-5 py-5 border-b border-gray-200 text-sm">
+
+                                                </td>
+                                                <td class="py-12 border-b border-gray-200 text-sm flex flex-wrap h-full">
+                                                    <a href="{{ route('personnel.edit', $secretary->id) }}"
+                                                       class="text-green-600 font-bold ml-3" title="Edit details"><i
+                                                            class="far fa-edit"></i></a>
+                                                    <form action="{{ route('personnel.destroy', $secretary->id) }}"
+                                                          method="POST">
+                                                        @csrf
+                                                        <input type="hidden" name="_method" value="DELETE"/>
+                                                        <button type="submit"
+                                                                class="text-red-600 hover:text-red-300 whitespace-no-wrap ml-3"
+                                                                onclick="return confirm('Do you want to delete the record completely?')">
+                                                            <i class="far fa-trash-alt"></i></button>
+                                                    </form>
+                                                </td>
+                                            @endif
+                                        </tr>
+                                        <tr>
+                                            <td class="px-5 py-5 border-b border-gray-200 font-bold
+                                                text-judo-700">
+                                                Designated Officer
+                                            </td>
+                                            @if(!$designated)
+                                            <td colspan="6" class="px-5 py-5 border-b border-gray-200">
+                                                <a href="{{ route('club.addPersonnel',
+                                                            [$club->id, 'Designated Officer'])}}"
+                                                   class="font-medium text-judo-700">+ Add new Designated
+                                                    Officer</a>
+                                            </td>
+                                            @else
+                                                <td class="px-5 py-5 border-b border-gray-200 text-gray-700 font-bold">
+                                                    {{ $designated->name }}
+                                                </td>
+                                                <td class="px-5 py-5 border-b border-gray-200">
+                                                    <div class="flex items-center">
+                                                        <div>
+                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
+                                                                {{ $designated->safeguarding_completion ?? 'Not set' }}</div>
+                                                            @if ( $designated->safeguarding_expiry)
+                                                                @if($designated->safeguarding_expiry < now())
+                                                                    <div class="bg-red-700 text-white rounded-lg py-1
+                                                                                px-2">{{ $designated->safeguarding_expiry }}</div>
+                                                                @else
+                                                                    <div class="bg-indigo-100 rounded-lg py-1 px-2">
+                                                                        {{ $designated->safeguarding_expiry }}
+                                                                    </div>
+                                                                @endif
+                                                            @else
+                                                                <div
+                                                                    class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">
+                                                                    Not set
+                                                                </div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="px-5 py-5 border-b border-gray-200">
+                                                    <div class="flex items-center">
+                                                        <div>
+                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
+                                                                {{ $designated->vetting_completion ?? 'Not set' }}</div>
+                                                            @if ( $designated->vetting_expiry)
+                                                                @if($designated->vetting_expiry < now())
+                                                                    <div class="bg-red-700 text-white rounded-lg py-1
+                                                                                px-2">{{ $designated->vetting_expiry }}</div>
+                                                                @else
+                                                                    <div class="bg-indigo-100 rounded-lg py-1 px-2">
+                                                                        {{ $designated->vetting_expiry }}
+                                                                    </div>
+                                                                @endif
+                                                            @else
+                                                                <div
+                                                                    class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">
+                                                                    Not set
+                                                                </div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="px-5 py-5 border-b border-gray-200">
+                                                    <div class="flex items-center">
+                                                        <div>
+                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
+                                                                {{ $designated->first_aid_completion ?? 'Not set' }}</div>
+                                                            @if ( $designated->first_aid_expiry)
+                                                                @if($designated->first_aid_expiry < now())
+                                                                    <div class="bg-red-700 text-white rounded-lg py-1
+                                                                                px-2">{{ $designated->first_aid_expiry }}</div>
+                                                                @else
+                                                                    <div class="bg-indigo-100 rounded-lg py-1 px-2">
+                                                                        {{ $designated->first_aid_expiry }}
+                                                                    </div>
+                                                                @endif
+                                                            @else
+                                                                <div
+                                                                    class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">
+                                                                    Not set
+                                                                </div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                                    <div class="flex items-center">
+                                                        <div>
+                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
+                                                                {{$designated->coaching_qualification ?? 'Not set'}}
+                                                            </div>
+                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 text-center">
+                                                                {{ $designated->coaching_date ?? 'Not set'}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="py-12 border-b border-gray-200 text-sm flex flex-wrap h-full">
+                                                    <a href="{{ route('personnel.edit', $designated->id) }}"
+                                                       class="text-green-600 font-bold ml-3" title="Edit details"><i
+                                                            class="far fa-edit"></i></a>
+                                                    <form action="{{ route('personnel.destroy', $designated->id) }}"
+                                                          method="POST">
+                                                        @csrf
+                                                        <input type="hidden" name="_method" value="DELETE"/>
+                                                        <button type="submit"
+                                                                class="text-red-600 hover:text-red-300 whitespace-no-wrap ml-3"
+                                                                onclick="return confirm('Do you want to delete the record completely?')">
+                                                            <i class="far fa-trash-alt"></i></button>
+                                                    </form>
+                                                </td>
+                                            @endif
+                                        </tr>
+                                        <tr>
+                                            <td class="px-5 py-5 border-b border-gray-200 font-bold
+                                                text-judo-700">
+                                                Children's Officer
+                                            </td>
+                                            @if(!$childrens)
+                                            <td colspan="6" class="px-5 py-5 border-b border-gray-200">
+                                                <a href="{{ route('club.addPersonnel', [$club->id, 'Childrens Officer'])
+                                                }}"
+                                                   class="font-medium text-judo-700">+ Add new Children's
+                                                    Officer</a>
+                                            </td>
+                                            @else
+                                                <td class="px-5 py-5 border-b border-gray-200 text-gray-700 font-bold">
+                                                    {{ $childrens->name }}
+                                                </td>
+                                                <td class="px-5 py-5 border-b border-gray-200">
+                                                    <div class="flex items-center">
+                                                        <div>
+                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
+                                                                {{ $childrens->safeguarding_completion ?? 'Not set' }}</div>
+                                                            @if ( $childrens->safeguarding_expiry)
+                                                                @if($childrens->safeguarding_expiry < now())
+                                                                    <div class="bg-red-700 text-white rounded-lg py-1
+                                                                                px-2">{{ $childrens->safeguarding_expiry }}</div>
+                                                                @else
+                                                                    <div class="bg-indigo-100 rounded-lg py-1 px-2">
+                                                                        {{ $childrens->safeguarding_expiry }}
+                                                                    </div>
+                                                                @endif
+                                                            @else
+                                                                <div
+                                                                    class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">
+                                                                    Not set
+                                                                </div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="px-5 py-5 border-b border-gray-200">
+                                                    <div class="flex items-center">
+                                                        <div>
+                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
+                                                                {{ $childrens->vetting_completion ?? 'Not set' }}</div>
+                                                            @if ( $childrens->vetting_expiry)
+                                                                @if($childrens->vetting_expiry < now())
+                                                                    <div class="bg-red-700 text-white rounded-lg py-1
+                                                                                px-2">{{ $childrens->vetting_expiry }}</div>
+                                                                @else
+                                                                    <div class="bg-indigo-100 rounded-lg py-1 px-2">
+                                                                        {{ $childrens->vetting_expiry }}
+                                                                    </div>
+                                                                @endif
+                                                            @else
+                                                                <div
+                                                                    class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">
+                                                                    Not set
+                                                                </div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="px-5 py-5 border-b border-gray-200">
+                                                    <div class="flex items-center">
+                                                        <div>
+                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
+                                                                {{ $childrens->first_aid_completion ?? 'Not set' }}</div>
+                                                            @if ( $childrens->first_aid_expiry)
+                                                                @if($childrens->first_aid_expiry < now())
+                                                                    <div class="bg-red-700 text-white rounded-lg py-1
+                                                                                px-2">{{ $childrens->first_aid_expiry }}</div>
+                                                                @else
+                                                                    <div class="bg-indigo-100 rounded-lg py-1 px-2">
+                                                                        {{ $childrens->first_aid_expiry }}
+                                                                    </div>
+                                                                @endif
+                                                            @else
+                                                                <div
+                                                                    class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">
+                                                                    Not set
+                                                                </div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                                    <div class="flex items-center">
+                                                        <div>
+                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
+                                                                {{$childrens->coaching_qualification ?? 'Not set'}}
+                                                            </div>
+                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 text-center">
+                                                                {{ $childrens->coaching_date ?? 'Not set'}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="py-12 border-b border-gray-200 text-sm flex flex-wrap h-full">
+                                                    <a href="{{ route('personnel.edit', $childrens->id) }}"
+                                                       class="text-green-600 font-bold ml-3" title="Edit details"><i
+                                                            class="far fa-edit"></i></a>
+                                                    <form action="{{ route('personnel.destroy', $childrens->id) }}"
+                                                          method="POST">
+                                                        @csrf
+                                                        <input type="hidden" name="_method" value="DELETE"/>
+                                                        <button type="submit"
+                                                                class="text-red-600 hover:text-red-300 whitespace-no-wrap ml-3"
+                                                                onclick="return confirm('Do you want to delete the record completely?')">
+                                                            <i class="far fa-trash-alt"></i></button>
+                                                    </form>
+                                                </td>
+                                            @endif
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-                            <div class="w-full mt-4">
+                            <div class="w-full mt-12">
                                 <h4 class="font-bold text-xl text-black mb-4" id="volunteers">Coaches:</h4>
                                 <a href="{{ route('coach.addCoach', [$club->id])}}">
                                     <button class="button-judo">+ Add new Coach</button>
@@ -185,27 +646,33 @@
                                     <thead>
                                     <tr>
                                         <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100
+                                            text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                             Name
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100
+                                            text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                             Safeguarding
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100
+                                            text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                             Vetting
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100
+                                            text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                             First Aid
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100
+                                            text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                             Qualifications
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100
+                                            text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                             Actions
                                         </th>
                                     </tr>
@@ -245,8 +712,7 @@
                                                         @else
                                                             <div
                                                                 class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">
-                                                                Not
-                                                                set
+                                                                Not set
                                                             </div>
                                                         @endif
                                                     </div>

@@ -28,9 +28,9 @@ class PersonnelController extends Controller
         echo("Yollo!");
     }
 
-    public function addPersonnel($club) {
+    public function addPersonnel($club, $role) {
 
-        return view('personnel.create', compact('club'));
+        return view('personnel.create', compact('club', 'role'));
 
     }
     /**

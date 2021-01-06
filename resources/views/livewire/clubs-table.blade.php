@@ -2,7 +2,8 @@
     <div class="w-full">
         <div class="w-full flex flex-wrap">
             <div class="w-full md:w-1/2">
-                <input type="search" wire:model.debounce.500ms="searchQuery" class="shadow appearance-none border rounded w-full md:w-64 py-2 px-3 text-grey-darker mt-4" placeholder="Filter by name"></div>
+                <input type="search" wire:model.debounce.500ms="searchQuery" class="shadow border-gray-300 rounded
+                w-full md:w-64 py-2 px-3 text-grey-darker mt-4" placeholder="Filter by name"></div>
             <div class="w-full md:w-1/2">
                 {{ $clubs->links() }}</div>
         </div>
