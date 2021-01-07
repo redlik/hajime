@@ -7,7 +7,7 @@
         <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
 
             <header class="font-semibold bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
-                Add new club panel
+                Add new club
             </header>
 
             <div class="w-full p-6">
@@ -27,14 +27,15 @@
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="name">
                                 Club Name
                             </label>
-                            <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-grey-darker"
+                            <input class="shadow border-gray-300 rounded w-1/2 py-2 px-3 text-grey-darker"
                                 id="name" name="name" type="text" placeholder="Club name">
                         </div>
                         <div>
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="type">
                                 Club Type
                             </label>
-                            <select class="shadow border rounded w-64 py-2 px-3 text-grey-darker" id="type" name="type" type="text"
+                            <select class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker" id="type"
+                                    name="type" type="text"
                                 placeholder="Club type">
                                 <option value="" disabled selected>Select club type</option>
                                 <option value="ordinary club">Ordinary club</option>
@@ -48,28 +49,29 @@
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="address1">
                                 Address Line 1
                             </label>
-                            <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-grey-darker"
+                            <input class="shadow border-gray-300 rounded w-1/2 py-2 px-3 text-grey-darker"
                                 id="address1" name="address1" type="text" placeholder="Address Line 1">
                         </div>
                         <div class="mb-4">
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="address2">
                                 Address Line 2
                             </label>
-                            <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-grey-darker"
+                            <input class="shadow border-gray-300 rounded w-1/2 py-2 px-3 text-grey-darker"
                                 id="address2" name="address2" type="text" placeholder="Address Line 2">
                         </div>
                         <div class="mb-4">
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="city">
                                 Town / City
                             </label>
-                            <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-grey-darker"
+                            <input class="shadow border-gray-300 rounded w-1/2 py-2 px-3 text-grey-darker"
                                 id="city" name="city" type="text" placeholder="Town/City">
                         </div>
                         <div class="mb-4">
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="county">
                                 County
                             </label>
-                            <select class="shadow border rounded w-64 py-2 px-3 text-grey-darker" id="county" name="county" type="text"
+                            <select class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker" id="county"
+                                    name="county" type="text"
                                 placeholder="County">
                                 <option value="" disabled selected>Select county</option>
                                 <option value="antrim">Antrim</option>
@@ -110,7 +112,7 @@
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="province">
                                 Province
                             </label>
-                            <select class="shadow border rounded w-64 py-2 px-3 text-grey-darker" id="province"
+                            <select class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker" id="province"
                                 type="text" placeholder="Province" name="province">
                                 <option value="" disabled selected>Select province</option>
                                 <option value="connaught">Connaught</option>
@@ -123,7 +125,7 @@
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="eircode">
                                 Eircode / Postcode
                             </label>
-                            <input class="shadow appearance-none border rounded w-64 py-2 px-3 text-grey-darker"
+                            <input class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker"
                                 id="eircode" name="eircode" type="text" placeholder="Eircode / Post Code">
                         </div>
                     </div>
@@ -132,28 +134,28 @@
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="phone">
                                 Telephone
                             </label>
-                            <input class="shadow appearance-none border rounded w-64 py-2 px-3 text-grey-darker"
+                            <input class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker"
                                 id="phone" name="phone" type="text" placeholder="Telephone">
                         </div>
                         <div class="mb-4">
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="email">
                                 Email
                             </label>
-                            <input class="shadow appearance-none border rounded w-64 py-2 px-3 text-grey-darker"
+                            <input class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker"
                                 id="email" name="email" type="email" placeholder="Email">
                         </div>
                         <div class="mb-4">
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="website">
                                 Website
                             </label>
-                            <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-grey-darker"
+                            <input class="shadow border-gray-300 rounded w-1/2 py-2 px-3 text-grey-darker"
                                 id="website" name="website" type="text" placeholder="Website">
                         </div>
                         <div>
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="facebook">
                                 Facebook
                             </label>
-                            <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-grey-darker"
+                            <input class="shadow border-gray-300 rounded w-1/2 py-2 px-3 text-grey-darker"
                                 id="facebook" name="facebook" type="text" placeholder="Facebook page">
                         </div>
                     </div>
