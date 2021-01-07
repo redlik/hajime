@@ -70,7 +70,14 @@
                                 <p class="mb-2">{{ ucfirst($club->city) }}</p>
                                 <p class="mb-2">{{ ucfirst($club->county) }}</p>
                                 <p class="mb-2">{{ ucfirst($club->province) }}</p>
-                                <p class="mb-2">{{ strtoupper($club->eircode) }}</p>
+                                <p class="mb-8">{{ strtoupper($club->eircode) }}</p>
+                                <div>
+                                    <h4 class="font-bold text-xl text-black mb-4" id="venues">Correspondence:</h4>
+                                    <p class="mb-2">Main postal address: <span class="font-bold">{{ $club->postal
+                                    ?? 'Not set'}}</span></p>
+                                    <p class="mb-2">Main email contact: <span class="font-bold">{{ $club->correspondence
+                                    ?? 'Not set'}}</span></p>
+                                </div>
                             </div>
                             <div class="w-full md:w-1/2 sm:w-full">
                                 <h4 class="font-bold text-xl text-black mb-4">Contact details:</h4>
@@ -90,6 +97,7 @@
                                     <div class="w-24 inline-block">Facebook:</div>
                                     <div class="w-auto inline-block font-bold"> {{ $club->facebook ?? 'Not set' }}</div>
                                 </div>
+
                             </div>
                         </div>
                         <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">

@@ -9,7 +9,7 @@ class Club extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'address1', 'address2', 'city', 'county', 'eircode', 'province', 'type', 'phone', 'email', 'website', 'facebook', 'compliant', 'voting_rights'];
+    protected $guarded = [];
 
     public function personnel()
     {

@@ -46,7 +46,7 @@ class ClubController extends Controller
     public function store(Request $request)
     {
         $request->validate(['name' => 'required|unique:clubs']);
-        // dd($request);
+//         dd($request);
         $club = Club::create($request->all());
 //        $personnel = self::personnel($club);
         $personnel = $this->personnel($club);
