@@ -31,7 +31,7 @@
                                     Venue Name
                                 </label>
                                 <input
-                                    class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                    class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                     id="name" name="name" type="text" placeholder="Name" required>
                             </div>
                             <div class="mb-4">
@@ -39,7 +39,7 @@
                                     Address Line 1
                                 </label>
                                 <input
-                                    class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                    class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                     id="address1" name="address1" type="text" placeholder="Address Line 1" required>
                             </div>
                             <div class="mb-4">
@@ -47,7 +47,7 @@
                                     Address Line 2
                                 </label>
                                 <input
-                                    class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                    class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                     id="address2" name="address2" type="text" placeholder="Address Line 2">
                             </div>
                             <div class="mb-4">
@@ -55,14 +55,15 @@
                                     City/Town
                                 </label>
                                 <input
-                                    class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                    class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                     id="city" name="city" type="text" placeholder="City/Town" required>
                             </div>
                             <div class="mb-4">
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="county">
                                     County
                                 </label>
-                                <select class="shadow border rounded w-64 py-2 px-3 text-grey-darker" id="county" name="county" type="text"
+                                <select class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker"
+                                        id="county" name="county" type="text"
                                         placeholder="County" required>
                                     <option value="" disabled selected>Select county</option>
                                     <option value="antrim">Antrim</option>
@@ -103,7 +104,7 @@
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="eircode">
                                     Eircode / Postcode
                                 </label>
-                                <input class="shadow appearance-none border rounded w-64 py-2 px-3 text-grey-darker"
+                                <input class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker"
                                        id="eircode" name="eircode" type="text" placeholder="Eircode / Post Code">
                             </div>
                             <div class="mb-4">
@@ -111,7 +112,7 @@
                                     Contact Name
                                 </label>
                                 <input
-                                    class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                    class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                     id="contact" name="contact" type="text" placeholder="Name">
                             </div>
                             <div class="mb-12">
@@ -119,7 +120,7 @@
                                     Phone
                                 </label>
                                 <input
-                                    class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                    class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                     id="phone" name="phone" type="text" placeholder="Phone">
                             </div>
                         </div>

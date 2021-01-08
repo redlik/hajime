@@ -31,7 +31,7 @@
                                     Volunteer's Name
                                 </label>
                                 <input
-                                    class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                    class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                     id="name" name="name" type="text" placeholder="Name" required>
                             </div>
                             <div class="mb-4">
@@ -39,7 +39,7 @@
                                     Phone
                                 </label>
                                 <input
-                                    class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                    class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                     id="phone" name="phone" type="text" placeholder="Phone">
                             </div>
                             <div>
@@ -47,7 +47,7 @@
                                     Email
                                 </label>
                                 <input
-                                    class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                    class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                     id="email" name="email" type="email" placeholder="Email">
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                                         Vetting completion
                                     </label>
                                     <input
-                                        class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
+                                        class="shadow border-gray-300 rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                         id="vetting_completion" name="vetting_completion" type="date"
                                         placeholder="2020-01-01">
                                 </div>
@@ -70,7 +70,7 @@
                                         Vetting expiry
                                     </label>
                                     <input
-                                        class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
+                                        class="shadow border-gray-300 rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                         id="vetting_expiry" name="vetting_expiry" type="date" placeholder="2020-01-01">
                                 </div>
                             </div>
@@ -83,7 +83,7 @@
                                         Safeguarding completion
                                     </label>
                                     <input
-                                        class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
+                                        class="shadow border-gray-300 rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                         id="safeguarding_completion" name="safeguarding_completion" type="date"
                                         placeholder="2020-01-01">
                                 </div>
@@ -93,7 +93,7 @@
                                         Safeguarding expiry
                                     </label>
                                     <input
-                                        class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
+                                        class="shadow border-gray-300 rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                         id="safeguarding_expiry" name="safeguarding_expiry" type="date"
                                         placeholder="2020-01-01">
                                 </div>

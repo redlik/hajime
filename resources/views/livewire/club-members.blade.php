@@ -2,12 +2,12 @@
 
     <div class="w-full">
         <div class="w-full flex flex-wrap items-center justify-between my-4 p-3 rounded bg-gray-100">
-            <div class="w-full md:w-1/4 pr-2">
+            <div class="">
                 <input type="search" wire:model.debounce.500ms="searchQuery"
                        class="shadow border-gray-300 rounded w-full py-2 px-3 text-grey-darker"
                        placeholder="Filter by name, number or eircode">
             </div>
-            <div class="w-full md:w-1/4">
+            <div class="">
                 <label for="sort">Sort by:</label>
                 <select wire:model="sortby" name="sort" id="sort" class="shadow border-gray-300 rounded w-48
                 text-grey-darker ml-2">
@@ -15,14 +15,14 @@
                     <option value="number">Memership No</option>
                 </select>
             </div>
-            <div class="w-full md:w-1/4">
+            <div class="">
                 <input type="checkbox" wire:model="active" id="showActive" name="showActive" value="1" checked
                        class="rounded border-judo-300
                                 text-judo-600 shadow-sm focus:border-judo-300 focus:ring focus:ring-judo-200
                                 focus:ring-opacity-50">
-                <label for="showActive">Show only active members</label>
+                <label for="showActive">Show active members only</label>
             </div>
-            <div class="w-full md:w-1/4">
+            <div class="">
                 <a href="{{ route('club.checkMemberships', ['club' => $club_id]) }}" class="button-judo">
                     <i class="fas fa-sync-alt mr-2"></i>
                     Check memberships</a>

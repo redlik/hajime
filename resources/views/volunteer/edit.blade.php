@@ -7,7 +7,7 @@
             <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
 
                 <header class="font-semibold bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
-                    Edit {{ $volunteer->first_name }} {{  $volunteer->last_name }}
+                    Edit {{ $volunteer->name }}
                 </header>
 
                 <div class="w-full p-6">
@@ -40,7 +40,7 @@
                                     First Name
                                 </label>
                                 <input
-                                    class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                    class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                     id="name" name="name" type="text" placeholder="Name" value="{{
                                     $volunteer->name }}">
                             </div>
@@ -49,7 +49,7 @@
                                     Phone
                                 </label>
                                 <input
-                                    class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                    class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                     id="phone" name="phone" type="text" value="{{ $volunteer->phone }}">
                             </div>
                             <div>
@@ -57,7 +57,7 @@
                                     Email
                                 </label>
                                 <input
-                                    class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                    class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                     id="email" name="email" type="email" value="{{ $volunteer->email }}">
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                                         Vetting completion
                                     </label>
                                     <input
-                                        class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
+                                        class="shadow border-gray-300 rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                         id="vetting_completion" name="vetting_completion" type="date"
                                         value="{{ $volunteer->vetting_completion }}">
                                 </div>
@@ -80,7 +80,7 @@
                                         Vetting expiry
                                     </label>
                                     <input
-                                        class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
+                                        class="shadow border-gray-300 rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                         id="vetting_expiry" name="vetting_expiry" type="date" value="{{
                                         $volunteer->vetting_expiry }}">
                                 </div>
@@ -94,7 +94,7 @@
                                         Safeguarding completion
                                     </label>
                                     <input
-                                        class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
+                                        class="shadow border-gray-300 rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                         id="safeguarding_completion" name="safeguarding_completion" type="date"
                                         value="{{ $volunteer->safeguarding_completion }}">
                                 </div>
@@ -104,7 +104,7 @@
                                         Safeguarding expiry
                                     </label>
                                     <input
-                                        class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
+                                        class="shadow border-gray-300 rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                         id="safeguarding_expiry" name="safeguarding_expiry" type="date"
                                         value="{{ $volunteer->safeguarding_expiry }}">
                                 </div>

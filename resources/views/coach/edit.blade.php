@@ -38,21 +38,21 @@
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="name">
                                     Coach Name
                                 </label>
-                                <input class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                <input class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                        id="name" name="name" type="text" value="{{ $coach->name }}" required>
                             </div>
                             <div class="mb-4">
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="phone">
                                     Phone
                                 </label>
-                                <input class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                <input class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                        id="phone" name="phone" type="text" value="{{ $coach->phone }}">
                             </div>
                             <div>
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="email">
                                     Email
                                 </label>
-                                <input class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                <input class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                        id="email" name="email" type="email" value="{{ $coach->email }}">
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                                     <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="vetting_completion">
                                         Vetting completion
                                     </label>
-                                    <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
+                                    <input class="shadow border-gray-300 rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                            id="vetting_completion" name="vetting_completion" type="date" value="{{
                                     $coach->vetting_completion }}">
                                 </div>
@@ -71,7 +71,7 @@
                                     <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="vetting_expiry">
                                         Vetting expiry
                                     </label>
-                                    <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
+                                    <input class="shadow border-gray-300 rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                            id="vetting_expiry" name="vetting_expiry" type="date" value="{{
                                     $coach->vetting_expiry }}">
                                 </div>
@@ -80,7 +80,7 @@
                                     <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="safeguarding_completion">
                                         Safeguarding completion
                                     </label>
-                                    <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
+                                    <input class="shadow border-gray-300 rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                            id="safeguarding_completion" name="safeguarding_completion" type="date" value="{{
                                     $coach->safeguarding_completion }}">
                                 </div>
@@ -88,7 +88,7 @@
                                     <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="safeguarding_expiry">
                                         Safeguarding expiry
                                     </label>
-                                    <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
+                                    <input class="shadow border-gray-300 rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                            id="safeguarding_expiry" name="safeguarding_expiry" type="date" value="{{
                                     $coach->safeguarding_expiry }}">
                                 </div>
@@ -99,7 +99,7 @@
                                     <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="first_aid_completion">
                                         First Aid completion
                                     </label>
-                                    <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
+                                    <input class="shadow border-gray-300 rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                            id="first_aid_completion" name="first_aid_completion" type="date" value="{{
                                     $coach->first_aid_completion }}">
                                 </div>
@@ -107,7 +107,7 @@
                                     <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="first_aid_expiry">
                                         First Aid expiry
                                     </label>
-                                    <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
+                                    <input class="shadow border-gray-300 rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                            id="first_aid_expiry" name="first_aid_expiry" type="date" value="{{
                                     $coach->first_aid_expiry }}">
                                 </div>
@@ -116,7 +116,8 @@
                                     <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="coaching_completion">
                                         Coaching Qualification
                                     </label>
-                                    <select name="coaching_qualification" id="coaching_qualification" class="shadow border rounded w-64 py-2 px-3 text-grey-darker">
+                                    <select name="coaching_qualification" id="coaching_qualification" class="shadow
+                                    border-gray-300 rounded w-64 py-2 px-3 text-grey-darker">
                                         @if ( $coach->coaching_qualification)
                                             <option value="{{ $coach->coaching_qualification }}" selected>{{ $coach->coaching_qualification }}</option>
                                         @else
@@ -136,7 +137,7 @@
                                     <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="coaching_expiry">
                                         Date attained
                                     </label>
-                                    <input class="shadow appearance-none border rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
+                                    <input class="shadow border-gray-300 rounded w-3/4 md:w-48 py-2 px-3 text-grey-darker"
                                            id="coaching_date" name="coaching_date" type="date" value="{{
                                     $coach->coaching_date }}">
                                 </div>
