@@ -23,7 +23,7 @@
                 <div class="font-bold text-sm"> Club: {{ $member->club->name }} </div>
             </header>
             <div class="w-full p-6">
-                <a href="{{ route('clubs.show', $member->club) }}"
+                <a href="{{ route('clubs.show', $member->club) }}#members"
                     class="text-blue-500 font-bold hover:text-blue-300" title="View club page">
                     << Back to club view</a>
             </div>
@@ -62,7 +62,7 @@
                         <li class="-mb-px mr-1" @click="openTab = '#documents'">
                             <a :class="openTab === '#documents' ? activeClasses : inactiveClasses" class="bg-white
                             inline-block
-                            py-2 px-4 font-semibold" href="#">Documents</a>
+                            py-2 px-4 font-semibold" href="#" id="documents">Documents</a>
                         </li>
                     </ul>
                 </div>

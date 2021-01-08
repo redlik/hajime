@@ -9,6 +9,7 @@ use App\Models\Coach;
 use App\Models\Clubnote;
 use App\Models\Venue;
 use App\Models\Volunteer;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Member;
 use App\Models\Membership;
@@ -131,16 +132,18 @@ class ClubController extends Controller
     }
 
     public function checkMemberships($club) {
-        $members = Member::where('club_id', $club)->where('active', True)->with('membership')->get();
+        $members = Member::where('club_id', $club)->where('active', 1)->with('membership')->get();
+        $changed = 0;
         foreach ($members as $member) {
-            $memberships = Membership::where('member_id', $member->id)->get();
-            foreach ($memberships as $membership) {
-                if (\Carbon\Carbon::now()->greaterThan($membership->expiry_date)) {
+            $membership = Membership::where('member_id', $member->id)->orderBy('expiry_date', 'desc')->first();
+            if (Carbon::now()->greaterThan($membership->expiry_date))
+            {
                     $member->active = 0;
                     $member->save();
+                    $changed += 1;
                 }
-            }
         }
-        return back()->with('message', 'Memberships updated successfully');
+        $message = 'Memberships updated successfully. Changed records: '.$changed;
+        return redirect()->to(url()->previous() . '#members')->with('message', $message);
     }
 }

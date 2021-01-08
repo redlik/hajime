@@ -33,7 +33,8 @@ class MembernoteController extends Controller
 
     public function createWithMember($member) {
         $member_id = $member;
-        return view('membernote.create', compact('member_id'));
+        $url = url()->previous().'#notes';
+        return view('membernote.create', compact('member_id', 'url'));
 
     }
 
@@ -56,7 +57,8 @@ class MembernoteController extends Controller
         $note->slug = $note->id."-".$note->slug;
         $note->save();
 
-        return redirect()->action('App\Http\Controllers\MemberController@show', ['member' => $note->member_id]);
+//        return redirect()->action('App\Http\Controllers\MemberController@show', ['member' => $note->member_id]);
+        return redirect($request->input('url'));
     }
 
     /**
