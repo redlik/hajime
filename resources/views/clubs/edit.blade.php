@@ -224,6 +224,34 @@
                             </div>
                         </div>
                     </div>
+                    <div class="w-full border-2 border-gray-300 rounded-xl mb-4 p-8">
+                        <p class="font-bold mb-4">Select <span class="text-judo-600">Main Postal</span> correspondence
+                            address:</p>
+                        <input type="radio" class="text-gray-600" name="postal" value="Head Coach" id="postal_head"
+                        @if ($club->postal == "Head Coach")
+                            checked
+                        @endif>
+                        <label for="postal_head" class="text-gray-600 mr-12">Head Coach</label>
+                        <input type="radio" class="text-gray-600" name="postal" value="Secretary" id="postal_secretary"
+                        @if ($club->postal == "Secretary")
+                        checked
+                        @endif>
+                        <label for="postal_secretary" class="text-gray-600">Secretary</label>
+
+                        <p class="font-bold mb-4 mt-12">Select <span class="text-judo-600">Email</span> correspondence
+                            address:</p>
+                        <input type="radio" class="text-gray-600" name="correspondence" value="Head Coach"
+                               id="postal_head"
+                               @if ($club->correspondence == "Head Coach")
+                               checked
+                        @endif>
+                        <label for="postal_head" class="text-gray-600 mr-12">Head Coach</label>
+                        <input type="radio" class="text-gray-600" name="correspondence" value="Secretary" id="postal_secretary"
+                           @if ($club->correspondence == "Secretary")
+                           checked
+                        @endif>
+                        <label for="postal_secretary" class="text-gray-600 ml-1">Secretary</label>
+                    </div>
                     <div class="mt-6">
                         <input type="submit" value="Update details" class="button-judo">
                     </div>
