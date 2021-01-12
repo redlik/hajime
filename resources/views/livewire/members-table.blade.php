@@ -1,15 +1,13 @@
 <div class="container">
     <div class="w-full">
-        <div class="w-full">
-            <div class="w-full md:w-1/2">
+        <div class="flex flex-wrap content-center justify-between mt-4">
+            <div class="w-1/2">
                 <input type="search" wire:model.debounce.500ms="searchQuery"
-                       class="shadow appearance-none border rounded w-full md:w-3/4 py-2 px-3 text-grey-darker mt-4"
+                       class="shadow border-gray-300 rounded w-full py-2 px-3 text-grey-darker"
                        placeholder="Filter by name, number or eircode"></div>
-            <div class="w-full">
+            <div class="">
                 {{ $members->links() }}</div>
         </div>
-
-
         <table class="min-w-full table leading-normal mt-8">
             <thead>
             <tr>
@@ -90,7 +88,7 @@
             @endforeach
             </tbody>
         </table>
-        <div class="mt-4">
+        <div class="mt-4 text-right">
             {{ $members->links() }}
         </div>
     </div>

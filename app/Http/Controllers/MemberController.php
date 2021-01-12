@@ -51,7 +51,8 @@ class MemberController extends Controller
         $member = Member::create($request->all());
 
 //        return redirect()->action('App\Http\Controllers\ClubController@show', ['club' => $club->id]);
-        return back()->with('message', 'Record Successfully Updated!');
+//        return back()->with('message', 'Record Successfully Updated!');
+        return redirect()->route('member.show', $member);
     }
 
     /**
