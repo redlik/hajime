@@ -110,7 +110,8 @@
                                         </label>
                                         <input
                                             class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
-                                            id="parent" name="parent" type="text" placeholder="Parent / Guardian Name">
+                                            id="parent" name="parent" type="text" placeholder="Parent / Guardian
+                                            Name" disabled>
                                 </div>
                             </div>
                         </div>
@@ -299,11 +300,19 @@
 @section('bottomScripts')
 <script>
     let dob = document.getElementById('dob');
-    let parent = document.getElementById('parent');
 
-    function calculateAge(dob) {
+    dob.addEventListener('change', function() {
+        var enteredDate = document.getElementById('dob').value;
+        var age = new Date(new Date() - new Date(enteredDate)).getFullYear() - 1970;
+        if (age < 18) {
+            let parent = document.getElementById('parent').disabled=false;
+        } else {
+            document.getElementById('parent').value="";
+            document.getElementById('parent').disabled=true;
 
-    }
+        }
+    });
+
 
 </script>
 @endsection
