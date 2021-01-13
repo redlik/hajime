@@ -109,7 +109,8 @@
                                             Parent/Guardian
                                         </label>
                                         <input
-                                            class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                            class="shadow border-gray-300 bg-gray-600 rounded w-full md:w-1/2 py-2 px-3
+                                            text-grey-darker"
                                             id="parent" name="parent" type="text" placeholder="Parent / Guardian
                                             Name" disabled>
                                 </div>

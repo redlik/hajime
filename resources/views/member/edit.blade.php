@@ -116,8 +116,14 @@
                                 Parent/Guardian
                             </label>
                             <input
+                                @if ($member->parent)
                                 class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
-                                id="parent" name="parent" type="text" value="{{ $member->parent ?? "n/a"}}">
+                                @else
+                                class="shadow border-gray-300 bg-gray-500 rounded w-full md:w-1/2 py-2 px-3
+                                text-grey-darker"
+                                disabled
+                                @endif
+                                id="parent" name="parent" type="text" value="{{ $member->parent}}">
                         </div>
                     </div>
                     <div class="w-full border-2 border-gray-300 rounded-xl p-8 mb-4">
@@ -300,4 +306,26 @@
         </section>
     </div>
 </main>
+@endsection
+
+@section('bottomScripts')
+    <script>
+        let dob = document.getElementById('dob');
+
+        dob.addEventListener('change', function() {
+            var enteredDate = document.getElementById('dob').value;
+            var age = new Date(new Date() - new Date(enteredDate)).getFullYear() - 1970;
+            if (age < 18) {
+                let parent = document.getElementById('parent');
+                parent.disabled=false;
+                parent.classList.remove('bg-gray-500');
+            } else {
+                let parent = document.getElementById('parent');
+                parent.value="";
+                parent.disabled=true;
+                parent.classList.add('bg-gray-500');
+
+            }
+        });
+    </script>
 @endsection

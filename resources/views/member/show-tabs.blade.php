@@ -89,6 +89,12 @@
                                             <div class="w-36 font-bold">Gender:</div>
                                             <div class="w-auto">{{ $member->gender }}</div>
                                         </div>
+                                        @if ($member->parent)
+                                        <div class="w-full flex flex-wrap mb-4">
+                                            <div class="w-36 font-bold">Parent/Guardian:</div>
+                                            <div class="w-auto">{{ $member->parent }}</div>
+                                        </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
