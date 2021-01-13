@@ -13,7 +13,6 @@
             <div class="w-full p-6">
                 @if(Session::has('message'))
                     <p class="bg-green-100 text-green-700 p-6 rounded mb-4">{{ Session::get('message') }}</p>
-                    <a href="{{ route('member.show', $member->id) }}" class="text-blue-600 font-bold hover:text-blue-300"> << Back to detail view </a>
                 @endif
                 @if ($errors->any())
                     <div class="alert alert-danger" role="alert">
@@ -24,6 +23,9 @@
                         </ul>
                     </div>
                 @endif
+                    <div class="w-full mb-4">
+                        <a href="{{ route('member.show', $member->id) }}" class="text-blue-600 font-bold hover:text-blue-300"> << Back to detail view </a>
+                    </div>
                 <form method="POST" action="{{ action('App\Http\Controllers\MemberController@update', ['member' => $member->id]) }}"
                       role="form">
                     @csrf

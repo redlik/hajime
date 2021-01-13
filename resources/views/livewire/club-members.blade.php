@@ -112,6 +112,9 @@
                             hover:text-blue-300" title="View member details"><i class="far fa-eye"></i></a>
                             <a href="{{ route('member.edit', $member) }}" class="text-green-600 font-bold ml-3"
                                title="Edit member details"><i class="far fa-edit"></i></a>
+                            <a href="{{ route('member.duplicate.existing', $member->id) }}" class="text-pink-600
+                            font-bold
+                            hover:text-pink-300 ml-3" title="Clone existing member"><i class="far fa-clone"></i></a>
                         </p>
                     </td>
                 </tr>
