@@ -109,7 +109,7 @@
                                             Parent/Guardian
                                         </label>
                                         <input
-                                            class="shadow border-gray-300 bg-gray-600 rounded w-full md:w-1/2 py-2 px-3
+                                            class="shadow border-gray-300 bg-gray-300 rounded w-full md:w-1/2 py-2 px-3
                                             text-grey-darker"
                                             id="parent" name="parent" type="text" placeholder="Parent / Guardian
                                             Name" disabled>
@@ -286,7 +286,9 @@
                             </div>
                         </div>
                         <div class="mt-6">
-                            <input type="submit" value="+ Add new member" class="button-judo">
+                            <input type="submit" value="+ Add new member" class="button-judo mr-6">
+                            <input type="submit" value="+ New member & copy" class="button-primary" formaction="{{
+                            route('member.duplicate') }}">
                         </div>
                     </form>
                     <p class="text-gray-700 mt-6">
@@ -306,10 +308,13 @@
         var enteredDate = document.getElementById('dob').value;
         var age = new Date(new Date() - new Date(enteredDate)).getFullYear() - 1970;
         if (age < 18) {
-            let parent = document.getElementById('parent').disabled=false;
+            document.getElementById('parent').disabled=false;
+            document.getElementById('parent').classList.remove('bg-gray-300');
         } else {
             document.getElementById('parent').value="";
             document.getElementById('parent').disabled=true;
+            document.getElementById('parent').classList.add('bg-gray-300');
+
 
         }
     });

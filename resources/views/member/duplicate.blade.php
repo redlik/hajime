@@ -6,14 +6,14 @@
 
         <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
 
-            <header class="font-semibold bg-gray-200 text-gray-500 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
-                Edit <span class="text-gray-700 font-bold">{{ $member->first_name }} {{ $member->last_name }}</span> details
+            <header class="font-semibold bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
+                Add new member
             </header>
 
             <div class="w-full p-6">
                 @if(Session::has('message'))
                     <p class="bg-green-100 text-green-700 p-6 rounded mb-4">{{ Session::get('message') }}</p>
-                    <a href="{{ route('member.show', $member->id) }}" class="text-blue-600 font-bold hover:text-blue-300"> << Back to detail view </a>
+                    <a href="{{ route('member.show', $member->id) }}" class="text-blue-600 font-bold hover:text-blue-300"> << Back to detail view </i></a>
                 @endif
                 @if ($errors->any())
                     <div class="alert alert-danger" role="alert">
@@ -24,10 +24,14 @@
                         </ul>
                     </div>
                 @endif
-                <form method="POST" action="{{ action('App\Http\Controllers\MemberController@update', ['member' => $member->id]) }}"
-                      role="form">
+                    <div class="w-full mb-4">
+                        <a href="{{ route('clubs.show', $member->club) }}"
+                           class="text-red-500 font-bold hover:text-red-300 mb-4" title="View club page">
+                            << Cancel and to back to club view</a>
+                    </div>
+                    <form method="POST" action="{{ action('App\Http\Controllers\MemberController@store') }}"
+                          role="form">
                     @csrf
-                    <input name="_method" type="hidden" value="PUT">
                     <div class="w-full border-2 border-gray-300 rounded-xl p-8 mb-4">
                         <div class="mb-4 flex flex-wrap">
                             <div class="w-full md:w-1/2">
@@ -48,14 +52,14 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="w-full md:w-1/2">
+                            <div class="w-full md:w-1/2 ">
                                 <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
-                                           for="number">
-                                        Membership no
-                                    </label>
-                                    <input
-                                        class="shadow  border-gray-300  rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
-                                id="number" name="number" type="text" value="{{ $member->number }}" required>
+                                       for="number">
+                                    Membership no
+                                </label>
+                                <input
+                                    class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                    id="number" name="number" type="text" placeholder="Membership number" required>
                             </div>
                         </div>
                         <div class="mb-4 flex flex-wrap">
@@ -65,8 +69,8 @@
                                     First Name
                                 </label>
                                 <input
-                                    class="shadow  border-gray-300  rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
-                            id="first_name" name="first_name" type="text" placeholder="First name" required value="{{ $member->first_name }}">
+                                    class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                    id="first_name" name="first_name" type="text" placeholder="First name" required>
                             </div>
                             <div class="w-full md:w-1/2">
                                 <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
@@ -81,11 +85,11 @@
                         <div class="mb-4 flex flex-wrap">
                             <div class="w-full md:w-1/2">
                                 <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2" for="dob">
-                                    Date of birth
+                                    Date of Birth
                                 </label>
                                 <input
-                                    class="shadow  border-gray-300  rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
-                            id="dob" name="dob" type="date" value="{{ $member->dob }}">
+                                    class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                    id="dob" name="dob" type="date" placeholder="2020-01-01" required>
                             </div>
                             <div class="w-full md:w-1/2 mt-4 md:mt-0">
                                 <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
@@ -95,17 +99,13 @@
                                 <div class="inline-block">
                                     <div class="inline-block mr-6">
                                         <input class="inline-block" type="radio" id="female" name="gender"
-                                               value="Female" @if ($member->gender == 'Female')
-                                                   checked
-                                               @endif>
-                                        <label for="female" class="inline-block">Female</label><br>
+                                               value="Female" required>
+                                        <label for="yes" class="inline-block">Female</label><br>
                                     </div>
                                     <div class="inline-block">
                                         <input class="inline-block" type="radio" id="male" name="gender"
-                                               value="Male" @if ($member->gender == 'Male')
-                                               checked
-                                           @endif>
-                                        <label for="male">Male</label><br>
+                                               value="Male">
+                                        <label for="no">Male</label><br>
                                     </div>
                                 </div>
                             </div>
@@ -296,7 +296,9 @@
                         </div>
                     </div>
                     <div class="mt-6">
-                        <input type="submit" value="Update record" class="button-judo">
+                        <input type="submit" value="+ Add new member" class="button-judo mr-6">
+                        <input type="submit" value="+ New member & copy" class="button-primary" formaction="{{
+                        route('member.duplicate') }}">
                     </div>
                 </form>
                 <p class="text-gray-700 mt-6">

@@ -6,11 +6,11 @@
 
 @layer components {
     .button {
-        @apply px-4 py-2 text-white rounded shadow;
+        @apply px-4 py-2 text-white rounded shadow cursor-pointer;
     }
 
     .button-success {
-        @apply px-4 py-2 text-white rounded shadow bg-green-600 font-semibold;
+        @apply px-4 py-2 text-white rounded shadow bg-green-600 font-semibold cursor-pointer;
     }
 
     .button-success:hover {
@@ -18,7 +18,7 @@
     }
 
     .button-danger {
-        @apply px-4 py-2 text-white rounded shadow bg-red-600 font-semibold;
+        @apply px-4 py-2 text-white rounded shadow bg-red-600 font-semibold cursor-pointer;
     }
 
     .button-danger:hover {
@@ -26,7 +26,7 @@
     }
 
     .button-primary {
-        @apply px-4 py-2 text-white rounded shadow bg-blue-600 font-semibold;
+        @apply px-4 py-2 text-white rounded shadow bg-blue-600 font-semibold cursor-pointer;
     }
 
     .button-primary:hover {

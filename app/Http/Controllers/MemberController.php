@@ -109,4 +109,12 @@ class MemberController extends Controller
     {
         //
     }
+
+    public function duplicate(Request $request)
+    {
+        $member = Member::create($request->all());
+        $clubs = Club::all();
+
+        return view('member.duplicate', compact('member', 'clubs'));
+    }
 }

@@ -55,6 +55,7 @@ Route::get('club/check-membership/{club}', [ClubController::class, 'checkMembers
 
 
 Route::get('member/create/{club_id?}', [MemberController::class, 'create'])->name('member.createWithClub');
+Route::post('member/duplicate/', [MemberController::class, 'duplicate'])->name('member.duplicate');
 Route::get('personnel/delete/{id}', [PersonnelController::class, 'destroy'])->name('personnel.delete');
 Route::get('club/{id}/add-personnel/{role}', [PersonnelController::class, 'addPersonnel'])->name('club.addPersonnel');
 Route::get('club/{id}/add-volunteer', [VolunteerController::class, 'addVolunteer'])->name('volunteer.addVolunteer');
