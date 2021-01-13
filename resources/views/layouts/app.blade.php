@@ -31,11 +31,17 @@
     <div id="app" class="h-full pb-12">
         <header class="bg-judo-green py-6">
             <div class="container mx-auto flex justify-between items-center px-6">
-                <div class="flex flex-wrap" style="width: 400px">
-                    <a href="{{ url('/') }}" class="text-lg font-semibold text-gray-100 no-underline">
-                        <img src="{{ asset('images/ija-logo.png') }}" alt="Irish Judo Logo" class="w-12 h-12 mr-1
-                        shadow-lg float-left">
-                        <div class="w-100">{{ config('app.name', 'Laravel') }}</div>
+                <div class="flex items-center">
+                        <div>
+                            <a href="{{ url('/') }}">
+                                <img src="{{ asset('images/ija-logo.png') }}" alt="Irish Judo Logo" class="w-12 h-12 mr-1">
+                            </a>
+                        </div>
+                        <div class="w-auto">
+                            <a href="{{ url('/') }}" class="text-lg font-semibold text-gray-100 no-underline">
+                            {{ config('app.name', 'Laravel') }}
+                            </a>
+                        </div>
                     </a>
                 </div>
                 <nav class="space-x-4 text-white text-sm sm:text-base font-semibold">
