@@ -114,13 +114,13 @@
                             </div>
 
                             <div class="w-full mb-2">
-                                <h4 class="font-bold text-xl text-gray-500 mb-4 ">Address:</h4>
-                                <div class="w-full md:w-1/2 flex flex-wrap">
-                                    {{ $member->address1}}, @if ($member->address2)
-                                    , {{ $member->address2}}
-                                    @endif
-                                    {{ $member->city}}, {{ $member->county}}, {{ $member->province}}
-                                </div>
+                                <h4 class="font-bold text-xl text-gray-500 mb-4">Address details:</h4>
+                                <div class="mb-3">{{ $member->address1}}</div>
+                                <div class="my-3">{{ $member->address2}}</div>
+                                <div class="my-3">{{ $member->city}}</div>
+                                <div class="my-3">{{ ucfirst($member->county) }}</div>
+                                <div class="my-3">{{ ucfirst($member->province) }}</div>
+                                <div class="my-3">{{ $member->eircode}}</div>
                             </div>
                      </div>
                 </div>

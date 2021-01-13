@@ -419,14 +419,14 @@
                                         <tr>
                                             <td class="px-5 py-5 border-b border-gray-200 font-bold
                                                 text-judo-700">
-                                                Designated Officer
+                                                Designated Person
                                             </td>
                                             @if(!$designated)
                                             <td colspan="6" class="px-5 py-5 border-b border-gray-200">
                                                 <a href="{{ route('club.addPersonnel',
-                                                            [$club->id, 'Designated Officer'])}}"
+                                                            [$club->id, 'Designated Person'])}}"
                                                    class="font-medium text-judo-700">+ Add new Designated
-                                                    Officer</a>
+                                                    Person</a>
                                             </td>
                                             @else
                                                 <td class="px-5 py-5 border-b border-gray-200 text-gray-700 font-bold">
@@ -479,39 +479,8 @@
                                                     </div>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200">
-                                                    <div class="flex items-center">
-                                                        <div>
-                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
-                                                                {{ $designated->first_aid_completion ?? 'Not set' }}</div>
-                                                            @if ( $designated->first_aid_expiry)
-                                                                @if($designated->first_aid_expiry < now())
-                                                                    <div class="bg-red-700 text-white rounded-lg py-1
-                                                                                px-2">{{ $designated->first_aid_expiry }}</div>
-                                                                @else
-                                                                    <div class="bg-indigo-100 rounded-lg py-1 px-2">
-                                                                        {{ $designated->first_aid_expiry }}
-                                                                    </div>
-                                                                @endif
-                                                            @else
-                                                                <div
-                                                                    class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">
-                                                                    Not set
-                                                                </div>
-                                                            @endif
-                                                        </div>
-                                                    </div>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                                    <div class="flex items-center">
-                                                        <div>
-                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
-                                                                {{$designated->coaching_qualification ?? 'Not set'}}
-                                                            </div>
-                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 text-center">
-                                                                {{ $designated->coaching_date ?? 'Not set'}}
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 </td>
                                                 <td class="py-12 border-b border-gray-200 text-sm flex flex-wrap h-full">
                                                     <a href="{{ route('personnel.edit', $designated->id) }}"
@@ -592,39 +561,8 @@
                                                     </div>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200">
-                                                    <div class="flex items-center">
-                                                        <div>
-                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
-                                                                {{ $childrens->first_aid_completion ?? 'Not set' }}</div>
-                                                            @if ( $childrens->first_aid_expiry)
-                                                                @if($childrens->first_aid_expiry < now())
-                                                                    <div class="bg-red-700 text-white rounded-lg py-1
-                                                                                px-2">{{ $childrens->first_aid_expiry }}</div>
-                                                                @else
-                                                                    <div class="bg-indigo-100 rounded-lg py-1 px-2">
-                                                                        {{ $childrens->first_aid_expiry }}
-                                                                    </div>
-                                                                @endif
-                                                            @else
-                                                                <div
-                                                                    class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">
-                                                                    Not set
-                                                                </div>
-                                                            @endif
-                                                        </div>
-                                                    </div>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                                    <div class="flex items-center">
-                                                        <div>
-                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
-                                                                {{$childrens->coaching_qualification ?? 'Not set'}}
-                                                            </div>
-                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 text-center">
-                                                                {{ $childrens->coaching_date ?? 'Not set'}}
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 </td>
                                                 <td class="py-12 border-b border-gray-200 text-sm flex flex-wrap h-full">
                                                     <a href="{{ route('personnel.edit', $childrens->id) }}"

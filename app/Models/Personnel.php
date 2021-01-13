@@ -30,7 +30,7 @@ class Personnel extends Model
 
     public function scopeDesignatedofficer($query) {
         return $query->where([
-            ['role','=', 'Designated Officer'],
+            ['role','=', 'Designated Person'],
         ]);
     }
 
