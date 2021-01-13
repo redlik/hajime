@@ -26,19 +26,19 @@
                         <input type="hidden" name="member_id" value="{{ $member_id }}">
                         <input type="hidden" name="url" value="{{ $url }}">
                         <div class="w-full border-2 border-gray-300 rounded-xl p-8 mb-4">
-                            <div class="mb-4">
+                            <div class="mb-4 flex items-start">
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="title">
                                     Title
                                 </label>
                                 <input
-                                    class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                    class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                     id="title" name="title" type="text" placeholder="Title" required>
                             </div>
-                            <div class="mb-4">
+                            <div class="mb-4 flex items-start">
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="body">
                                     Body
                                 </label>
-                                <textarea id="body" name="body" rows="20" cols="50" class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker" placeholder="Insert body of the note">
+                                <textarea id="body" name="body" rows="20" cols="50" class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker" placeholder="Insert body of the note">
                                 </textarea>
                             </div>
                             <div class="mt-6">

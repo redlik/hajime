@@ -149,7 +149,8 @@
                                                class="block text-sm text-gray-400 mb-2 font-bold">Membership
                                             type</label>
                                         <select type="text" name="membership_type" id="membership_type"
-                                               class="shadow border rounded w-64 py-2 px-3 text-grey-darker mr-2"
+                                               class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker
+                                               mr-2"
                                                placeholder="Membership type" required>
                                             <option value="" disabled selected>Select type</option>
                                             <option value="Under 12 – Junior Membership">Under 12 – Junior Membership</option>
@@ -163,14 +164,14 @@
                                         <label for="join_date" class="block text-sm text-gray-400 mb-2 font-bold">Joining
                                             date</label>
                                         <input type="date" name="join_date" id="join_date"
-                                               class="shadow appearance-none border rounded w-48 py-2 px-3
+                                               class="shadow border-gray-300 rounded w-48 py-2 px-3
                                                text-grey-darker mr-2" required>
                                     </div>
                                     <div>
                                         <label for="expiry_date" class="block text-sm text-gray-400 mb-2 font-bold">Expiry
                                             date</label>
                                         <input type="date" name="expiry_date" id="expiry_date"
-                                               class="shadow appearance-none border rounded w-48 py-2 px-3
+                                               class="shadow border-gray-300 rounded w-48 py-2 px-3
                                                text-grey-darker mr-2" required>
                                     </div>
                                 </div>
@@ -252,7 +253,7 @@
                                         <label for="grade_level" class="block text-sm text-gray-400 mb-2 font-bold">Grade
                                             level</label>
                                         <select name="grade_level" id="grade_level"
-                                                class="shadow appearance-none border rounded w-48 py-2 px-3 text-grey-darker mr-2">>
+                                                class="shadow border-gray-300 rounded w-48 py-2 px-3 text-grey-darker mr-2">>
                                             <option value="" selected disabled>Select grade level</option>
                                             <optgroup label="Junior Grades">
                                                 <option value="1st Mon White">1st Mon White</option>
@@ -294,14 +295,14 @@
                                         <label for="type" class="block text-sm text-gray-400 mb-2 font-bold">Date
                                             attained</label>
                                         <input type="date" name="grade_date" id="grade_date"
-                                               class="shadow appearance-none border rounded w-48 py-2 px-3 text-grey-darker mr-2">
+                                               class="shadow border-gray-300 rounded w-48 py-2 px-3 text-grey-darker mr-2">
                                     </div>
                                     <div>
                                         <label for="type" class="block text-sm text-gray-400 mb-2 font-bold">Points to
                                             next
                                             grade</label>
                                         <input type="text" name="grade_points" id="grade_points"
-                                               class="shadow appearance-none border rounded w-64 py-2 px-3 text-grey-darker mr-2"
+                                               class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker mr-2"
                                                placeholder="Points to next grade">
                                     </div>
 
@@ -450,7 +451,7 @@
                                         Title
                                     </label>
                                     <input
-                                        class="shadow appearance-none border w-5/6 rounded px-3 text-grey-darker"
+                                        class="shadow border-gray-300 w-5/6 rounded px-3 text-grey-darker"
                                         id="title" name="title" type="text" required>
                                 </div>
                                 <div class="flex flex-wrap align-middle">
@@ -554,7 +555,7 @@
                                         Title
                                     </label>
                                     <input
-                                        class="shadow appearance-none border w-5/6 rounded px-3 text-grey-darker"
+                                        class="shadow border-gray-300 w-5/6 rounded px-3 text-grey-darker"
                                         id="title" name="title" type="text" required>
                                 </div>
                                 <div class="flex flex-wrap align-middle">

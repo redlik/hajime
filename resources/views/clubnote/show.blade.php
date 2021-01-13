@@ -13,7 +13,7 @@
                 <div class="w-full p-6">
                     <div class="w-full border-2 border-gray-300 rounded-xl p-8 mb-4">
                         <div class="w-full"><p>
-                                {{ $note->body }}
+                                {!! nl2br(e($note->body))!!}
                             </p></div>
 
                     </div>

@@ -33,15 +33,15 @@
                                     Title
                                 </label>
                                 <input
-                                    class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                    class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                     id="title" name="title" type="text" placeholder="Title" required value="{{ $note->title }}">
                             </div>
-                            <div class="mb-4">
+                            <div class="mb-4 flex items-start">
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="body">
                                     Body
                                 </label>
                                 <textarea id="body" name="body" rows="20" cols="50"
-                                          class="shadow appearance-none border rounded w-full md:w-1/2 py-2 px-3 text-grey-darker">{{ $note->body }}</textarea>
+                                          class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker">{{ $note->body }}</textarea>
                             </div>
                             <div class="mt-6">
                                 <input type="submit" value="Save changes" class="button-success">
