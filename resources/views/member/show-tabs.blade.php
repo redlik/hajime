@@ -7,7 +7,8 @@
         <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
 
             <header
-                class="font-bold text-xl bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md flex justify-between align-middle">
+                class="font-bold text-xl bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md flex
+                justify-between items-center">
                 <div>
                     {{ ucfirst($member->first_name) }} {{ ucfirst($member->last_name) }}
                 <span class="text-sm text-gray-500 ml-2">No: {{ $member->number }}</span>
@@ -18,7 +19,7 @@
                 <span class="text-sm text-red-700 bg-red-300 p-2 rounded ml-2">Inactive</span>
                 @endif
                     <a href="{{ route('member.edit', $member) }}" class="text-green-600 font-bold ml-3"
-                        title="Edit club details"><i class="far fa-edit"></i></a>
+                        title="Edit member details"><i class="far fa-edit"></i></a>
                 </div>
                 <div class="font-bold text-sm"> Club: {{ $member->club->name }} </div>
             </header>
@@ -108,7 +109,9 @@
                                     </div>
                                     <div class="w-full flex flex-wrap mb-4">
                                         <div class="w-36 font-bold">Email:</div>
-                                        <div class="w-auto">{{ $member->email }}</div>
+                                        <div class="w-auto">
+                                            <a href="mailto:{{ $member->email }}">{{ $member->email }}</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

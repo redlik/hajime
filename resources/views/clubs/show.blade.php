@@ -87,7 +87,14 @@
                                 </div>
                                 <div class="mb-2">
                                     <div class="w-24 inline-block">Email:</div>
-                                    <div class="w-auto inline-block font-bold"> {{ $club->email ?? 'Not set' }}</div>
+                                    @if ($club->email)
+                                        <div class="w-auto inline-block font-bold">
+                                            <a href="mailto:{{ $club->email }}">{{ $club->email }}</a>
+                                        </div>
+                                    @else
+                                        <div class="inline-block text-gray-600">Not set</div>
+                                    @endif
+
                                 </div>
                                 <div class="mb-2">
                                     <div class="w-24 inline-block">Website:</div>
@@ -234,9 +241,18 @@
                                                    class="font-medium text-judo-700">+ Add new Headcoach</a>
                                             </td>
                                             @else
-                                                <td class="px-5 py-5 border-b border-gray-200
-                                                text-gray-700 font-bold">
-                                                    {{ $headCoach->name }}
+                                                <td class="px-5 py-5 border-b border-gray-200">
+                                                    <div class="text-gray-700 font-bold">{{ $headCoach->name }}</div>
+                                                    <div class="text-sm">
+                                                        <span class="font-bold text-gray-500 w-8">e:</span>
+                                                        <a href="mailto:{{ $headCoach->email }}">
+                                                        {{ $headCoach->email }}</a>
+                                                        <br>
+                                                        <span
+                                                            class="font-bold text-gray-500 w-8">t:</span>
+                                                        {{ $headCoach->phone }}
+                                                    </div>
+
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200">
                                                     <div class="flex items-center">
@@ -345,8 +361,17 @@
                                                    class="font-medium text-judo-700">+ Add new Secretary</a>
                                             </td>
                                             @else
-                                                <td class="px-5 py-5 border-b border-gray-200 text-gray-700 font-bold">
-                                                    {{ $secretary->name }}
+                                                <td class="px-5 py-5 border-b border-gray-200">
+                                                    <div class="text-gray-700 font-bold">{{ $secretary->name }}</div>
+                                                    <div class="text-sm">
+                                                        <span class="font-bold text-gray-500 w-8">e:</span>
+                                                        <a href="mailto:{{ $secretary->email }}">
+                                                            {{ $secretary->email }}</a>
+                                                        <br>
+                                                        <span
+                                                            class="font-bold text-gray-500 w-8">t:</span>
+                                                        {{ $secretary->phone }}
+                                                    </div>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200">
                                                     <div class="flex items-center">
@@ -429,8 +454,17 @@
                                                     Person</a>
                                             </td>
                                             @else
-                                                <td class="px-5 py-5 border-b border-gray-200 text-gray-700 font-bold">
-                                                    {{ $designated->name }}
+                                                <td class="px-5 py-5 border-b border-gray-200">
+                                                    <div class="text-gray-700 font-bold">{{ $designated->name }}</div>
+                                                    <div class="text-sm">
+                                                        <span class="font-bold text-gray-500 w-8">e:</span>
+                                                        <a href="mailto:{{ $designated->email }}">
+                                                            {{ $designated->email }}</a>
+                                                        <br>
+                                                        <span
+                                                            class="font-bold text-gray-500 w-8">t:</span>
+                                                        {{ $designated->phone }}
+                                                    </div>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200">
                                                     <div class="flex items-center">
@@ -511,8 +545,17 @@
                                                     Officer</a>
                                             </td>
                                             @else
-                                                <td class="px-5 py-5 border-b border-gray-200 text-gray-700 font-bold">
-                                                    {{ $childrens->name }}
+                                                <td class="px-5 py-5 border-b border-gray-200">
+                                                    <div class="text-gray-700 font-bold">{{ $childrens->name }}</div>
+                                                    <div class="text-sm">
+                                                        <span class="font-bold text-gray-500 w-8">e:</span>
+                                                        <a href="mailto:{{ $childrens->email }}">
+                                                            {{ $childrens->email }}</a>
+                                                        <br>
+                                                        <span
+                                                            class="font-bold text-gray-500 w-8">t:</span>
+                                                        {{ $childrens->phone }}
+                                                    </div>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200">
                                                     <div class="flex items-center">
@@ -632,11 +675,11 @@
                                                         <p class="text-gray-900 whitespace-no-wrap font-bold">
                                                         <div class="font-bold">{{ $coach->name }}</div>
                                                         <div>
-                                                                                <span
-                                                                                    class="font-bold text-gray-500">e:</span> {{ $coach->email }}
+                                                            <span class="font-bold text-gray-500">e:</span>
+                                                            <a href="mailto:{{ $coach->email }}">{{ $coach->email }}</a>
                                                             <br>
-                                                            <span class="font-bold text-gray-500">t:</span>{{
-                                                                        $coach->phone }}
+                                                            <span class="font-bold text-gray-500">t:</span>
+                                                            {{ $coach->phone }}
                                                         </div>
                                                         </p>
                                                     </div>
@@ -796,12 +839,12 @@
                                                 <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                                     <div class="flex items-center">
                                                         <div>
-                                                                            <span
-                                                                                class="font-bold text-gray-500 w-8
-">e:</span> {{ $volunteer->email }}
-                                                            <br><span
-                                                                class="font-bold text-gray-500 w-8">t:</span>{{
-                                                                $volunteer->phone }}
+                                                             <span class="font-bold text-gray-500 w-8">e:</span>
+                                                            <a href="mailto:{{ $volunteer->email }}">{{ $volunteer->email }}</a>
+                                                            <br>
+                                                             <span
+                                                                class="font-bold text-gray-500 w-8">t:</span>
+                                                            {{ $volunteer->phone }}
                                                         </div>
                                                     </div>
                                                 </td>
