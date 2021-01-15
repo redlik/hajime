@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewMembershipEvent;
 use App\Models\Membership;
 use Illuminate\Http\Request;
 use App\Models\Member;
@@ -44,8 +45,9 @@ class MembershipController extends Controller
             $member->active = 1;
             $member->save();
         }
+        // Fire new event when new membership is created
+//        event(new NewMembershipEvent($membership));
 
-//        return redirect()->action('App\Http\Controllers\MemberController@show', ['member' => $member]);
         return Redirect::to(URL::previous() . "#membership");
     }
 
