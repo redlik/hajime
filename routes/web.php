@@ -34,29 +34,29 @@ Auth::routes();
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('clubs', ClubController::class);
-
-Route::resource('personnel', PersonnelController::class);
-Route::resource('member', MemberController::class);
-Route::resource('coach', CoachController::class);
-Route::resource('membership', MembershipController::class);
-Route::resource('grade', GradeController::class);
-Route::resource('clubnote', ClubnoteController::class);
-Route::resource('membernote', MembernoteController::class);
-Route::resource('volunteer', VolunteerController::class);
-Route::resource('venue', VenueController::class);
-Route::resource('clubdoc', ClubDocumentController::class);
-Route::resource('memberdoc', MemberDocumentController::class);
-Route::get('clubnote/create/{club}', [ClubnoteController::class, 'createWithClub'])->name('clubnote.create.club');
-Route::get('membernote/create/{club}', [MembernoteController::class, 'createWithmember'])->name('membernote.create.member');
-Route::get('venue/create/{club}', [VenueController::class, 'createWithClub'])->name('venue.create.club');
-Route::get('coach/add/{club}', [CoachController::class, 'addCoach'])->name('coach.addCoach');
-Route::get('club/check-membership/{club}', [ClubController::class, 'checkMemberships'])->name('club.checkMemberships');
-
-Route::get('member/create/{club_id?}', [MemberController::class, 'create'])->name('member.createWithClub');
-Route::post('member/duplicate/', [MemberController::class, 'duplicate'])->name('member.duplicate');
-Route::get('member/duplicate-existing/{member}', [MemberController::class, 'duplicateExisting'])->name('member.duplicate.existing');
-Route::get('personnel/delete/{id}', [PersonnelController::class, 'destroy'])->name('personnel.delete');
-Route::get('club/{id}/add-personnel/{role}', [PersonnelController::class, 'addPersonnel'])->name('club.addPersonnel');
-Route::get('club/{id}/add-volunteer', [VolunteerController::class, 'addVolunteer'])->name('volunteer.addVolunteer');
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('clubs', ClubController::class);
+    Route::resource('personnel', PersonnelController::class);
+    Route::resource('member', MemberController::class);
+    Route::resource('coach', CoachController::class);
+    Route::resource('membership', MembershipController::class);
+    Route::resource('grade', GradeController::class);
+    Route::resource('clubnote', ClubnoteController::class);
+    Route::resource('membernote', MembernoteController::class);
+    Route::resource('volunteer', VolunteerController::class);
+    Route::resource('venue', VenueController::class);
+    Route::resource('clubdoc', ClubDocumentController::class);
+    Route::resource('memberdoc', MemberDocumentController::class);
+    Route::get('clubnote/create/{club}', [ClubnoteController::class, 'createWithClub'])->name('clubnote.create.club');
+    Route::get('membernote/create/{club}', [MembernoteController::class, 'createWithmember'])->name('membernote.create.member');
+    Route::get('venue/create/{club}', [VenueController::class, 'createWithClub'])->name('venue.create.club');
+    Route::get('coach/add/{club}', [CoachController::class, 'addCoach'])->name('coach.addCoach');
+    Route::get('club/check-membership/{club}', [ClubController::class, 'checkMemberships'])->name('club.checkMemberships');
+    Route::post('member/duplicate/', [MemberController::class, 'duplicate'])->name('member.duplicate');
+    Route::get('member/duplicate-existing/{member}', [MemberController::class, 'duplicateExisting'])->name('member.duplicate.existing');
+    Route::get('member/create/{club_id?}', [MemberController::class, 'create'])->name('member.createWithClub');
+    Route::get('personnel/delete/{id}', [PersonnelController::class, 'destroy'])->name('personnel.delete');
+    Route::get('club/{id}/add-personnel/{role}', [PersonnelController::class, 'addPersonnel'])->name('club.addPersonnel');
+    Route::get('club/{id}/add-volunteer', [VolunteerController::class, 'addVolunteer'])->name('volunteer.addVolunteer');
+});
 
