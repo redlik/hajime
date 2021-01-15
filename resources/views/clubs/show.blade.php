@@ -26,37 +26,37 @@
                             <li class="-mb-px mr-1" :class="{ '-mb-px': openTab === '#details' }" @click="openTab =
                         '#details'">
                                 <a :class="openTab === '#details' ? activeClasses : inactiveClasses" class="bg-white
-                            inline-block py-2 px-4 font-semibold" href="#">Club Details</a>
+                            inline-block py-2 px-4 font-semibold" href="#details">Club Details</a>
                             </li>
                             <li class="-mb-px mr-1" @click="openTab = '#personnel'">
                                 <a :class="openTab === '#personnel' ? activeClasses : inactiveClasses" class="bg-white
                             inline-block
-                            py-2 px-4 font-semibold" href="#">Club Personnel</a>
+                            py-2 px-4 font-semibold" href="#personnel">Club Personnel</a>
                             </li>
                             <li class="-mb-px mr-1" @click="openTab = '#volunteers'">
                                 <a :class="openTab === '#volunteers' ? activeClasses : inactiveClasses" class="bg-white
                             inline-block
-                            py-2 px-4 font-semibold" href="#">Volunteers</a>
+                            py-2 px-4 font-semibold" href="#volunteers">Volunteers</a>
                             </li>
                             <li class="-mb-px mr-1" @click="openTab = '#members'">
                                 <a :class="openTab === '#members' ? activeClasses : inactiveClasses" class="bg-white
                             inline-block
-                            py-2 px-4 font-semibold" href="#">Members</a>
+                            py-2 px-4 font-semibold" href="#members">Members</a>
                             </li>
                             <li class="-mb-px mr-1" @click="openTab = '#notes'">
                                 <a :class="openTab === '#notes' ? activeClasses : inactiveClasses" class="bg-white
                             inline-block
-                            py-2 px-4 font-semibold" href="#">Notes</a>
+                            py-2 px-4 font-semibold" href="#notes">Notes</a>
                             </li>
                             <li class="-mb-px mr-1" @click="openTab = '#forms'">
                                 <a :class="openTab === '#forms' ? activeClasses : inactiveClasses" class="bg-white
                             inline-block
-                            py-2 px-4 font-semibold" href="#">Forms</a>
+                            py-2 px-4 font-semibold" href="#forms">Forms</a>
                             </li>
                             <li class="-mb-px mr-1" @click="openTab = '#documents'">
                                 <a :class="openTab === '#documents' ? activeClasses : inactiveClasses" class="bg-white
                             inline-block
-                            py-2 px-4 font-semibold" href="#">Documents</a>
+                            py-2 px-4 font-semibold" href="#documents">Documents</a>
                             </li>
                         </ul>
                     </div>
@@ -187,7 +187,7 @@
                     {{-- Club Personnel Section --}}
                     <div class="w-full px-6 py-2" x-show="openTab === '#personnel'">
                         <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
-                            <h4 class="font-bold text-xl text-black mb-4" id="personnel">Club Personnel:</h4>
+                            <h4 class="font-bold text-xl text-black mb-4">Club Personnel:</h4>
                             <div class="w-full my-4">
                                 <table class="min-w-full table leading-normal">
                                     <thead>
