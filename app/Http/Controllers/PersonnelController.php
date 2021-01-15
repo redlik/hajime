@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Personnel;
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\URL;
 
 class PersonnelController extends Controller
 {
@@ -41,13 +43,10 @@ class PersonnelController extends Controller
      */
     public function store(Request $request)
     {
-        $role = $request->input('role');
-        DB::table('personnels')->where('role', '=', $role)->delete();
         $club = $request->input('club_id');
         $personnel = Personnel::create($request->all());
-        // $head_coach = Personnel::where('club_id', $club)->where('role', 'Head Coach')->first();
 
-        return redirect()->route('clubs.show', $club);
+        return redirect('/clubs/'.$club."#personnel");
 
     }
 
@@ -99,6 +98,6 @@ class PersonnelController extends Controller
     public function destroy($personnel)
     {
         Personnel::destroy($personnel);
-        return redirect()->back();
+        return Redirect::to(URL::previous() . "#personnel");
     }
 }
