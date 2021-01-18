@@ -35,19 +35,6 @@
                     <input name="_method" type="hidden" value="PUT">
                     <div class="w-full border-2 border-gray-300 rounded-xl p-8 my-4">
                         <div class="mb-4">
-                            <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="role">
-                                Role
-                            </label>
-                            <select name="role" id="role" class="shadow border-gray-300 rounded w-64 py-2 px-3
-                            text-grey-darker" required>
-                                <option value="{{ $person->role }}" selected>{{ $person->role }}</option>
-                                <option value="Head Coach">Head Coach</option>
-                                <option value="Secretary">Secretary</option>
-                                <option value="Designated Officer">Designated Officer</option>
-                                <option value="Childrens Officer">Childrens Officer</option>
-                            </select>
-                        </div>
-                        <div class="mb-4">
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="name">
                                 Person's Name
                             </label>

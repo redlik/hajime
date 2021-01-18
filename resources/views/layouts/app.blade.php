@@ -22,6 +22,7 @@
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
     <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
     @livewireStyles
@@ -44,7 +45,7 @@
                         </div>
                     </a>
                 </div>
-                <nav class="space-x-4 text-white text-sm sm:text-base font-semibold">
+                <nav class="space-x-4 text-white text-sm sm:text-base font-bold flex flex-wrap">
                     <a class="no-underline hover:underline hover:text-orange-200" href="/">Home</a>
                     <a class="no-underline hover:underline hover:text-orange-200" href="{{ route('clubs.index') }}">Clubs</a>
                     <a class="no-underline hover:underline hover:text-orange-200" href="{{ route('member.index') }}">Members</a>
@@ -54,14 +55,38 @@
                             <a class="no-underline hover:underline" href="{{ route('register') }}">{{ __('Register') }}</a>
                         @endif
                     @else
-                        <a href="{{ route('logout') }}"
-                           class="no-underline hover:underline"
-                           onclick="event.preventDefault();
+
+                        <div x-data="{ dropdownOpen: false }" class="relative flex flex-wrap cursor-pointer">
+                            <button @click="dropdownOpen = !dropdownOpen">
+                                <div class="flex flex-wrap hover:text-yellow-400 text-bold">
+                                    <span>Hi {{ Auth::user()->name }}</span>
+                                    <i x-show="!dropdownOpen" class="fas fa-chevron-down ml-2 pt-1"></i>
+                                    <i x-show="dropdownOpen" class="fas fa-chevron-up ml-2 pt-1"></i>
+                                </div>
+                            </button>
+
+                                <div x-show="dropdownOpen" class="absolute right-0 mt-8 py-2 w-48 bg-white rounded-md
+                        shadow-xl z-20 text-left">
+                                    <a href="#" class="block px-4 py-2 text-sm capitalize text-gray-700
+                                    text-bold hover:bg-judo-500 hover:text-white">
+                                        Your profile
+                                    </a>
+                                    <a href="#" class="block px-4 py-2 text-sm capitalize text-gray-700
+                                    text-bold hover:bg-judo-500 hover:text-white">
+                                        Activity
+                                    </a>
+                                    <a href="{{ route('logout') }}"
+                                       class="block px-4 py-2 text-sm capitalize text-gray-700
+                                       text-bold hover:bg-judo-500
+                                       hover:text-white"
+                                       onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
-                            {{ csrf_field() }}
-                        </form>
-                        <span>Hi {{ Auth::user()->name }}</span>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </div>
+                        </div>
+
                     @endguest
                 </nav>
             </div>

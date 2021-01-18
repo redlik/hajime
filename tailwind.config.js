@@ -32,7 +32,10 @@ module.exports = {
                 '800': '#000100',
                 '900': '#000000'
             },
-        }
+        },
+        fontFamily: {
+            sans: ['Source Sans Pro', 'sans-serif'],
+        },
     },
   },
   variants: {
