@@ -137,8 +137,8 @@
                                         <option value="" selected disabled>Select qualification level</option>
                                     @endif
                                     <option value="Level 1">Level 1</option>
-                                    <option value="Level 1">Level 2</option>
-                                    <option value="Level 1">Level 3</option>
+                                    <option value="Level 2">Level 2</option>
+                                    <option value="Level 3">Level 3</option>
                                     <option value="UKCC Level 1">UKCC Level 1</option>
                                     <option value="UKCC Level 2">UKCC Level 2</option>
                                     <option value="UKCC Level 3">UKCC Level 3</option>

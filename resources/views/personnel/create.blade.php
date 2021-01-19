@@ -112,8 +112,8 @@
                                 <select name="coaching_qualification" id="coaching_qualification" class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker">
                                     <option value="" disabled selected>Select level of qualifications</option>
                                     <option value="Level 1">Level 1</option>
-                                    <option value="Level 1">Level 2</option>
-                                    <option value="Level 1">Level 3</option>
+                                    <option value="Level 2">Level 2</option>
+                                    <option value="Level 3">Level 3</option>
                                     <option value="UKCC Level 1">UKCC Level 1</option>
                                     <option value="UKCC Level 2">UKCC Level 2</option>
                                     <option value="UKCC Level 3">UKCC Level 3</option>
