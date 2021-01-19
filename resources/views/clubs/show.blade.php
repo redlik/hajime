@@ -255,7 +255,7 @@
 
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200">
-                                                    <div class="flex items-center">
+                                                    <div class="flex items-center text-sm">
                                                         <div>
                                                             <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
                                                                 {{ $headCoach->safeguarding_completion ?? 'Not set' }}</div>
@@ -278,7 +278,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200">
-                                                    <div class="flex items-center">
+                                                    <div class="flex items-center text-sm">
                                                         <div>
                                                             <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
                                                                 {{ $headCoach->vetting_completion ?? 'Not set' }}</div>
@@ -301,7 +301,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200">
-                                                    <div class="flex items-center">
+                                                    <div class="flex items-center text-sm">
                                                         <div>
                                                             <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
                                                                 {{ $headCoach->first_aid_completion ?? 'Not set' }}</div>
@@ -323,8 +323,8 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                                    <div class="flex items-center">
+                                                <td class="px-5 py-5 border-b border-gray-200">
+                                                    <div class="flex items-center text-sm">
                                                         <div>
                                                             <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
                                                                 {{$headCoach->coaching_qualification ?? 'Not set'}}
