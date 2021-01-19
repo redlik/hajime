@@ -374,7 +374,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200">
-                                                    <div class="flex items-center">
+                                                    <div class="flex items-center text-sm">
                                                         <div>
                                                             <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
                                                                 {{ $secretary->safeguarding_completion ?? 'Not set' }}</div>
@@ -397,7 +397,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200">
-                                                    <div class="flex items-center">
+                                                    <div class="flex items-center text-sm">
                                                         <div>
                                                             <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
                                                                 {{ $secretary->vetting_completion ?? 'Not set' }}</div>
@@ -467,7 +467,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200">
-                                                    <div class="flex items-center">
+                                                    <div class="flex items-center text-sm">
                                                         <div>
                                                             <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
                                                                 {{ $designated->safeguarding_completion ?? 'Not set' }}</div>
@@ -490,7 +490,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200">
-                                                    <div class="flex items-center">
+                                                    <div class="flex items-center text-sm">
                                                         <div>
                                                             <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
                                                                 {{ $designated->vetting_completion ?? 'Not set' }}</div>
@@ -558,7 +558,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200">
-                                                    <div class="flex items-center">
+                                                    <div class="flex items-center text-sm">
                                                         <div>
                                                             <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
                                                                 {{ $childrens->safeguarding_completion ?? 'Not set' }}</div>
@@ -581,7 +581,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200">
-                                                    <div class="flex items-center">
+                                                    <div class="flex items-center text-sm">
                                                         <div>
                                                             <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
                                                                 {{ $childrens->vetting_completion ?? 'Not set' }}</div>
