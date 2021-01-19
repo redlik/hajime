@@ -17,6 +17,11 @@ class MembersTable extends Component
         $this->members = Member::paginate(50);
     }
 
+    public function updatingSearchquery()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
         $members = Member::when($this->searchQuery != '', function($query) {

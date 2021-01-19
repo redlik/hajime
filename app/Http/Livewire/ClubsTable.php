@@ -18,6 +18,11 @@ class ClubsTable extends Component
         $this->searchQuery = '';
     }
 
+    public function updatingSearchquery()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
         $clubs = Club::when($this->searchQuery != '', function($query) {
