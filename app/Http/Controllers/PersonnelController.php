@@ -27,7 +27,7 @@ class PersonnelController extends Controller
      */
     public function create()
     {
-        echo("Yollo!");
+
     }
 
     public function addPersonnel($club, $role) {

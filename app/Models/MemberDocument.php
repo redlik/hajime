@@ -23,4 +23,8 @@ use Illuminate\Database\Eloquent\Model;
         return $query->where('type', 'Document')->where('member_id', $club)->orderBy('created_at', 'desc');
     }
 
+     public function hasAuthor() {
+         return $this->belongsTo(User::class, 'author');
+     }
+
 }

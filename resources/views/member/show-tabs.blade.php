@@ -29,7 +29,7 @@
                     << Back to club view</a>
             </div>
             <div id="main" x-data="{openTab: window.location.hash ? window.location.hash : '#personal',
-                                      activeClasses: 'border-l border-t-4 border-r rounded-t text-blue-700',
+                                      activeClasses: 'border-l border-t-4 border-r rounded-t text-lightjudo-700',
                                       inactiveClasses: 'text-gray-500 hover:text-gray-700'
                                     }">
                 {{-- TABS SECTION --}}
@@ -185,42 +185,50 @@
                                 <thead>
                                 <tr>
                                     <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        class="px-5 py-3 rounded-l border-r border-gray-200 bg-gray-600 text-left
+                                        text-xs font-semibold text-gray-100 uppercase tracking-wider">
                                         Membership type
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                        font-semibold
+                                         text-gray-100 uppercase tracking-wider">
                                         Join date
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                        font-semibold
+                                         text-gray-100 uppercase tracking-wider">
                                         Expiry date
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-red-500 uppercase tracking-wider">
-                                        Remove
+                                        class="px-5 py-3 rounded-r bg-gray-600 text-center text-xs font-semibold
+                                        text-gray-100
+                                        uppercase
+                                        tracking-wider">
+                                        Actions
                                     </th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach ($memberships as $membership)
                                     <tr>
-                                        <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm">
+                                        <td class="px-5 py-4 border-b border-gray-200 text-sm">
                                             <p class="text-gray-900 whitespace-no-wrap">
                                                 {{ $membership->membership_type }}
                                             </p>
                                         </td>
-                                        <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm">
+                                        <td class="px-5 py-4 border-b border-gray-200 text-sm">
                                             <p class="text-gray-900 whitespace-no-wrap">
                                                 {{ $membership->join_date }}
                                             </p>
                                         </td>
-                                        <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm">
+                                        <td class="px-5 py-4 border-b border-gray-200 text-sm">
                                             <p class="text-gray-900 whitespace-no-wrap">
                                                 {{ $membership->expiry_date }}
                                             </p>
                                         </td>
-                                        <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm">
+                                        <td class="px-5 py-4 border-b border-gray-200 text-sm text-center">
                                             <form action="{{ route('membership.destroy' , $membership)}}" method="POST">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE"/>
@@ -319,42 +327,48 @@
                                 <thead>
                                 <tr>
                                     <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        class="px-5 py-3 rounded-l border-r border-gray-200 bg-gray-600 text-left
+                                        text-xs
+                                        font-semibold text-gray-100 uppercase tracking-wider">
                                         Grade level
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                        font-semibold text-gray-100 uppercase tracking-wider">
                                         Grade date
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                        font-semibold text-gray-100 uppercase tracking-wider">
                                         Points to next
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-red-500 uppercase tracking-wider">
-                                        Remove
+                                        class="px-5 py-3 rounded-r bg-gray-600 text-center text-xs font-semibold
+                                        text-gray-100
+                                        uppercase tracking-wider">
+                                        Actions
                                     </th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach ($grades as $grade)
                                     <tr class="odd:bg-white even:bg-gray-200">
-                                        <td class="px-5 py-2 border-b border-gray-200 text-sm">
+                                        <td class="px-5 py-4 border-b border-gray-200 text-sm">
                                             <p class="text-gray-900 whitespace-no-wrap">
                                                 {{ $grade->grade_level}}
                                             </p>
                                         </td>
-                                        <td class="px-5 py-2 border-b border-gray-200 text-sm">
+                                        <td class="px-5 py-4 border-b border-gray-200 text-sm">
                                             <p class="text-gray-900 whitespace-no-wrap">
                                                 {{ $grade->grade_date}}
                                             </p>
                                         </td>
-                                        <td class="px-5 py-2 border-b border-gray-200 text-sm">
+                                        <td class="px-5 py-4 border-b border-gray-200 text-sm">
                                             <p class="text-gray-900 whitespace-no-wrap">
                                                 {{ $grade->grade_points}}
                                             </p>
                                         </td>
-                                        <td class="px-5 py-2 border-b border-gray-200 text-sm">
+                                        <td class="px-5 py-4 border-b border-gray-200 text-sm text-center">
                                             <form action="{{ route('grade.destroy' , $grade)}}" method="POST">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE"/>
@@ -385,11 +399,20 @@
                                 <thead>
                                 <tr>
                                     <th
-                                        class="w-3/4 px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        class="w-1/2 px-5 rounded-l py-3 border-r border-gray-100 bg-gray-600 text-left
+                                        text-xs
+                                        font-semibold text-gray-100 uppercase tracking-wider">
                                         Title
                                     </th>
                                     <th
-                                        class="w-1/4 px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        class="w-1/4 px-5 py-3 border-r border-gray-100 bg-gray-600 text-left text-xs
+                                         font-semibold
+                                        text-gray-100 uppercase tracking-wider">
+                                        Created by
+                                    </th>
+                                    <th
+                                        class="w-1/4 px-5 py-3 rounded-r bg-gray-600 text-center text-xs
+                                        font-semibold text-gray-100 uppercase tracking-wider">
                                         Operations
                                     </th>
                                 </tr>
@@ -408,12 +431,19 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 text-sm flex flex-wrap">
+                                        <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                            @if ($note->author)
+                                                {{ $note->hasAuthor->name }}
+                                            @endif
+                                        </td>
+
+                                        <td class="px-5 py-5 border-b border-gray-200 text-sm justify-center flex
+                                        flex-wrap">
                                             <a href="{{ route('membernote.show', $note->slug) }}"
-                                               class="text-blue-600 font-bold hover:text-blue-300"
+                                               class="text-blue-600 font-bold hover:text-blue-300 mr-4"
                                                title="View full note"><i class="far fa-eye"></i></a>
                                             <a href="{{ route('membernote.edit', $note) }}"
-                                               class="text-green-600 font-bold ml-3" title="Edit note"><i
+                                               class="text-green-600 font-bold mx-4" title="Edit note"><i
                                                     class="far fa-edit"></i></a>
                                             <form action="{{ route('membernote.destroy' , $note)}}" method="POST">
                                                 @csrf
@@ -446,6 +476,7 @@
                                 @csrf
                                 <input type="hidden" name="member_id" value="{{ $member->id }}">
                                 <input type="hidden" name="type" value="Form">
+                                <input type="hidden" name="author" value="{{ Auth::user()->id }}">
                                 <div class="flex flex-wrap w-1/2 mr-4">
                                     <label class="inline-block text-gray-600 text-sm font-bold mr-4 py-2" for="title">
                                         Title
@@ -470,55 +501,66 @@
                         </div>
 
                         <div class="w-full mt-8">
-                            <table class="min-w-full table leading-normal mt-8">
+                            <table class="min-w-full table-auto leading-normal mt-8">
                                 <thead>
                                 <tr>
                                     <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        class="px-5 py-3 rounded-l border-r border-gray-200 bg-gray-600 text-left
+                                            text-xs
+                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                         Title
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                        Created by
-                                    </th>
-                                    <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                         Link
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
+                                        Created by
+                                    </th>
+
+                                    <th
+                                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                         Created on
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                        Operations
+                                        class="px-5 py-3 rounded-r bg-gray-600 text-center
+                                            text-xs font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
+                                        Actions
                                     </th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach ($forms as $form)
                                     <tr>
-                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                             <div class="flex items-center">
-                                                <div class="ml-3">
+                                                <div class="">
                                                     <p class="text-gray-900 whitespace-no-wrap font-bold">
                                                         {{ $form->title }}
                                                     </p>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            Author
-                                        </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                             <a href="{{ asset('/storage/attachments/'.$form->link) }}" target="_blank">
                                                 <i class="fas fa-file-pdf text-2xl text-red-700"></i>
                                             </a>
                                         </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                            @if ($form->author)
+                                                {{ $form->hasAuthor->name }}
+                                            @endif
+                                        </td>
+
+                                        <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                             {{ $form->created_at->format('d-m-Y') }}
                                         </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm flex flex-wrap">
+                                        <td class="px-5 py-6 border-b border-gray-200 text-sm justify-center flex
+                                        flex-wrap">
                                             <form action="{{ route('memberdoc.destroy', $form->id) }}" method="POST">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE"/>
@@ -550,6 +592,7 @@
                                 @csrf
                                 <input type="hidden" name="member_id" value="{{ $member->id }}">
                                 <input type="hidden" name="type" value="Document">
+                                <input type="hidden" name="author" value="{{ Auth::user()->id }}">
                                 <div class="flex flex-wrap w-1/2 mr-4">
                                     <label class="inline-block text-gray-600 text-sm font-bold mr-4 py-2" for="title">
                                         Title
@@ -577,31 +620,38 @@
                                 <thead>
                                 <tr>
                                     <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        class="px-5 py-3 rounded-l border-r border-gray-200 bg-gray-600 text-left
+                                            text-xs
+                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                         Title
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                        Created by
-                                    </th>
-                                    <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                         Link
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
+                                        Created by
+                                    </th>
+
+                                    <th
+                                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                         Created on
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                        Operations
+                                        class="px-5 py-3 rounded-r bg-gray-600 text-center
+                                            text-xs font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
+                                        Actions
                                     </th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach ($documents as $document)
                                     <tr>
-                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                             <div class="flex items-center">
                                                 <div class="ml-3">
                                                     <p class="text-gray-900 whitespace-no-wrap font-bold">
@@ -610,19 +660,22 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            Author
-                                        </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                             <a href="{{ asset('/storage/attachments/'.$document->link) }}"
                                                target="_blank">
                                                 <i class="fas fa-file-pdf text-2xl text-red-700"></i>
                                             </a>
                                         </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                            @if ($document->author)
+                                                {{ $document->hasAuthor->name }}
+                                            @endif
+                                        </td>
+                                        <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                             {{ $document->created_at->format('d-m-Y') }}
                                         </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm flex flex-wrap">
+                                        <td class="px-5 py-6 border-b border-gray-200 text-sm flex flex-wrap
+                                        justify-center">
                                             <form action="{{ route('memberdoc.destroy', $document->id) }}"
                                                   method="POST">
                                                 @csrf

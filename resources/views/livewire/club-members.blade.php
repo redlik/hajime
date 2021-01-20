@@ -37,36 +37,50 @@
             <div class="w-full my-4">
                 {{ $members->links() }}</div>
         </div>
-        <table class="min-w-full table leading-normal">
+        <table class="min-w-full table-auto leading-normal">
             <thead>
                 <tr>
                     <th
-                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        class="px-5 py-3 rounded-l border-r border-gray-200 bg-gray-600 text-left text-xs font-semibold
+                        text-gray-100
+                        uppercase tracking-wider shadow-lg">
                         Memb. No
                     </th>
                     <th
-                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs font-semibold
+                        text-gray-100
+                        uppercase tracking-wider shadow-lg">
                         Name
                     </th>
                     <th
-                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider hidden md:block">
+                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs font-semibold
+                        text-gray-100
+                        uppercase tracking-wider hidden md:block shadow-lg">
                         Age
                     </th>
                     <th
-                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs font-semibold
+                        text-gray-100
+                        uppercase tracking-wider shadow-lg">
                         Status
                     </th>
                     <th
-                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs font-semibold
+                        text-gray-100
+                        uppercase tracking-wider shadow-lg">
                         Membership Type
                     </th>
                     <th
-                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs font-semibold
+                        text-gray-100
+                        uppercase tracking-wider shadow-lg">
                         Grade
                     </th>
                     <th
-                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        Operations
+                        class="px-5 py-3 rounded-r bg-gray-600 text-center text-xs font-semibold text-gray-100
+                        uppercase
+                        tracking-wider shadow-lg">
+                        Actions
                     </th>
                 </tr>
             </thead>

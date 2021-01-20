@@ -19,7 +19,7 @@ class CoachController extends Controller
         $coach = Coach::create($request->all());
         $club = $request->input('club_id');
 
-        return redirect()->route('clubs.show', $club);
+        return redirect('/clubs/'.$club."#personnel");
     }
 
     public function edit($id)
@@ -40,6 +40,6 @@ class CoachController extends Controller
     public function destroy($coach)
     {
         Coach::destroy($coach);
-        return redirect()->back();
+        return Redirect::to(URL::previous() . "#personnel");
     }
 }

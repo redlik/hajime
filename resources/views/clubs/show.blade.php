@@ -17,7 +17,7 @@
                     <div class="font-bold text-sm"> {{ ucfirst($club->type) }} </div>
                 </header>
                 <div id="main" x-data="{openTab: window.location.hash ? window.location.hash : '#details',
-                                      activeClasses: 'border-l border-t-4 border-r rounded-t text-blue-700',
+                                      activeClasses: 'border-l border-t-4 border-r rounded-t text-lightjudo-700',
                                       inactiveClasses: 'text-gray-500 hover:text-gray-700'
                                     }">
                     {{-- TABS SECTION --}}
@@ -118,15 +118,19 @@
                                 <thead>
                                 <tr>
                                     <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        class="px-5 py-3 rounded-l border-r border-gray-200 bg-gray-600 text-left
+                                        text-xs
+                                        font-semibold text-white uppercase tracking-wider">
                                         Name
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                        font-semibold text-white uppercase tracking-wider">
                                         Contact
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        class="px-5 py-3 rounded-r bg-gray-600 text-center
+                                        text-xs font-semibold text-white uppercase tracking-wider">
                                         Actions
                                     </th>
                                 </tr>
@@ -136,7 +140,7 @@
                                     <tr>
                                         <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                             <div class="flex items-center">
-                                                <div class="ml-3">
+                                                <div class="">
                                                     <p class="text-gray-900 whitespace-no-wrap font-bold">
                                                         {{ $venue->name }}
                                                         <br/>
@@ -187,44 +191,51 @@
                     {{-- Club Personnel Section --}}
                     <div class="w-full px-6 py-2" x-show="openTab === '#personnel'">
                         <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
-                            <h4 class="font-bold text-xl text-black mb-4">Club Personnel:</h4>
+                            <h4 class="font-bold text-xl text-black">Club Personnel:</h4>
                             <div class="w-full my-4">
                                 <table class="min-w-full table leading-normal">
                                     <thead>
                                     <tr>
                                         <th
-                                            class="w-48 pl-5 py-3 border-b-2 border-gray-200 bg-gray-100
-                                            text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            class="w-48 pl-5 py-3 rounded-l border-r border-gray-200 bg-gray-600
+                                            text-left text-xs font-semibold text-white uppercase tracking-wider
+                                            shadow-lg">
                                             Role
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100
-                                            text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600
+                                            text-left text-xs font-semibold text-white uppercase tracking-wider
+                                            shadow-lg">
                                             Name
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100
-                                            text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600
+                                            text-left text-xs font-semibold text-white uppercase tracking-wider
+                                            shadow-lg">
                                             Safeguarding
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100
-                                            text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600
+                                            text-left text-xs font-semibold text-white uppercase tracking-wider
+                                            shadow-lg">
                                             Vetting
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100
-                                            text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600
+                                            text-left text-xs font-semibold text-white uppercase tracking-wider
+                                            shadow-lg">
                                             First Aid
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100
-                                            text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600
+                                            text-left text-xs font-semibold text-white uppercase tracking-wider
+                                            shadow-lg">
                                             Qualifications
                                         </th>
                                         <th
-                                            class="w-24 py-3 border-b-2 border-gray-200 bg-gray-100
-                                            text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            class="w-24 py-3 rounded-r bg-gray-600
+                                            text-center text-xs font-semibold text-white uppercase tracking-wider
+                                            shadow-lg">
                                             Actions
                                         </th>
                                     </tr>
@@ -238,7 +249,9 @@
                                             @if(!$headCoach)
                                             <td class="px-5 py-5 border-b border-gray-200">
                                                 <a href="{{ route('club.addPersonnel', [$club->id, 'Head Coach'])}}"
-                                                   class="font-medium text-judo-700">+ Add new Headcoach</a>
+                                                   class="action-button">+ Add
+                                                    new
+                                                    Headcoach</a>
                                             </td>
                                             @else
                                                 <td class="px-5 py-5 border-b border-gray-200">
@@ -335,9 +348,10 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td class="py-12 border-b border-gray-200 text-sm flex flex-wrap h-full">
+                                                <td class="py-12 border-b border-gray-200 text-sm flex flex-wrap
+                                                justify-center h-full">
                                                     <a href="{{ route('personnel.edit', $headCoach->id) }}"
-                                                       class="text-green-600 font-bold ml-3" title="Edit details"><i
+                                                       class="text-judo-600 hover:text-judo-400 font-bold" title="Edit details"><i
                                                             class="far fa-edit"></i></a>
                                                     <form action="{{ route('personnel.destroy', $headCoach->id) }}"
                                                           method="POST">
@@ -358,7 +372,7 @@
                                             @if(!$secretary)
                                             <td colspan="6" class="px-5 py-5 border-b border-gray-200">
                                                 <a href="{{ route('club.addPersonnel', [$club->id, 'Secretary'])}}"
-                                                   class="font-medium text-judo-700">+ Add new Secretary</a>
+                                                   class="action-button">+ Add new Secretary</a>
                                             </td>
                                             @else
                                                 <td class="px-5 py-5 border-b border-gray-200">
@@ -425,9 +439,10 @@
                                                 <td class="px-5 py-5 border-b border-gray-200 text-sm">
 
                                                 </td>
-                                                <td class="py-12 border-b border-gray-200 text-sm flex flex-wrap h-full">
+                                                <td class="py-12 border-b border-gray-200 text-sm flex flex-wrap
+                                                h-full justify-center">
                                                     <a href="{{ route('personnel.edit', $secretary->id) }}"
-                                                       class="text-green-600 font-bold ml-3" title="Edit details"><i
+                                                       class="text-judo-600 hover:text-judo-400 font-bold" title="Edit details"><i
                                                             class="far fa-edit"></i></a>
                                                     <form action="{{ route('personnel.destroy', $secretary->id) }}"
                                                           method="POST">
@@ -450,7 +465,7 @@
                                             <td colspan="6" class="px-5 py-5 border-b border-gray-200">
                                                 <a href="{{ route('club.addPersonnel',
                                                             [$club->id, 'Designated Person'])}}"
-                                                   class="font-medium text-judo-700">+ Add new Designated
+                                                   class="action-button">+ Add new Designated
                                                     Person</a>
                                             </td>
                                             @else
@@ -516,9 +531,10 @@
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                                 </td>
-                                                <td class="py-12 border-b border-gray-200 text-sm flex flex-wrap h-full">
+                                                <td class="py-12 border-b border-gray-200 text-sm flex flex-wrap
+                                                h-full justify-center">
                                                     <a href="{{ route('personnel.edit', $designated->id) }}"
-                                                       class="text-green-600 font-bold ml-3" title="Edit details"><i
+                                                       class="text-judo-600 hover:text-judo-400 font-bold" title="Edit details"><i
                                                             class="far fa-edit"></i></a>
                                                     <form action="{{ route('personnel.destroy', $designated->id) }}"
                                                           method="POST">
@@ -541,7 +557,7 @@
                                             <td colspan="6" class="px-5 py-5 border-b border-gray-200">
                                                 <a href="{{ route('club.addPersonnel', [$club->id, 'Childrens Officer'])
                                                 }}"
-                                                   class="font-medium text-judo-700">+ Add new Children's
+                                                   class="action-button">+ Add new Children's
                                                     Officer</a>
                                             </td>
                                             @else
@@ -607,9 +623,11 @@
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                                 </td>
-                                                <td class="py-12 border-b border-gray-200 text-sm flex flex-wrap h-full">
+                                                <td class="py-12 border-b border-gray-200 text-sm flex flex-wrap
+                                                h-full justify-center">
                                                     <a href="{{ route('personnel.edit', $childrens->id) }}"
-                                                       class="text-green-600 font-bold ml-3" title="Edit details"><i
+                                                       class="text-judo-600 hover:text-judo-400 font-bold"
+                                                       title="Edit details"><i
                                                             class="far fa-edit"></i></a>
                                                     <form action="{{ route('personnel.destroy', $childrens->id) }}"
                                                           method="POST">
@@ -635,33 +653,39 @@
                                     <thead>
                                     <tr>
                                         <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100
-                                            text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            class="px-5 py-3 border-r bg-gray-600
+                                            text-left text-xs font-semibold text-white uppercase tracking-wider
+                                            rounded-l shadow-lg">
                                             Name
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100
-                                            text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600
+                                            text-left text-xs font-semibold text-white uppercase tracking-wider
+                                            shadow-lg">
                                             Safeguarding
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100
-                                            text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600
+                                            text-left text-xs font-semibold text-white uppercase tracking-wider
+                                            shadow-lg">
                                             Vetting
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100
-                                            text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600
+                                            text-left text-xs font-semibold text-white uppercase tracking-wider
+                                            shadow-lg">
                                             First Aid
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100
-                                            text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600
+                                            text-left text-xs font-semibold text-white uppercase tracking-wider
+                                            shadow-lg">
                                             Qualifications
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100
-                                            text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            class="px-5 py-3 rounded-r bg-gray-600
+                                            text-left text-xs font-semibold text-white uppercase tracking-wider
+                                            shadow-lg">
                                             Actions
                                         </th>
                                     </tr>
@@ -671,7 +695,7 @@
                                         <tr>
                                             <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                                 <div class="flex items-center">
-                                                    <div class="ml-3">
+                                                    <div class="">
                                                         <p class="text-gray-900 whitespace-no-wrap font-bold">
                                                         <div class="font-bold">{{ $coach->name }}</div>
                                                         <div>
@@ -765,16 +789,17 @@
                                                 </div>
                                             </td>
                                             <td class="px-8 py-12 border-b border-gray-200 text-sm flex flex-wrap
-                                            h-full">
+                                            h-full justify-center">
                                                 <a href="{{ route('coach.edit', $coach->id) }}"
-                                                   class="text-green-600 font-bold ml-3" title="Edit coach details"><i
+                                                   class="text-judo-600 hover:text-judo-400 font-bold " title="Edit coach details"><i
                                                         class="far fa-edit"></i></a>
                                                 <form action="{{ route('coach.destroy', $coach->id) }}"
                                                       method="POST">
                                                     @csrf
                                                     <input type="hidden" name="_method" value="DELETE"/>
                                                     <button type="submit"
-                                                            class="text-red-600 hover:text-red-300 whitespace-no-wrap ml-3"
+                                                            class="text-red-600 hover:text-red-300 whitespace-no-wrap
+                                                             ml-4"
                                                             onclick="return confirm('Do you want to delete the record completely?')">
                                                         <i class="far fa-trash-alt"></i></button>
                                                 </form>
@@ -803,23 +828,30 @@
                                         <thead>
                                         <tr>
                                             <th
-                                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                                class="px-5 py-3 rounded-l border-r border-gray-200 bg-gray-600
+                                                text-left text-xs
+                                                font-semibold text-gray-200 uppercase tracking-wider shadow-lg">
                                                 Name
                                             </th>
                                             <th
-                                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                                class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                                font-semibold text-gray-200 uppercase tracking-wider shadow-lg">
                                                 Contact
                                             </th>
                                             <th
-                                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                                class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                                font-semibold text-gray-200 uppercase tracking-wider shadow-lg">
                                                 Vetting
                                             </th>
                                             <th
-                                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                                class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                                font-semibold text-gray-200 uppercase tracking-wider shadow-lg">
                                                 Safe Guarding
                                             </th>
                                             <th
-                                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                                class="px-5 py-3 rounded-r bg-gray-600 text-center
+                                                text-xs
+                                                font-semibold text-gray-200 uppercase tracking-wider shadow-lg">
                                                 Actions
                                             </th>
                                         </tr>
@@ -829,7 +861,7 @@
                                             <tr>
                                                 <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                                     <div class="flex items-center">
-                                                        <div class="ml-3">
+                                                        <div>
                                                             <p class="text-gray-900 whitespace-no-wrap font-bold">
                                                                 {{ $volunteer->name }}
                                                             </p>
@@ -948,29 +980,34 @@
                                     <thead>
                                     <tr>
                                         <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            class="px-5 py-3 rounded-l border-r border-gray-200 bg-gray-600 text-left
+                                            text-xs
+                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                             Title
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                             Created by
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                             Created on
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                            Operations
+                                            class="px-5 py-3 rounded-r bg-gray-600 text-center text-xs font-semibold
+                                            text-gray-100 uppercase tracking-wider shadow-lg">
+                                            Actions
                                         </th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach ($notes as $note)
                                         <tr>
-                                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                                 <div class="flex items-center">
-                                                    <div class="ml-3">
+                                                    <div class="">
                                                         <p class="text-gray-900 whitespace-no-wrap font-bold">
                                                             <a href="{{ route('clubnote.show', $note->slug) }}"
                                                                class="hover:text-cool-gray-400"
@@ -979,27 +1016,32 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                Author
+                                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                                @if ($note->author)
+                                                {{ $note->hasAuthor->name }}
+                                                @endif
                                             </td>
-                                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                                 {{ $note->created_at->format('d-m-Y') }}
                                             </td>
-                                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm flex flex-wrap">
-                                                <a href="{{ route('clubnote.show', $note->slug) }}"
-                                                   class="text-blue-600 font-bold hover:text-blue-300"
-                                                   title="View full note"><i class="far fa-eye"></i></a>
-                                                <a href="{{ route('clubnote.edit', $note) }}"
-                                                   class="text-green-600 font-bold ml-3" title="Edit note"><i
-                                                        class="far fa-edit"></i></a>
-                                                <form action="{{ route('clubnote.destroy' , $note)}}" method="POST">
-                                                    @csrf
-                                                    <input type="hidden" name="_method" value="DELETE"/>
-                                                    <button type="submit"
-                                                            class="text-red-600 hover:text-red-300 whitespace-no-wrap ml-3"
-                                                            onclick="return confirm('Do you want to delete the record completely?')">
-                                                        <i class="far fa-trash-alt"></i></button>
-                                                </form>
+                                            <td class="px-5 py-5 border-b border-gray-200 text-sm flex
+                                            flex-wrap justify-center">
+                                                <div><a href="{{ route('clubnote.show', $note->slug) }}"
+                                                         class="text-blue-600 font-bold hover:text-blue-300"
+                                                         title="View full note"><i class="far fa-eye"></i></a></div>
+                                                <div><a href="{{ route('clubnote.edit', $note) }}"
+                                                         class="text-green-600 font-bold ml-3" title="Edit note"><i
+                                                            class="far fa-edit"></i></a></div>
+                                                <div>
+                                                    <form action="{{ route('clubnote.destroy' , $note)}}" method="POST">
+                                                        @csrf
+                                                        <input type="hidden" name="_method" value="DELETE"/>
+                                                        <button type="submit"
+                                                                class="text-red-600 hover:text-red-300 whitespace-no-wrap ml-3"
+                                                                onclick="return confirm('Do you want to delete the record completely?')">
+                                                            <i class="far fa-trash-alt"></i></button>
+                                                    </form>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -1023,6 +1065,7 @@
                                     @csrf
                                     <input type="hidden" name="club_id" value="{{ $club->id }}">
                                     <input type="hidden" name="type" value="Form">
+                                    <input type="hidden" name="author" value="{{ Auth::user()->id }}">
                                     <div class="flex flex-wrap w-1/2 mr-4">
                                         <label class="inline-block text-gray-600 text-sm font-bold mr-4 py-2"
                                                for="title">
@@ -1053,52 +1096,65 @@
                                     <thead>
                                     <tr>
                                         <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            class="px-5 py-3 rounded-l border-r border-gray-200 bg-gray-600 text-left
+                                            text-xs
+                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                             Title
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                            Created by
-                                        </th>
-                                        <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                             Link
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
+                                            Created by
+                                        </th>
+
+                                        <th
+                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                             Created on
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                            Operations
+                                            class="px-5 py-3 rounded-r bg-gray-600 text-center
+                                            text-xs font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
+                                            Actions
                                         </th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach ($forms as $form)
                                         <tr>
-                                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                                 <div class="flex items-center">
                                                     <div class="ml-3">
                                                         <p class="text-gray-900 whitespace-no-wrap font-bold">
+                                                            <a href="{{ asset('/storage/attachments/'.$form->link) }}"
+                                                               target="_blank">
                                                             {{ $form->title }}
+                                                            </a>
                                                         </p>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                Author
-                                            </td>
-                                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                                 <a href="{{ asset('/storage/attachments/'.$form->link) }}"
                                                    target="_blank">
-                                                    <i class="fas fa-file-pdf text-2xl text-red-700"></i>
+                                                    <i class="fas fa-file-pdf text-2xl text-red-700 mr-3"></i><span
+                                                        class="text-gray-500">{{ $form->link }}</span>
                                                 </a>
                                             </td>
-                                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                                @if ($form->author)
+                                                    {{ $form->hasAuthor->name }}
+                                                @endif
+                                            </td>
+                                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                                 {{ $form->created_at->format('d-m-Y') }}
                                             </td>
-                                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm flex flex-wrap">
+                                            <td class="px-5 py-6 border-b border-gray-200 text-sm flex flex-wrap">
                                                 <form action="{{ route('clubdoc.destroy', $form->id) }}" method="POST">
                                                     @csrf
                                                     <input type="hidden" name="_method" value="DELETE"/>
@@ -1119,7 +1175,7 @@
                     {{-- Documents Section --}}
                     <div class="w-full px-6 py-2" x-show="openTab === '#documents'">
                         <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
-                            <h4 class="font-bold text-xl mb-4">Club Documents:</h4>
+                            <h4 class="font-bold text-xl mb-4">Club documents:</h4>
                             <div>
                                 <button class="button-judo" onclick="showDocForm()">+ Add new document</button>
 
@@ -1131,13 +1187,14 @@
                                     @csrf
                                     <input type="hidden" name="club_id" value="{{ $club->id }}">
                                     <input type="hidden" name="type" value="Document">
+                                    <input type="hidden" name="author" value="{{ Auth::user()->id }}">
                                     <div class="flex flex-wrap w-1/2 mr-4">
                                         <label class="inline-block text-gray-600 text-sm font-bold mr-4 py-2"
                                                for="title">
                                             Title
                                         </label>
                                         <input
-                                            class="shadow appearance-none border w-5/6 rounded px-3 text-grey-darker"
+                                            class="shadow appearance-none border w-auto rounded px-3 text-grey-darker"
                                             id="title" name="title" type="text" required>
                                     </div>
                                     <div class="flex flex-wrap align-middle">
@@ -1160,59 +1217,73 @@
                                     <thead>
                                     <tr>
                                         <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            class="px-5 py-3 rounded-l border-r border-gray-200 bg-gray-600 text-left
+                                            text-xs
+                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                             Title
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                            Created by
-                                        </th>
-                                        <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                             Link
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
+                                            Created by
+                                        </th>
+                                        <th
+                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                             Created on
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                            Operations
+                                            class="px-5 py-3 rounded-r bg-gray-600 text-center
+                                            text-xs font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
+                                            Actions
                                         </th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach ($documents as $document)
                                         <tr>
-                                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                                 <div class="flex items-center">
                                                     <div class="ml-3">
                                                         <p class="text-gray-900 whitespace-no-wrap font-bold">
+                                                            <a href="{{ asset('/storage/attachments/'.$document->link) }}"
+                                                               target="_blank" title="{{ $document->link }}">
                                                             {{ $document->title }}
+                                                            </a>
                                                         </p>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                Author
-                                            </td>
-                                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                                 <a href="{{ asset('/storage/attachments/'.$document->link) }}"
-                                                   target="_blank">
-                                                    <i class="fas fa-file-pdf text-2xl text-red-700"></i>
+                                                   target="_blank" title="{{ $document->link }}">
+                                                    <i class="fas fa-file-pdf text-2xl text-red-700 mr-3"></i><span
+                                                        class="text-gray-500">{{ $document->link }}</span>
                                                 </a>
                                             </td>
-                                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                                @if ($document->author)
+                                                    {{ $document->hasAuthor->name }}
+                                                @endif
+                                            </td>
+                                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                                 {{ $document->created_at->format('d-m-Y') }}
                                             </td>
-                                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm flex flex-wrap">
+                                            <td class="px-5 py-6 border-b border-gray-200 text-sm flex flex-wrap
+                                            justify-center">
                                                 <form action="{{ route('clubdoc.destroy', $document->id) }}"
                                                       method="POST">
                                                     @csrf
                                                     <input type="hidden" name="_method" value="DELETE"/>
                                                     <button type="submit"
-                                                            class="text-red-600 hover:text-red-300 whitespace-no-wrap ml-3"
-                                                            onclick="return confirm('Do you want to delete the record completely?')">
+                                                            class="text-red-600 hover:text-red-300 whitespace-no-wrap"
+                                                            onclick="return confirm('Do you want to delete the record completely?')"
+                                                            title="Delete document">
                                                         <i class="far fa-trash-alt"></i></button>
                                                 </form>
                                             </td>

@@ -34,7 +34,7 @@ class MembershipController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -45,7 +45,6 @@ class MembershipController extends Controller
             $member->save();
         }
 
-//        return redirect()->action('App\Http\Controllers\MemberController@show', ['member' => $member]);
         return Redirect::to(URL::previous() . "#membership");
     }
 
@@ -105,6 +104,6 @@ class MembershipController extends Controller
             }
         }
 
-        return redirect()->action('App\Http\Controllers\MemberController@show', ['member' => $member]);
+        return Redirect::to(URL::previous() . "#membership");
     }
 }

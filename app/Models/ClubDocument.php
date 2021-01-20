@@ -18,4 +18,8 @@ class ClubDocument extends Model
     public function scopeDocument($query, $club) {
         return $query->where('type', 'Document')->where('club_id', $club)->orderBy('created_at', 'desc');
     }
+
+    public function hasAuthor() {
+        return $this->belongsTo(User::class, 'author');
+    }
 }

@@ -52,6 +52,7 @@ class ClubnoteController extends Controller
         $note->title = $request->input('title');
         $note->body = $request->input('body');
         $note->club_id = $request->input('club_id');
+        $note->author = $request->input('author');
         $note->save();
 
         $note->slug = $note->id."-".$note->slug;

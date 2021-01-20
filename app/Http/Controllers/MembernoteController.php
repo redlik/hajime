@@ -52,6 +52,7 @@ class MembernoteController extends Controller
         $note->title = $request->input('title');
         $note->body = $request->input('body');
         $note->member_id = $request->input('member_id');
+        $note->author = $request->input('author');
         $note->save();
 
         $note->slug = $note->id."-".$note->slug;

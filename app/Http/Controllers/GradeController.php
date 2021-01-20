@@ -89,6 +89,6 @@ class GradeController extends Controller
         $member = member::find($request->input('member_id'));
         $grade = Grade::where('id', $grade->id)->delete();
 
-        return redirect()->action('App\Http\Controllers\MemberController@show', ['member' => $member]);
+        return Redirect::to(URL::previous() . "#grading");
     }
 }

@@ -45,7 +45,7 @@ class VolunteerController extends Controller
         $volunteer = Volunteer::create($request->all());
         $club = $request->input('club_id');
 
-        return redirect()->route('clubs.show', $club);
+        return redirect('/clubs/'.$club."#volunteers");
     }
 
     /**
