@@ -7,22 +7,25 @@
             <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
 
                 <header
-                    class="font-bold text-xl bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md flex
-                     justify-between align-middle mb-6">
+                    class="font-bold text-xl bg-gray-600 text-gray-100 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md flex
+                     flex-wrap justify-between content-center mb-6">
                     <div>
                         {{ $club->name }}
-                        <a href="{{ route('clubs.edit', $club) }}" class="text-green-600 font-bold ml-3"
+                        <a href="{{ route('clubs.edit', $club) }}" class="text-judo-200 hover:text-judo-50
+                        font-bold ml-3"
                            title="Edit club details"><i class="far fa-edit"></i></a>
                     </div>
                     <div class="font-bold text-sm"> {{ ucfirst($club->type) }} </div>
                 </header>
                 <div id="main" x-data="{openTab: window.location.hash ? window.location.hash : '#details',
-                                      activeClasses: 'border-l border-t-4 border-r rounded-t text-lightjudo-700',
-                                      inactiveClasses: 'text-gray-500 hover:text-gray-700'
+                                      activeClasses:
+                                      'bg-gray-300 text-gray-800 rounded-full shadow-inner shadow outline-none',
+                                      inactiveClasses:
+                                      'text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-full'
                                     }">
                     {{-- TABS SECTION --}}
                     <div class="w-full px-6">
-                        <ul class="flex border-b">
+                        <ul class="flex">
                             <li class="-mb-px mr-1" :class="{ '-mb-px': openTab === '#details' }" @click="openTab =
                         '#details'">
                                 <a :class="openTab === '#details' ? activeClasses : inactiveClasses" class="bg-white
@@ -64,7 +67,7 @@
                     <div class="w-full px-6 py-2" x-show="openTab === '#details'">
                         <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
                             <div class="w-full md:w-1/2 sm:w-full">
-                                <h4 class="font-bold text-xl text-black mb-4">Location data:</h4>
+                                <h4 class="font-bold text-xl text-gray-600 mb-4">Location data:</h4>
                                 <p class="mb-2">{{ $club->address1 }}</p>
                                 <p class="mb-2">{{ $club->address2 }}</p>
                                 <p class="mb-2">{{ ucfirst($club->city) }}</p>
@@ -72,23 +75,28 @@
                                 <p class="mb-2">{{ ucfirst($club->province) }}</p>
                                 <p class="mb-8">{{ strtoupper($club->eircode) }}</p>
                                 <div>
-                                    <h4 class="font-bold text-xl text-black mb-4" id="venues">Correspondence:</h4>
-                                    <p class="mb-2">Main postal address: <span class="font-bold">{{ $club->postal
+                                    <h4 class="font-bold text-xl text-gray-600 mb-4" id="venues">Correspondence:</h4>
+                                    <p class="mb-4"><span class="w-40 inline-block">Main postal address:</span> <span
+                                            class="gray-pillow">{{
+                                            $club->postal
                                     ?? 'Not set'}}</span></p>
-                                    <p class="mb-2">Main email contact: <span class="font-bold">{{ $club->correspondence
+                                    <p class="mb-2"><span class="w-40 inline-block">Main email contact:</span> <span
+                                            class="gray-pillow">{{ $club->correspondence
                                     ?? 'Not set'}}</span></p>
                                 </div>
                             </div>
                             <div class="w-full md:w-1/2 sm:w-full">
-                                <h4 class="font-bold text-xl text-black mb-4">Contact details:</h4>
+                                <h4 class="font-bold text-xl text-gray-600 mb-4">Contact details:</h4>
                                 <div class="mb-2">
                                     <div class="w-24 inline-block">Phone:</div>
-                                    <div class="w-auto inline-block font-bold"> {{ $club->phone ?? 'Not set' }}</div>
+                                    <div class="w-auto inline-block font-semibold text-gray-600"> {{ $club->phone ?? 'Not
+                                    set'
+                                    }}</div>
                                 </div>
                                 <div class="mb-2">
                                     <div class="w-24 inline-block">Email:</div>
                                     @if ($club->email)
-                                        <div class="w-auto inline-block font-bold">
+                                        <div class="w-auto inline-block font-semibold text-gray-600">
                                             <a href="mailto:{{ $club->email }}">{{ $club->email }}</a>
                                         </div>
                                     @else
@@ -98,17 +106,45 @@
                                 </div>
                                 <div class="mb-2">
                                     <div class="w-24 inline-block">Website:</div>
-                                    <div class="w-auto inline-block font-bold"> {{ $club->website ?? 'Not set' }}</div>
+                                    <div class="w-auto inline-block font-semibold text-gray-600"> {{ $club->website ??
+                                    'Not
+                                    set'
+                                    }}</div>
                                 </div>
                                 <div class="mb-2">
                                     <div class="w-24 inline-block">Facebook:</div>
-                                    <div class="w-auto inline-block font-bold"> {{ $club->facebook ?? 'Not set' }}</div>
+                                    <div class="w-auto inline-block font-semibold text-gray-600"> {{ $club->facebook ??
+                                    'Not
+                                    set'
+                                    }}</div>
                                 </div>
-
+                                <div class="mt-12">
+                                <h4 class="font-bold text-xl text-gray-600 mb-4">Club Rights:</h4>
+                                    <div class="mb-4">
+                                        <div class="w-32 inline-block">Full compliance:</div>
+                                        <div class="w-auto inline-block font-bold">
+                                            @if ($club->compliant)
+                                                <span class="green-pillow">YES</span>
+                                            @else
+                                                <span class="red-pillow">NO</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="w-32 inline-block">Voting Rights:</div>
+                                        <div class="w-auto inline-block font-bold">
+                                            @if ($club->voting_rights)
+                                                <span class="green-pillow">YES</span>
+                                            @else
+                                                <span class="red-pillow">NO</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
-                            <h4 class="font-bold text-xl text-black mb-4" id="venues">Training Venues:</h4>
+                            <h4 class="font-bold text-xl text-gray-600 mb-4" id="venues">Training Venues:</h4>
                             <div class="w-full mb-6">
                                 <a href="{{ route('venue.create.club', $club->id) }}">
                                     <button class="button-judo">+ Add new venue</button>
@@ -191,7 +227,7 @@
                     {{-- Club Personnel Section --}}
                     <div class="w-full px-6 py-2" x-show="openTab === '#personnel'">
                         <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
-                            <h4 class="font-bold text-xl text-black">Club Personnel:</h4>
+                            <h4 class="font-bold text-xl text-gray-600">Club Personnel:</h4>
                             <div class="w-full my-4">
                                 <table class="min-w-full table leading-normal">
                                     <thead>
@@ -270,14 +306,14 @@
                                                 <td class="px-5 py-5 border-b border-gray-200">
                                                     <div class="flex items-center text-sm">
                                                         <div>
-                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
+                                                            <div class="gray-date">
                                                                 {{ $headCoach->safeguarding_completion ?? 'Not set' }}</div>
                                                             @if ( $headCoach->safeguarding_expiry)
                                                                 @if($headCoach->safeguarding_expiry < now())
-                                                                    <div class="bg-red-700 text-white rounded-lg py-1
-                                                                                px-2">{{ $headCoach->safeguarding_expiry }}</div>
+                                                                    <div class="expired-date">{{
+                                                                    $headCoach->safeguarding_expiry }}</div>
                                                                 @else
-                                                                    <div class="bg-indigo-100 rounded-lg py-1 px-2">
+                                                                    <div class="valid-date">
                                                                         {{ $headCoach->safeguarding_expiry }}
                                                                     </div>
                                                                 @endif
@@ -293,20 +329,20 @@
                                                 <td class="px-5 py-5 border-b border-gray-200">
                                                     <div class="flex items-center text-sm">
                                                         <div>
-                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
+                                                            <div class="gray-date">
                                                                 {{ $headCoach->vetting_completion ?? 'Not set' }}</div>
                                                             @if ( $headCoach->vetting_expiry)
                                                                 @if($headCoach->vetting_expiry < now())
-                                                                    <div class="bg-red-700 text-white rounded-lg py-1
-                                                                                px-2">{{ $headCoach->vetting_expiry }}</div>
+                                                                    <div class="expired-date">{{
+                                                                    $headCoach->vetting_expiry }}</div>
                                                                 @else
-                                                                    <div class="bg-indigo-100 rounded-lg py-1 px-2">
+                                                                    <div class="valid-date">
                                                                         {{ $headCoach->vetting_expiry }}
                                                                     </div>
                                                                 @endif
                                                             @else
                                                                 <div
-                                                                    class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">
+                                                                    class="gray-date">
                                                                     Not set
                                                                 </div>
                                                             @endif
@@ -316,20 +352,20 @@
                                                 <td class="px-5 py-5 border-b border-gray-200">
                                                     <div class="flex items-center text-sm">
                                                         <div>
-                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
+                                                            <div class="gray-date">
                                                                 {{ $headCoach->first_aid_completion ?? 'Not set' }}</div>
                                                             @if ( $headCoach->first_aid_expiry)
                                                                 @if($headCoach->first_aid_expiry < now())
-                                                                    <div class="bg-red-700 text-white rounded-lg py-1
-                                                                                px-2">{{ $headCoach->first_aid_expiry }}</div>
+                                                                    <div class="expired-date">{{
+                                                                    $headCoach->first_aid_expiry }}</div>
                                                                 @else
-                                                                    <div class="bg-indigo-100 rounded-lg py-1 px-2">
+                                                                    <div class="valid-date">
                                                                         {{ $headCoach->first_aid_expiry }}
                                                                     </div>
                                                                 @endif
                                                             @else
                                                                 <div
-                                                                    class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">
+                                                                    class="gray-date">
                                                                     Not set
                                                                 </div>
                                                             @endif
@@ -339,10 +375,10 @@
                                                 <td class="px-5 py-5 border-b border-gray-200">
                                                     <div class="flex items-center text-sm">
                                                         <div>
-                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
+                                                            <div class="gray-date">
                                                                 {{$headCoach->coaching_qualification ?? 'Not set'}}
                                                             </div>
-                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 text-center">
+                                                            <div class="gray-date">
                                                                 {{ $headCoach->coaching_date ?? 'Not set'}}
                                                             </div>
                                                         </div>
@@ -390,20 +426,20 @@
                                                 <td class="px-5 py-5 border-b border-gray-200">
                                                     <div class="flex items-center text-sm">
                                                         <div>
-                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
+                                                            <div class="gray-date">
                                                                 {{ $secretary->safeguarding_completion ?? 'Not set' }}</div>
                                                             @if ( $secretary->safeguarding_expiry)
                                                                 @if($secretary->safeguarding_expiry < now())
-                                                                    <div class="bg-red-700 text-white rounded-lg py-1
-                                                                                px-2">{{ $secretary->safeguarding_expiry }}</div>
+                                                                    <div class="expired-date">{{
+                                                                    $secretary->safeguarding_expiry }}</div>
                                                                 @else
-                                                                    <div class="bg-indigo-100 rounded-lg py-1 px-2">
+                                                                    <div class="valid-date">
                                                                         {{ $secretary->safeguarding_expiry }}
                                                                     </div>
                                                                 @endif
                                                             @else
                                                                 <div
-                                                                    class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">
+                                                                    class="gray-date">
                                                                     Not set
                                                                 </div>
                                                             @endif
@@ -413,20 +449,20 @@
                                                 <td class="px-5 py-5 border-b border-gray-200">
                                                     <div class="flex items-center text-sm">
                                                         <div>
-                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
+                                                            <div class="gray-date">
                                                                 {{ $secretary->vetting_completion ?? 'Not set' }}</div>
                                                             @if ( $secretary->vetting_expiry)
                                                                 @if($secretary->vetting_expiry < now())
-                                                                    <div class="bg-red-700 text-white rounded-lg py-1
-                                                                                px-2">{{ $secretary->vetting_expiry }}</div>
+                                                                    <div class="expired-date">{{
+                                                                    $secretary->vetting_expiry }}</div>
                                                                 @else
-                                                                    <div class="bg-indigo-100 rounded-lg py-1 px-2">
+                                                                    <div class="valid-date">
                                                                         {{ $secretary->vetting_expiry }}
                                                                     </div>
                                                                 @endif
                                                             @else
                                                                 <div
-                                                                    class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">
+                                                                    class="gray-date">
                                                                     Not set
                                                                 </div>
                                                             @endif
@@ -484,20 +520,20 @@
                                                 <td class="px-5 py-5 border-b border-gray-200">
                                                     <div class="flex items-center text-sm">
                                                         <div>
-                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
+                                                            <div class="gray-date">
                                                                 {{ $designated->safeguarding_completion ?? 'Not set' }}</div>
                                                             @if ( $designated->safeguarding_expiry)
                                                                 @if($designated->safeguarding_expiry < now())
-                                                                    <div class="bg-red-700 text-white rounded-lg py-1
-                                                                                px-2">{{ $designated->safeguarding_expiry }}</div>
+                                                                    <div class="expired-date">{{
+                                                                    $designated->safeguarding_expiry }}</div>
                                                                 @else
-                                                                    <div class="bg-indigo-100 rounded-lg py-1 px-2">
+                                                                    <div class="valid-date">
                                                                         {{ $designated->safeguarding_expiry }}
                                                                     </div>
                                                                 @endif
                                                             @else
                                                                 <div
-                                                                    class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">
+                                                                    class="gray-date">
                                                                     Not set
                                                                 </div>
                                                             @endif
@@ -507,20 +543,20 @@
                                                 <td class="px-5 py-5 border-b border-gray-200">
                                                     <div class="flex items-center text-sm">
                                                         <div>
-                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
+                                                            <div class="gray-date">
                                                                 {{ $designated->vetting_completion ?? 'Not set' }}</div>
                                                             @if ( $designated->vetting_expiry)
                                                                 @if($designated->vetting_expiry < now())
-                                                                    <div class="bg-red-700 text-white rounded-lg py-1
-                                                                                px-2">{{ $designated->vetting_expiry }}</div>
+                                                                    <div class="expired-date">{{
+                                                                    $designated->vetting_expiry }}</div>
                                                                 @else
-                                                                    <div class="bg-indigo-100 rounded-lg py-1 px-2">
+                                                                    <div class="valid-date">
                                                                         {{ $designated->vetting_expiry }}
                                                                     </div>
                                                                 @endif
                                                             @else
                                                                 <div
-                                                                    class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">
+                                                                    class="gray-date">
                                                                     Not set
                                                                 </div>
                                                             @endif
@@ -576,20 +612,20 @@
                                                 <td class="px-5 py-5 border-b border-gray-200">
                                                     <div class="flex items-center text-sm">
                                                         <div>
-                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
+                                                            <div class="gray-date">
                                                                 {{ $childrens->safeguarding_completion ?? 'Not set' }}</div>
                                                             @if ( $childrens->safeguarding_expiry)
                                                                 @if($childrens->safeguarding_expiry < now())
-                                                                    <div class="bg-red-700 text-white rounded-lg py-1
-                                                                                px-2">{{ $childrens->safeguarding_expiry }}</div>
+                                                                    <div class="expired-date">{{
+                                                                    $childrens->safeguarding_expiry }}</div>
                                                                 @else
-                                                                    <div class="bg-indigo-100 rounded-lg py-1 px-2">
+                                                                    <div class="valid-date">
                                                                         {{ $childrens->safeguarding_expiry }}
                                                                     </div>
                                                                 @endif
                                                             @else
                                                                 <div
-                                                                    class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">
+                                                                    class="gray-date">
                                                                     Not set
                                                                 </div>
                                                             @endif
@@ -599,20 +635,20 @@
                                                 <td class="px-5 py-5 border-b border-gray-200">
                                                     <div class="flex items-center text-sm">
                                                         <div>
-                                                            <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
+                                                            <div class="gray-date">
                                                                 {{ $childrens->vetting_completion ?? 'Not set' }}</div>
                                                             @if ( $childrens->vetting_expiry)
                                                                 @if($childrens->vetting_expiry < now())
-                                                                    <div class="bg-red-700 text-white rounded-lg py-1
-                                                                                px-2">{{ $childrens->vetting_expiry }}</div>
+                                                                    <div class="expired-date">{{
+                                                                    $childrens->vetting_expiry }}</div>
                                                                 @else
-                                                                    <div class="bg-indigo-100 rounded-lg py-1 px-2">
+                                                                    <div class="valid-date">
                                                                         {{ $childrens->vetting_expiry }}
                                                                     </div>
                                                                 @endif
                                                             @else
                                                                 <div
-                                                                    class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">
+                                                                    class="gray-date">
                                                                     Not set
                                                                 </div>
                                                             @endif
@@ -645,7 +681,7 @@
                                 </table>
                             </div>
                             <div class="w-full mt-12">
-                                <h4 class="font-bold text-xl text-black mb-4" id="volunteers">Coaches:</h4>
+                                <h4 class="font-bold text-xl text-gray-600 mb-4" id="volunteers">Coaches:</h4>
                                 <a href="{{ route('coach.addCoach', [$club->id])}}">
                                     <button class="button-judo">+ Add new Coach</button>
                                 </a>
@@ -712,14 +748,14 @@
                                             <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                                 <div class="flex items-center">
                                                     <div>
-                                                        <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">{{
+                                                        <div class="gray-date">{{
                                                                         $coach->safeguarding_completion ?? 'Not set' }}</div>
                                                         @if ( $coach->safeguarding_expiry)
                                                             @if($coach->safeguarding_expiry < now())
-                                                                <div class="bg-red-700 text-white rounded-lg py-1
-                                                                                px-2">{{ $coach->safeguarding_expiry }}</div>
+                                                                <div class="expired-date">{{
+                                                                $coach->safeguarding_expiry }}</div>
                                                             @else
-                                                                <div class="bg-indigo-100 rounded-lg py-1 px-2">{{
+                                                                <div class="valid-date">{{
                                                                                 $coach->safeguarding_expiry }}</div>
                                                             @endif
                                                         @else
@@ -734,21 +770,19 @@
                                             <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                                 <div class="flex items-center">
                                                     <div>
-                                                        <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">{{
+                                                        <div class="gray-date">{{
                                                                         $coach->vetting_completion ?? 'Not set' }}</div>
                                                         @if ( $coach->vetting_expiry)
                                                             @if($coach->vetting_expiry < now())
-                                                                <div class="bg-red-700 text-white rounded-lg py-1
-                                                                                px-2">{{ $coach->vetting_expiry }}</div>
+                                                                <div class="expired-date">{{ $coach->vetting_expiry
+                                                                }}</div>
                                                             @else
-                                                                <div class="bg-indigo-100 rounded-lg py-1 px-2">{{
+                                                                <div class="valid-date">{{
                                                                                 $coach->vetting_expiry }}</div>
                                                             @endif
                                                         @else
-                                                            <div
-                                                                class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">
-                                                                Not
-                                                                set
+                                                            <div class="gray-date">
+                                                                Not set
                                                             </div>
                                                         @endif
                                                     </div>
@@ -757,32 +791,32 @@
                                             <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                                 <div class="flex items-center">
                                                     <div>
-                                                        <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">{{
+                                                        <div class="gray-date">{{
                                                                             $coach->first_aid_completion ?? 'Not set'}}</div>
                                                         @if ( $coach->first_aid_expiry)
                                                             @if($coach->first_aid_expiry < now())
                                                                 <div
-                                                                    class="bg-red-700 text-white rounded-lg py-1 px-2">{{ $coach->first_aid_expiry }}</div>
+                                                                    class="expired-date">{{ $coach->first_aid_expiry
+                                                                    }}</div>
                                                             @else
-                                                                <div class="bg-indigo-100 rounded-lg py-1 px-2">{{
-                                                                                                                               $coach->first_aid_expiry }}</div>
+                                                                <div class="valid-date">{{ $coach->first_aid_expiry
+                                                                }}</div>
                                                             @endif
                                                         @else
-                                                            <div
-                                                                class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">
-                                                                Not
-                                                                set
+                                                            <div class="gray-date">
+                                                                Not set
                                                             </div>
-                                                        @endif</div>
+                                                        @endif
+                                                    </div>
                                                 </div>
                                             </td>
                                             <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                                 <div class="flex items-center">
                                                     <div>
-                                                        <div class="bg-gray-200 rounded-lg py-1 px-2 mb-2">
+                                                        <div class="gray-date">
                                                             {{$coach->coaching_qualification ?? 'Not set'}}
                                                         </div>
-                                                        <div class="bg-gray-200 rounded-lg py-1 px-2 text-center">
+                                                        <div class="gray-date">
                                                             {{ $coach->coaching_date ?? 'Not set'}}
                                                         </div>
                                                     </div>
@@ -818,7 +852,7 @@
                     {{-- Club Volunteers Section --}}
                     <div class="w-full px-6 py-2" x-show="openTab === '#volunteers'">
                         <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
-                            <h4 class="font-bold text-xl text-black mb-4" id="personnel">Club Volunteers:</h4>
+                            <h4 class="font-bold text-xl text-gray-600 mb-4" id="personnel">Club Volunteers:</h4>
                             <div class="w-full flex flex-wrap">
                                 <div class="w-full">
                                     <a href="{{ route('volunteer.addVolunteer', [$club->id])}}">
@@ -883,21 +917,22 @@
                                                 <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                                     <div class="flex items-center">
                                                         <div>
-                                                                        <span class="bg-gray-200 rounded-lg py-1 px-2">{{
+                                                                        <span class="gray-date">{{
                                                                         $volunteer->vetting_completion ?? 'Not set' }}</span>
                                                             -
                                                             @if ( $volunteer->vetting_expiry)
                                                                 @if($volunteer->vetting_expiry < now())
                                                                     <span
-                                                                        class="bg-red-700 text-white rounded-lg py-1 px-2">{{ $volunteer->vetting_expiry }}</span>
+                                                                        class="expired-date">{{
+                                                                        $volunteer->vetting_expiry }}</span>
                                                                 @else
                                                                     <span
-                                                                        class="bg-indigo-100 rounded-lg py-1 px-2">{{ $volunteer->vetting_expiry }}</span>
+                                                                        class="valid-date">{{
+                                                                        $volunteer->vetting_expiry }}</span>
                                                                 @endif
                                                             @else
                                                                 <span
-                                                                    class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">Not
-                                                                                    set</span>
+                                                                    class="gray-date">Not set</span>
                                                             @endif
 
                                                         </div>
@@ -906,21 +941,23 @@
                                                 <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                                     <div class="flex items-center">
                                                                         <span
-                                                                            class="bg-gray-200 rounded-lg py-1 px-2 mr-1">{{
+                                                                            class="gray-date">{{
                                                                         $volunteer->safeguarding_completion ?? 'Not set'}}</span>
                                                         -
                                                         @if ( $volunteer->safeguarding_expiry)
                                                             @if($volunteer->safeguarding_expiry < now())
                                                                 <span
-                                                                    class="bg-red-700 text-white rounded-lg py-1 px-2 ml-2">{{ $volunteer->safeguarding_expiry }}</span>
+                                                                    class="expired-date">{{
+                                                                    $volunteer->safeguarding_expiry
+                                                                    }}</span>
                                                             @else
                                                                 <span
-                                                                    class="bg-indigo-100 rounded-lg py-1 px-2 ml-2">{{ $volunteer->safeguarding_expiry }}</span>
+                                                                    class="valid-date">{{
+                                                                    $volunteer->safeguarding_expiry }}</span>
                                                             @endif
                                                         @else
                                                             <span
-                                                                class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">Not
-                                                                                    set</span>
+                                                                class="gray-date">Not set</span>
                                                         @endif
                                                     </div>
                                                 </td>
@@ -956,7 +993,7 @@
                     {{-- Club Members Section --}}
                     <div class="w-full px-6 py-2" x-show="openTab === '#members'">
                         <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
-                            <h4 class="font-bold text-xl text-black mb-4 block w-full">Members:</h4>
+                            <h4 class="font-bold text-xl text-gray-600 mb-4 block w-full">Members:</h4>
                             <div class="w-full block">
                                 <a href="{{ route('member.createWithClub', ['club' => $club->id]) }}">
                                     <button class="button-judo">+ Add new member</button>
@@ -971,7 +1008,7 @@
                     {{-- Club Notes Section --}}
                     <div class="w-full px-6 py-2" x-show="openTab === '#notes'">
                         <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
-                            <h4 class="font-bold text-xl mb-4">Club notes:</h4>
+                            <h4 class="font-bold text-xl text-gray-600 mb-4">Club notes:</h4>
                             <a href="{{ route('clubnote.create.club', [$club->id]) }}">
                                 <button class="button-judo">+ Add new note</button>
                             </a>
@@ -1054,7 +1091,7 @@
                     {{-- Club Forms Section --}}
                     <div class="w-full px-6 py-2" x-show="openTab === '#forms'">
                         <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
-                            <h4 class="font-bold text-xl mb-4">Club forms:</h4>
+                            <h4 class="font-bold text-xl text-gray-600 mb-4">Club forms:</h4>
                             <div>
                                 <button class="button-judo" onclick="showForm()">+ Add new form</button>
                             </div>
@@ -1175,7 +1212,7 @@
                     {{-- Documents Section --}}
                     <div class="w-full px-6 py-2" x-show="openTab === '#documents'">
                         <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
-                            <h4 class="font-bold text-xl mb-4">Club documents:</h4>
+                            <h4 class="font-bold text-xl text-gray-600 mb-4">Club documents:</h4>
                             <div>
                                 <button class="button-judo" onclick="showDocForm()">+ Add new document</button>
 

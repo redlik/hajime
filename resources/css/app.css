@@ -56,11 +56,33 @@
     }
 
     .action-button {
-        @apply font-medium bg-gray-500  px-2 py-1 rounded
-        text-white shadow
+        @apply font-medium bg-gray-500  px-2 py-1 rounded text-white shadow;
     }
 
     .action-button:hover {
-        @apply bg-gray-700 text-gray-100 shadow-lg
+        @apply bg-gray-700 text-gray-100 shadow-lg;
+    }
+
+    .gray-pillow {
+        @apply font-bold text-sm text-gray-800 bg-gray-200 rounded-full shadow-inner px-3 py-1;
+    }
+    .green-pillow {
+        @apply font-bold text-sm text-judo-800 bg-green-100 rounded-full shadow-inner px-3 py-1;
+    }
+
+    .red-pillow {
+        @apply font-bold text-sm text-red-800 bg-red-100 rounded-full shadow-inner px-3 py-1;
+    }
+
+    .expired-date {
+        @apply bg-red-200 text-red-800 rounded-full py-1 px-3 font-medium mb-2;
+    }
+
+    .valid-date {
+        @apply bg-green-100 text-judo-700 rounded-full py-1 px-3 font-medium mb-2;
+    }
+
+    .gray-date {
+        @apply bg-gray-200 text-gray-700 rounded-full py-1 px-3 font-medium mb-2;
     }
 }

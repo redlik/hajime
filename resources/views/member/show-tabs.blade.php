@@ -7,18 +7,18 @@
         <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
 
             <header
-                class="font-bold text-xl bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md flex
+                class="font-bold text-xl bg-gray-600 text-gray-100 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md flex
                 justify-between items-center">
                 <div>
                     {{ ucfirst($member->first_name) }} {{ ucfirst($member->last_name) }}
-                <span class="text-sm text-gray-500 ml-2">No: {{ $member->number }}</span>
+                <span class="text-sm text-gray-200 ml-2">No: {{ $member->number }}</span>
 
                 @if ($member->active)
                 <span class="text-sm text-green-700 bg-green-300 p-2 rounded ml-2">Active</span>
                 @else
                 <span class="text-sm text-red-700 bg-red-300 p-2 rounded ml-2">Inactive</span>
                 @endif
-                    <a href="{{ route('member.edit', $member) }}" class="text-green-600 font-bold ml-3"
+                    <a href="{{ route('member.edit', $member) }}" class="text-judo-200 hover:text-judo-50 font-bold ml-3"
                         title="Edit member details"><i class="far fa-edit"></i></a>
                 </div>
                 <div class="font-bold text-sm"> Club: {{ $member->club->name }} </div>
@@ -29,12 +29,14 @@
                     << Back to club view</a>
             </div>
             <div id="main" x-data="{openTab: window.location.hash ? window.location.hash : '#personal',
-                                      activeClasses: 'border-l border-t-4 border-r rounded-t text-lightjudo-700',
-                                      inactiveClasses: 'text-gray-500 hover:text-gray-700'
+                                      activeClasses:
+                                      'bg-gray-300 text-gray-800 rounded-full shadow-inner shadow outline-none',
+                                      inactiveClasses:
+                                      'text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-full'
                                     }">
                 {{-- TABS SECTION --}}
                 <div class="w-full px-6 ">
-                    <ul class="flex border-b">
+                    <ul class="flex">
                         <li class="-mb-px mr-1" :class="{ '-mb-px': openTab === '#personal' }" @click="openTab =
                         '#personal'">
                             <a :class="openTab === '#personal' ? activeClasses : inactiveClasses" class="bg-white
