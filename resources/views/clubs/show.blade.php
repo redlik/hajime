@@ -119,7 +119,7 @@
                                     }}</div>
                                 </div>
                                 <div class="mt-12">
-                                <h4 class="font-bold text-xl text-gray-600 mb-4">Club Rights:</h4>
+                                    <h4 class="font-bold text-xl text-gray-600 mb-4">Club Rights:</h4>
                                     <div class="mb-4">
                                         <div class="w-32 inline-block">Full compliance:</div>
                                         <div class="w-auto inline-block font-bold">
@@ -277,406 +277,66 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="px-5 py-5 border-b border-gray-200 font-bold
+                                    <tr>
+                                        <td class="px-5 py-5 border-b border-gray-200 font-bold
                                                 text-judo-700">
-                                                Head Coach
-                                            </td>
-                                            @if(!$headCoach)
+                                            Head Coach
+                                        </td>
+                                        @if(!$headCoach)
                                             <td class="px-5 py-5 border-b border-gray-200">
                                                 <a href="{{ route('club.addPersonnel', [$club->id, 'Head Coach'])}}"
-                                                   class="action-button">+ Add
-                                                    new
-                                                    Headcoach</a>
+                                                   class="action-button">+ Add new Headcoach</a>
                                             </td>
-                                            @else
-                                                <td class="px-5 py-5 border-b border-gray-200">
-                                                    <div class="text-gray-700 font-bold">{{ $headCoach->name }}</div>
-                                                    <div class="text-sm">
-                                                        <span class="font-bold text-gray-500 w-8">e:</span>
-                                                        <a href="mailto:{{ $headCoach->email }}">
-                                                        {{ $headCoach->email }}</a>
-                                                        <br>
-                                                        <span
-                                                            class="font-bold text-gray-500 w-8">t:</span>
-                                                        {{ $headCoach->phone }}
-                                                    </div>
-
-                                                </td>
-                                                <td class="px-5 py-5 border-b border-gray-200">
-                                                    <div class="flex items-center text-sm">
-                                                        <div>
-                                                            <div class="gray-date">
-                                                                {{ $headCoach->safeguarding_completion ?? 'Not set' }}</div>
-                                                            @if ( $headCoach->safeguarding_expiry)
-                                                                @if($headCoach->safeguarding_expiry < now())
-                                                                    <div class="expired-date">{{
-                                                                    $headCoach->safeguarding_expiry }}</div>
-                                                                @else
-                                                                    <div class="valid-date">
-                                                                        {{ $headCoach->safeguarding_expiry }}
-                                                                    </div>
-                                                                @endif
-                                                            @else
-                                                                <div
-                                                                    class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">
-                                                                    Not set
-                                                                </div>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="px-5 py-5 border-b border-gray-200">
-                                                    <div class="flex items-center text-sm">
-                                                        <div>
-                                                            <div class="gray-date">
-                                                                {{ $headCoach->vetting_completion ?? 'Not set' }}</div>
-                                                            @if ( $headCoach->vetting_expiry)
-                                                                @if($headCoach->vetting_expiry < now())
-                                                                    <div class="expired-date">{{
-                                                                    $headCoach->vetting_expiry }}</div>
-                                                                @else
-                                                                    <div class="valid-date">
-                                                                        {{ $headCoach->vetting_expiry }}
-                                                                    </div>
-                                                                @endif
-                                                            @else
-                                                                <div
-                                                                    class="gray-date">
-                                                                    Not set
-                                                                </div>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="px-5 py-5 border-b border-gray-200">
-                                                    <div class="flex items-center text-sm">
-                                                        <div>
-                                                            <div class="gray-date">
-                                                                {{ $headCoach->first_aid_completion ?? 'Not set' }}</div>
-                                                            @if ( $headCoach->first_aid_expiry)
-                                                                @if($headCoach->first_aid_expiry < now())
-                                                                    <div class="expired-date">{{
-                                                                    $headCoach->first_aid_expiry }}</div>
-                                                                @else
-                                                                    <div class="valid-date">
-                                                                        {{ $headCoach->first_aid_expiry }}
-                                                                    </div>
-                                                                @endif
-                                                            @else
-                                                                <div
-                                                                    class="gray-date">
-                                                                    Not set
-                                                                </div>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="px-5 py-5 border-b border-gray-200">
-                                                    <div class="flex items-center text-sm">
-                                                        <div>
-                                                            <div class="gray-date">
-                                                                {{$headCoach->coaching_qualification ?? 'Not set'}}
-                                                            </div>
-                                                            <div class="gray-date">
-                                                                {{ $headCoach->coaching_date ?? 'Not set'}}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="py-12 border-b border-gray-200 text-sm flex flex-wrap
-                                                justify-center h-full">
-                                                    <a href="{{ route('personnel.edit', $headCoach->id) }}"
-                                                       class="text-judo-600 hover:text-judo-400 font-bold" title="Edit details"><i
-                                                            class="far fa-edit"></i></a>
-                                                    <form action="{{ route('personnel.destroy', $headCoach->id) }}"
-                                                          method="POST">
-                                                        @csrf
-                                                        <input type="hidden" name="_method" value="DELETE"/>
-                                                        <button type="submit"
-                                                                class="text-red-600 hover:text-red-300 whitespace-no-wrap ml-3"
-                                                                onclick="return confirm('Do you want to delete the record completely?')">
-                                                            <i class="far fa-trash-alt"></i></button>
-                                                    </form>
-                                                </td>
-                                            @endif
-                                        </tr>
-                                        <tr><td class="px-5 py-5 border-b border-gray-200 font-bold
+                                        @else
+                                            @include('personnel.headcoach')
+                                        @endif
+                                    </tr>
+                                    <tr>
+                                        <td class="px-5 py-5 border-b border-gray-200 font-bold
                                                 text-judo-700">
-                                                Secretary
-                                            </td>
-                                            @if(!$secretary)
+                                            Secretary
+                                        </td>
+                                        @if(!$secretary)
                                             <td colspan="6" class="px-5 py-5 border-b border-gray-200">
                                                 <a href="{{ route('club.addPersonnel', [$club->id, 'Secretary'])}}"
                                                    class="action-button">+ Add new Secretary</a>
                                             </td>
-                                            @else
-                                                <td class="px-5 py-5 border-b border-gray-200">
-                                                    <div class="text-gray-700 font-bold">{{ $secretary->name }}</div>
-                                                    <div class="text-sm">
-                                                        <span class="font-bold text-gray-500 w-8">e:</span>
-                                                        <a href="mailto:{{ $secretary->email }}">
-                                                            {{ $secretary->email }}</a>
-                                                        <br>
-                                                        <span
-                                                            class="font-bold text-gray-500 w-8">t:</span>
-                                                        {{ $secretary->phone }}
-                                                    </div>
-                                                </td>
-                                                <td class="px-5 py-5 border-b border-gray-200">
-                                                    <div class="flex items-center text-sm">
-                                                        <div>
-                                                            <div class="gray-date">
-                                                                {{ $secretary->safeguarding_completion ?? 'Not set' }}</div>
-                                                            @if ( $secretary->safeguarding_expiry)
-                                                                @if($secretary->safeguarding_expiry < now())
-                                                                    <div class="expired-date">{{
-                                                                    $secretary->safeguarding_expiry }}</div>
-                                                                @else
-                                                                    <div class="valid-date">
-                                                                        {{ $secretary->safeguarding_expiry }}
-                                                                    </div>
-                                                                @endif
-                                                            @else
-                                                                <div
-                                                                    class="gray-date">
-                                                                    Not set
-                                                                </div>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="px-5 py-5 border-b border-gray-200">
-                                                    <div class="flex items-center text-sm">
-                                                        <div>
-                                                            <div class="gray-date">
-                                                                {{ $secretary->vetting_completion ?? 'Not set' }}</div>
-                                                            @if ( $secretary->vetting_expiry)
-                                                                @if($secretary->vetting_expiry < now())
-                                                                    <div class="expired-date">{{
-                                                                    $secretary->vetting_expiry }}</div>
-                                                                @else
-                                                                    <div class="valid-date">
-                                                                        {{ $secretary->vetting_expiry }}
-                                                                    </div>
-                                                                @endif
-                                                            @else
-                                                                <div
-                                                                    class="gray-date">
-                                                                    Not set
-                                                                </div>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="px-5 py-5 border-b border-gray-200">
-
-                                                </td>
-                                                <td class="px-5 py-5 border-b border-gray-200 text-sm">
-
-                                                </td>
-                                                <td class="py-12 border-b border-gray-200 text-sm flex flex-wrap
-                                                h-full justify-center">
-                                                    <a href="{{ route('personnel.edit', $secretary->id) }}"
-                                                       class="text-judo-600 hover:text-judo-400 font-bold" title="Edit details"><i
-                                                            class="far fa-edit"></i></a>
-                                                    <form action="{{ route('personnel.destroy', $secretary->id) }}"
-                                                          method="POST">
-                                                        @csrf
-                                                        <input type="hidden" name="_method" value="DELETE"/>
-                                                        <button type="submit"
-                                                                class="text-red-600 hover:text-red-300 whitespace-no-wrap ml-3"
-                                                                onclick="return confirm('Do you want to delete the record completely?')">
-                                                            <i class="far fa-trash-alt"></i></button>
-                                                    </form>
-                                                </td>
-                                            @endif
-                                        </tr>
-                                        <tr>
-                                            <td class="px-5 py-5 border-b border-gray-200 font-bold
+                                        @else
+                                            @include('personnel.secretary')
+                                        @endif
+                                    </tr>
+                                    <tr>
+                                        <td class="px-5 py-5 border-b border-gray-200 font-bold
                                                 text-judo-700">
-                                                Designated Person
-                                            </td>
-                                            @if(!$designated)
+                                            Designated Person
+                                        </td>
+                                        @if(!$designated)
                                             <td colspan="6" class="px-5 py-5 border-b border-gray-200">
                                                 <a href="{{ route('club.addPersonnel',
                                                             [$club->id, 'Designated Person'])}}"
                                                    class="action-button">+ Add new Designated
                                                     Person</a>
                                             </td>
-                                            @else
-                                                <td class="px-5 py-5 border-b border-gray-200">
-                                                    <div class="text-gray-700 font-bold">{{ $designated->name }}</div>
-                                                    <div class="text-sm">
-                                                        <span class="font-bold text-gray-500 w-8">e:</span>
-                                                        <a href="mailto:{{ $designated->email }}">
-                                                            {{ $designated->email }}</a>
-                                                        <br>
-                                                        <span
-                                                            class="font-bold text-gray-500 w-8">t:</span>
-                                                        {{ $designated->phone }}
-                                                    </div>
-                                                </td>
-                                                <td class="px-5 py-5 border-b border-gray-200">
-                                                    <div class="flex items-center text-sm">
-                                                        <div>
-                                                            <div class="gray-date">
-                                                                {{ $designated->safeguarding_completion ?? 'Not set' }}</div>
-                                                            @if ( $designated->safeguarding_expiry)
-                                                                @if($designated->safeguarding_expiry < now())
-                                                                    <div class="expired-date">{{
-                                                                    $designated->safeguarding_expiry }}</div>
-                                                                @else
-                                                                    <div class="valid-date">
-                                                                        {{ $designated->safeguarding_expiry }}
-                                                                    </div>
-                                                                @endif
-                                                            @else
-                                                                <div
-                                                                    class="gray-date">
-                                                                    Not set
-                                                                </div>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="px-5 py-5 border-b border-gray-200">
-                                                    <div class="flex items-center text-sm">
-                                                        <div>
-                                                            <div class="gray-date">
-                                                                {{ $designated->vetting_completion ?? 'Not set' }}</div>
-                                                            @if ( $designated->vetting_expiry)
-                                                                @if($designated->vetting_expiry < now())
-                                                                    <div class="expired-date">{{
-                                                                    $designated->vetting_expiry }}</div>
-                                                                @else
-                                                                    <div class="valid-date">
-                                                                        {{ $designated->vetting_expiry }}
-                                                                    </div>
-                                                                @endif
-                                                            @else
-                                                                <div
-                                                                    class="gray-date">
-                                                                    Not set
-                                                                </div>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="px-5 py-5 border-b border-gray-200">
-                                                </td>
-                                                <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                                </td>
-                                                <td class="py-12 border-b border-gray-200 text-sm flex flex-wrap
-                                                h-full justify-center">
-                                                    <a href="{{ route('personnel.edit', $designated->id) }}"
-                                                       class="text-judo-600 hover:text-judo-400 font-bold" title="Edit details"><i
-                                                            class="far fa-edit"></i></a>
-                                                    <form action="{{ route('personnel.destroy', $designated->id) }}"
-                                                          method="POST">
-                                                        @csrf
-                                                        <input type="hidden" name="_method" value="DELETE"/>
-                                                        <button type="submit"
-                                                                class="text-red-600 hover:text-red-300 whitespace-no-wrap ml-3"
-                                                                onclick="return confirm('Do you want to delete the record completely?')">
-                                                            <i class="far fa-trash-alt"></i></button>
-                                                    </form>
-                                                </td>
-                                            @endif
-                                        </tr>
-                                        <tr>
-                                            <td class="px-5 py-5 border-b border-gray-200 font-bold
+                                        @else
+                                            @include('personnel.designated')
+                                        @endif
+                                    </tr>
+                                    <tr>
+                                        <td class="px-5 py-5 border-b border-gray-200 font-bold
                                                 text-judo-700">
-                                                Children's Officer
-                                            </td>
-                                            @if(!$childrens)
+                                            Children's Officer
+                                        </td>
+                                        @if(!$childrens)
                                             <td colspan="6" class="px-5 py-5 border-b border-gray-200">
                                                 <a href="{{ route('club.addPersonnel', [$club->id, 'Childrens Officer'])
                                                 }}"
                                                    class="action-button">+ Add new Children's
                                                     Officer</a>
                                             </td>
-                                            @else
-                                                <td class="px-5 py-5 border-b border-gray-200">
-                                                    <div class="text-gray-700 font-bold">{{ $childrens->name }}</div>
-                                                    <div class="text-sm">
-                                                        <span class="font-bold text-gray-500 w-8">e:</span>
-                                                        <a href="mailto:{{ $childrens->email }}">
-                                                            {{ $childrens->email }}</a>
-                                                        <br>
-                                                        <span
-                                                            class="font-bold text-gray-500 w-8">t:</span>
-                                                        {{ $childrens->phone }}
-                                                    </div>
-                                                </td>
-                                                <td class="px-5 py-5 border-b border-gray-200">
-                                                    <div class="flex items-center text-sm">
-                                                        <div>
-                                                            <div class="gray-date">
-                                                                {{ $childrens->safeguarding_completion ?? 'Not set' }}</div>
-                                                            @if ( $childrens->safeguarding_expiry)
-                                                                @if($childrens->safeguarding_expiry < now())
-                                                                    <div class="expired-date">{{
-                                                                    $childrens->safeguarding_expiry }}</div>
-                                                                @else
-                                                                    <div class="valid-date">
-                                                                        {{ $childrens->safeguarding_expiry }}
-                                                                    </div>
-                                                                @endif
-                                                            @else
-                                                                <div
-                                                                    class="gray-date">
-                                                                    Not set
-                                                                </div>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="px-5 py-5 border-b border-gray-200">
-                                                    <div class="flex items-center text-sm">
-                                                        <div>
-                                                            <div class="gray-date">
-                                                                {{ $childrens->vetting_completion ?? 'Not set' }}</div>
-                                                            @if ( $childrens->vetting_expiry)
-                                                                @if($childrens->vetting_expiry < now())
-                                                                    <div class="expired-date">{{
-                                                                    $childrens->vetting_expiry }}</div>
-                                                                @else
-                                                                    <div class="valid-date">
-                                                                        {{ $childrens->vetting_expiry }}
-                                                                    </div>
-                                                                @endif
-                                                            @else
-                                                                <div
-                                                                    class="gray-date">
-                                                                    Not set
-                                                                </div>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="px-5 py-5 border-b border-gray-200">
-                                                </td>
-                                                <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                                </td>
-                                                <td class="py-12 border-b border-gray-200 text-sm flex flex-wrap
-                                                h-full justify-center">
-                                                    <a href="{{ route('personnel.edit', $childrens->id) }}"
-                                                       class="text-judo-600 hover:text-judo-400 font-bold"
-                                                       title="Edit details"><i
-                                                            class="far fa-edit"></i></a>
-                                                    <form action="{{ route('personnel.destroy', $childrens->id) }}"
-                                                          method="POST">
-                                                        @csrf
-                                                        <input type="hidden" name="_method" value="DELETE"/>
-                                                        <button type="submit"
-                                                                class="text-red-600 hover:text-red-300 whitespace-no-wrap ml-3"
-                                                                onclick="return confirm('Do you want to delete the record completely?')">
-                                                            <i class="far fa-trash-alt"></i></button>
-                                                    </form>
-                                                </td>
-                                            @endif
-                                        </tr>
+                                        @else
+                                            @include('personnel.children')
+                                        @endif
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -857,7 +517,7 @@
                                             </td>
                                             <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                                 @if ($note->author)
-                                                {{ $note->hasAuthor->name }}
+                                                    {{ $note->hasAuthor->name }}
                                                 @endif
                                             </td>
                                             <td class="px-5 py-5 border-b border-gray-200 text-sm">
@@ -866,10 +526,10 @@
                                             <td class="px-5 py-5 border-b border-gray-200 text-sm flex
                                             flex-wrap justify-center">
                                                 <div><a href="{{ route('clubnote.show', $note->slug) }}"
-                                                         class="text-blue-600 font-bold hover:text-blue-300"
-                                                         title="View full note"><i class="far fa-eye"></i></a></div>
+                                                        class="text-blue-600 font-bold hover:text-blue-300"
+                                                        title="View full note"><i class="far fa-eye"></i></a></div>
                                                 <div><a href="{{ route('clubnote.edit', $note) }}"
-                                                         class="text-green-600 font-bold ml-3" title="Edit note"><i
+                                                        class="text-green-600 font-bold ml-3" title="Edit note"><i
                                                             class="far fa-edit"></i></a></div>
                                                 <div>
                                                     <form action="{{ route('clubnote.destroy' , $note)}}" method="POST">
@@ -976,7 +636,7 @@
                                                         <p class="text-gray-900 whitespace-no-wrap font-bold">
                                                             <a href="{{ asset('/storage/attachments/'.$form->link) }}"
                                                                target="_blank">
-                                                            {{ $form->title }}
+                                                                {{ $form->title }}
                                                             </a>
                                                         </p>
                                                     </div>
@@ -1100,7 +760,7 @@
                                                         <p class="text-gray-900 whitespace-no-wrap font-bold">
                                                             <a href="{{ asset('/storage/attachments/'.$document->link) }}"
                                                                target="_blank" title="{{ $document->link }}">
-                                                            {{ $document->title }}
+                                                                {{ $document->title }}
                                                             </a>
                                                         </p>
                                                     </div>
