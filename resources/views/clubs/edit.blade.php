@@ -6,8 +6,8 @@
 
         <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
 
-            <header class="font-semibold bg-gray-200 text-gray-500 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
-                Edit <span class="text-gray-700 font-bold">{{ $club->name }}</span> details
+            <header class="font-semibold bg-gray-600 text-gray-100 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
+                Edit <span class="text-gray-200 font-bold">{{ $club->name }}</span> details
             </header>
 
             <div class="w-full p-6">

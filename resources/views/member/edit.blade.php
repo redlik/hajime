@@ -6,8 +6,9 @@
 
         <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
 
-            <header class="font-semibold bg-gray-200 text-gray-500 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
-                Edit <span class="text-gray-700 font-bold">{{ $member->first_name }} {{ $member->last_name }}</span> details
+            <header class="font-semibold bg-gray-600 text-gray-100 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
+                Edit <span class="text-gray-300 font-bold">{{ $member->first_name }} {{ $member->last_name }}</span>
+                details
             </header>
 
             <div class="w-full p-6">
@@ -122,7 +123,7 @@
                                 @if ($member->parent)
                                 class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                 @else
-                                class="shadow border-gray-300 bg-gray-500 rounded w-full md:w-1/2 py-2 px-3
+                                class="shadow border-gray-300 bg-gray-200 rounded w-full md:w-1/2 py-2 px-3
                                 text-grey-darker"
                                 disabled
                                 @endif
@@ -321,12 +322,12 @@
             if (age < 18) {
                 let parent = document.getElementById('parent');
                 parent.disabled=false;
-                parent.classList.remove('bg-gray-500');
+                parent.classList.remove('bg-gray-200');
             } else {
                 let parent = document.getElementById('parent');
                 parent.value="";
                 parent.disabled=true;
-                parent.classList.add('bg-gray-500');
+                parent.classList.add('bg-gray-200');
 
             }
         });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Membernote;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
@@ -96,7 +97,11 @@ class MembernoteController extends Controller
     public function update(Request $request, Membernote $membernote)
     {
         $input = $request->all();
+
         $membernote->slug = Str::slug($membernote->id."-".$request->input('title'), '-');
+        if (!$membernote->author) {
+            $membernote->author = Auth::user()->id;
+        }
         $membernote->fill($input)->save();
         return back()->with('message', 'Record Successfully Updated!');
     }
