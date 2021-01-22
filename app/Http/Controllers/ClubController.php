@@ -68,7 +68,6 @@ class ClubController extends Controller
         $secretary = Personnel::secretary()->where('club_id', $club->id)->first();
         $designated = Personnel::designatedofficer()->where('club_id', $club->id)->first();
         $childrens = Personnel::childrenofficer()->where('club_id', $club->id)->first();
-        $coach = Personnel::coach()->where('club_id', $club->id)->first();
         $members = Member::where('club_id', $club->id)->get();
         $coaches = Coach::where('club_id', $club->id)->get();
         $volunteers = Volunteer::where('club_id', $club->id)->get();
@@ -78,7 +77,7 @@ class ClubController extends Controller
         $documents = ClubDocument::document($club->id)->get();
 
         return view('clubs.show', compact('club', 'venues', 'volunteers', 'members', 'notes', 'headCoach', 'secretary',
-        'designated', 'childrens', 'coach', 'forms', 'documents', 'coaches' ));
+        'designated', 'childrens', 'forms', 'documents', 'coaches' ));
     }
 
     /**
