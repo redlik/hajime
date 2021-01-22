@@ -24,7 +24,7 @@
                 </div>
                 @endif
                 <div class="mb-4">
-                    <a class="text-blue-500 font-semibold" href="{{ route('clubs.show', $club->id) }}"> << Back to detail view </a>
+                    <a class="blue-pillow" href="{{ route('clubs.show', $club->id) }}"> < Back to detail view </a>
                 </div>
                 <form method="POST" action="{{ action('App\Http\Controllers\ClubController@update', ['club' => $club->id]) }}" role="form">
                     @csrf

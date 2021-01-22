@@ -11,10 +11,7 @@
             </header>
 
             <div class="w-full p-6">
-                <a href="{{ route('clubs.show', $person->club_id) }}#personnel" class="rounded px-2 py-1
-                    bg-blue-100 my-8
-                    mb-16 font-semibold
-                    text-blue-800"><< Back to Club
+                <a href="{{ route('clubs.show', $person->club_id) }}#personnel" class="blue-pillow">< Back to Club
                     page</a>
                 @if(Session::has('message'))
                     <p class="bg-green-100 text-green-700 p-6 rounded my-6">{{ Session::get('message') }}</p>
@@ -34,19 +31,6 @@
                     @csrf
                     <input name="_method" type="hidden" value="PUT">
                     <div class="w-full border-2 border-gray-300 rounded-xl p-8 my-4">
-                        <div class="mb-4">
-                            <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="role">
-                                Role
-                            </label>
-                            <select name="role" id="role" class="shadow border-gray-300 rounded w-64 py-2 px-3
-                            text-grey-darker" required>
-                                <option value="{{ $person->role }}" selected>{{ $person->role }}</option>
-                                <option value="Head Coach">Head Coach</option>
-                                <option value="Secretary">Secretary</option>
-                                <option value="Designated Officer">Designated Officer</option>
-                                <option value="Childrens Officer">Childrens Officer</option>
-                            </select>
-                        </div>
                         <div class="mb-4">
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="name">
                                 Person's Name

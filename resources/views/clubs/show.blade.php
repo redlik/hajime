@@ -4,7 +4,7 @@
     <main class="sm:container sm:mx-auto sm:mt-10">
         <div class="w-full sm:px-6">
 
-            <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
+            <section class="flex flex-col break-words bg-gray-100 sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
 
                 <header
                     class="font-bold text-xl bg-gray-600 text-gray-100 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md flex
@@ -19,9 +19,9 @@
                 </header>
                 <div id="main" x-data="{openTab: window.location.hash ? window.location.hash : '#details',
                                       activeClasses:
-                                      'bg-gray-300 text-gray-800 rounded-full shadow-inner shadow outline-none',
+                                      'bg-gray-600 text-gray-100 rounded-full shadow-inner shadow outline-none',
                                       inactiveClasses:
-                                      'text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-full'
+                                      'text-gray-500 bg-gray-100 hover:text-gray-700 hover:bg-gray-200 rounded-full'
                                     }">
                     {{-- TABS SECTION --}}
                     <div class="w-full px-6">
@@ -65,7 +65,7 @@
                     </div>
                     {{-- Club Details Section --}}
                     <div class="w-full px-6 py-2" x-show="openTab === '#details'">
-                        <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
+                        <div class="w-full border-2 bg-white border-gray-200 rounded-xl my-4 p-4 flex flex-wrap">
                             <div class="w-full md:w-1/2 sm:w-full">
                                 <h4 class="font-bold text-xl text-gray-600 mb-4">Location data:</h4>
                                 <p class="mb-2">{{ $club->address1 }}</p>
@@ -143,7 +143,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
+                        <div class="w-full border bg-white border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
                             <h4 class="font-bold text-xl text-gray-600 mb-4" id="venues">Training Venues:</h4>
                             <div class="w-full mb-6">
                                 <a href="{{ route('venue.create.club', $club->id) }}">
@@ -154,13 +154,13 @@
                                 <thead>
                                 <tr>
                                     <th
-                                        class="px-5 py-3 rounded-l border-r border-gray-200 bg-gray-600 text-left
+                                        class="px-5 py-3 rounded-l bg-gray-600 text-left
                                         text-xs
                                         font-semibold text-white uppercase tracking-wider">
                                         Name
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                        class="px-5 py-3 bg-gray-600 text-left text-xs
                                         font-semibold text-white uppercase tracking-wider">
                                         Contact
                                     </th>
@@ -226,44 +226,44 @@
 
                     {{-- Club Personnel Section --}}
                     <div class="w-full px-6 py-2" x-show="openTab === '#personnel'">
-                        <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
+                        <div class="w-full bg-white border-2 border-gray-200 rounded-xl my-4 p-4 flex flex-wrap">
                             <h4 class="font-bold text-xl text-gray-600">Club Personnel:</h4>
                             <div class="w-full my-4">
                                 <table class="min-w-full table leading-normal">
                                     <thead>
                                     <tr>
                                         <th
-                                            class="w-48 pl-5 py-3 rounded-l border-r border-gray-200 bg-gray-600
+                                            class="w-48 pl-5 py-3 rounded-l bg-gray-600
                                             text-left text-xs font-semibold text-white uppercase tracking-wider
                                             shadow-lg">
                                             Role
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600
+                                            class="px-5 py-3 bg-gray-600
                                             text-left text-xs font-semibold text-white uppercase tracking-wider
                                             shadow-lg">
                                             Name
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600
+                                            class="px-5 py-3 bg-gray-600
                                             text-left text-xs font-semibold text-white uppercase tracking-wider
                                             shadow-lg">
                                             Safeguarding
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600
+                                            class="px-5 py-3 bg-gray-600
                                             text-left text-xs font-semibold text-white uppercase tracking-wider
                                             shadow-lg">
                                             Vetting
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600
+                                            class="px-5 py-3 bg-gray-600
                                             text-left text-xs font-semibold text-white uppercase tracking-wider
                                             shadow-lg">
                                             First Aid
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600
+                                            class="px-5 py-3 bg-gray-600
                                             text-left text-xs font-semibold text-white uppercase tracking-wider
                                             shadow-lg">
                                             Qualifications
@@ -689,31 +689,31 @@
                                     <thead>
                                     <tr>
                                         <th
-                                            class="px-5 py-3 border-r bg-gray-600
+                                            class="px-5 py-3 bg-gray-600
                                             text-left text-xs font-semibold text-white uppercase tracking-wider
                                             rounded-l shadow-lg">
                                             Name
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600
+                                            class="px-5 py-3 bg-gray-600
                                             text-left text-xs font-semibold text-white uppercase tracking-wider
                                             shadow-lg">
                                             Safeguarding
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600
+                                            class="px-5 py-3 bg-gray-600
                                             text-left text-xs font-semibold text-white uppercase tracking-wider
                                             shadow-lg">
                                             Vetting
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600
+                                            class="px-5 py-3 bg-gray-600
                                             text-left text-xs font-semibold text-white uppercase tracking-wider
                                             shadow-lg">
                                             First Aid
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600
+                                            class="px-5 py-3 bg-gray-600
                                             text-left text-xs font-semibold text-white uppercase tracking-wider
                                             shadow-lg">
                                             Qualifications
@@ -851,7 +851,7 @@
 
                     {{-- Club Volunteers Section --}}
                     <div class="w-full px-6 py-2" x-show="openTab === '#volunteers'">
-                        <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
+                        <div class="w-full bg-white border-2 border-gray-200 rounded-xl my-4 p-4 flex flex-wrap">
                             <h4 class="font-bold text-xl text-gray-600 mb-4" id="personnel">Club Volunteers:</h4>
                             <div class="w-full flex flex-wrap">
                                 <div class="w-full">
@@ -862,23 +862,23 @@
                                         <thead>
                                         <tr>
                                             <th
-                                                class="px-5 py-3 rounded-l border-r border-gray-200 bg-gray-600
+                                                class="px-5 py-3 rounded-l bg-gray-600
                                                 text-left text-xs
                                                 font-semibold text-gray-200 uppercase tracking-wider shadow-lg">
                                                 Name
                                             </th>
                                             <th
-                                                class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                                class="px-5 py-3 bg-gray-600 text-left text-xs
                                                 font-semibold text-gray-200 uppercase tracking-wider shadow-lg">
                                                 Contact
                                             </th>
                                             <th
-                                                class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                                class="px-5 py-3 bg-gray-600 text-left text-xs
                                                 font-semibold text-gray-200 uppercase tracking-wider shadow-lg">
                                                 Vetting
                                             </th>
                                             <th
-                                                class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                                class="px-5 py-3 bg-gray-600 text-left text-xs
                                                 font-semibold text-gray-200 uppercase tracking-wider shadow-lg">
                                                 Safe Guarding
                                             </th>
@@ -992,7 +992,7 @@
 
                     {{-- Club Members Section --}}
                     <div class="w-full px-6 py-2" x-show="openTab === '#members'">
-                        <div class="w-full border border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
+                        <div class="w-full bg-white border-2 border-gray-200 rounded-xl my-4 p-4 flex flex-wrap">
                             <h4 class="font-bold text-xl text-gray-600 mb-4 block w-full">Members:</h4>
                             <div class="w-full block">
                                 <a href="{{ route('member.createWithClub', ['club' => $club->id]) }}">
@@ -1007,7 +1007,7 @@
 
                     {{-- Club Notes Section --}}
                     <div class="w-full px-6 py-2" x-show="openTab === '#notes'">
-                        <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
+                        <div class="w-full bg-white border-2 border-gray-200 rounded-xl my-4 p-4">
                             <h4 class="font-bold text-xl text-gray-600 mb-4">Club notes:</h4>
                             <a href="{{ route('clubnote.create.club', [$club->id]) }}">
                                 <button class="button-judo">+ Add new note</button>
@@ -1017,18 +1017,18 @@
                                     <thead>
                                     <tr>
                                         <th
-                                            class="px-5 py-3 rounded-l border-r border-gray-200 bg-gray-600 text-left
+                                            class="px-5 py-3 rounded-l bg-gray-600 text-left
                                             text-xs
                                             font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                             Title
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                            class="px-5 py-3 bg-gray-600 text-left text-xs
                                             font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                             Created by
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                            class="px-5 py-3 bg-gray-600 text-left text-xs
                                             font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                             Created on
                                         </th>
@@ -1090,7 +1090,7 @@
 
                     {{-- Club Forms Section --}}
                     <div class="w-full px-6 py-2" x-show="openTab === '#forms'">
-                        <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
+                        <div class="w-full bg-white border-2 border-gray-200 rounded-xl my-4 p-4">
                             <h4 class="font-bold text-xl text-gray-600 mb-4">Club forms:</h4>
                             <div>
                                 <button class="button-judo" onclick="showForm()">+ Add new form</button>
@@ -1103,27 +1103,31 @@
                                     <input type="hidden" name="club_id" value="{{ $club->id }}">
                                     <input type="hidden" name="type" value="Form">
                                     <input type="hidden" name="author" value="{{ Auth::user()->id }}">
-                                    <div class="flex flex-wrap w-1/2 mr-4">
-                                        <label class="inline-block text-gray-600 text-sm font-bold mr-4 py-2"
-                                               for="title">
-                                            Title
-                                        </label>
-                                        <input
-                                            class="shadow appearance-none border w-5/6 rounded px-3 text-grey-darker"
-                                            id="title" name="title" type="text" required>
+                                    <div class="w-full flex flex-wrap items-center">
+                                        <div class="w-1/2">
+                                            <label class="inline-block text-gray-600 text-sm font-bold mr-4 py-2"
+                                                   for="title">
+                                                Title
+                                            </label>
+                                            <input
+                                                class="shadow border-gray-300 w-5/6 rounded px-3 text-grey-darker"
+                                                id="title" name="title" type="text" required>
+                                        </div>
+                                        <div class="w-1/2 align-middle">
+                                            <label class="inline-block text-gray-600 text-sm font-bold mr-4 py-2"
+                                                   for="link">
+                                                Attachment
+                                            </label>
+                                            <input class="py-2" id="link" name="link" type="file" required>
+                                        </div>
                                     </div>
-                                    <div class="flex flex-wrap align-middle">
-                                        <label class="inline-block text-gray-600 text-sm font-bold mr-4 py-2"
-                                               for="link">
-                                            Attachment
-                                        </label>
-                                        <input class="py-2" id="link" name="link" type="file" required>
-                                    </div>
-                                    <div class="mr-8 py-2">
-                                        <input type="submit" value="Submit" class="button-judo">
-                                    </div>
-                                    <div class="mr-8 py-2">
-                                        <button class="button-danger" onclick="hideForm()">Cancel</button>
+                                    <div class="w-full flex flex-wrap">
+                                        <div class="mx-12 py-2">
+                                            <input type="submit" value="Submit" class="button-judo">
+                                        </div>
+                                        <div class="py-2">
+                                            <button class="button-danger" onclick="hideForm()">Cancel</button>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -1133,24 +1137,24 @@
                                     <thead>
                                     <tr>
                                         <th
-                                            class="px-5 py-3 rounded-l border-r border-gray-200 bg-gray-600 text-left
+                                            class="px-5 py-3 rounded-l bg-gray-600 text-left
                                             text-xs
                                             font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                             Title
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                            class="px-5 py-3 bg-gray-600 text-left text-xs
                                             font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                             Link
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                            class="px-5 py-3 bg-gray-600 text-left text-xs
                                             font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                             Created by
                                         </th>
 
                                         <th
-                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                            class="px-5 py-3 bg-gray-600 text-left text-xs
                                             font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                             Created on
                                         </th>
@@ -1211,7 +1215,7 @@
 
                     {{-- Documents Section --}}
                     <div class="w-full px-6 py-2" x-show="openTab === '#documents'">
-                        <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
+                        <div class="w-full bg-white border-2 border-gray-200 rounded-xl my-4 p-4">
                             <h4 class="font-bold text-xl text-gray-600 mb-4">Club documents:</h4>
                             <div>
                                 <button class="button-judo" onclick="showDocForm()">+ Add new document</button>
@@ -1225,27 +1229,31 @@
                                     <input type="hidden" name="club_id" value="{{ $club->id }}">
                                     <input type="hidden" name="type" value="Document">
                                     <input type="hidden" name="author" value="{{ Auth::user()->id }}">
-                                    <div class="flex flex-wrap w-1/2 mr-4">
-                                        <label class="inline-block text-gray-600 text-sm font-bold mr-4 py-2"
-                                               for="title">
-                                            Title
-                                        </label>
-                                        <input
-                                            class="shadow appearance-none border w-auto rounded px-3 text-grey-darker"
-                                            id="title" name="title" type="text" required>
+                                    <div class="w-full flex flex-wrap items-center">
+                                        <div class="w-1/2">
+                                            <label class="inline-block text-gray-600 text-sm font-bold mr-4 py-2"
+                                                   for="title">
+                                                Title
+                                            </label>
+                                            <input
+                                                class="shadow border-gray-300 w-5/6 rounded px-3 text-grey-darker"
+                                                id="title" name="title" type="text" required>
+                                        </div>
+                                        <div class="w-1/2 align-middle">
+                                            <label class="inline-block text-gray-600 text-sm font-bold mr-4 py-2"
+                                                   for="link">
+                                                Attachment
+                                            </label>
+                                            <input class="py-2" id="link" name="link" type="file" required>
+                                        </div>
                                     </div>
-                                    <div class="flex flex-wrap align-middle">
-                                        <label class="inline-block text-gray-600 text-sm font-bold mr-4 py-2"
-                                               for="link">
-                                            Attachment
-                                        </label>
-                                        <input class="py-2" id="link" name="link" type="file" required>
-                                    </div>
-                                    <div class="mr-8 py-2">
-                                        <input type="submit" value="Submit" class="button-judo">
-                                    </div>
-                                    <div class="mr-8 py-2">
-                                        <button class="button-danger" onclick="hideDocForm()">Cancel</button>
+                                    <div class="w-full flex flex-wrap">
+                                        <div class="mx-12 py-2">
+                                            <input type="submit" value="Submit" class="button-judo">
+                                        </div>
+                                        <div class="mr-8 py-2">
+                                            <button class="button-danger" onclick="hideDocForm()">Cancel</button>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -1254,23 +1262,23 @@
                                     <thead>
                                     <tr>
                                         <th
-                                            class="px-5 py-3 rounded-l border-r border-gray-200 bg-gray-600 text-left
+                                            class="px-5 py-3 rounded-l bg-gray-600 text-left
                                             text-xs
                                             font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                             Title
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                            class="px-5 py-3 bg-gray-600 text-left text-xs
                                             font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                             Link
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                            class="px-5 py-3 bg-gray-600 text-left text-xs
                                             font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                             Created by
                                         </th>
                                         <th
-                                            class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                            class="px-5 py-3 bg-gray-600 text-left text-xs
                                             font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                             Created on
                                         </th>

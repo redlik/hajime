@@ -24,7 +24,8 @@
                     </div>
                 @endif
                     <div class="w-full mb-4">
-                        <a href="{{ route('member.show', $member->id) }}" class="text-blue-600 font-bold hover:text-blue-300"> << Back to detail view </a>
+                        <a href="{{ route('member.show', $member->id) }}" class="blue-pillow"> < Back to detail view
+                        </a>
                     </div>
                 <form method="POST" action="{{ action('App\Http\Controllers\MemberController@update', ['member' => $member->id]) }}"
                       role="form">

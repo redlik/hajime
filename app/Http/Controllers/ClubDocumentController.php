@@ -96,10 +96,16 @@ class ClubDocumentController extends Controller
     public function destroy($id)
     {
         $document = ClubDocument::where('id', $id)->first();
+        if ($document->type == "Form") {
+            $anchor = "#forms";
+        }
+        else {
+            $anchor = "#documents";
+        }
         File::delete(public_path('storage/attachments/'.$document->link));
         $document->delete();
 
-        return Redirect::to(URL::previous()."#documents");
+        return Redirect::to(URL::previous().$anchor);
 
     }
 }

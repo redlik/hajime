@@ -12,27 +12,27 @@
             <thead>
             <tr>
                 <th
-                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     No
                 </th>
                 <th
-                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     Name
                 </th>
                 <th
-                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     Club
                 </th>
                 <th
-                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     Eircode
                 </th>
                 <th
-                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     Membership
                 </th>
                 <th
-                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     Operations
                 </th>
             </tr>

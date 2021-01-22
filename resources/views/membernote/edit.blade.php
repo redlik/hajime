@@ -11,6 +11,10 @@
                 </header>
 
                 <div class="w-full p-6">
+                    <div class="w-full mb-4">
+                        <a href="{{ route('member.show', $note->member_id) }}#notes" class="blue-pillow"><< Back to
+                            Member page</a>
+                    </div>
                     @if(Session::has('message'))
                         <p class="bg-green-100 text-green-700 p-6 rounded mb-4">{{ Session::get('message') }}</p>
                     @endif
@@ -50,9 +54,7 @@
 
                     </form>
                 </div>
-                <div class="w-full p-8 mb-4">
-                    <a href="{{ route('member.show', $note->member_id) }}#notes" class="button-judo mt-8"><< Back to Member page</a>
-                </div>
+
             </section>
         </div>
     </main>

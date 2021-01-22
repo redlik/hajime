@@ -41,37 +41,37 @@
             <thead>
                 <tr>
                     <th
-                        class="px-5 py-3 rounded-l border-r border-gray-200 bg-gray-600 text-left text-xs font-semibold
+                        class="px-5 py-3 rounded-l bg-gray-600 text-left text-xs font-semibold
                         text-gray-100
                         uppercase tracking-wider shadow-lg">
                         Memb. No
                     </th>
                     <th
-                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs font-semibold
+                        class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold
                         text-gray-100
                         uppercase tracking-wider shadow-lg">
                         Name
                     </th>
                     <th
-                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs font-semibold
+                        class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold
                         text-gray-100
                         uppercase tracking-wider hidden md:block shadow-lg">
                         Age
                     </th>
                     <th
-                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs font-semibold
+                        class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold
                         text-gray-100
                         uppercase tracking-wider shadow-lg">
                         Status
                     </th>
                     <th
-                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs font-semibold
+                        class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold
                         text-gray-100
                         uppercase tracking-wider shadow-lg">
                         Membership Type
                     </th>
                     <th
-                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs font-semibold
+                        class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold
                         text-gray-100
                         uppercase tracking-wider shadow-lg">
                         Grade
@@ -85,8 +85,10 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($members as $member)
-                <tr>
+
+
+                @forelse ($members as $member)
+                    <tr>
                     <td class="px-5 py-5 border-b border-gray-200 text-sm hidden md:block">
                         <p class="text-gray-900 whitespace-no-wrap">{{ $member->number }}
                     </td>
@@ -131,8 +133,15 @@
                             hover:text-pink-300 ml-3" title="Clone existing member"><i class="far fa-clone"></i></a>
                         </p>
                     </td>
-                </tr>
-                @endforeach
+                    </tr>
+                    @empty
+                    <tr>
+                        <td colspan="7">
+                            <h4 class="text-xl text-gray-400 my-5 text-center">No member with active
+                                membership registered right now.</h4>
+                        </td>
+                    </tr>
+                    @endforelse
             </tbody>
         </table>
 

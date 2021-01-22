@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Club;
 use App\Models\Clubnote;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
@@ -96,6 +97,9 @@ class ClubnoteController extends Controller
     {
         $input = $request->all();
         $clubnote->slug = Str::slug($clubnote->id."-".$request->input('title'), '-');
+        if (!$clubnote->author) {
+            $clubnote->author = Auth::user()->id;
+        }
         $clubnote->fill($input)->save();
         return back()->with('message', 'Record Successfully Updated!');
     }

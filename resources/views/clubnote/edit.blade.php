@@ -11,6 +11,10 @@
                 </header>
 
                 <div class="w-full p-6">
+                    <div class="w-full mb-4">
+                        <a href="{{ route('clubs.show', $note->club_id) }}#notes" class="blue-pillow"><< Back to Club
+                            page</a>
+                    </div>
                     @if(Session::has('message'))
                         <p class="bg-green-100 text-green-700 p-6 rounded mb-4">{{ Session::get('message') }}</p>
                     @endif
@@ -44,15 +48,13 @@
                                           class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker">{{ $note->body }}</textarea>
                             </div>
                             <div class="mt-6">
-                                <input type="submit" value="Save changes" class="button-success">
+                                <input type="submit" value="Save changes" class="button-judo">
                             </div>
                         </div>
 
                     </form>
                 </div>
-                <div class="w-full p-8 mb-4">
-                    <a href="{{ route('clubs.show', $note->club_id) }} " class="button-judo mt-8"><< Back to Club page</a>
-                </div>
+
             </section>
         </div>
     </main>

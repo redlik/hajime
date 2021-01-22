@@ -27,9 +27,9 @@
     @livewireStyles
 
 </head>
-<body class="bg-gray-100 h-screen antialiased leading-none font-sans">
+<body class="bg-gray-300 h-screen antialiased leading-none font-sans pb-12">
     <div id="app" class="h-full pb-12">
-        <header class="bg-judo-green py-6">
+        <header class="bg-judo-green py-3 shadow-lg">
             <div class="container mx-auto flex justify-between items-center px-6">
                 <div class="flex items-center">
                         <div>

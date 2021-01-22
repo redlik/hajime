@@ -4,11 +4,11 @@
 <main class="sm:container sm:mx-auto sm:mt-10">
     <div class="w-full sm:px-6">
 
-        <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
+        <section class="flex flex-col break-words bg-gray-100 sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
 
             <header
                 class="font-bold text-xl bg-gray-600 text-gray-100 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md flex
-                justify-between items-center">
+                justify-between items-center mb-6">
                 <div>
                     {{ ucfirst($member->first_name) }} {{ ucfirst($member->last_name) }}
                 <span class="text-sm text-gray-200 ml-2">No: {{ $member->number }}</span>
@@ -21,18 +21,17 @@
                     <a href="{{ route('member.edit', $member) }}" class="text-judo-200 hover:text-judo-50 font-bold ml-3"
                         title="Edit member details"><i class="far fa-edit"></i></a>
                 </div>
-                <div class="font-bold text-sm"> Club: {{ $member->club->name }} </div>
+                <div class="font-bold text-sm">
+                    <a href="{{ route('clubs.show', $member->club) }}#members">
+                        Club: {{ $member->club->name }}</a>
+                </div>
             </header>
-            <div class="w-full p-6">
-                <a href="{{ route('clubs.show', $member->club) }}#members"
-                    class="text-blue-500 font-bold hover:text-blue-300" title="View club page">
-                    << Back to club view</a>
-            </div>
+
             <div id="main" x-data="{openTab: window.location.hash ? window.location.hash : '#personal',
                                       activeClasses:
-                                      'bg-gray-300 text-gray-800 rounded-full shadow-inner shadow outline-none',
+                                      'bg-gray-600 text-gray-100 rounded-full shadow-inner shadow outline-none',
                                       inactiveClasses:
-                                      'text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-full'
+                                      'text-gray-500 bg-gray-100 hover:text-gray-700 hover:bg-gray-200 rounded-full'
                                     }">
                 {{-- TABS SECTION --}}
                 <div class="w-full px-6 ">
@@ -72,7 +71,8 @@
 
                 {{-- PERSONAL DETAILS  SECTION --}}
                 <div class="w-full px-6 py-2" x-show="openTab === '#personal'">
-                     <div class="w-full border border-gray-300 flex flex-wrap rounded-xl my-4 p-4">
+                     <div class="w-full bg-white border-2 border-gray-200 flex flex-wrap rounded-xl my-4
+                     p-4">
                             <div class="w-full md:w-1/2">
                                 <h4 class="font-bold text-xl text-gray-500 mb-4">Personal details:</h4>
                                 <div class="mb-8">
@@ -138,7 +138,7 @@
 
                 {{-- MEMBERSHIP SECTION --}}
                 <div class="w-full px-6 py-2" x-show="openTab === '#membership'">
-                    <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
+                    <div class="w-full bg-white border-2 border-gray-200 rounded-xl my-4 p-4">
                         <h4 class="font-bold text-xl text-gray-500 mb-4">Membership details:</h4>
                         <form method="POST" action="{{ action('App\Http\Controllers\MembershipController@store') }}"
                               role="form">
@@ -251,7 +251,7 @@
 
                 {{-- GRADING SECTION --}}
                 <div class="w-full px-6 py-2" x-show="openTab === '#grading'">
-                    <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
+                    <div class="w-full bg-white border-2 border-gray-200 rounded-xl my-4 p-4">
                         <h4 class="font-bold text-xl text-gray-500 mb-4">Grading details:</h4>
                         <form method="POST" action="{{ action('App\Http\Controllers\GradeController@store') }}"
                               role="form">
@@ -391,7 +391,7 @@
 
                 {{-- NOTES SECTION --}}
                 <div class="w-full px-6 py-2" x-show="openTab === '#notes'">
-                    <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
+                    <div class="w-full bg-white border-2 border-gray-200 rounded-xl my-4 p-4">
                         <h4 class="font-bold text-xl text-gray-500 mb-4">Member notes:</h4>
                         <a href="{{ route('membernote.create.member', [$member->id]) }}">
                             <button class="button-judo">+ Add new note</button>
@@ -466,7 +466,7 @@
 
                 <!-- Forms Section -->
                 <div class="w-full px-6 py-2" x-show="openTab === '#forms'">
-                    <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
+                    <div class="w-full bg-white border-2 border-gray-200 rounded-xl my-4 p-4">
                         <h4 class="font-bold text-gray-500 text-xl mb-4">Club forms:</h4>
                         <div>
                             <button class="button-judo" onclick="showForm()">+ Add new form</button>
@@ -582,7 +582,7 @@
 
                 <!-- Documents Section -->
                 <div class="w-full px-6 py-2" x-show="openTab === '#documents'">
-                    <div class="w-full border border-gray-300 rounded-xl my-4 p-4">
+                    <div class="w-full bg-white border-2 border-gray-200 rounded-xl my-4 p-4">
                         <h4 class="font-bold text-gray-500 text-xl mb-4">Club documents:</h4>
                         <div>
                             <button class="button-judo" onclick="showDocForm()">+ Add new document</button>
@@ -695,6 +695,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="w-full p-6">
+                <a href="{{ route('clubs.show', $member->club) }}#members" class="gray-button" title="View club page">
+                    << Back to club view</a>
             </div>
     </section>
     </div>
