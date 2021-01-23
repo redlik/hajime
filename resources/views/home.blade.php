@@ -106,8 +106,9 @@
                             </form>
                         </div>
                         @endguest
-                    <div class="w-full prose">
-                        <h1>I'm logged in</h1>
+                    <div class="w-full text-center">
+                        <h3 class="font-bold text-2xl mb-4">Hi {{ Auth::user()->name }}</h3>
+                        <h5 class="font-semibold text-xl mb-4">More content coming here soon...</h5>
                     </div>
                 </div>
             </section>
