@@ -38,7 +38,7 @@
             </thead>
             <tbody>
                 @foreach ($clubs as $club)
-                <tr>
+                <tr class="hover:bg-gray-200">
                     <td class="px-5 py-5 border-b border-gray-200 text-sm">
                         <div class="flex items-center">
                             <div class="ml-3">
