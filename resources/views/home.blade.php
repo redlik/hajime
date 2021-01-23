@@ -106,10 +106,12 @@
                             </form>
                         </div>
                         @endguest
+                    @auth
                     <div class="w-full text-center">
                         <h3 class="font-bold text-2xl mb-4">Hi {{ Auth::user()->name }}</h3>
                         <h5 class="font-semibold text-xl mb-4">More content coming here soon...</h5>
                     </div>
+                        @endauth
                 </div>
             </section>
         </div>
