@@ -12,27 +12,33 @@
             <thead>
             <tr>
                 <th
-                    class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    class="px-5 py-3 rounded-l bg-gray-600 text-left text-xs font-semibold text-gray-100 uppercase
+                    tracking-wider">
                     No
                 </th>
                 <th
-                    class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold text-gray-100 uppercase
+                    tracking-wider">
                     Name
                 </th>
                 <th
-                    class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold text-gray-100 uppercase
+                    tracking-wider">
                     Club
                 </th>
                 <th
-                    class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold text-gray-100 uppercase
+                    tracking-wider">
                     Eircode
                 </th>
                 <th
-                    class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold text-gray-100 uppercase
+                    tracking-wider">
                     Membership
                 </th>
                 <th
-                    class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    class="px-5 py-3 rounded-r bg-gray-600 text-left text-xs font-semibold text-gray-100 uppercase
+                    tracking-wider">
                     Operations
                 </th>
             </tr>
@@ -68,9 +74,9 @@
                     <td class="px-5 py-5 border-b border-gray-200 text-sm">
                         <p class="text-gray-900 whitespace-no-wrap">
                             @if ($member->active == true)
-                                <span class="p-1 px-2 rounded bg-green-200 text-green-700">Active</span>
+                                <span class="green-pillow">Active</span>
                             @else
-                                <span class="p-1 px-2 rounded bg-red-200 text-red-700">Inactive</span>
+                                <span class="red-pillow">Inactive</span>
                             @endif
 
                         </p>

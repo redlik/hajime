@@ -3,7 +3,7 @@
         <div class="flex flex-wrap content-center justify-between mt-4">
             <div class="w-full md:w-1/2">
                 <input type="search" wire:model.debounce.500ms="searchQuery" class="shadow border-gray-300 rounded
-                w-full md:w-64 py-2 px-3 text-grey-darker mt-4" placeholder="Filter by name"></div>
+                w-full py-2 px-3 text-grey-darker mt-4" placeholder="Filter by name"></div>
             <div class="">
                 {{ $clubs->links() }}</div>
         </div>
@@ -13,19 +13,25 @@
             <thead>
                 <tr>
                     <th
-                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        class="px-5 py-3 rounded-l bg-gray-600 text-left text-xs
+                        font-semibold
+                        text-gray-100 uppercase tracking-wider">
                         Club name
                     </th>
                     <th
-                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider hidden md:block">
+                        class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold
+                        text-gray-100 uppercase tracking-wider hidden md:block">
                         Location
                     </th>
                     <th
-                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold
+                        text-gray-100 uppercase tracking-wider">
                         Members (Active)
                     </th>
                     <th
-                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        class="px-5 py-3 rounded-r bg-gray-600 text-left text-xs
+                        font-semibold
+                        text-gray-100 uppercase tracking-wider">
                         Operations
                     </th>
                 </tr>

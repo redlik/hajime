@@ -14,7 +14,7 @@ class MembersTable extends Component
 
     public function mount() {
         $this->searchQuery = '';
-        $this->members = Member::paginate(50);
+        $this->members = Member::simplePaginate(50);
     }
 
     public function updatingSearchquery()
@@ -31,7 +31,7 @@ class MembersTable extends Component
             ->orWhere('eircode', 'like', '%'.$this->searchQuery.'%');
         })
         ->orderBy('last_name', 'asc')
-        ->paginate(50);
+        ->simplePaginate(50);
 
         return view('livewire.members-table', ['members' => $members ]);
     }
