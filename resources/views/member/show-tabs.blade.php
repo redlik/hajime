@@ -36,32 +36,32 @@
                 {{-- TABS SECTION --}}
                 <div class="w-full px-6 ">
                     <ul class="flex">
-                        <li class="-mb-px mr-1" :class="{ '-mb-px': openTab === '#personal' }" @click="openTab =
+                        <li class="-mb-px mr-3 md:mb-0 sm:mb-3" :class="{ '-mb-px': openTab === '#personal' }" @click="openTab =
                         '#personal'">
                             <a :class="openTab === '#personal' ? activeClasses : inactiveClasses" class="bg-white
                             inline-block py-2 px-4 font-semibold" href="#details">Personal Details</a>
                         </li>
-                        <li class="-mb-px mr-1" @click="openTab = '#membership'">
+                        <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#membership'">
                             <a :class="openTab === '#membership' ? activeClasses : inactiveClasses" class="bg-white
                             inline-block
                             py-2 px-4 font-semibold" href="#membership">Membership</a>
                         </li>
-                        <li class="-mb-px mr-1" @click="openTab = '#grading'">
+                        <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#grading'">
                             <a :class="openTab === '#grading' ? activeClasses : inactiveClasses" class="bg-white
                             inline-block
                             py-2 px-4 font-semibold" href="#grading">Grading</a>
                         </li>
-                        <li class="-mb-px mr-1" @click="openTab = '#notes'">
+                        <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#notes'">
                             <a :class="openTab === '#notes' ? activeClasses : inactiveClasses" class="bg-white
                             inline-block
                             py-2 px-4 font-semibold" href="#notes">Notes</a>
                         </li>
-                        <li class="-mb-px mr-1" @click="openTab = '#forms'">
+                        <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#forms'">
                             <a :class="openTab === '#forms' ? activeClasses : inactiveClasses" class="bg-white
                             inline-block
                             py-2 px-4 font-semibold" href="#forms">Forms</a>
                         </li>
-                        <li class="-mb-px mr-1" @click="openTab = '#documents'">
+                        <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#documents'">
                             <a :class="openTab === '#documents' ? activeClasses : inactiveClasses" class="bg-white
                             inline-block
                             py-2 px-4 font-semibold" href="#documents" id="documents">Documents</a>
@@ -187,18 +187,18 @@
                                 <thead>
                                 <tr>
                                     <th
-                                        class="px-5 py-3 rounded-l border-r border-gray-200 bg-gray-600 text-left
+                                        class="px-5 py-3 rounded-l bg-gray-600 text-left
                                         text-xs font-semibold text-gray-100 uppercase tracking-wider">
                                         Membership type
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                        class="px-5 py-3 bg-gray-600 text-left text-xs
                                         font-semibold
                                          text-gray-100 uppercase tracking-wider">
                                         Join date
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                        class="px-5 py-3 bg-gray-600 text-left text-xs
                                         font-semibold
                                          text-gray-100 uppercase tracking-wider">
                                         Expiry date
@@ -213,36 +213,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($memberships as $membership)
-                                    <tr>
-                                        <td class="px-5 py-4 border-b border-gray-200 text-sm">
-                                            <p class="text-gray-900 whitespace-no-wrap">
-                                                {{ $membership->membership_type }}
-                                            </p>
-                                        </td>
-                                        <td class="px-5 py-4 border-b border-gray-200 text-sm">
-                                            <p class="text-gray-900 whitespace-no-wrap">
-                                                {{ $membership->join_date }}
-                                            </p>
-                                        </td>
-                                        <td class="px-5 py-4 border-b border-gray-200 text-sm">
-                                            <p class="text-gray-900 whitespace-no-wrap">
-                                                {{ $membership->expiry_date }}
-                                            </p>
-                                        </td>
-                                        <td class="px-5 py-4 border-b border-gray-200 text-sm text-center">
-                                            <form action="{{ route('membership.destroy' , $membership)}}" method="POST">
-                                                @csrf
-                                                <input type="hidden" name="_method" value="DELETE"/>
-                                                <input type="hidden" name="member_id" value="{{$member->id }}"/>
-                                                <button type="submit"
-                                                        class="text-red-600 hover:text-red-300 whitespace-no-wrap"
-                                                        onclick="return confirm('Do you want to delete the record completely?')">
-                                                    <i class="far fa-trash-alt"></i></button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                @each('member.membership-list', $memberships, 'membership', 'member.empty-membership')
                                 </tbody>
                             </table>
                         </div>
@@ -329,18 +300,18 @@
                                 <thead>
                                 <tr>
                                     <th
-                                        class="px-5 py-3 rounded-l border-r border-gray-200 bg-gray-600 text-left
+                                        class="px-5 py-3 rounded-l bg-gray-600 text-left
                                         text-xs
                                         font-semibold text-gray-100 uppercase tracking-wider">
                                         Grade level
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                        class="px-5 py-3 bg-gray-600 text-left text-xs
                                         font-semibold text-gray-100 uppercase tracking-wider">
                                         Grade date
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                        class="px-5 py-3 bg-gray-600 text-left text-xs
                                         font-semibold text-gray-100 uppercase tracking-wider">
                                         Points to next
                                     </th>
@@ -353,36 +324,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($grades as $grade)
-                                    <tr class="odd:bg-white even:bg-gray-200">
-                                        <td class="px-5 py-4 border-b border-gray-200 text-sm">
-                                            <p class="text-gray-900 whitespace-no-wrap">
-                                                {{ $grade->grade_level}}
-                                            </p>
-                                        </td>
-                                        <td class="px-5 py-4 border-b border-gray-200 text-sm">
-                                            <p class="text-gray-900 whitespace-no-wrap">
-                                                {{ $grade->grade_date}}
-                                            </p>
-                                        </td>
-                                        <td class="px-5 py-4 border-b border-gray-200 text-sm">
-                                            <p class="text-gray-900 whitespace-no-wrap">
-                                                {{ $grade->grade_points}}
-                                            </p>
-                                        </td>
-                                        <td class="px-5 py-4 border-b border-gray-200 text-sm text-center">
-                                            <form action="{{ route('grade.destroy' , $grade)}}" method="POST">
-                                                @csrf
-                                                <input type="hidden" name="_method" value="DELETE"/>
-                                                <input type="hidden" name="member_id" value="{{$member->id }}"/>
-                                                <button type="submit"
-                                                        class="text-red-600 hover:text-red-300 whitespace-no-wrap"
-                                                        onclick="return confirm('Do you want to delete the record completely?')">
-                                                    <i class="far fa-trash-alt"></i></button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                @each('member.grade-list', $grades, 'grade', 'member.empty-grade')
                                 </tbody>
                             </table>
                         </div>
@@ -401,13 +343,13 @@
                                 <thead>
                                 <tr>
                                     <th
-                                        class="w-1/2 px-5 rounded-l py-3 border-r border-gray-100 bg-gray-600 text-left
+                                        class="w-1/2 px-5 rounded-l py-3 bg-gray-600 text-left
                                         text-xs
                                         font-semibold text-gray-100 uppercase tracking-wider">
                                         Title
                                     </th>
                                     <th
-                                        class="w-1/4 px-5 py-3 border-r border-gray-100 bg-gray-600 text-left text-xs
+                                        class="w-1/4 px-5 py-3 bg-gray-600 text-left text-xs
                                          font-semibold
                                         text-gray-100 uppercase tracking-wider">
                                         Created by
@@ -420,44 +362,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($notes as $note)
-                                    <tr>
-                                        <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                            <div class="flex items-center">
-                                                <div class="ml-3">
-                                                    <p class="text-gray-900 whitespace-no-wrap font-bold">
-                                                        <a href="{{ route('membernote.show', $note->slug) }}"
-                                                           class="hover:text-cool-gray-400"
-                                                           title="View full note">{{ $note->title }}</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                            @if ($note->author)
-                                                {{ $note->hasAuthor->name }}
-                                            @endif
-                                        </td>
-
-                                        <td class="px-5 py-5 border-b border-gray-200 text-sm justify-center flex
-                                        flex-wrap">
-                                            <a href="{{ route('membernote.show', $note->slug) }}"
-                                               class="text-blue-600 font-bold hover:text-blue-300 mr-4"
-                                               title="View full note"><i class="far fa-eye"></i></a>
-                                            <a href="{{ route('membernote.edit', $note) }}"
-                                               class="text-green-600 font-bold mx-4" title="Edit note"><i
-                                                    class="far fa-edit"></i></a>
-                                            <form action="{{ route('membernote.destroy' , $note)}}" method="POST">
-                                                @csrf
-                                                <input type="hidden" name="_method" value="DELETE"/>
-                                                <button type="submit"
-                                                        class="text-red-600 hover:text-red-300 whitespace-no-wrap ml-3"
-                                                        onclick="return confirm('Do you want to delete the record completely?')">
-                                                    <i class="far fa-trash-alt"></i></button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                @each('membernote.membernote-list', $notes, 'note', 'membernote.empty')
                                 </tbody>
                             </table>
                         </div>
@@ -507,24 +412,24 @@
                                 <thead>
                                 <tr>
                                     <th
-                                        class="px-5 py-3 rounded-l border-r border-gray-200 bg-gray-600 text-left
+                                        class="px-5 py-3 rounded-l bg-gray-600 text-left
                                             text-xs
                                             font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                         Title
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                        class="px-5 py-3 bg-gray-600 text-left text-xs
                                             font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                         Link
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                        class="px-5 py-3 bg-gray-600 text-left text-xs
                                             font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                         Created by
                                     </th>
 
                                     <th
-                                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                        class="px-5 py-3 bg-gray-600 text-left text-xs
                                             font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                         Created on
                                     </th>
@@ -536,44 +441,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($forms as $form)
-                                    <tr>
-                                        <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                            <div class="flex items-center">
-                                                <div class="">
-                                                    <p class="text-gray-900 whitespace-no-wrap font-bold">
-                                                        {{ $form->title }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                            <a href="{{ asset('/storage/attachments/'.$form->link) }}" target="_blank">
-                                                <i class="fas fa-file-pdf text-2xl text-red-700"></i>
-                                            </a>
-                                        </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                            @if ($form->author)
-                                                {{ $form->hasAuthor->name }}
-                                            @endif
-                                        </td>
-
-                                        <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                            {{ $form->created_at->format('d-m-Y') }}
-                                        </td>
-                                        <td class="px-5 py-6 border-b border-gray-200 text-sm justify-center flex
-                                        flex-wrap">
-                                            <form action="{{ route('memberdoc.destroy', $form->id) }}" method="POST">
-                                                @csrf
-                                                <input type="hidden" name="_method" value="DELETE"/>
-                                                <button type="submit"
-                                                        class="text-red-600 hover:text-red-300 whitespace-no-wrap ml-3"
-                                                        onclick="return confirm('Do you want to delete the record completely?')">
-                                                    <i class="far fa-trash-alt"></i></button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                @each('member.form-list', $forms, 'form', 'member.empty-form')
                                 </tbody>
                             </table>
                         </div>
@@ -622,24 +490,24 @@
                                 <thead>
                                 <tr>
                                     <th
-                                        class="px-5 py-3 rounded-l border-r border-gray-200 bg-gray-600 text-left
+                                        class="px-5 py-3 rounded-l bg-gray-600 text-left
                                             text-xs
                                             font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                         Title
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                        class="px-5 py-3 bg-gray-600 text-left text-xs
                                             font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                         Link
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                        class="px-5 py-3 bg-gray-600 text-left text-xs
                                             font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                         Created by
                                     </th>
 
                                     <th
-                                        class="px-5 py-3 border-r border-gray-200 bg-gray-600 text-left text-xs
+                                        class="px-5 py-3 bg-gray-600 text-left text-xs
                                             font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                         Created on
                                     </th>
@@ -651,45 +519,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($documents as $document)
-                                    <tr>
-                                        <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                            <div class="flex items-center">
-                                                <div class="ml-3">
-                                                    <p class="text-gray-900 whitespace-no-wrap font-bold">
-                                                        {{ $document->title }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                            <a href="{{ asset('/storage/attachments/'.$document->link) }}"
-                                               target="_blank">
-                                                <i class="fas fa-file-pdf text-2xl text-red-700"></i>
-                                            </a>
-                                        </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                            @if ($document->author)
-                                                {{ $document->hasAuthor->name }}
-                                            @endif
-                                        </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                            {{ $document->created_at->format('d-m-Y') }}
-                                        </td>
-                                        <td class="px-5 py-6 border-b border-gray-200 text-sm flex flex-wrap
-                                        justify-center">
-                                            <form action="{{ route('memberdoc.destroy', $document->id) }}"
-                                                  method="POST">
-                                                @csrf
-                                                <input type="hidden" name="_method" value="DELETE"/>
-                                                <button type="submit"
-                                                        class="text-red-600 hover:text-red-300 whitespace-no-wrap ml-3"
-                                                        onclick="return confirm('Do you want to delete the record completely?')">
-                                                    <i class="far fa-trash-alt"></i></button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                @each('member.document-list', $documents, 'document', 'member.empty-document')
                                 </tbody>
                             </table>
                         </div>

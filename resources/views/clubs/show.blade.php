@@ -25,38 +25,39 @@
                                     }">
                     {{-- TABS SECTION --}}
                     <div class="w-full px-6">
-                        <ul class="flex">
-                            <li class="-mb-px mr-1" :class="{ '-mb-px': openTab === '#details' }" @click="openTab =
+                        <ul class="flex flex-wrap">
+                            <li class="-mb-px mr-3 md:mb-0 sm:mb-3" :class="{ '-mb-px': openTab === '#details' }"
+                                @click="openTab =
                         '#details'">
                                 <a :class="openTab === '#details' ? activeClasses : inactiveClasses" class="bg-white
                             inline-block py-2 px-4 font-semibold" href="#details">Club Details</a>
                             </li>
-                            <li class="-mb-px mr-1" @click="openTab = '#personnel'">
+                            <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#personnel'">
                                 <a :class="openTab === '#personnel' ? activeClasses : inactiveClasses" class="bg-white
                             inline-block
                             py-2 px-4 font-semibold" href="#personnel">Club Personnel</a>
                             </li>
-                            <li class="-mb-px mr-1" @click="openTab = '#volunteers'">
+                            <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#volunteers'">
                                 <a :class="openTab === '#volunteers' ? activeClasses : inactiveClasses" class="bg-white
                             inline-block
                             py-2 px-4 font-semibold" href="#volunteers">Volunteers</a>
                             </li>
-                            <li class="-mb-px mr-1" @click="openTab = '#members'">
+                            <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#members'">
                                 <a :class="openTab === '#members' ? activeClasses : inactiveClasses" class="bg-white
                             inline-block
                             py-2 px-4 font-semibold" href="#members">Members</a>
                             </li>
-                            <li class="-mb-px mr-1" @click="openTab = '#notes'">
+                            <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#notes'">
                                 <a :class="openTab === '#notes' ? activeClasses : inactiveClasses" class="bg-white
                             inline-block
                             py-2 px-4 font-semibold" href="#notes">Notes</a>
                             </li>
-                            <li class="-mb-px mr-1" @click="openTab = '#forms'">
+                            <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#forms'">
                                 <a :class="openTab === '#forms' ? activeClasses : inactiveClasses" class="bg-white
                             inline-block
                             py-2 px-4 font-semibold" href="#forms">Forms</a>
                             </li>
-                            <li class="-mb-px mr-1" @click="openTab = '#documents'">
+                            <li class="-mb-px mr-1 md:mb-0 sm:mb-3" @click="openTab = '#documents'">
                                 <a :class="openTab === '#documents' ? activeClasses : inactiveClasses" class="bg-white
                             inline-block
                             py-2 px-4 font-semibold" href="#documents">Documents</a>
@@ -172,52 +173,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($venues as $venue)
-                                    <tr>
-                                        <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                            <div class="flex items-center">
-                                                <div class="">
-                                                    <p class="text-gray-900 whitespace-no-wrap font-bold">
-                                                        {{ $venue->name }}
-                                                        <br/>
-                                                        <span class="text-sm text-gray-600 font-medium">
-                                                            {{ $venue->address1 }}
-                                                            {{ $venue->address2 }}
-                                                            {{ $venue->city }}
-                                                            {{ ucfirst ($venue->county) }}
-                                                            {{ strtoupper($venue->eircode) }}
-                                                        </span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                            <div class="flex items-center">
-                                                <div>
-                                                    <p class="text-gray-900 whitespace-no-wrap font-bold">{{ $venue->contact }}
-                                                        <br><span
-                                                            class="font-bold text-gray-500">t:</span>{{ $venue->phone }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="px-8 py-8 border-b border-gray-200 text-sm flex flex-wrap h-full">
-                                            <a href="{{ route('venue.edit', $venue->id) }}"
-                                               class="text-green-600 font-bold ml-3" title="Edit venue"><i
-                                                    class="far fa-edit"></i></a>
-                                            <form action="{{ route('venue.destroy', $venue->id) }}"
-                                                  method="POST">
-                                                @csrf
-                                                <input type="hidden" name="_method" value="DELETE"/>
-                                                <button type="submit"
-                                                        class="text-red-600 hover:text-red-300 whitespace-no-wrap ml-3"
-                                                        onclick="return confirm('Do you want to delete the venue ' +
-                                                         'completely?')">
-                                                    <i class="far fa-trash-alt"></i></button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                    @each('venue.venue-list', $venues, 'venue', 'venue.empty')
                                 </tbody>
                             </table>
                         </div>
@@ -502,48 +458,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach ($notes as $note)
-                                        <tr>
-                                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                                <div class="flex items-center">
-                                                    <div class="">
-                                                        <p class="text-gray-900 whitespace-no-wrap font-bold">
-                                                            <a href="{{ route('clubnote.show', $note->slug) }}"
-                                                               class="hover:text-cool-gray-400"
-                                                               title="View full note">{{ $note->title }}</a>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                                @if ($note->author)
-                                                    {{ $note->hasAuthor->name }}
-                                                @endif
-                                            </td>
-                                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                                {{ $note->created_at->format('d-m-Y') }}
-                                            </td>
-                                            <td class="px-5 py-5 border-b border-gray-200 text-sm flex
-                                            flex-wrap justify-center">
-                                                <div><a href="{{ route('clubnote.show', $note->slug) }}"
-                                                        class="text-blue-600 font-bold hover:text-blue-300"
-                                                        title="View full note"><i class="far fa-eye"></i></a></div>
-                                                <div><a href="{{ route('clubnote.edit', $note) }}"
-                                                        class="text-green-600 font-bold ml-3" title="Edit note"><i
-                                                            class="far fa-edit"></i></a></div>
-                                                <div>
-                                                    <form action="{{ route('clubnote.destroy' , $note)}}" method="POST">
-                                                        @csrf
-                                                        <input type="hidden" name="_method" value="DELETE"/>
-                                                        <button type="submit"
-                                                                class="text-red-600 hover:text-red-300 whitespace-no-wrap ml-3"
-                                                                onclick="return confirm('Do you want to delete the record completely?')">
-                                                            <i class="far fa-trash-alt"></i></button>
-                                                    </form>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                    @each('clubnote.clubnote-list', $notes, 'note', 'clubnote.empty')
                                     </tbody>
                                 </table>
                             </div>
@@ -628,47 +543,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach ($forms as $form)
-                                        <tr>
-                                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                                <div class="flex items-center">
-                                                    <div class="ml-3">
-                                                        <p class="text-gray-900 whitespace-no-wrap font-bold">
-                                                            <a href="{{ asset('/storage/attachments/'.$form->link) }}"
-                                                               target="_blank">
-                                                                {{ $form->title }}
-                                                            </a>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                                <a href="{{ asset('/storage/attachments/'.$form->link) }}"
-                                                   target="_blank">
-                                                    <i class="fas fa-file-pdf text-2xl text-red-700 mr-3"></i><span
-                                                        class="text-gray-500">{{ $form->link }}</span>
-                                                </a>
-                                            </td>
-                                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                                @if ($form->author)
-                                                    {{ $form->hasAuthor->name }}
-                                                @endif
-                                            </td>
-                                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                                {{ $form->created_at->format('d-m-Y') }}
-                                            </td>
-                                            <td class="px-5 py-6 border-b border-gray-200 text-sm flex flex-wrap">
-                                                <form action="{{ route('clubdoc.destroy', $form->id) }}" method="POST">
-                                                    @csrf
-                                                    <input type="hidden" name="_method" value="DELETE"/>
-                                                    <button type="submit"
-                                                            class="text-red-600 hover:text-red-300 whitespace-no-wrap ml-3"
-                                                            onclick="return confirm('Do you want to delete the record completely?')">
-                                                        <i class="far fa-trash-alt"></i></button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                        @each('clubs.form-list', $forms, 'form', 'clubs.empty-form')
                                     </tbody>
                                 </table>
                             </div>
@@ -752,50 +627,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach ($documents as $document)
-                                        <tr>
-                                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                                <div class="flex items-center">
-                                                    <div class="ml-3">
-                                                        <p class="text-gray-900 whitespace-no-wrap font-bold">
-                                                            <a href="{{ asset('/storage/attachments/'.$document->link) }}"
-                                                               target="_blank" title="{{ $document->link }}">
-                                                                {{ $document->title }}
-                                                            </a>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                                <a href="{{ asset('/storage/attachments/'.$document->link) }}"
-                                                   target="_blank" title="{{ $document->link }}">
-                                                    <i class="fas fa-file-pdf text-2xl text-red-700 mr-3"></i><span
-                                                        class="text-gray-500">{{ $document->link }}</span>
-                                                </a>
-                                            </td>
-                                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                                @if ($document->author)
-                                                    {{ $document->hasAuthor->name }}
-                                                @endif
-                                            </td>
-                                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                                {{ $document->created_at->format('d-m-Y') }}
-                                            </td>
-                                            <td class="px-5 py-6 border-b border-gray-200 text-sm flex flex-wrap
-                                            justify-center">
-                                                <form action="{{ route('clubdoc.destroy', $document->id) }}"
-                                                      method="POST">
-                                                    @csrf
-                                                    <input type="hidden" name="_method" value="DELETE"/>
-                                                    <button type="submit"
-                                                            class="text-red-600 hover:text-red-300 whitespace-no-wrap"
-                                                            onclick="return confirm('Do you want to delete the record completely?')"
-                                                            title="Delete document">
-                                                        <i class="far fa-trash-alt"></i></button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                    @each('clubs.document-list', $documents, 'document', 'clubs.empty-document')
                                     </tbody>
                                 </table>
                             </div>

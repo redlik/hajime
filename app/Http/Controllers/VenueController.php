@@ -95,6 +95,6 @@ class VenueController extends Controller
     {
         Venue::where('id', $id)->delete();
 
-        return Redirect::to(URL::previous()."#venues");
+        return Redirect::to(URL::previous()."#details");
     }
 }

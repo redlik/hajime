@@ -86,8 +86,7 @@ class GradeController extends Controller
      */
     public function destroy(Request $request, Grade $grade)
     {
-        $member = member::find($request->input('member_id'));
-        $grade = Grade::where('id', $grade->id)->delete();
+        Grade::where('id', $grade->id)->delete();
 
         return Redirect::to(URL::previous() . "#grading");
     }
