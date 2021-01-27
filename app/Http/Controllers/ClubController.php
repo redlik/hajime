@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Club;
 use App\Models\ClubDocument;
+use App\Models\GradForm;
 use App\Models\Personnel;
 use App\Models\Coach;
 use App\Models\Clubnote;
@@ -74,10 +75,11 @@ class ClubController extends Controller
         $venues = Venue::where('club_id', $club->id)->get();
         $notes = Clubnote::where('club_id', $club->id)->orderBy('created_at', 'desc')->get();
         $forms = ClubDocument::form($club->id)->get();
+        $grads = GradForm::where('club_id', $club->id)->get();
         $documents = ClubDocument::document($club->id)->get();
 
         return view('clubs.show', compact('club', 'venues', 'volunteers', 'members', 'notes', 'headCoach', 'secretary',
-        'designated', 'childrens', 'forms', 'documents', 'coaches' ));
+        'designated', 'childrens', 'forms', 'documents', 'coaches', 'grads' ));
     }
 
     /**

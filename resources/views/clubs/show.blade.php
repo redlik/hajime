@@ -52,6 +52,11 @@
                             inline-block
                             py-2 px-4 font-semibold" href="#notes">Notes</a>
                             </li>
+                            <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#grads'">
+                                <a :class="openTab === '#grads' ? activeClasses : inactiveClasses" class="bg-white
+                            inline-block
+                            py-2 px-4 font-semibold" href="#grads">Gradings</a>
+                            </li>
                             <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#forms'">
                                 <a :class="openTab === '#forms' ? activeClasses : inactiveClasses" class="bg-white
                             inline-block
@@ -459,6 +464,90 @@
                                     </thead>
                                     <tbody>
                                     @each('clubnote.clubnote-list', $notes, 'note', 'clubnote.empty')
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Club Grad Forms Section--}}
+                    <div class="w-full px-6 py-2" x-show="openTab === '#grads'">
+                        <div class="w-full bg-white border-2 border-gray-200 rounded-xl my-4 p-4">
+                            <h4 class="font-bold text-xl text-gray-600 mb-4">Club Grading Forms:</h4>
+                            <div>
+                                <button class="button-judo" onclick="showForm()">+ Add new grading form</button>
+                            </div>
+                            <div class="w-full my-4 hidden bg-gray-100 p-2 rounded" id="addForm">
+                                <form action="{{ route('gradform.store') }}" method="POST" role="form" class="w-full flex
+                                            flex-wrap
+                                            justify-between" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="hidden" name="club_id" value="{{ $club->id }}">
+                                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                    <div class="w-full flex flex-wrap items-center">
+                                        <div class="w-1/2">
+                                            <label class="inline-block text-gray-600 text-sm font-bold mr-4 py-2"
+                                                   for="title">
+                                                Title
+                                            </label>
+                                            <input
+                                                class="shadow border-gray-300 w-5/6 rounded px-3 text-grey-darker"
+                                                id="title" name="title" type="text" required>
+                                        </div>
+                                        <div class="w-1/2 align-middle">
+                                            <label class="inline-block text-gray-600 text-sm font-bold mr-4 py-2"
+                                                   for="link">
+                                                Attachment
+                                            </label>
+                                            <input class="py-2" id="link" name="link" type="file" required>
+                                        </div>
+                                    </div>
+                                    <div class="w-full flex flex-wrap">
+                                        <div class="mx-12 py-2">
+                                            <input type="submit" value="Submit" class="button-judo">
+                                        </div>
+                                        <div class="py-2">
+                                            <button class="button-danger" onclick="hideForm()">Cancel</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="w-full mt-8">
+                                <table class="min-w-full table leading-normal mt-8">
+                                    <thead>
+                                    <tr>
+                                        <th
+                                            class="px-5 py-3 rounded-l bg-gray-600 text-left
+                                            text-xs
+                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
+                                            Title
+                                        </th>
+                                        <th
+                                            class="px-5 py-3 bg-gray-600 text-left text-xs
+                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
+                                            Link
+                                        </th>
+                                        <th
+                                            class="px-5 py-3 bg-gray-600 text-left text-xs
+                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
+                                            Created by
+                                        </th>
+
+                                        <th
+                                            class="px-5 py-3 bg-gray-600 text-left text-xs
+                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
+                                            Created on
+                                        </th>
+                                        <th
+                                            class="px-5 py-3 rounded-r bg-gray-600 text-center
+                                            text-xs font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
+                                            Actions
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @each('clubs.grad-list', $grads, 'grad', 'clubs.empty-grad')
                                     </tbody>
                                 </table>
                             </div>
