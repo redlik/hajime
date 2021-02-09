@@ -101,4 +101,8 @@
     .gray-date {
         @apply bg-gray-200 text-gray-700 rounded-full py-1 px-3 font-medium mb-2;
     }
+
+    .amber-date {
+        @apply bg-amber-100 text-amber-700 rounded-full py-1 px-3 font-medium mb-2 text-center;
+    }
 }
