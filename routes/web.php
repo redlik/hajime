@@ -62,3 +62,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('club/{id}/add-volunteer', [VolunteerController::class, 'addVolunteer'])->name('volunteer.addVolunteer');
 });
 
+Route::prefix('reports')->middleware(['auth'])->group(function () {
+    Route::view('/memberships', 'reports.memberships');
+});
