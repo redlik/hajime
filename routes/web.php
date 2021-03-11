@@ -5,6 +5,7 @@ use App\Http\Controllers\CoachController;
 use App\Http\Controllers\GradFormController;
 use App\Http\Controllers\MemberDocumentController;
 use App\Http\Controllers\MembernoteController;
+use App\Http\Controllers\Reports\MembershipReportController;
 use App\Http\Controllers\VolunteerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClubController;
@@ -62,3 +63,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('club/{id}/add-volunteer', [VolunteerController::class, 'addVolunteer'])->name('volunteer.addVolunteer');
 });
 
+Route::group(['middleware' => ['auth'], 'prefix' => 'reports'], function () {
+    Route::get('/membership-list', [MembershipReportController::class, 'index'])->name('report.membership.index');
+    Route::post('/membership-list', [MembershipReportController::class, 'showMembers'])->name('report.membership.list');
+});
