@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   purge: {
       content: [
@@ -32,6 +34,7 @@ module.exports = {
                 '800': '#032603',
                 '900': '#000000',
             },
+            amber: colors.amber,
         }
     },
   },
