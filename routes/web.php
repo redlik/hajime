@@ -67,3 +67,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'reports'], function () {
     Route::get('/membership-list', [MembershipReportController::class, 'index'])->name('report.membership.index');
     Route::post('/membership-list', [MembershipReportController::class, 'showMembers'])->name('report.membership.list');
 });
+
+Route::group(['middleware' => ['auth'], 'prefix' => 'exports'], function () {
+    Route::get('/memberships/{start}/{end}', [MembershipReportController::class, 'export'])->name('report.membership.export');
+});
