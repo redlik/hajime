@@ -114,6 +114,20 @@
                                             id="parent" name="parent" type="text" placeholder="Parent / Guardian
                                             Name" disabled>
                                 </div>
+                                <div class="w-full md:w-1/2 mt-4">
+                                    <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
+                                           for="source">
+                                        Membership Source
+                                    </label>
+                                    <select class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker"
+                                            id="province"
+                                            type="text" placeholder="Province" name="source" required>
+                                        <option value="" disabled selected>Select membership source</option>
+                                        <option value="Online">Online</option>
+                                        <option value="Club">Club</option>
+                                        <option value="Direct">Direct</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         <div class="w-full border-2 border-gray-300 rounded-xl p-8 mb-4">
@@ -241,7 +255,7 @@
                                         Phone
                                     </label>
                                     <input
-                                        class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                        class="shadow border-gray-300 rounded w-64 md:w-1/2 py-2 px-3 text-grey-darker"
                                         id="phone" name="phone" type="text" placeholder="Phone">
                                 </div>
                             </div>
@@ -252,7 +266,7 @@
                                         Mobile
                                     </label>
                                     <input
-                                        class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                        class="shadow border-gray-300 rounded w-64 md:w-1/2 py-2 px-3 text-grey-darker"
                                         id="mobile" name="mobile" type="text" placeholder="Mobile">
                                 </div>
                             </div>
