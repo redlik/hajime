@@ -32,4 +32,19 @@ class Member extends Model
     public function scopeActive($query) {
         return $query->where('active', 1);
     }
+
+    public function scopeActiveMembers($query, $id)
+    {
+        return $query->where('club_id', $id)->where('active', 1)->orderBy('last_name', 'asc');
+    }
+
+    public function scopeJoinedBetween($query, $start_date, $end_date, $club)
+    {
+        return $query->whereBetween('join_date', [$start_date, $end_date])->where('club_id', $club)->orderBy('last_name', 'asc');
+    }
+
+    public function latestMembership()
+    {
+        return $this->hasMany('App\Models\Membership')->latest('join_date')->first();
+    }
 }

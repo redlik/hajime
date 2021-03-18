@@ -26,7 +26,7 @@
     </td>
     <td class="px-5 py-4 border-b border-gray-200 text-sm">
         <p class="text-gray-900 whitespace-no-wrap">
-            Source
+            {{ $membership->member->source }}
         </p>
     </td>
     <td class="px-5 py-4 border-b border-gray-200 text-sm">

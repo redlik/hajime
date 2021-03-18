@@ -5,7 +5,9 @@ use App\Http\Controllers\CoachController;
 use App\Http\Controllers\GradFormController;
 use App\Http\Controllers\MemberDocumentController;
 use App\Http\Controllers\MembernoteController;
+use App\Http\Controllers\Reports\ClubStatusReportController;
 use App\Http\Controllers\Reports\MembershipReportController;
+use App\Http\Controllers\Reports\MembersReportController;
 use App\Http\Controllers\VolunteerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClubController;
@@ -64,10 +66,14 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'reports'], function () {
-    Route::get('/membership-list', [MembershipReportController::class, 'index'])->name('report.membership.index');
+    Route::get('/membership-list', [MembershipReportController::class, 'index'])->name('report.membership');
     Route::post('/membership-list', [MembershipReportController::class, 'showMembers'])->name('report.membership.list');
+    Route::match(['get', 'post'],'/club-members', [MembersReportController::class, 'index'])->name('report.club-members');
+    Route::get('/clubs-status', [ClubStatusReportController::class, 'index'])->name('report.club.status');
 });
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'exports'], function () {
     Route::get('/memberships/{start}/{end}', [MembershipReportController::class, 'export'])->name('report.membership.export');
+    Route::get('/members/{club}/{start}-{end}', [MembersReportController::class, 'export'])->name('report.members.export');
+    Route::get('/clubs-status', [ClubStatusReportController::class, 'export'])->name('report.status.export');
 });
