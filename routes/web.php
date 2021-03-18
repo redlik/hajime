@@ -6,6 +6,7 @@ use App\Http\Controllers\GradFormController;
 use App\Http\Controllers\MemberDocumentController;
 use App\Http\Controllers\MembernoteController;
 use App\Http\Controllers\Reports\ClubStatusReportController;
+use App\Http\Controllers\Reports\InvalidPersonnelReportController;
 use App\Http\Controllers\Reports\MembershipReportController;
 use App\Http\Controllers\Reports\MembersReportController;
 use App\Http\Controllers\VolunteerController;
@@ -70,10 +71,12 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'reports'], function () {
     Route::post('/membership-list', [MembershipReportController::class, 'showMembers'])->name('report.membership.list');
     Route::match(['get', 'post'],'/club-members', [MembersReportController::class, 'index'])->name('report.club-members');
     Route::get('/clubs-status', [ClubStatusReportController::class, 'index'])->name('report.club.status');
+    Route::get('/invalid-personnel', [InvalidPersonnelReportController::class, 'index'])->name('report.invalid.personnel');
 });
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'exports'], function () {
     Route::get('/memberships/{start}/{end}', [MembershipReportController::class, 'export'])->name('report.membership.export');
     Route::get('/members/{club}/{start}-{end}', [MembersReportController::class, 'export'])->name('report.members.export');
     Route::get('/clubs-status', [ClubStatusReportController::class, 'export'])->name('report.status.export');
+    Route::get('/invalid-personnel', [InvalidPersonnelReportController::class, 'export'])->name('report.invalid.export');
 });

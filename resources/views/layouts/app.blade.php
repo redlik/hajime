@@ -75,7 +75,7 @@
                             <a href="{{ route('report.club.status') }}" class="block px-4 py-2 text-sm text-gray-700
                             hover:bg-gray-100"
                                role="menuitem">Club Status</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            <a href="{{ route('report.invalid.personnel') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                role="menuitem">Invalid Personnel</a>
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                role="menuitem">Invalid Coaches</a>
