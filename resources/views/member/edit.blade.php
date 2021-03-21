@@ -114,20 +114,42 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="w-full md:w-1/2 mt-4">
-                            <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
-                                   for="parent">
-                                Parent/Guardian
-                            </label>
-                            <input
-                                @if ($member->parent)
-                                class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
-                                @else
-                                class="shadow border-gray-300 bg-gray-200 rounded w-full md:w-1/2 py-2 px-3
-                                text-grey-darker"
-                                disabled
-                                @endif
-                                id="parent" name="parent" type="text" value="{{ $member->parent}}">
+                        <div class="mb-4 flex flex-wrap">
+                            <div class="w-full md:w-1/2 mt-4">
+                                <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
+                                       for="parent">
+                                    Parent/Guardian
+                                </label>
+                                <input
+                                    @if ($member->parent)
+                                    class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                    @else
+                                    class="shadow border-gray-300 bg-gray-200 rounded w-full md:w-1/2 py-2 px-3
+                                    text-grey-darker"
+                                    disabled
+                                    @endif
+                                    id="parent" name="parent" type="text" value="{{ $member->parent}}">
+                            </div>
+                            <div class="w-full md:w-1/2 mt-4">
+                                <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
+                                       for="source">
+                                    Membership Source
+                                </label>
+                                <select class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker"
+                                        id="province"
+                                        type="text" placeholder="Province" name="source" required>
+                                    <option value="Online"
+                                    @if ($member->source == "Online")
+                                        selected
+                                    @endif>Online</option>
+                                    <option value="Club"@if ($member->source == "Club")
+                                    selected
+                                        @endif>Club</option>
+                                    <option value="Direct"@if ($member->source == "Direct")
+                                    selected
+                                        @endif>Direct</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="w-full border-2 border-gray-300 rounded-xl p-8 mb-4">
@@ -249,6 +271,34 @@
                                     class="shadow  border-gray-300  rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                     id="email" name="email" type="text" placeholder="Email" value="{{ $member->email }}">
                             </div>
+                            <div class="w-full sm:w-full md:w-1/2">
+                                <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
+                                       for="email_consent">
+                                    Email Consent
+                                </label>
+                                <div class="inline-block">
+                                    <div class="inline-block mr-6">
+                                        <input class="inline-block" type="radio" id="yes" name="email_consent"
+                                               value="Yes" @click="email_consent = true"
+                                               @if ($member->email_consent == "Yes")
+                                               checked
+                                               @endif
+                                        >
+                                        <label for="yes" class="inline-block">Yes</label><br>
+                                    </div>
+                                    <div class="inline-block">
+                                        <input class="inline-block" type="radio" id="no" name="email_consent"
+                                               value="No" @click="email_consent = false"
+                                               @if ($member->email_consent == "No")
+                                               checked
+                                                @endif>
+                                        <label for="no">No</label><br>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="mb-4 flex flex-wrap">
                             <div class="w-full sm:w-full md:w-1/2 ">
                                 <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
                                        for="phone">
@@ -258,8 +308,6 @@
                                     class="shadow  border-gray-300  rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                     id="phone" name="phone" type="text" placeholder="Phone" value="{{ $member->phone }}">
                             </div>
-                        </div>
-                        <div class="mb-4 flex flex-wrap">
                             <div class="w-full md:w-1/2">
                                 <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
                                        for="mobile">

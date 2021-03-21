@@ -77,13 +77,16 @@
                                role="menuitem">Club Status</a>
                             <a href="{{ route('report.invalid.personnel') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                role="menuitem">Invalid Personnel</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                               role="menuitem">Invalid Coaches</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            <a href="{{ route('report.active.coaches') }}" class="block px-4 py-2 text-sm text-gray-700
+                            hover:bg-gray-100"
                                role="menuitem">Active Coaches</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            <a href="{{ route('report.invalid.coaches') }}" class="block px-4 py-2 text-sm text-gray-700
+                            hover:bg-gray-100"
+                               role="menuitem">Invalid Coaches</a>
+                            <a href="{{ route('report.email.consent') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                role="menuitem">Email Consent</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            <a href="{{ route('report.grading.list') }}" class="block px-4 py-2 text-sm text-gray-700
+                            hover:bg-gray-100"
                                role="menuitem">Grading List</a>
 
 

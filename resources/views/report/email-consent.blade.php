@@ -21,9 +21,8 @@
 
 
                                 <!-- Current: "bg-gray-200 text-gray-900", Default: "text-gray-600 hover:bg-gray-50 hover:text-gray-900" -->
-                                <a href="{{ route('report.membership') }}" class="bg-gray-900 text-white hover:bg-gray-700
-                                hover:text-white group flex
-                                items-center
+                                <a href="{{ route('report.membership') }}" class="text-gray-300 hover:bg-gray-700
+                                hover:text-white group flex items-center
                                 px-2 py-2
                                 text-sm
                                 font-bold rounded-md">
@@ -67,7 +66,7 @@
                                 items-center px-2 py-2 text-sm font-bold rounded-md">
                                     Invalid Coaches
                                 </a>
-                                <a href="{{ route('report.email.consent') }}" class="text-gray-300 hover:bg-gray-700
+                                <a href="{{ route('report.email.consent') }}" class="bg-gray-900 text-white hover:bg-gray-700
                                 hover:text-white group
                                 flex
                                 items-center px-2 py-2 text-sm font-bold rounded-md">
@@ -81,7 +80,6 @@
                                 items-center px-2 py-2 text-sm font-bold rounded-md">
                                     Grading List
                                 </a>
-
 
 
                             </nav>
@@ -98,46 +96,16 @@
                         </svg>
                     </button>
                     <div class="text-2xl font-bold text-gray-700 pl-8 flex items-center">
-                        <h2>Membership List</h2>
+                        <h2>Email Consent List</h2>
                     </div>
                 </div>
 
                 <main class="flex-1 relative overflow-y-auto focus:outline-none p-6" tabindex="0" x-data="" x-init="$el
                 .focus()">
-                    <div class="flex items-end w-full bg-white border-2
-                    border-gray-200 justify-between rounded-xl p-4">
-                        <form method="POST" action="" role="form" class="flex items-end">
-                            @csrf
-                            <div>
-                                <label for="join_date" class="block text-sm text-gray-400 mb-2 font-bold">Start date</label>
-                                <input type="date" name="start_date" id="start_date"
-                                       class="shadow border-gray-300 rounded w-64 py-2 px-3
-                                               text-grey-darker mr-2" required
-                                       @isset($start_date)
-                                        value={{ $start_date }}
-                                       @endisset
-                                >
-                            </div>
-                            <div class="ml-12">
-                                <label for="join_date" class="block text-sm text-gray-400 mb-2 font-bold">End date</label>
-                                <input type="date" name="end_date" id="end_date"
-                                       class="shadow border-gray-300 rounded w-64 py-2 px-3
-                                               text-grey-darker mr-2" required
-                                       @isset($end_date)
-                                       value={{ $end_date }}
-                                    @endisset>
-                            </div>
-                            <div class="pb-1 ml-12">
-                                <input type="submit" value="Submit" class="button-judo">
-                            </div>
-                        </form>
-                        @if(isset($memberships) && !empty($memberships))
-                                <a href="{{ route('report.membership.export', [$start_date, $end_date]) }}"
-                                   class="button-judo">Export to
-                                    Excel</a>
-                        @endif
+                    <div>
+                        <a href="{{ route('report.consent.export') }}"
+                           class="button-judo"><i class="far fa-file-excel mr-2"></i> Export to Excel</a>
                     </div>
-
                     <div class="w-full mt-8">
                         <table class="min-w-full table-auto leading-normal mt-8">
                             <thead>
@@ -146,12 +114,17 @@
                                     class="px-5 py-3 rounded-l bg-gray-600 text-left
                                             text-xs
                                             font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
-                                    No
+                                    Number
                                 </th>
                                 <th
                                     class="px-5 py-3 bg-gray-600 text-left text-xs
                                             font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
-                                    Name
+                                    Name (Member or Parent)
+                                </th>
+                                <th
+                                    class="px-5 py-3 bg-gray-600 text-left
+                                            text-xs font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
+                                    Email
                                 </th>
                                 <th
                                     class="px-5 py-3 bg-gray-600 text-left
@@ -161,43 +134,41 @@
                                 <th
                                     class="px-5 py-3 bg-gray-600 text-left
                                             text-xs font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
-                                    Type
-                                </th>
-                                <th
-                                    class="px-5 py-3 bg-gray-600 text-left
-                                            text-xs font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
-                                    Join Date
-                                </th>
-                                <th
-                                    class="px-5 py-3 bg-gray-600 text-left
-                                            text-xs font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
-                                    Source
-                                </th>
-                                <th
-                                    class="px-5 py-3 bg-gray-600 text-left text-xs
-                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                     Club
-                                </th>
-
-                                <th
-                                    class="px-5 py-3 rounded-r bg-gray-600 text-left text-xs
-                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
-                                    Province
                                 </th>
 
                             </tr>
                             </thead>
                             <tbody>
-                            @isset ($memberships)
-                                @each('report.membership-query-list', $memberships, 'membership', 'report.empty-form')
-                            @else
-                                <td colspan="8">
-                                    <h4 class="text-xl text-gray-400 my-8 text-center">Please select 2 dates at the
-                                        top first. <br/>For the sake of speed this report will display the first 100
-                                        results only.
-                                    </h4>
-                                </td>
-                            @endisset
+                            @foreach ($members as $member)
+                                <tr>
+                                    <td class="px-5 py-4 border-b border-gray-200 text-sm">
+                                        <p class="text-gray-900 whitespace-no-wrap">
+                                            {{ $member->number }}
+                                        </p>
+                                    </td>
+                                    <td class="px-5 py-4 border-b border-gray-200 text-sm">
+                                        <p class="text-gray-900 whitespace-no-wrap">
+                                            {{ $member->first_name }} {{ $member->last_name }}
+                                        </p>
+                                    </td>
+                                    <td class="px-5 py-4 border-b border-gray-200 text-sm">
+                                        <p class="text-gray-900 whitespace-no-wrap">
+                                            {{ $member->email }}
+                                        </p>
+                                    </td>
+                                    <td class="px-5 py-4 border-b border-gray-200 text-sm">
+                                        <p class="text-gray-900 whitespace-no-wrap">
+                                            {{ $member->gender }}
+                                        </p>
+                                    </td>
+                                    <td class="px-5 py-4 border-b border-gray-200 text-sm">
+                                        <p class="text-gray-900 whitespace-no-wrap">
+                                            {{ $member->club->name }}
+                                        </p>
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

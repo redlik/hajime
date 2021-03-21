@@ -124,7 +124,7 @@
                                 </div>
                             </div>
 
-                            <div class="w-full mb-2">
+                            <div class="w-full md:w-1/2 mb-2">
                                 <h4 class="font-bold text-xl text-gray-500 mb-4">Address details:</h4>
                                 <div class="mb-3">{{ $member->address1}}</div>
                                 <div class="my-3">{{ $member->address2}}</div>
@@ -132,6 +132,26 @@
                                 <div class="my-3">{{ ucfirst($member->county) }}</div>
                                 <div class="my-3">{{ ucfirst($member->province) }}</div>
                                 <div class="my-3">{{ $member->eircode}}</div>
+                            </div>
+                            <div class="w-full md:w-1/2 mb-2">
+                                <h4 class="font-bold text-xl text-gray-500 mb-4">Additional information:</h4>
+                                <div class="w-full flex flex-wrap">
+                                    <div class="w-full flex flex-wrap mb-4">
+                                        <div class="w-48 font-bold">Membership Source:</div>
+                                        <div class="w-auto">{{ $member->source }}
+                                        </div>
+                                    </div>
+                                    <div class="w-full flex flex-wrap mb-4">
+                                        <div class="w-48 font-bold">Email Consent:</div>
+                                        <div class="w-auto">
+                                            @if ($member->email_consent == "Yes")
+                                                <span class="green-pillow">{{ $member->email_consent }}</span>
+                                            @else
+                                                <span class="red-pillow">{{ $member->email_consent }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                      </div>
                 </div>

@@ -1,11 +1,16 @@
 <?php
 
+use App\Exports\GradingListExport;
 use App\Http\Controllers\ClubDocumentController;
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\GradFormController;
 use App\Http\Controllers\MemberDocumentController;
 use App\Http\Controllers\MembernoteController;
+use App\Http\Controllers\Reports\ActiveCoachReportController;
 use App\Http\Controllers\Reports\ClubStatusReportController;
+use App\Http\Controllers\Reports\EmailConsentReportController;
+use App\Http\Controllers\Reports\GradingReportController;
+use App\Http\Controllers\Reports\InvalidCoachReportController;
 use App\Http\Controllers\Reports\InvalidPersonnelReportController;
 use App\Http\Controllers\Reports\MembershipReportController;
 use App\Http\Controllers\Reports\MembersReportController;
@@ -72,6 +77,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'reports'], function () {
     Route::match(['get', 'post'],'/club-members', [MembersReportController::class, 'index'])->name('report.club-members');
     Route::get('/clubs-status', [ClubStatusReportController::class, 'index'])->name('report.club.status');
     Route::get('/invalid-personnel', [InvalidPersonnelReportController::class, 'index'])->name('report.invalid.personnel');
+    Route::get('/active-coaches', [ActiveCoachReportController::class, 'index'])->name('report.active.coaches');
+    Route::get('/invalid-coaches', [InvalidCoachReportController::class, 'index'])->name('report.invalid.coaches');
+    Route::get('/consent-list', [EmailConsentReportController::class, 'index'])->name('report.email.consent');
+    Route::get('/grading-list', [GradingReportController::class, 'index'])->name('report.grading.list');
 });
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'exports'], function () {
@@ -79,4 +88,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'exports'], function () {
     Route::get('/members/{club}/{start}-{end}', [MembersReportController::class, 'export'])->name('report.members.export');
     Route::get('/clubs-status', [ClubStatusReportController::class, 'export'])->name('report.status.export');
     Route::get('/invalid-personnel', [InvalidPersonnelReportController::class, 'export'])->name('report.invalid.export');
+    Route::get('/active-coaches', [ActiveCoachReportController::class, 'export'])->name('report.active.export');
+    Route::get('/invalid-coaches', [InvalidCoachReportController::class, 'export'])->name('report.invalid.coach.export');
+    Route::get('/consent-list', [EmailConsentReportController::class, 'export'])->name('report.consent.export');
+    Route::get('/grading-list', [GradingReportController::class, 'export'])->name('report.grading.export');
 });

@@ -21,21 +21,65 @@
 
 
                                 <!-- Current: "bg-gray-200 text-gray-900", Default: "text-gray-600 hover:bg-gray-50 hover:text-gray-900" -->
-                                <a href="#" class="text-white group flex items-center px-2 py-2 text-sm
+                                <a href="{{ route('report.membership') }}" class="text-gray-300 hover:bg-gray-700
+                                hover:text-white group flex items-center
+                                px-2 py-2
+                                text-sm
                                 font-bold rounded-md">
                                     <!-- Current: "text-gray-300", Default: "text-gray-400 group-hover:text-gray-300" -->
-                                    Membership list
+                                    Membership List
                                 </a>
 
-                                <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white group flex
+                                <a href="{{ route('report.club-members') }}" class="text-gray-300 hover:bg-gray-700
+                                hover:text-white group
+                                flex
                                 items-center px-2 py-2 text-sm font-bold rounded-md">
-                                    Club member list
+                                    Club Member List
                                 </a>
 
-                                <a href="#" class="bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white group
+                                <a href="{{ route('report.club.status') }}" class="bg-gray-900 text-white
+                                hover:bg-gray-700
+                                hover:text-white
+                                group
                                  flex
                                 items-center px-2 py-2 text-sm font-bold rounded-md">
-                                    Clubs status
+                                    Clubs Status
+                                </a>
+
+                                <a href="{{ route('report.invalid.personnel') }}" class="text-gray-300 hover:bg-gray-700
+                                hover:text-white group
+                                flex
+                                items-center px-2 py-2 text-sm font-bold rounded-md">
+                                    Invalid Personnel
+                                </a>
+
+                                <a href="{{ route('report.active.coaches') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white
+                                group
+                                flex
+                                items-center px-2 py-2 text-sm font-bold rounded-md">
+                                    Active Coaches
+                                </a>
+                                <a href="{{ route('report.invalid.coaches') }}" class="text-gray-300
+                                hover:bg-gray-700
+                                hover:text-white
+                                group
+                                flex
+                                items-center px-2 py-2 text-sm font-bold rounded-md">
+                                    Invalid Coaches
+                                </a>
+                                <a href="{{ route('report.email.consent') }}" class="text-gray-300 hover:bg-gray-700
+                                hover:text-white group
+                                flex
+                                items-center px-2 py-2 text-sm font-bold rounded-md">
+                                    Email Consent
+                                </a>
+
+                                <a href="{{ route('report.grading.list') }}" class="text-gray-300
+                                hover:bg-gray-700
+                                hover:text-white group
+                                flex
+                                items-center px-2 py-2 text-sm font-bold rounded-md">
+                                    Grading List
                                 </a>
 
 

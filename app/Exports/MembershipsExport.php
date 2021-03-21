@@ -4,13 +4,12 @@ namespace App\Exports;
 
 use App\Models\Membership;
 use Maatwebsite\Excel\Concerns\FromQuery;
-use Maatwebsite\Excel\Concerns\Exportable;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithTitle;
-use phpDocumentor\Reflection\Types\String_;
 
-class MembershipsExport implements FromQuery, WithMapping, WithHeadings, WithTitle
+class MembershipsExport implements FromQuery, WithMapping, WithHeadings, WithTitle, ShouldAutoSize
 {
     /**
     * @return \Illuminate\Support\Collection
