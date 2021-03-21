@@ -25,7 +25,7 @@ class MembershipsExport implements FromQuery, WithMapping, WithHeadings, WithTit
 
     public function query()
     {
-        return Membership::query()->whereBetween('join_date', [$this->start_date, $this->end_date]);
+        return Membership::query()->whereBetween('join_date', [$this->start_date, $this->end_date])->orderBy('join_date', 'desc');
     }
 
     /**
@@ -41,7 +41,7 @@ class MembershipsExport implements FromQuery, WithMapping, WithHeadings, WithTit
             $membership->member->source,
             $membership->join_date,
             $membership->member->club->name,
-            $membership->member->club->province,
+            ucfirst($membership->member->club->province),
         ];
     }
 

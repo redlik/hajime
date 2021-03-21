@@ -22,7 +22,7 @@ class ClubStatusExport implements FromCollection, WithMapping, WithHeadings, Wit
     {
         return [
             $club->name,
-            $club->province,
+            ucfirst($club->province),
             $club->compliant,
             $club->voting_rights,
         ];

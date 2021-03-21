@@ -2,15 +2,17 @@
 
 namespace App\Exports;
 
+use App\Models\Grade;
 use App\Models\Member;
 use App\Models\Membership;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithTitle;
 
-class ClubMembersExport implements FromQuery, WithMapping, WithHeadings, WithTitle
+class ClubMembersExport implements FromQuery, WithMapping, WithHeadings, WithTitle, ShouldAutoSize
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -38,12 +40,19 @@ class ClubMembersExport implements FromQuery, WithMapping, WithHeadings, WithTit
             'Gender',
             'Club Name',
             'Type',
+            'Join Date',
+            'Last Grade',
         ];
     }
 
 
     public function map($member): array {
         $membership = Membership::where('member_id', $member->id)->latest('join_date')->first();
+        $grade = Grade::where('member_id', $member->id)->latest('grade_date')->first();
+        if (is_null($grade)) {
+            $grade = 'Not set';
+        } else
+            $grade = $member->latestGrade()->grade_level;
 
         return [
             $member->number,
@@ -51,6 +60,8 @@ class ClubMembersExport implements FromQuery, WithMapping, WithHeadings, WithTit
             $member->gender,
             $member->club->name,
             $membership->membership_type,
+            $membership->join_date,
+            $grade,
         ];
     }
 
