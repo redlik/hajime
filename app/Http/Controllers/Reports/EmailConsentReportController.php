@@ -13,7 +13,7 @@ class EmailConsentReportController extends Controller
 {
     public function index()
     {
-        $members = Member::where('active', 1)->where('email_consent', 'Yes')->with('club:id,name')->get();
+        $members = Member::where('active', 1)->where('email_consent', 'Yes')->with('club:id,name')->limit(100)->get();
         return view('report.email-consent', compact('members'));
     }
 
