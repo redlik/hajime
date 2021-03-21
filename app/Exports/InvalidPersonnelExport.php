@@ -70,6 +70,6 @@ class InvalidPersonnelExport implements FromCollection, WithMapping, WithHeading
 
     public function title(): string
     {
-        return 'Invalid Personnel';
+        return 'Invalid Personnel '.date('m-d-y');
     }
 }

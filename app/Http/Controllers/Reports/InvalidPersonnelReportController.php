@@ -20,6 +20,7 @@ class InvalidPersonnelReportController extends Controller
 
     public function export()
     {
-        return Excel::download(new InvalidPersonnelExport(), 'invalid-personnel.xlsx');
+        $filename = 'invalid-personnel-'.date('d-m-y');
+        return Excel::download(new InvalidPersonnelExport(), $filename, \Maatwebsite\Excel\Excel::XLSX);
     }
 }

@@ -239,7 +239,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="mb-4 flex flex-wrap">
+                            <div class="mb-4 flex flex-wrap  items-center">
                                 <div class="w-full sm:w-full md:w-1/2 ">
                                     <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
                                            for="email">
@@ -249,6 +249,27 @@
                                         class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                         id="email" name="email" type="text" placeholder="Email">
                                 </div>
+                                <div class="w-full sm:w-full md:w-1/2">
+                                    <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
+                                           for="email_consent">
+                                        Email Consent
+                                    </label>
+                                    <div class="inline-block">
+                                        <div class="inline-block mr-6">
+                                            <input class="inline-block" type="radio" id="yes" name="email_consent"
+                                                   value="Yes" @click="email_consent = true" checked>
+                                            <label for="yes" class="inline-block">Yes</label><br>
+                                        </div>
+                                        <div class="inline-block">
+                                            <input class="inline-block" type="radio" id="no" name="email_consent"
+                                                   value="No" @click="email_consent = false">
+                                            <label for="no">No</label><br>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="mb-4 flex flex-wrap">
                                 <div class="w-full sm:w-full md:w-1/2 ">
                                     <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
                                            for="phone">
@@ -258,8 +279,6 @@
                                         class="shadow border-gray-300 rounded w-64 md:w-1/2 py-2 px-3 text-grey-darker"
                                         id="phone" name="phone" type="text" placeholder="Phone">
                                 </div>
-                            </div>
-                            <div class="mb-4 flex flex-wrap">
                                 <div class="w-full md:w-1/2">
                                     <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
                                            for="mobile">
