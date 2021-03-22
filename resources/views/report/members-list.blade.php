@@ -123,7 +123,7 @@
                                 <label for="club_id" class="block text-sm text-gray-400 mb-2
                                 font-bold">Selected Club</label>
                                 <select name="club_id" id="club_id"
-                                        class="shadow border-gray-300 rounded w-auto py-2 px-3 text-grey-darker">
+                                        class="shadow border-gray-300 rounded w-auto py-2 px-3 text-grey-darker" required>
                                     <option value="" disabled selected>Select Club</option>
                                     @foreach ($clubs as $club)
                                         <option value="{{ $club->id }}">

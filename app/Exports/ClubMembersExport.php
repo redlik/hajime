@@ -5,6 +5,7 @@ namespace App\Exports;
 use App\Models\Grade;
 use App\Models\Member;
 use App\Models\Membership;
+use Illuminate\Database\Eloquent\Builder;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
@@ -29,7 +30,12 @@ class ClubMembersExport implements FromQuery, WithMapping, WithHeadings, WithTit
 
     public function query()
     {
-        return Member::query()->where('club_id', $this->club)->has('membership')->orderBy('last_name', 'asc');
+        return Member::query()->where('club_id', $this->club)
+            ->where('active', 1)
+            ->whereHas('membership', function (Builder $q) {
+            $q->whereBetween('join_date', [$this->start_date, $this->end_date]);
+        })
+            ->orderBy('last_name', 'asc');
     }
 
     public function headings(): array

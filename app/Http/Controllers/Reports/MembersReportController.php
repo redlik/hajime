@@ -20,9 +20,10 @@ class MembersReportController extends Controller
             $selectedClub = Club::find($request->input('club_id'));
             $start_date = $request->input('start_date');
             $end_date = $request->input('end_date');
-            $members = Member::where('club_id', $selectedClub->id)->whereHas('membership', function($q) use ($start_date, $end_date) {
-                $q->where('join_date', '>=', $start_date);
-//                ->where('expiry_date','>=', $end_date)
+            $members = Member::where('club_id', $selectedClub->id)
+                ->where('active', 1)
+                ->whereHas('membership', function($q) use ($start_date, $end_date) {
+                $q->whereBetween('join_date', [$start_date, $end_date]);
             })->orderBy('last_name', 'asc')
                 ->get();
             $memberships = collect([]);
