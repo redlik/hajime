@@ -16,8 +16,8 @@ class GradingReportController extends Controller
         $members = Member::where('active', 1)
             ->with('grade:id,grade_level', 'club:id,name')
             ->has('grade')->limit(100)
-            ->orderBy('last_name', 'asc')
             ->orderBy('club_id', 'asc')
+            ->orderBy('last_name', 'asc')
             ->get();
         return view('report.grading', compact('members'));
     }

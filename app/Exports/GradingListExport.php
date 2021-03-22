@@ -16,7 +16,11 @@ class GradingListExport implements FromCollection, WithMapping, WithHeadings, Wi
     */
     public function collection(): \Illuminate\Support\Collection
     {
-        return $members = Member::where('active', 1)->with('grade:id,grade_level', 'club:id,name')->has('grade')->get();
+        return $members = Member::where('active', 1)
+            ->with('grade:id,grade_level', 'club:id,name')
+            ->orderBy('club_id', 'asc')
+            ->orderBy('last_name', 'asc')
+            ->has('grade')->get();
     }
 
     public function map($member): array

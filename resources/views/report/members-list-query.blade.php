@@ -221,20 +221,11 @@
                                         {{ $member->latestMembership()->membership_type }}
                                     </p>
                                 </td>
-{{--                                @foreach($memberships as $membership)--}}
-{{--                                    @if ($membership->member_id == $member->id)--}}
-{{--                                        <td class="px-5 py-4 border-b border-gray-200 text-sm">--}}
-{{--                                            <p class="text-gray-900 whitespace-no-wrap">--}}
-{{--                                                {{ $membership->membership_type }}--}}
-{{--                                            </p>--}}
-{{--                                        </td>--}}
-{{--                                        <td class="px-5 py-4 border-b border-gray-200 text-sm">--}}
-{{--                                            <p class="text-gray-900 whitespace-no-wrap">--}}
-{{--                                                {{ $membership->join_date }}--}}
-{{--                                            </p>--}}
-{{--                                        </td>--}}
-{{--                                    @endif--}}
-{{--                                @endforeach--}}
+                                <td class="px-5 py-4 border-b border-gray-200 text-sm">
+                                    <p class="text-gray-900 whitespace-no-wrap">
+                                        {{ $member->latestMembership()->join_date }}
+                                    </p>
+                                </td>
                                 <td class="px-5 py-4 border-b border-gray-200 text-sm">
                                     <p class="text-gray-900 whitespace-no-wrap">
                                         {{ $member->club->name }}

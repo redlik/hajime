@@ -18,8 +18,8 @@ class EmailConsentExport implements FromCollection, WithMapping, WithHeadings, W
     {
         return $members = Member::where('active', 1)
             ->where('email_consent', 'Yes')
-            ->orderBy('last_name', 'asc')
             ->orderBy('club_id', 'asc')
+            ->orderBy('last_name', 'asc')
             ->get();
     }
 

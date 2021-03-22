@@ -29,7 +29,7 @@ class ClubMembersExport implements FromQuery, WithMapping, WithHeadings, WithTit
 
     public function query()
     {
-        return Member::query()->where('club_id', $this->club)->has('membership');
+        return Member::query()->where('club_id', $this->club)->has('membership')->orderBy('last_name', 'asc');
     }
 
     public function headings(): array

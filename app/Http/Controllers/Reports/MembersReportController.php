@@ -23,7 +23,8 @@ class MembersReportController extends Controller
             $members = Member::where('club_id', $selectedClub->id)->whereHas('membership', function($q) use ($start_date, $end_date) {
                 $q->where('join_date', '>=', $start_date);
 //                ->where('expiry_date','>=', $end_date)
-            })->get();
+            })->orderBy('last_name', 'asc')
+                ->get();
             $memberships = collect([]);
             $grades = collect([]);
             foreach ($members as $member) {
