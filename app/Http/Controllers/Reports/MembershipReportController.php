@@ -17,9 +17,16 @@ class MembershipReportController extends Controller
 
     public function showMembers(Request $request)
     {
+        $validated = $request->validate([
+            'start_date' => 'required|date|max:10',
+            'end_date' => 'required|date|after:start_date|max:10'
+        ]);
+
         $start_date = $request->input('start_date');
         $end_date = $request->input('end_date');
-        $memberships = Membership::whereBetween('join_date', [$start_date, $end_date])->orderBy('join_date', 'desc')->limit(100)->get();
+        $memberships = Membership::whereBetween('join_date', [$start_date, $end_date])
+            ->orderBy('join_date', 'desc')
+            ->limit(100)->get();
         return view('report.membership-list', compact('memberships', 'start_date', 'end_date'));
     }
 

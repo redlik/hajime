@@ -109,30 +109,41 @@
                             @csrf
                             <div>
                                 <label for="join_date" class="block text-sm text-gray-400 mb-2 font-bold">Start date</label>
+                                @error('start_date')
+                                <div class="text-red-600 text-sm"> {{ $message }}</div>
+                                @enderror
                                 <input type="date" name="start_date" id="start_date"
                                        class="shadow border-gray-300 rounded w-48 py-2 px-3
                                                text-grey-darker mr-2" required
                                        @isset($start_date)
                                        value={{ $start_date }}
-                                    @endisset
+                                       @endisset
+                                           value={{ old('start_date') }}
                                 >
                             </div>
                             <div>
                                 <label for="join_date" class="block text-sm text-gray-400 mb-2 font-bold">End date</label>
+                                @error('end_date')
+                                <div class="text-red-600 text-sm"> {{ $message }}</div>
+                                @enderror
                                 <input type="date" name="end_date" id="end_date"
                                        class="shadow border-gray-300 rounded w-48 py-2 px-3
-                                               text-grey-darker mr-2" required
+                                               text-grey-darker mr-2 @error('end_date') border-red-600 @enderror" required
                                        @isset($end_date)
                                        value={{ $end_date }}
-                                    @endisset>
+                                       @endisset
+                                           value={{ old('end_date') }}>
                             </div>
                             <div>
+                                @error('club_id')
+                                <div class="text-red-600 text-sm"> {{ $message }}</div>
+                                @enderror
                                 <select name="club_id" id="club_id"
                                         class="shadow border-gray-300 rounded w-auto py-2 px-3 text-grey-darker">
                                     <option value="" disabled selected>Select Club</option>
                                     @foreach ($clubs as $club)
                                         <option value="{{ $club->id }}"
-                                            @if ($selectedClub->id == $club->id)
+                                                @if (isset($selectedClub) and $selectedClub->id == $club->id)
                                                 selected
                                             @endif>
                                             {{ $club->name}}
@@ -146,107 +157,112 @@
                             </div>
                         </form>
                         <div class="pb-2">
-                            <a href="{{ route('report.members.export', [$selectedClub->id, $start_date, $end_date]) }}"
-                               class="button-judo">Export to Excel</a>
+                            @if (isset($selectedClub))
+                                <a href="{{ route('report.members.export', [$selectedClub->id, $start_date, $end_date]) }}"
+                                   class="button-judo">Export to Excel</a>
+                            @endif
                         </div>
                     </div>
 
                     <div class="w-full mt-4">
                         <div class="text-xl font-bold text-gray-600">
+                            @if (isset($selectedClub))
                             <h2>Active members for {{ $selectedClub->name }}</h2>
+                            @endif
                         </div>
                         <table class="min-w-full table-auto leading-normal mt-4">
                             <thead>
                             <tr>
                                 <th
                                     class="px-5 py-3 rounded-l bg-gray-600 text-left
-                                            text-xs
-                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
+                    text-xs
+                    font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                     No
                                 </th>
                                 <th
                                     class="px-5 py-3 bg-gray-600 text-left text-xs
-                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
+                    font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                     Name
                                 </th>
                                 <th
                                     class="px-5 py-3 bg-gray-600 text-left
-                                            text-xs font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
+                    text-xs font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                     Gender
                                 </th>
                                 <th
                                     class="px-5 py-3 bg-gray-600 text-left
-                                            text-xs font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
+                    text-xs font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                     Memb. Type
                                 </th>
                                 <th
                                     class="px-5 py-3 bg-gray-600 text-left
-                                            text-xs font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
+                    text-xs font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                     Join Date
                                 </th>
                                 <th
                                     class="px-5 py-3 bg-gray-600 text-left text-xs
-                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
+                    font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                     Club
                                 </th>
 
                                 <th
                                     class="px-5 py-3 rounded-r bg-gray-600 text-left text-xs
-                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
+                    font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
                                     Grading
                                 </th>
 
                             </tr>
                             </thead>
                             <tbody>
+                            @isset($members)
                             @foreach($members as $member)
-                            <tr>
-                                <td class="px-5 py-4 border-b border-gray-200 text-sm">
-                                    <p class="text-gray-900 whitespace-no-wrap">
-                                        {{ $member->number }}
-                                    </p>
-                                </td>
-                                <td class="px-5 py-4 border-b border-gray-200 text-sm">
-                                    <p class="text-gray-900 whitespace-no-wrap">
-                                        {{ $member->first_name }} {{ $member->last_name }}
-                                    </p>
-                                </td>
-                                <td class="px-5 py-4 border-b border-gray-200 text-sm">
-                                    <p class="text-gray-900 whitespace-no-wrap">
-                                        {{ $member->gender }}
-                                    </p>
-                                </td>
-                                <td class="px-5 py-4 border-b border-gray-200 text-sm">
-                                    <p class="text-gray-900 whitespace-no-wrap">
-                                        {{ $member->latestMembership()->membership_type }}
-                                    </p>
-                                </td>
-                                <td class="px-5 py-4 border-b border-gray-200 text-sm">
-                                    <p class="text-gray-900 whitespace-no-wrap">
-                                        {{ $member->latestMembership()->join_date }}
-                                    </p>
-                                </td>
-                                <td class="px-5 py-4 border-b border-gray-200 text-sm">
-                                    <p class="text-gray-900 whitespace-no-wrap">
-                                        {{ $member->club->name }}
-                                    </p>
-                                </td>
-                                    @forelse ($grades as $grade)
-                                        @isset ($grade)
-                                            @if ($grade->member_id == $member->id)
-                                            <td class="px-5 py-4 border-b border-gray-200 text-sm">
-                                                <p class="text-gray-900 whitespace-no-wrap">
-                                                    {{ $grade->grade_level }}
-                                                </p>
+                                <tr>
+                                    <td class="px-5 py-4 border-b border-gray-200 text-sm">
+                                        <p class="text-gray-900 whitespace-no-wrap">
+                                            {{ $member->number }}
+                                        </p>
+                                    </td>
+                                    <td class="px-5 py-4 border-b border-gray-200 text-sm">
+                                        <p class="text-gray-900 whitespace-no-wrap">
+                                            {{ $member->first_name }} {{ $member->last_name }}
+                                        </p>
+                                    </td>
+                                    <td class="px-5 py-4 border-b border-gray-200 text-sm">
+                                        <p class="text-gray-900 whitespace-no-wrap">
+                                            {{ $member->gender }}
+                                        </p>
+                                    </td>
+                                    <td class="px-5 py-4 border-b border-gray-200 text-sm">
+                                        <p class="text-gray-900 whitespace-no-wrap">
+                                            {{ $member->latestMembership()->membership_type }}
+                                        </p>
+                                    </td>
+                                    <td class="px-5 py-4 border-b border-gray-200 text-sm">
+                                        <p class="text-gray-900 whitespace-no-wrap">
+                                            {{ $member->latestMembership()->join_date }}
+                                        </p>
+                                    </td>
+                                    <td class="px-5 py-4 border-b border-gray-200 text-sm">
+                                        <p class="text-gray-900 whitespace-no-wrap">
+                                            {{ $member->club->name }}
+                                        </p>
+                                    </td>
+                                    <td class="px-5 py-4 border-b border-gray-200 text-sm">
+                                        <p class="text-gray-900 whitespace-no-wrap">
+                                            {{ $member->latestGrade()->grade_level ?? 'No grade' }}
+                                        </p>
+                                    </td>
 
-                                            </td>
-                                            @endif
-                                        @endisset
-                                    @empty
-                                        No grades
-                                    @endforelse
-                            </tr>
+                                </tr>
                             @endforeach
+                            @else
+                                <td colspan="8">
+                                    <h4 class="text-xl text-gray-400 my-8 text-center">Please make a selection at the
+                                        top first. <br/>For the sake of speed this report will display the first 100
+                                        results only.
+                                    </h4>
+                                </td>
+                            @endisset
                             </tbody>
                         </table>
                     </div>

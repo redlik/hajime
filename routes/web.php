@@ -74,7 +74,8 @@ Route::group(['middleware' => ['auth']], function () {
 Route::group(['middleware' => ['auth'], 'prefix' => 'reports'], function () {
     Route::get('/membership-list', [MembershipReportController::class, 'index'])->name('report.membership');
     Route::post('/membership-list', [MembershipReportController::class, 'showMembers'])->name('report.membership.list');
-    Route::match(['get', 'post'],'/club-members', [MembersReportController::class, 'index'])->name('report.club-members');
+    Route::get('/club-members', [MembersReportController::class, 'index'])->name('report.club-members');
+    Route::post('/club-members', [MembersReportController::class, 'showMembers'])->name('report.club-members.list');
     Route::get('/clubs-status', [ClubStatusReportController::class, 'index'])->name('report.club.status');
     Route::get('/invalid-personnel', [InvalidPersonnelReportController::class, 'index'])->name('report.invalid.personnel');
     Route::get('/active-coaches', [ActiveCoachReportController::class, 'index'])->name('report.active.coaches');

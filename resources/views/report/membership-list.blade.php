@@ -110,22 +110,33 @@
                             @csrf
                             <div>
                                 <label for="join_date" class="block text-sm text-gray-400 mb-2 font-bold">Start date</label>
+                                @error('start_date')
+                                <div class="text-red-600 text-sm"> {{ $message }}</div>
+                                @enderror
                                 <input type="date" name="start_date" id="start_date"
                                        class="shadow border-gray-300 rounded w-64 py-2 px-3
                                                text-grey-darker mr-2" required
                                        @isset($start_date)
                                         value={{ $start_date }}
                                        @endisset
+                                    value={{ old('start_date') }}
                                 >
                             </div>
                             <div class="ml-12">
                                 <label for="join_date" class="block text-sm text-gray-400 mb-2 font-bold">End date</label>
+                                @error('end_date')
+                                    <div class="text-red-600 text-sm"> {{ $message }}</div>
+                                @enderror
                                 <input type="date" name="end_date" id="end_date"
                                        class="shadow border-gray-300 rounded w-64 py-2 px-3
-                                               text-grey-darker mr-2" required
+                                               text-grey-darker mr-2
+                                               @error('end_date') border-red-600 @enderror
+                                        " required
                                        @isset($end_date)
                                        value={{ $end_date }}
-                                    @endisset>
+                                    @endisset
+                                           value={{ old('end_date') }}>
+
                             </div>
                             <div class="pb-1 ml-12">
                                 <input type="submit" value="Submit" class="button-judo">
