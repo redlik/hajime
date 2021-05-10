@@ -11,6 +11,11 @@
                      flex-wrap justify-between content-center mb-6">
                     <div>
                         {{ $club->name }}
+                        @if ($club->status == "Active")
+                            <span class="text-sm text-green-900 bg-green-300 px-2 py-1 rounded ml-2">Active</span>
+                        @else
+                            <span class="text-sm text-red-700 bg-red-300 px-2 py-1 rounded ml-2">Inactive</span>
+                        @endif
                         <a href="{{ route('clubs.edit', $club) }}" class="text-judo-200 hover:text-judo-50
                         font-bold ml-3"
                            title="Edit club details"><i class="far fa-edit"></i></a>
@@ -94,13 +99,13 @@
                             <div class="w-full md:w-1/2 sm:w-full">
                                 <h4 class="font-bold text-xl text-gray-600 mb-4">Contact details:</h4>
                                 <div class="mb-2">
-                                    <div class="w-24 inline-block">Phone:</div>
+                                    <div class="w-36 inline-block">Phone:</div>
                                     <div class="w-auto inline-block font-semibold text-gray-600"> {{ $club->phone ?? 'Not
                                     set'
                                     }}</div>
                                 </div>
                                 <div class="mb-2">
-                                    <div class="w-24 inline-block">Email:</div>
+                                    <div class="w-36 inline-block">Email:</div>
                                     @if ($club->email)
                                         <div class="w-auto inline-block font-semibold text-gray-600">
                                             <a href="mailto:{{ $club->email }}">{{ $club->email }}</a>
@@ -111,14 +116,14 @@
 
                                 </div>
                                 <div class="mb-2">
-                                    <div class="w-24 inline-block">Website:</div>
+                                    <div class="w-36 inline-block">Website:</div>
                                     <div class="w-auto inline-block font-semibold text-gray-600"> {{ $club->website ??
                                     'Not
                                     set'
                                     }}</div>
                                 </div>
                                 <div class="mb-2">
-                                    <div class="w-24 inline-block">Facebook:</div>
+                                    <div class="w-36 inline-block">Facebook:</div>
                                     <div class="w-auto inline-block font-semibold text-gray-600"> {{ $club->facebook ??
                                     'Not
                                     set'
@@ -127,7 +132,7 @@
                                 <div class="mt-12">
                                     <h4 class="font-bold text-xl text-gray-600 mb-4">Club Rights:</h4>
                                     <div class="mb-4">
-                                        <div class="w-32 inline-block">Full compliance:</div>
+                                        <div class="w-36 inline-block">Full compliance:</div>
                                         <div class="w-auto inline-block font-bold">
                                             @if ($club->compliant)
                                                 <span class="green-pillow">YES</span>
@@ -136,14 +141,20 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div>
-                                        <div class="w-32 inline-block">Voting Rights:</div>
+                                    <div class="mb-4">
+                                        <div class="w-36 inline-block">Voting Rights:</div>
                                         <div class="w-auto inline-block font-bold">
                                             @if ($club->voting_rights)
                                                 <span class="green-pillow">YES</span>
                                             @else
                                                 <span class="red-pillow">NO</span>
                                             @endif
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="w-36 inline-block">Affiliation Paid on:</div>
+                                        <div class="w-auto inline-block font-semibold text-gray-600">
+                                            {{ $club->affiliation ?? 'Not set' }}
                                         </div>
                                     </div>
                                 </div>

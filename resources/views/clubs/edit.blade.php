@@ -37,7 +37,7 @@
                             <input class="shadow border-gray-300 rounded w-1/2 py-2 px-3 text-grey-darker"
                                 id="name" name="name" type="text" value="{{ $club->name }}">
                         </div>
-                        <div>
+                        <div class="mb-4">
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="type">
                                 Club Type
                             </label>
@@ -58,6 +58,32 @@
                                     selected
                                 @endif>University club</option>
                             </select>
+                        </div>
+                        <div class="mb-4">
+                            <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="status">
+                                Status
+                            </label>
+                            <select class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker"
+                                    id="status" name="status" required>
+                                <option value="Active"
+                                @if ($club->status == "Active")
+                                    selected
+                                @endif
+                                >Active</option>
+                                <option value="Inactive"
+                                        @if ($club->status == "Inactive")
+                                        selected
+                                    @endif
+                                >Inactive</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2"
+                                   for="affiliation">
+                                Affiliation paid on
+                            </label>
+                            <input class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker"
+                                   id="affiliation" name="affiliation" type="date" value="{{ $club->affiliation }}">
                         </div>
                     </div>
                     <div class="w-full border-2 border-gray-300 rounded-xl mb-4 p-8">
