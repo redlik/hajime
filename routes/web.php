@@ -82,6 +82,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'reports'], function () {
     Route::get('/invalid-coaches', [InvalidCoachReportController::class, 'index'])->name('report.invalid.coaches');
     Route::get('/consent-list', [EmailConsentReportController::class, 'index'])->name('report.email.consent');
     Route::get('/grading-list', [GradingReportController::class, 'index'])->name('report.grading.list');
+    Route::post('/grading-list', [GradingReportController::class, 'filteredResults']);
 });
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'exports'], function () {

@@ -102,6 +102,32 @@
 
                 <main class="flex-1 relative overflow-y-auto focus:outline-none p-6" tabindex="0" x-data="" x-init="$el
                 .focus()">
+                    <div class="mb-6">
+                        <form method="POST" action="" role="form" class="flex items-end">
+                            @csrf
+                            <div>
+                                <label for="club" class="block text-sm text-gray-400 mb-2 font-bold">Club</label>
+                                @error('start_date')
+                                <div class="text-red-600 text-sm"> {{ $message }}</div>
+                                @enderror
+                                <select name="club" id="club" class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker">
+                                    <option value="" disabled selected>Select Club</option>
+                                    @foreach( $clubs as $club)
+                                    <option value="{{ $club->id }}"
+                                        @if (isset($selectedClub) && ($selectedClub->id == $club->id))
+                                        selected
+                                    @endif
+                                    >
+                                        {{ $club->name }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="pb-1 ml-12">
+                                <input type="submit" value="Submit" class="button-judo">
+                            </div>
+                        </form>
+                    </div>
                     <div>
                         <a href="{{ route('report.grading.export') }}"
                            class="button-judo"><i class="far fa-file-excel mr-2"></i> Export to Excel</a>
