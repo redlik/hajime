@@ -38,9 +38,9 @@ class GradingReportController extends Controller
                 return $query->where('gender', $gender);
             })
             ->when($selected_membership, function ($query) use ($selected_membership) {
-                return $query->whereHas('membership', function ($query) use ($selected_membership)
+                return $query->whereHas('latestMembership', function ($query) use ($selected_membership)
                 {
-                    $query->where('membership_type', $selected_membership)->first();
+                    $query->where('membership_type', '=', $selected_membership);
                 });
             })
             ->with('grade:id,grade_level', 'club:id,name', 'membership:membership_type')
