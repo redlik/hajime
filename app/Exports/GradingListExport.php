@@ -3,24 +3,32 @@
 namespace App\Exports;
 
 use App\Models\Member;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use App\Models\Club;
+use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithTitle;
 
-class GradingListExport implements FromCollection, WithMapping, WithHeadings, WithTitle, ShouldAutoSize
+class GradingListExport implements FromQuery, WithMapping, WithHeadings, WithTitle, ShouldAutoSize
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function collection(): \Illuminate\Support\Collection
+    private $club;
+
+    public function __construct($club)
+    {
+        $this->club = $club;
+    }
+
+    public function query()
     {
         return $members = Member::where('active', 1)
+            ->when($this->club, function ($query, $club) {
+                return $query->where('club_id', $club);
+            })
             ->with('grade:id,grade_level', 'club:id,name')
             ->orderBy('club_id', 'asc')
             ->orderBy('last_name', 'asc')
-            ->has('grade')->get();
+            ->has('grade');
     }
 
     public function map($member): array
