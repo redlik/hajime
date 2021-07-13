@@ -216,7 +216,9 @@
                     </div>
                     <div class="mb-6">
                         @if ($members->count() != 0)
-                        <a href="{{ route('report.grading.export', $selectedClub ?? '') }}"
+                        <a href="{{ route('report.grading.export', [request()->get('club') ?? 'all', request()->get
+                        ('gender') ?? 'all', request()->get('membership') ?? 'all', request()->get('grade') ?? 'all'])
+                         }}"
                            class="button-judo"><i class="far fa-file-excel mr-2"></i> Export to Excel</a>
                         @endif
                     </div>

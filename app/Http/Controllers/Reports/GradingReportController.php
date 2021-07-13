@@ -54,7 +54,7 @@ class GradingReportController extends Controller
                     $query->where('grade_level', '=', $selected_grade);
                 });
             })
-            ->with('currentGrade:id,grade_level', 'club:id,name', 'currentMembership:membership_type')
+            ->with('grade:id,grade_level', 'club:id,name', 'currentMembership:membership_type')
             ->has('grade')
             ->orderBy('club_id', 'asc')
             ->orderBy('last_name', 'asc')
@@ -85,8 +85,8 @@ class GradingReportController extends Controller
         return view('report.grading', compact('members', 'clubs', 'selectedClub'));
     }
 
-    public function export($club = NULL)
+    public function export($club = NULL, $gender = NULL, $current_membership = NULL, $current_grade = NULL)
     {
-        return Excel::download(new GradingListExport($club), 'grading-list.xlsx');
+        return Excel::download(new GradingListExport($club, $gender, $current_membership, $current_grade), 'grading-list.xlsx');
     }
 }

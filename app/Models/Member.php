@@ -48,13 +48,18 @@ class Member extends Model
         return $this->hasMany('App\Models\Membership')->latest('join_date')->first();
     }
 
-    public function selectedMembership($type)
+    public function currentMembership()
     {
-        return $this->hasMany('App\Models\Membership')->where('membership', $type)->latest();
+        return $this->hasOne('App\Models\Membership')->latestOfMany('join_date');
     }
 
     public function latestGrade()
     {
         return $this->hasMany('App\Models\Grade')->latest('grade_date')->first();
+    }
+
+    public function currentGrade()
+    {
+        return $this->hasOne('App\Models\Grade')->latestOfMany('grade_date');
     }
 }

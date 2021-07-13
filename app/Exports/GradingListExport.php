@@ -12,11 +12,15 @@ use Maatwebsite\Excel\Concerns\WithTitle;
 
 class GradingListExport implements FromQuery, WithMapping, WithHeadings, WithTitle, ShouldAutoSize
 {
-    private $club;
+    private $club, $gender, $current_membership;
+    private $current_grade;
 
-    public function __construct($club)
+    public function __construct($club, $gender, $current_membership, $current_grade)
     {
         $this->club = $club;
+        $this->gender = $gender;
+        $this->current_membership = $current_membership;
+        $this->current_grade = $current_grade;
     }
 
     public function query()
@@ -24,6 +28,15 @@ class GradingListExport implements FromQuery, WithMapping, WithHeadings, WithTit
         return $members = Member::where('active', 1)
             ->when($this->club, function ($query, $club) {
                 return $query->where('club_id', $club);
+            })
+            ->when($this->gender, function($query, $gender){
+                return $query->where('gender', $gender);
+            })
+            ->when($this->current_membership, function ($query) use ($current_membership) {
+                return $query->whereHas('currentMembership', function ($query) use ($current_membership)
+                {
+                    $query->where('membership_type', '=', $current_membership);
+                });
             })
             ->with('grade:id,grade_level', 'club:id,name')
             ->orderBy('club_id', 'asc')
