@@ -16,6 +16,7 @@ class GradingReportController extends Controller
         $selectedClub = NULL;
         $gender = NULL;
         $selected_membership = NULL;
+        $selected_grade = NULL;
 
         if ($request->get('club') && $request->get('club') != 'all') {
             $selectedClub = $request->get('club');
@@ -29,6 +30,10 @@ class GradingReportController extends Controller
             $selected_membership = $request->get('membership');
         }
 
+        if ($request->get('grade')) {
+            $selected_grade = $request->get('grade');
+        }
+
         $clubs = Club::orderBy('name', 'asc')->get();
         $members = Member::where('active', 1)
             ->when($selectedClub, function ($query, $selectedClub) {
@@ -38,12 +43,18 @@ class GradingReportController extends Controller
                 return $query->where('gender', $gender);
             })
             ->when($selected_membership, function ($query) use ($selected_membership) {
-                return $query->whereHas('latestMembership', function ($query) use ($selected_membership)
+                return $query->whereHas('currentMembership', function ($query) use ($selected_membership)
                 {
                     $query->where('membership_type', '=', $selected_membership);
                 });
             })
-            ->with('grade:id,grade_level', 'club:id,name', 'membership:membership_type')
+            ->when($selected_grade, function ($query) use ($selected_grade) {
+                return $query->whereHas('currentGrade', function ($query) use ($selected_grade)
+                {
+                    $query->where('grade_level', '=', $selected_grade);
+                });
+            })
+            ->with('grade:id,grade_level', 'club:id,name', 'currentMembership:membership_type')
             ->has('grade')
             ->orderBy('club_id', 'asc')
             ->orderBy('last_name', 'asc')
