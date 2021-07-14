@@ -10,7 +10,8 @@
                     {{ __('Login') }}
                 </header>
 
-                <form class="w-full px-6 space-y-6 sm:px-10 sm:space-y-8" method="POST" action="{{ route('login') }}">
+                <form class="w-full px-6 pb-8 space-y-6 sm:px-10 sm:space-y-8" method="POST" action="{{ route('login')
+                }}">
                     @csrf
 
                     <div class="flex flex-wrap">
@@ -60,7 +61,7 @@
                         @endif
                     </div>
 
-                    <div class="flex flex-wrap">
+                    <div class="flex flex-wrap my-12">
                         <button type="submit"
                         class="w-full select-none font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-judo-green hover:bg-green-700 sm:py-4">
                             {{ __('Login') }}

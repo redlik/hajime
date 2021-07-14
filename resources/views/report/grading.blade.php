@@ -104,13 +104,13 @@
                 .focus()">
                     <div class="mb-6">
                         <form method="GET" action="" role="form">
-                            <div class="w-full flex">
-                                <div class="w-auto">
+                            <div class="w-full flex-none md:flex">
+                                <div class="w-full md:w-1/2 lg:w-1/4">
                                     <label for="club" class="block text-sm text-gray-400 mb-2 font-bold">Club</label>
                                     @error('start_date')
                                     <div class="text-red-600 text-sm"> {{ $message }}</div>
                                     @enderror
-                                    <select name="club" id="club" class="shadow border-gray-300 rounded w-64 py-2 px-3
+                                    <select name="club" id="club" class="shadow border-gray-300 rounded w-full py-2 px-3
                                                             text-grey-darker">
                                         <option value="" selected>All Clubs
                                         </option>
@@ -126,9 +126,10 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="ml-4 w-auto">
+                                <div class="md:ml-4 w-full md:w-1/2 lg:w-1/4">
                                     <label for="gender" class="block text-sm text-gray-400 mb-2 font-bold">Gender</label>
-                                    <select name="gender" id="gender" class="shadow border-gray-300 rounded w-64 py-2 px-3
+                                    <select name="gender" id="gender" class="shadow border-gray-300 rounded w-full py-2
+                                    px-3
                                                             text-grey-darker">
                                         <option value="" selected>All Genders</option>
                                         <option value="Female" @if(request()->get('gender') == 'Female')
@@ -137,10 +138,11 @@
                                         selected @endif>Male</option>
                                     </select>
                                 </div>
-                                <div class="ml-4 w-auto">
+                                <div class="md:ml-4 w-full md:w-1/2 lg:w-1/4">
                                     <label for="gender" class="block text-sm text-gray-400 mb-2
                                                             font-bold">Membership Type</label>
-                                    <select name="membership" id="membership" class="shadow border-gray-300 rounded w-64
+                                    <select name="membership" id="membership" class="shadow border-gray-300 rounded
+                                    w-full
                                                             py-2
                                                             px-3
                                                             text-grey-darker">
@@ -165,10 +167,11 @@
                                         selected @endif>Life Membership</option>
                                     </select>
                                 </div>
-                                <div class="ml-4 w-auto">
+                                <div class="md:ml-4 w-full md:w-1/2 lg:w-1/4">
                                     <label for="gender" class="block text-sm text-gray-400 mb-2 font-bold">Current
                                         Grade</label>
-                                    <select name="grade" id="grade" class="shadow border-gray-300 rounded w-64 py-2 px-3
+                                    <select name="grade" id="grade" class="shadow border-gray-300 rounded w-full py-2
+                                    px-3
                                                             text-grey-darker">
                                         <option value="" selected>All Grades</option>
                                         <optgroup label="Junior Grades">
@@ -216,9 +219,7 @@
                     </div>
                     <div class="mb-6">
                         @if ($members->count() != 0)
-                        <a href="{{ route('report.grading.export', [request()->get('club') ?? 'all', request()->get
-                        ('gender') ?? 'all', request()->get('membership') ?? 'all', request()->get('grade') ?? 'all'])
-                         }}"
+                        <a href="{{ route('report.grading.export') }}"
                            class="button-judo"><i class="far fa-file-excel mr-2"></i> Export to Excel</a>
                         @endif
                     </div>

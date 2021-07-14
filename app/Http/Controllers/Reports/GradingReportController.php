@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Reports;
 
+use App\Exports\GradingExportFromView;
 use App\Exports\GradingListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Club;
@@ -85,8 +86,17 @@ class GradingReportController extends Controller
         return view('report.grading', compact('members', 'clubs', 'selectedClub'));
     }
 
-    public function export($club = NULL, $gender = NULL, $current_membership = NULL, $current_grade = NULL)
+//    public function export($club = NULL, $gender = NULL, $current_membership = NULL, $current_grade = NULL)
+//    {
+//        return Excel::download(new GradingListExport($club, $gender, $current_membership, $current_grade), 'grading-list.xlsx');
+//    }
+
+    /**
+     * @throws \PhpOffice\PhpSpreadsheet\Exception
+     * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
+     */
+    public function export()
     {
-        return Excel::download(new GradingListExport($club, $gender, $current_membership, $current_grade), 'grading-list.xlsx');
+        return Excel::download(new GradingExportFromView, 'gradings.xlsx');
     }
 }
