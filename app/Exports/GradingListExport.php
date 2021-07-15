@@ -12,30 +12,39 @@ use Maatwebsite\Excel\Concerns\WithTitle;
 
 class GradingListExport implements FromQuery, WithMapping, WithHeadings, WithTitle, ShouldAutoSize
 {
-    private $club, $gender, $current_membership;
-    private $current_grade;
+    private $query;
 
-    public function __construct($club, $gender, $current_membership, $current_grade)
+    public function __construct(array $query)
     {
-        $this->club = $club;
-        $this->gender = $gender;
-        $this->current_membership = $current_membership;
-        $this->current_grade = $current_grade;
+        $this->query = $query;
     }
 
     public function query()
     {
+        $club = NULL;
+        $gender = NULL;
+        $membership = NULL;
+        $grade = NULL;
+
+        extract($this->query, EXTR_OVERWRITE);
+
         return $members = Member::where('active', 1)
-            ->when($this->club, function ($query, $club) {
+            ->when($club, function ($query, $club) {
                 return $query->where('club_id', $club);
             })
-            ->when($this->gender, function($query, $gender){
+            ->when($gender, function($query, $gender){
                 return $query->where('gender', $gender);
             })
-            ->when($this->current_membership, function ($query) use ($current_membership) {
-                return $query->whereHas('currentMembership', function ($query) use ($current_membership)
+            ->when($membership, function ($query) use ($membership) {
+                return $query->whereHas('currentMembership', function ($query) use ($membership)
                 {
-                    $query->where('membership_type', '=', $current_membership);
+                    $query->where('membership_type', '=', $membership);
+                });
+            })
+            ->when($grade, function ($query) use ($grade) {
+                return $query->whereHas('currentGrade', function ($query) use ($grade)
+                {
+                    $query->where('grade_level', '=', $grade);
                 });
             })
             ->with('grade:id,grade_level', 'club:id,name')

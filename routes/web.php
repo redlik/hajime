@@ -93,5 +93,5 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'exports'], function () {
     Route::get('/active-coaches', [ActiveCoachReportController::class, 'export'])->name('report.active.export');
     Route::get('/invalid-coaches', [InvalidCoachReportController::class, 'export'])->name('report.invalid.coach.export');
     Route::get('/consent-list', [EmailConsentReportController::class, 'export'])->name('report.consent.export');
-    Route::get('/grading-list/{club?}', [GradingReportController::class, 'export'])->name('report.grading.export');
+    Route::get('/grading-list/{request?}', [GradingReportController::class, 'export'])->name('report.grading.export');
 });

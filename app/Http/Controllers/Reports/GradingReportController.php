@@ -86,17 +86,8 @@ class GradingReportController extends Controller
         return view('report.grading', compact('members', 'clubs', 'selectedClub'));
     }
 
-//    public function export($club = NULL, $gender = NULL, $current_membership = NULL, $current_grade = NULL)
-//    {
-//        return Excel::download(new GradingListExport($club, $gender, $current_membership, $current_grade), 'grading-list.xlsx');
-//    }
-
-    /**
-     * @throws \PhpOffice\PhpSpreadsheet\Exception
-     * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
-     */
-    public function export()
+    public function export(Request $request)
     {
-        return Excel::download(new GradingExportFromView, 'gradings.xlsx');
+        return Excel::download(new GradingListExport($request->query()), 'grading-list.xlsx');
     }
 }
