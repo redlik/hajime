@@ -83,7 +83,7 @@
                                 <p class="mb-2">{{ $club->address2 }}</p>
                                 <p class="mb-2">{{ ucfirst($club->city) }}</p>
                                 <p class="mb-2">{{ ucfirst($club->county) }}</p>
-                                <p class="mb-2">{{ ucfirst($club->province) }}</p>
+                                <p class="mb-2">{{ $club->province }}</p>
                                 <p class="mb-8">{{ strtoupper($club->eircode) }}</p>
                                 <div>
                                     <h4 class="font-bold text-xl text-gray-600 mb-4" id="venues">Correspondence:</h4>

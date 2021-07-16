@@ -24,4 +24,11 @@ class Club extends Model
     {
         return $this->member->where('active', 1)->count();
     }
+
+    public function getProvinceAttribute($value)
+    {
+        return ucwords($value);
+    }
 }
+
+
