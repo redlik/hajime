@@ -285,8 +285,6 @@
                                                 <option value="4th Dan">4th Dan</option>
                                                 <option value="5th Dan">5th Dan</option>
                                                 <option value="6th Dan">6th Dan</option>
-                                                <option value="6th Dan">6th Dan</option>
-                                                <option value="7th Dan">7th Dan</option>
                                                 <option value="7th Dan">7th Dan</option>
                                                 <option value="8th Dan">8th Dan</option>
                                             </optgroup>
