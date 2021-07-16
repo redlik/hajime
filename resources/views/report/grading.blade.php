@@ -176,7 +176,9 @@
                                         <option value="" selected>All Grades</option>
                                         @if(request()->get('grade'))
                                             <optgroup label="Currently Selected">
-                                                <option value="request()->('grade')" selected> {{ request()->get('grade') }}
+                                                <option value="{{ request()->get('grade') }}" selected> {{ request()
+                                                ->get
+                                                ('grade') }}
                                                 </option>
                                             </optgroup>
                                         @endif
