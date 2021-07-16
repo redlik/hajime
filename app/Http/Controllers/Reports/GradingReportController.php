@@ -55,7 +55,7 @@ class GradingReportController extends Controller
                     $query->where('grade_level', '=', $selected_grade);
                 });
             })
-            ->with('grade:id,grade_level', 'club:id,name', 'currentMembership:membership_type')
+            ->with('currentGrade', 'club:id,name', 'currentMembership')
             ->has('grade')
             ->orderBy('club_id', 'asc')
             ->orderBy('last_name', 'asc')

@@ -297,12 +297,12 @@
                                     </td>
                                     <td class="px-5 py-4 border-b border-gray-200 text-sm">
                                         <p class="text-gray-900 whitespace-no-wrap">
-                                            {{ $member->latestMembership()->membership_type }}
+                                            {{ $member->currentMembership->membership_type }}
                                         </p>
                                     </td>
                                     <td class="px-5 py-4 border-b border-gray-200 text-sm">
                                         <p class="text-gray-900 whitespace-no-wrap">
-                                            {{ $member->latestGrade()->grade_level }}
+                                            {{ $member->currentGrade->grade_level }}
                                         </p>
                                     </td>
                                 </tr>
