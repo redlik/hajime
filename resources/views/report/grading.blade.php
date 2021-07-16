@@ -174,6 +174,12 @@
                                     px-3
                                                             text-grey-darker">
                                         <option value="" selected>All Grades</option>
+                                        @if(request()->get('grade'))
+                                            <optgroup label="Currently Selected">
+                                                <option value="request()->('grade')" selected> {{ request()->get('grade') }}
+                                                </option>
+                                            </optgroup>
+                                        @endif
                                         <optgroup label="Junior Grades">
                                             <option value="1st Mon White">1st Mon White</option>
                                             <option value="2nd Mon Red">2nd Mon Red</option>
