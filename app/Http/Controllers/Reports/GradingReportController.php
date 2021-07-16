@@ -56,7 +56,7 @@ class GradingReportController extends Controller
                 });
             })
             ->with('currentGrade', 'club:id,name', 'currentMembership')
-            ->has('grade')
+            ->has('currentGrade')
             ->orderBy('club_id', 'asc')
             ->orderBy('last_name', 'asc')
             ->get();
