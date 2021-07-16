@@ -60,6 +60,6 @@ class Member extends Model
 
     public function currentGrade()
     {
-        return $this->hasOne('App\Models\Grade')->latestOfMany('grade_date');
+        return $this->hasOne('App\Models\Grade')->latestOfMany();
     }
 }
