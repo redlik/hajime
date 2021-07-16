@@ -22,7 +22,26 @@ class GradeFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'grade_level' => $this->faker->randomElement([
+                '1st Mon White',
+                '2nd Mon Red',
+                '3rd Mon White/Yellow',
+                '4th Mon Yellow',
+                '5th Mon Yellow/Orange',
+                '6th Mon Orange',
+                '7th Mon Orange/Green',
+                '6th Kyu White',
+                '5th Kyu Yellow',
+                '4th Kyu Orange',
+                '1st Dan',
+                '3rd Dan',
+                '6th Dan',
+                '7th Dan',
+                '8th Dan'
+            ]),
+            'grade_date' => $this->faker->dateTimeBetween('-1 year', 'now'),
+            'grade_points' => $this->faker->numberBetween(1, 12),
+            'member_id' => $this->faker->numberBetween(1, 516),
         ];
     }
 }
