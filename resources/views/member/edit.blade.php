@@ -111,6 +111,14 @@
                                            @endif>
                                         <label for="male">Male</label><br>
                                     </div>
+                                    <div class="inline-block ml-6">
+                                        <input class="inline-block" type="radio" id="non-binary" name="gender"
+                                               value="Non-Binary"
+                                               @if ($member->gender == 'Non-Binary')
+                                               checked
+                                            @endif>
+                                        <label for="non-binary">Non-Binary</label><br>
+                                    </div>
                                 </div>
                             </div>
                         </div>

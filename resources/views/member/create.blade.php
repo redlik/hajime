@@ -94,12 +94,17 @@
                                         <div class="inline-block mr-6">
                                             <input class="inline-block" type="radio" id="female" name="gender"
                                                    value="Female" required>
-                                            <label for="yes" class="inline-block">Female</label><br>
+                                            <label for="female" class="inline-block">Female</label><br>
                                         </div>
                                         <div class="inline-block">
                                             <input class="inline-block" type="radio" id="male" name="gender"
                                                    value="Male">
-                                            <label for="no">Male</label><br>
+                                            <label for="male">Male</label><br>
+                                        </div>
+                                        <div class="inline-block ml-6">
+                                            <input class="inline-block" type="radio" id="non-binary" name="gender"
+                                                   value="Non-Binary">
+                                            <label for="non-binary">Non-Binary</label><br>
                                         </div>
                                     </div>
                                 </div>
