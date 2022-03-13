@@ -125,10 +125,11 @@ class MemberController extends Controller
     public function duplicateExisting($id) {
         $existing = Member::find($id);
         $member = $existing->replicate();
+        $genders = Gender::all();
 
         $clubs = Club::all();
 
-        return view('member.duplicate', compact('member', 'clubs'));
+        return view('member.duplicate', compact('member', 'clubs', 'genders'));
 
     }
 }
