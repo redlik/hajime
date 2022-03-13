@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gender;
 use App\Models\Member;
 use App\Models\Grade;
 use App\Models\Membernote;
@@ -34,9 +35,10 @@ class MemberController extends Controller
     {
         $clubs = Club::get();
         $selectedClub = $request->query('club');
+        $genders = Gender::all();
 
 
-        return view('member.create', compact('clubs', 'selectedClub'));
+        return view('member.create', compact('clubs', 'selectedClub', 'genders'));
     }
 
     /**
@@ -81,8 +83,9 @@ class MemberController extends Controller
     {
         $member = DB::table('members')->find($member->id);
         $clubs = Club::all();
+        $genders = Gender::all();
 
-        return view('member.edit', compact('member', 'clubs'));
+        return view('member.edit', compact('member', 'clubs', 'genders'));
     }
 
     /**

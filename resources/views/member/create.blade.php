@@ -26,89 +26,33 @@
                         <div class="w-full border-2 border-gray-300 rounded-xl p-8 mb-4">
                             <div class="mb-4 flex flex-wrap">
                                 <div class="w-full md:w-1/2 ">
-                                    <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2" for="role">
-                                        Club
-                                    </label>
-                                    <select name="club_id" id="club_id"
-                                            class="shadow border-gray-300 rounded w-auto py-2 px-3 text-grey-darker">
-                                        @if (!$selectedClub)
-                                            <option value="" disabled selected>Select Club</option>
-                                        @endif
-
-                                        @foreach ($clubs as $club)
-                                            <option value="{{ $club->id }}"
-                                                    @if ($selectedClub == $club->id)
-                                                    selected
-                                                @endif
-
-                                            >{{ $club->name}}</option>
-
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="w-full md:w-1/2 ">
-                                    <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
-                                           for="number">
-                                        Membership no
-                                    </label>
-                                    <input
-                                        class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
-                                        id="number" name="number" type="text" placeholder="Membership number" required>
-                                </div>
-                            </div>
-                            <div class="mb-4 flex flex-wrap">
-                                <div class="w-full md:w-1/2 ">
-                                    <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
-                                           for="first_name">
-                                        First Name
-                                    </label>
-                                    <input
-                                        class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
-                                        id="first_name" name="first_name" type="text" placeholder="First name" required>
-                                </div>
-                                <div class="w-full md:w-1/2">
-                                    <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
-                                           for="last_name">
-                                        Last Name
-                                    </label>
-                                    <input
-                                        class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
-                                        id="last_name" name="last_name" type="text" placeholder="Last name" required>
-                                </div>
-                            </div>
-                            <div class="mb-4 flex flex-wrap">
-                                <div class="w-full md:w-1/2">
-                                    <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2" for="dob">
-                                        Date of Birth
-                                    </label>
-                                    <input
-                                        class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
-                                        id="dob" name="dob" type="date" placeholder="2020-01-01" required>
-                                </div>
-                                <div class="w-full md:w-1/2 mt-4 md:mt-0">
-                                    <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
-                                           for="gender">
-                                        Gender
-                                    </label>
-                                    <div class="inline-block">
-                                        <div class="inline-block mr-6">
-                                            <input class="inline-block" type="radio" id="female" name="gender"
-                                                   value="Female" required>
-                                            <label for="female" class="inline-block">Female</label><br>
-                                        </div>
-                                        <div class="inline-block">
-                                            <input class="inline-block" type="radio" id="male" name="gender"
-                                                   value="Male">
-                                            <label for="male">Male</label><br>
-                                        </div>
-                                        <div class="inline-block ml-6">
-                                            <input class="inline-block" type="radio" id="non-binary" name="gender"
-                                                   value="Non-Binary">
-                                            <label for="non-binary">Non-Binary</label><br>
-                                        </div>
+                                    <div class="mb-4">
+                                        <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
+                                               for="first_name">
+                                            First Name
+                                        </label>
+                                        <input
+                                            class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                            id="first_name" name="first_name" type="text" placeholder="First name" required>
                                     </div>
-                                </div>
-                                <div class="w-full md:w-1/2 mt-4">
+                                    <div class="mb-4">
+                                        <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
+                                               for="last_name">
+                                            Last Name
+                                        </label>
+                                        <input
+                                            class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                            id="last_name" name="last_name" type="text" placeholder="Last name" required>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2" for="dob">
+                                            Date of Birth
+                                        </label>
+                                        <input
+                                            class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                            id="dob" name="dob" type="date" placeholder="2020-01-01" required>
+                                    </div>
+                                    <div class="mb-4">
                                         <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
                                                for="parent">
                                             Parent/Guardian
@@ -118,20 +62,67 @@
                                             text-grey-darker"
                                             id="parent" name="parent" type="text" placeholder="Parent / Guardian
                                             Name" disabled>
+                                    </div>
+                                    <div class="mb-4">
+                                        <div class="w-full mb-2">
+                                            <label class="w-full text-grey-darker text-sm font-bold mb-2" for="gender">
+                                                Gender
+                                            </label>
+                                        </div>
+                                        @foreach($genders as $gender)
+                                            <div class="mb-4">
+                                                <input class="inline-block" type="radio" id="{{ $gender->short }}" name="gender"
+                                                       value="{{ $gender->short }}" required>
+                                                <label for="{{ $gender->short }}" class="inline-block">{{ $gender->name }}</label><br>
+                                            </div>
+                                        @endforeach
+                                    </div>
                                 </div>
-                                <div class="w-full md:w-1/2 mt-4">
-                                    <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
-                                           for="source">
-                                        Membership Source
-                                    </label>
-                                    <select class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker"
-                                            id="province"
-                                            type="text" placeholder="Province" name="source" required>
-                                        <option value="" disabled selected>Select membership source</option>
-                                        <option value="Online">Online</option>
-                                        <option value="Club">Club</option>
-                                        <option value="Direct">Direct</option>
-                                    </select>
+                                <div class="w-full md:w-1/2">
+                                    <div class="mb-4">
+                                        <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2" for="role">
+                                            Club
+                                        </label>
+                                        <select name="club_id" id="club_id"
+                                                class="shadow border-gray-300 rounded w-auto py-2 px-3 text-grey-darker" required>
+                                            @if (!$selectedClub)
+                                                <option value="" disabled selected>Select Club</option>
+                                            @endif
+
+                                            @foreach ($clubs as $club)
+                                                <option class='w-64' value="{{ $club->id }}"
+                                                        @if ($selectedClub == $club->id)
+                                                        selected
+                                                    @endif
+
+                                                >{{ $club->name}}</option>
+
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
+                                               for="number">
+                                            Membership no
+                                        </label>
+                                        <input
+                                            class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                            id="number" name="number" type="text" placeholder="Membership number" required>
+                                    </div>
+                                    <div class="">
+                                        <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
+                                               for="source">
+                                            Membership Source
+                                        </label>
+                                        <select class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker"
+                                                id="province"
+                                                type="text" placeholder="Province" name="source" required>
+                                            <option value="" disabled selected>Select membership source</option>
+                                            <option value="Online">Online</option>
+                                            <option value="Club">Club</option>
+                                            <option value="Direct">Direct</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -339,25 +330,25 @@
 @endsection
 
 @section('bottomScripts')
-<script>
-    let dob = document.getElementById('dob');
+    <script>
+        let dob = document.getElementById('dob');
 
-    dob.addEventListener('change', function() {
-        var enteredDate = document.getElementById('dob').value;
-        var age = new Date(new Date() - new Date(enteredDate)).getFullYear() - 1970;
-        if (age < 18) {
-            document.getElementById('parent').disabled=false;
-            document.getElementById('parent').classList.remove('bg-gray-300');
-        } else {
-            document.getElementById('parent').value="";
-            document.getElementById('parent').disabled=true;
-            document.getElementById('parent').classList.add('bg-gray-300');
-
-
-        }
-    });
+        dob.addEventListener('change', function () {
+            var enteredDate = document.getElementById('dob').value;
+            var age = new Date(new Date() - new Date(enteredDate)).getFullYear() - 1970;
+            if (age < 18) {
+                document.getElementById('parent').disabled = false;
+                document.getElementById('parent').classList.remove('bg-gray-300');
+            } else {
+                document.getElementById('parent').value = "";
+                document.getElementById('parent').disabled = true;
+                document.getElementById('parent').classList.add('bg-gray-300');
 
 
-</script>
+            }
+        });
+
+
+    </script>
 @endsection
 
