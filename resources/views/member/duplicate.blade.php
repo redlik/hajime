@@ -13,7 +13,7 @@
             <div class="w-full p-6">
                 @if(Session::has('message'))
                     <p class="bg-green-100 text-green-700 p-6 rounded mb-4">{{ Session::get('message') }}</p>
-                    <a href="{{ route('member.show', $member->id) }}" class="text-blue-600 font-bold hover:text-blue-300"> << Back to detail view </i></a>
+                    <a href="{{ route('member.show', $member->id) }}" class="text-blue-600 font-bold hover:text-blue-300"> << Back to detail view</a>
                 @endif
                 @if ($errors->any())
                     <div class="alert alert-danger" role="alert">
@@ -35,96 +35,116 @@
                     <div class="w-full border-2 border-gray-300 rounded-xl p-8 mb-4">
                         <div class="mb-4 flex flex-wrap">
                             <div class="w-full md:w-1/2">
-                                <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2" for="role">
-                                    Club
-                                </label>
-                                <select name="club_id" id="club_id"
-                                        class="shadow border-gray-300 rounded w-auto py-2 px-3 text-grey-darker">
-
-                                    @foreach ($clubs as $club)
-                                        <option value="{{ $club->id }}"
-                                                @if ($member->club_id == $club->id)
-                                                selected
-                                            @endif
-
-                                        >{{ $club->name}}</option>
-
+                                <div class="mb-4">
+                                    <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
+                                           for="first_name">
+                                        First Name
+                                    </label>
+                                    <input
+                                        class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                        id="first_name" name="first_name" type="text" placeholder="First name" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
+                                           for="last_name">
+                                        Last Name
+                                    </label>
+                                    <input
+                                        class="shadow  border-gray-300  rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                        id="last_name" name="last_name" type="text" placeholder="Last name" value="{{ $member->last_name }}" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2" for="dob">
+                                        Date of Birth
+                                    </label>
+                                    <input
+                                        class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                        id="dob" name="dob" type="date" placeholder="2020-01-01" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
+                                           for="parent">
+                                        Parent/Guardian
+                                    </label>
+                                    <input
+                                        @if ($member->parent)
+                                        class="shadow border-gray-200 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                        @else
+                                        class="shadow border-gray-200 bg-gray-300 rounded w-full md:w-1/2 py-2 px-3
+                                text-grey-darker"
+                                        disabled
+                                        @endif
+                                        id="parent" name="parent" type="text" value="{{ $member->parent}}">
+                                </div>
+                                <div class="mb-4">
+                                    <div class="w-full mb-4">
+                                        <label class="w-full text-grey-darker text-sm font-bold" for="gender">
+                                            Gender
+                                        </label>
+                                    </div>
+                                    @foreach($genders as $gender)
+                                        <div class="mb-4">
+                                            <input class="inline-block" type="radio" id="{{ $gender->short }}" name="gender"
+                                                   value="{{ $gender->short }}" required>
+                                            <label for="{{ $gender->short }}" class="inline-block">{{ $gender->name }}</label><br>
+                                        </div>
                                     @endforeach
-                                </select>
-                            </div>
-                            <div class="w-full md:w-1/2 ">
-                                <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
-                                       for="number">
-                                    Membership no
-                                </label>
-                                <input
-                                    class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
-                                    id="number" name="number" type="text" placeholder="Membership number" required>
-                            </div>
-                        </div>
-                        <div class="mb-4 flex flex-wrap">
-                            <div class="w-full md:w-1/2 ">
-                                <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
-                                       for="first_name">
-                                    First Name
-                                </label>
-                                <input
-                                    class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
-                                    id="first_name" name="first_name" type="text" placeholder="First name" required>
+                                </div>
                             </div>
                             <div class="w-full md:w-1/2">
-                                <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
-                                       for="last_name">
-                                    Last Name
-                                </label>
-                                <input
-                                    class="shadow  border-gray-300  rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
-                                    id="last_name" name="last_name" type="text" placeholder="Last name" value="{{ $member->last_name }}" required>
-                            </div>
-                        </div>
-                        <div class="mb-4 flex flex-wrap">
-                            <div class="w-full md:w-1/2">
-                                <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2" for="dob">
-                                    Date of Birth
-                                </label>
-                                <input
-                                    class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
-                                    id="dob" name="dob" type="date" placeholder="2020-01-01" required>
-                            </div>
-                            <div class="w-full md:w-1/2 mt-4 md:mt-0">
-                                <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
-                                       for="gender">
-                                    Gender
-                                </label>
-                                <div class="inline-block">
-                                    <div class="inline-block mr-6">
-                                        <input class="inline-block" type="radio" id="female" name="gender"
-                                               value="Female" required>
-                                        <label for="yes" class="inline-block">Female</label><br>
-                                    </div>
-                                    <div class="inline-block">
-                                        <input class="inline-block" type="radio" id="male" name="gender"
-                                               value="Male">
-                                        <label for="no">Male</label><br>
-                                    </div>
+                                <div class="mb-4">
+                                    <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2" for="role">
+                                        Club
+                                    </label>
+                                    <select name="club_id" id="club_id"
+                                            class="shadow border-gray-300 rounded w-auto py-2 px-3 text-grey-darker" required>
+
+                                        @foreach ($clubs as $club)
+                                            <option value="{{ $club->id }}"
+                                                    @if ($member->club_id == $club->id)
+                                                    selected
+                                                @endif
+
+                                            >{{ $club->name}}</option>
+
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
+                                           for="number">
+                                        Membership no
+                                    </label>
+                                    <input
+                                        class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
+                                        id="number" name="number" type="text" placeholder="Membership number" required>
+                                </div>
+                                <div>
+                                    <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
+                                           for="source">
+                                        Membership Source
+                                    </label>
+                                    <select class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker"
+                                            id="province"
+                                            type="text" placeholder="Province" name="source" required>
+                                        <option value="Online"
+                                                @if ($member->source == "Online")
+                                                selected
+                                            @endif>Online
+                                        </option>
+                                        <option value="Club" @if ($member->source == "Club")
+                                        selected
+                                            @endif>Club
+                                        </option>
+                                        <option value="Direct" @if ($member->source == "Direct")
+                                        selected
+                                            @endif>Direct
+                                        </option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="w-full md:w-1/2 mt-4">
-                            <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
-                                   for="parent">
-                                Parent/Guardian
-                            </label>
-                            <input
-                                @if ($member->parent)
-                                class="shadow border-gray-200 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
-                                @else
-                                class="shadow border-gray-200 bg-gray-500 rounded w-full md:w-1/2 py-2 px-3
-                                text-grey-darker"
-                                disabled
-                                @endif
-                                id="parent" name="parent" type="text" value="{{ $member->parent}}">
-                        </div>
+
                     </div>
                     <div class="w-full border-2 border-gray-300 rounded-xl p-8 mb-4">
                         <div class="mb-4 flex flex-wrap">
