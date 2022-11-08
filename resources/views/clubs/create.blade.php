@@ -27,14 +27,14 @@
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="name">
                                 Club Name
                             </label>
-                            <input class="shadow border-gray-300 rounded w-1/2 py-2 px-3 text-grey-darker"
+                            <input class="input-box w-1/2"
                                 id="name" name="name" type="text" placeholder="Club name">
                         </div>
                         <div class="mb-4">
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="type">
                                 Club Type
                             </label>
-                            <select class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker" id="type"
+                            <select class="shadow border border-gray-300 rounded w-64 py-2 px-3 text-grey-darker" id="type"
                                     name="type" type="text"
                                 placeholder="Club type">
                                 <option value="" disabled selected>Select club type</option>
@@ -47,7 +47,7 @@
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="status">
                                     Status
                                 </label>
-                                <select class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker"
+                                <select class="shadow border border-gray-300 rounded w-64 py-2 px-3 text-grey-darker"
                                         id="status" name="status" required>
                                     <option value="" disabled selected>Select status</option>
                                     <option value="Active">Active</option>
@@ -59,37 +59,37 @@
                                        for="affiliation">
                                     Affiliation paid on
                                 </label>
-                                <input class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker"
+                                <input class="shadow border border-gray-300 rounded w-64 py-2 px-3 text-grey-darker"
                                        id="affiliation" name="affiliation" type="date">
                         </div>
                     </div>
-                    <div class="w-full border-2 border-gray-300 rounded-xl mb-4 p-8">
+                    <div class="w-full border-2 border border-gray-300 rounded-xl mb-4 p-8">
                         <div class="mb-4">
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="address1">
                                 Address Line 1
                             </label>
-                            <input class="shadow border-gray-300 rounded w-1/2 py-2 px-3 text-grey-darker"
+                            <input class="shadow border border-gray-300 rounded w-1/2 py-2 px-3 text-grey-darker"
                                 id="address1" name="address1" type="text" placeholder="Address Line 1">
                         </div>
                         <div class="mb-4">
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="address2">
                                 Address Line 2
                             </label>
-                            <input class="shadow border-gray-300 rounded w-1/2 py-2 px-3 text-grey-darker"
+                            <input class="shadow border border-gray-300 rounded w-1/2 py-2 px-3 text-grey-darker"
                                 id="address2" name="address2" type="text" placeholder="Address Line 2">
                         </div>
                         <div class="mb-4">
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="city">
                                 Town / City
                             </label>
-                            <input class="shadow border-gray-300 rounded w-1/2 py-2 px-3 text-grey-darker"
+                            <input class="shadow border border-gray-300 rounded w-1/2 py-2 px-3 text-grey-darker"
                                 id="city" name="city" type="text" placeholder="Town/City">
                         </div>
                         <div class="mb-4">
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="county">
                                 County
                             </label>
-                            <select class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker" id="county"
+                            <select class="shadow border border-gray-300 rounded w-64 py-2 px-3 text-grey-darker" id="county"
                                     name="county" type="text"
                                 placeholder="County">
                                 <option value="" disabled selected>Select county</option>
@@ -131,7 +131,7 @@
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="province">
                                 Province
                             </label>
-                            <select class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker" id="province"
+                            <select class="shadow border border-gray-300 rounded w-64 py-2 px-3 text-grey-darker" id="province"
                                 type="text" placeholder="Province" name="province">
                                 <option value="" disabled selected>Select province</option>
                                 <option value="connaught">Connaught</option>
@@ -144,42 +144,42 @@
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="eircode">
                                 Eircode / Postcode
                             </label>
-                            <input class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker"
+                            <input class="shadow border border-gray-300 rounded w-64 py-2 px-3 text-grey-darker"
                                 id="eircode" name="eircode" type="text" placeholder="Eircode / Post Code">
                         </div>
                     </div>
-                    <div class="w-full border-2 border-gray-300 rounded-xl mb-4 p-8">
+                    <div class="w-full border-2 border border-gray-300 rounded-xl mb-4 p-8">
                         <div class="mb-4">
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="phone">
                                 Telephone
                             </label>
-                            <input class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker"
+                            <input class="shadow border border-gray-300 rounded w-64 py-2 px-3 text-grey-darker"
                                 id="phone" name="phone" type="text" placeholder="Telephone">
                         </div>
                         <div class="mb-4">
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="email">
                                 Email
                             </label>
-                            <input class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker"
+                            <input class="shadow border border-gray-300 rounded w-64 py-2 px-3 text-grey-darker"
                                 id="email" name="email" type="email" placeholder="Email">
                         </div>
                         <div class="mb-4">
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="website">
                                 Website
                             </label>
-                            <input class="shadow border-gray-300 rounded w-1/2 py-2 px-3 text-grey-darker"
+                            <input class="shadow border border-gray-300 rounded w-1/2 py-2 px-3 text-grey-darker"
                                 id="website" name="website" type="text" placeholder="Website">
                         </div>
                         <div>
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="facebook">
                                 Facebook
                             </label>
-                            <input class="shadow border-gray-300 rounded w-1/2 py-2 px-3 text-grey-darker"
+                            <input class="shadow border border-gray-300 rounded w-1/2 py-2 px-3 text-grey-darker"
                                 id="facebook" name="facebook" type="text" placeholder="Facebook page">
                         </div>
                     </div>
 
-                    <div class="w-full border-2 border-gray-300 rounded-xl mb-4 p-8">
+                    <div class="w-full border-2 border border-gray-300 rounded-xl mb-4 p-8">
                         <div class="mb-4">
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="compliant">
                                 Club fully compliant
@@ -195,7 +195,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div>
+                        <div class="mb-4">
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="voting">
                                 Voting rights obtained
                             </label>
@@ -210,8 +210,33 @@
                                 </div>
                             </div>
                         </div>
+                        <div x-data="{assessment: ''}">
+                            <div>
+                                <label class="inline-block w-auto text-grey-darker text-sm font-bold mb-2 mr-4" for="ethics_assessment">
+                                    Sport Ireland Ethics Self-Assessment Completed
+                                </label>
+                                <div class="inline-block w-64">
+                                    <div class="inline-block mr-6">
+                                        <input x-model="assessment" class="inline-block" type="radio" id="yes" name="ethics_assessment" value="1">
+                                        <label for="yes" class="inline-block">Yes</label><br>
+                                    </div>
+                                    <div class="inline-block">
+                                        <input x-model="assessment" class="inline-block" type="radio" id="no" name="ethics_assessment" value="0">
+                                        <label for="no">No</label><br>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2 mr-4" for="ethics_assessment">
+                                    Completion date
+                                </label>
+                                <input class="input-box" type="date" id="ethics_assessment_date" name="ethics_assessment_date"
+                                       x-bind:disabled="(assessment == '1') ? false : true" x-bind:required="(assessment == '1') ? true : false"
+                                >
+                            </div>
+                        </div>
                     </div>
-                    <div class="w-full border-2 border-gray-300 rounded-xl mb-4 p-8">
+                    <div class="w-full border-2 border border-gray-300 rounded-xl mb-4 p-8">
                         <p class="font-bold mb-4">Select <span class="text-judo-600">Main Postal</span> correspondence
                                                                address:</p>
                         <input type="radio" class="text-gray-600" name="postal" value="Head Coach" id="postal_head">

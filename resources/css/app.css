@@ -1,8 +1,6 @@
-@import "tailwindcss/base";
-
-@import "tailwindcss/components";
-
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer components {
     .button {
@@ -67,7 +65,7 @@
         @apply font-bold text-sm text-gray-800 bg-gray-200 rounded-full shadow-inner px-3 py-1;
     }
     .green-pillow {
-        @apply font-bold text-sm text-judo-800 bg-green-100 rounded-full shadow-inner px-3 py-1;
+        @apply font-bold text-sm text-judo-700 bg-green-100 rounded-full shadow-inner px-3 py-1;
     }
 
     .red-pillow {
@@ -104,5 +102,12 @@
 
     .amber-date {
         @apply bg-amber-100 text-amber-700 rounded-full py-1 px-3 font-medium mb-2 text-center;
+    }
+
+    .input-box {
+        @apply shadow border border-gray-300 rounded py-2 px-3 text-gray-700;
+    }
+    .input-box:focus {
+        @apply focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
     }
 }

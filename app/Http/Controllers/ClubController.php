@@ -48,7 +48,11 @@ class ClubController extends Controller
     public function store(Request $request)
     {
         $request->validate(['name' => 'required|unique:clubs']);
-//         dd($request);
+        if($request->input('ethics_assessment') == 0) {
+            $request->merge([
+                'ethics_assessment_date' => '',
+            ]);
+        }
         $club = Club::create($request->all());
 //        $personnel = self::personnel($club);
         $personnel = $this->personnel($club);
@@ -104,6 +108,11 @@ class ClubController extends Controller
      */
     public function update(Request $request, Club $club)
     {
+        if($request->input('ethics_assessment') == 0) {
+            $request->merge([
+                'ethics_assessment_date' => NULL,
+            ]);
+        }
         $input = $request->all();
         $club->fill($input)->save();
         return back()->with('message', 'Record Successfully Updated!');

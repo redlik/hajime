@@ -151,10 +151,20 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div>
+                                    <div class="mb-4">
                                         <div class="w-36 inline-block">Affiliation Paid on:</div>
                                         <div class="w-auto inline-block font-semibold text-gray-600">
                                             {{ $club->affiliation ?? 'Not set' }}
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="w-auto inline-block mr-4">Sport Ireland Ethics Self-Assessment Completed:</div>
+                                        <div class="w-auto inline-block font-semibold text-gray-600">
+                                            @if($club->ethics_assessment)
+                                                <span class="green-pillow">Yes @ {{ $club->ethics_assessment_date }}</span>
+                                            @else
+                                                <span class="red-pillow">No</span>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
