@@ -88,6 +88,9 @@
                             <a href="{{ route('report.grading.list') }}" class="block px-4 py-2 text-sm text-gray-700
                             hover:bg-gray-100"
                                role="menuitem">Grading List</a>
+                            <a href="{{ route('report.compliance-status') }}" class="block px-4 py-2 text-sm text-gray-700
+                            hover:bg-gray-100"
+                               role="menuitem">Compliance Status</a>
 
 
                         </div></transition>
