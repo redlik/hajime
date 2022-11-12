@@ -8,6 +8,7 @@ use App\Http\Controllers\MemberDocumentController;
 use App\Http\Controllers\MembernoteController;
 use App\Http\Controllers\Reports\ActiveCoachReportController;
 use App\Http\Controllers\Reports\ClubStatusReportController;
+use App\Http\Controllers\Reports\ComplianceStatusReportController;
 use App\Http\Controllers\Reports\EmailConsentReportController;
 use App\Http\Controllers\Reports\GradingReportController;
 use App\Http\Controllers\Reports\InvalidCoachReportController;
@@ -82,6 +83,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'reports'], function () {
     Route::get('/invalid-coaches', [InvalidCoachReportController::class, 'index'])->name('report.invalid.coaches');
     Route::get('/consent-list', [EmailConsentReportController::class, 'index'])->name('report.email.consent');
     Route::get('/grading-list', [GradingReportController::class, 'index'])->name('report.grading.list');
+    Route::get('/compliance-status', [ComplianceStatusReportController::class, 'index'])->name('report.compliance-status');
     Route::post('/grading-list', [GradingReportController::class, 'filteredResults']);
 });
 
