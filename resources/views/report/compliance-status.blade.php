@@ -104,93 +104,10 @@
                     </div>
                 </div>
 
-                <main class="flex-1 relative overflow-y-auto focus:outline-none p-6" tabindex="0" x-data="" x-init="$el
-                .focus()">
-                    <div>
-                        <a href="{{ route('report.active.export') }}"
-                           class="button-judo"><i class="far fa-file-excel mr-2"></i> Export to Excel</a>
-                    </div>
-                    <div class="w-full mt-8">
-                        <table class="min-w-full table-auto leading-normal mt-8">
-                            <thead>
-                            <tr>
-                                <th
-                                    class="px-5 py-3 rounded-l bg-gray-600 text-left
-                                            text-xs
-                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
-                                    Club
-                                </th>
-                                <th
-                                    class="px-5 py-3 bg-gray-600 text-left text-xs
-                                            font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
-                                    Name
-                                </th>
-                                <th
-                                    class="px-5 py-3 bg-gray-600 text-left
-                                            text-xs font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
-                                    Vetting Expiry
-                                </th>
-                                <th
-                                    class="px-5 py-3 bg-gray-600 text-left
-                                            text-xs font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
-                                    Safeguarding Expiry
-                                </th>
-                                <th
-                                    class="px-5 py-3 bg-gray-600 text-left
-                                            text-xs font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
-                                    First Aid Expiry
-                                </th>
-                                <th
-                                    class="px-5 py-3 bg-gray-600 text-left
-                                            text-xs font-semibold text-gray-100 uppercase tracking-wider shadow-lg">
-                                    Qualification Level
-                                </th>
-
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach ($coaches as $coach)
-                                <tr>
-                                    <td class="px-5 py-4 border-b border-gray-200 text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">
-                                            {{ $coach->club->name }}
-                                        </p>
-                                    </td>
-                                    <td class="px-5 py-4 border-b border-gray-200 text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">
-                                            {{ $coach->name }}
-                                        </p>
-                                    </td>
-                                    <td class="px-5 py-4 border-b border-gray-200 text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">
-                                            {{ $coach->vetting_expiry }}
-                                        </p>
-                                    </td>
-                                    <td class="px-5 py-4 border-b border-gray-200 text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">
-                                            {{ $coach->safeguarding_expiry }}
-                                        </p>
-                                    </td>
-                                    <td class="px-5 py-4 border-b border-gray-200 text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">
-                                            {{ $coach->first_aid_expiry }}
-                                        </p>
-                                    </td>
-                                    <td class="px-5 py-4 border-b border-gray-200 text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">
-                                            {{ $coach->coaching_qualification }}
-                                        </p>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </main>
+                @livewire('compliance-report', ['clubs' => $clubs])
             </div>
         </div>
 
     </div>
-
 
 @endsection
