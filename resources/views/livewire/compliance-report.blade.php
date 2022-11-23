@@ -12,14 +12,21 @@
                 @endforeach
             </select>
             <buttonn wire:click="generateReport({{ $selected }})"
-                     class="button-judo"><i class="far fa-file-pdf mr-2"></i> Generate report
+                     class="button-judo">Generate report
             </buttonn>
         </div>
     </div>
     <div class="w-full mt-8">
         <div class="bg-white rounded shadow-sm p-8" x-show="report">
             @if($selectedClub)
-                <h2 class="font-bold text-3xl mb-8">{{ $selectedClub->name ??  'Club name'}}</h2>
+                <div class="flex justify-between">
+                    <div>
+                        <h2 class="font-bold text-3xl mb-8">{{ $selectedClub->name ??  'Club name'}}</h2>
+                    </div>
+                    <div>
+                        <a href="{{route('report.compliance-status.generate-pdf', $selectedClub)}}" class="button-judo"><i class="far fa-file-pdf mr-2"></i> Generate PDF</a>
+                    </div>
+                </div>
                 <div class="flex mb-4">
                     <div class="w-64 font-bold">Name of Secretary</div>
                     <div>{{ $secretary->name ?? 'Not set'}}</div>

@@ -8,6 +8,7 @@ use App\Models\Personnel;
 use App\Models\Volunteer;
 use Livewire\Component;
 use function PHPUnit\Framework\isNull;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ComplianceReport extends Component
 {
@@ -52,7 +53,6 @@ class ComplianceReport extends Component
         $this->selectedClub = Club::find($selected);
         if(!empty(Personnel::secretary()->where('club_id', $this->selectedClub->id)->first())){
             $this->secretary = Personnel::secretary()->where('club_id', $this->selectedClub->id)->first();
-            ray($this->secretary);
         }
         if(!empty(Personnel::headcoach()->where('club_id', $this->selectedClub->id)->first())) {
             $this->headCoach = Personnel::headcoach()->where('club_id', $this->selectedClub->id)->first();
@@ -67,5 +67,20 @@ class ComplianceReport extends Component
         $this->coaches = Coach::where('club_id', $this->selectedClub->id)->get();
         $this->volunteers = Volunteer::where('club_id', $this->selectedClub->id)->get();
 
+    }
+
+    public function makePdfReport($selected)
+    {
+        $this->selectedClub = Club::find($selected);
+        $clubArray = $this->toArray($this->selectedClub);
+//        view()->share('data', $clubArray);
+        ray($clubArray);
+        $pdf = PDF::loadView('pdf.compliance-report', compact('clubArray'));
+        return $pdf->download('compliance-report.pdf');
+    }
+
+    public function toArray($selectedClub)
+    {
+        return $this->selectedClub->toArray();
     }
 }

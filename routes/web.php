@@ -84,6 +84,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'reports'], function () {
     Route::get('/consent-list', [EmailConsentReportController::class, 'index'])->name('report.email.consent');
     Route::get('/grading-list', [GradingReportController::class, 'index'])->name('report.grading.list');
     Route::get('/compliance-status', [ComplianceStatusReportController::class, 'index'])->name('report.compliance-status');
+    Route::get('/compliance-status/generate-pdf/{id}', [ComplianceStatusReportController::class, 'generatePdf'])->name('report.compliance-status.generate-pdf');
     Route::post('/grading-list', [GradingReportController::class, 'filteredResults']);
 });
 
