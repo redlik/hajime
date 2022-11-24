@@ -1,20 +1,25 @@
 <main class="flex-1 relative overflow-y-auto focus:outline-none p-6" tabindex="0"
       x-data="{ report: @entangle('report') }" x-init="$el.focus()">
     <div>
-        <div class="flex">
-            <select name="selectedClub" id="selectedClub"
-                    class="shadow border border-gray-300 rounded w-auto py-2 px-3 text-grey-darker mr-4" wire:model="selected">
-                <option value="" disabled selected>Select Club</option>
-                @foreach ($clubs as $club)
-                    <option value="{{ $club->id }}">
-                        {{ $club->name}}
-                    </option>
-                @endforeach
-            </select>
-            <buttonn wire:click="generateReport({{ $selected }})"
-                     class="button-judo">Generate report
-            </buttonn>
-        </div>
+        <form wire:submit.prevent="generateReport({{ $selected }})">
+            <div class="flex">
+                <div>
+                    <select name="selectedClub" id="selectedClub"
+                            class="shadow border border-gray-300 rounded w-auto py-2 px-3 text-grey-darker mr-4" wire:model="selected" required>
+                        <option value="" disabled selected>Select Club</option>
+                        @foreach ($clubs as $club)
+                            <option value="{{ $club->id }}">
+                                {{ $club->name}}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('selected') <span class="error">{{ $message }}</span> @enderror
+                </div>
+                <button type="submit"
+                         class="button-judo">Generate report
+                </button>
+            </div>
+        </form>
     </div>
     <div class="w-full mt-8">
         <div class="bg-white rounded shadow-sm p-8" x-show="report">
