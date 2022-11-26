@@ -110,4 +110,12 @@
     .input-box:focus {
         @apply focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
     }
+
+    input, textarea, select {
+        @apply shadow border border-gray-300 rounded py-2 px-3 text-gray-700 bg-white;
+    }
+
+    input:focus, textarea:focus, select:focus {
+        @apply focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
+    }
 }
