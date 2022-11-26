@@ -34,6 +34,7 @@
                 </div>
                 <div class="flex mb-4">
                     <div class="w-64 font-bold">Name of Secretary</div>
+                    @ray($secretary)
                     <div>{{ $secretary->name ?? 'Not set'}}</div>
                 </div>
                 <div class="flex mb-8">

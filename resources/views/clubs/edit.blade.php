@@ -34,14 +34,14 @@
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="name">
                                     Club Name
                                 </label>
-                                <input class="shadow border-gray-300 rounded w-1/2 py-2 px-3 text-grey-darker"
+                                <input class="input-box"
                                        id="name" name="name" type="text" value="{{ $club->name }}">
                             </div>
                             <div class="mb-4">
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="type">
                                     Club Type
                                 </label>
-                                <select class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker" id="type"
+                                <select class="input-box w-64" id="type"
                                         name="type" type="text"
                                         placeholder="Club type">
                                     <option value="ordinary club"
@@ -66,7 +66,7 @@
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="status">
                                     Status
                                 </label>
-                                <select class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker"
+                                <select class="input-box w-64"
                                         id="status" name="status" required>
                                     <option value="Active"
                                             @if ($club->status == "Active")
@@ -87,7 +87,7 @@
                                        for="affiliation">
                                     Affiliation paid on
                                 </label>
-                                <input class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker"
+                                <input class="input-box w-64"
                                        id="affiliation" name="affiliation" type="date" value="{{ $club->affiliation }}">
                             </div>
                         </div>
@@ -96,28 +96,28 @@
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="address1">
                                     Address Line 1
                                 </label>
-                                <input class="shadow border-gray-300 rounded w-1/2 py-2 px-3 text-grey-darker"
+                                <input class="input-box w-1/2"
                                        id="address1" name="address1" type="text" value="{{ $club->address1 }}">
                             </div>
                             <div class="mb-4">
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="address2">
                                     Address Line 2
                                 </label>
-                                <input class="shadow border-gray-300 rounded w-1/2 py-2 px-3 text-grey-darker"
+                                <input class="input-box w-1/2"
                                        id="address2" name="address2" type="text" value="{{ $club->address2 }}">
                             </div>
                             <div class="mb-4">
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="town">
                                     Town / City
                                 </label>
-                                <input class="shadow border-gray-300 rounded w-1/2 py-2 px-3 text-grey-darker"
+                                <input class="input-box w-1/2"
                                        id="city" name="city" type="text" value="{{ $club->city }}">
                             </div>
                             <div class="mb-4">
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="county">
                                     County
                                 </label>
-                                <select class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker" id="county"
+                                <select class="input-box w-64" id="county"
                                         name="county"
                                         type="text"
                                         placeholder="County">
@@ -160,7 +160,7 @@
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="province">
                                     Province
                                 </label>
-                                <select class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker" id="province"
+                                <select class="input-box w-64" id="province"
                                         type="text" placeholder="Province" name="province">
                                     <option value="{{ $club->province }}" selected>{{ ucfirst($club->province) }}</option>
                                     <option value="connaught">Connaught</option>
@@ -173,7 +173,7 @@
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="eircode">
                                     Eircode / Postcode
                                 </label>
-                                <input class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker"
+                                <input class="input-box w-64"
                                        id="eircode" name="eircode" type="text" value="{{ $club->eircode }}">
                             </div>
                         </div>
@@ -182,28 +182,28 @@
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="phone">
                                     Telephone
                                 </label>
-                                <input class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker"
+                                <input class="input-box w-64"
                                        id="phone" name="phone" type="text" value="{{ $club->phone }}">
                             </div>
                             <div class="mb-4">
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="email">
                                     Email
                                 </label>
-                                <input class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker"
+                                <input class="input-box w-64"
                                        id="email" name="email" type="email" value="{{ $club->email }}">
                             </div>
                             <div class="mb-4">
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="website">
                                     Website
                                 </label>
-                                <input class="shadow border-gray-300 rounded w-1/2 py-2 px-3 text-grey-darker"
+                                <input class="input-box w-1/2"
                                        id="website" name="website" type="text" value="{{ $club->website }}">
                             </div>
                             <div>
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="facebook">
                                     Facebook
                                 </label>
-                                <input class="shadow border-gray-300 rounded w-1/2 py-2 px-3 text-grey-darker"
+                                <input class="input-box w-1/2"
                                        id="facebook" name="facebook" type="text" value="{{ $club->facebook }}">
                             </div>
                         </div>
@@ -255,7 +255,7 @@
                                 </div>
                             </div>
                             <div x-data="{assessment: '{{ $club->ethics_assessment }}'}">
-                                <div>
+                                <div class="mb-2">
                                     <label class="inline-block w-auto text-grey-darker text-sm font-bold mb-2 mr-4" for="ethics_assessment">
                                         Sport Ireland Ethics Self-Assessment Completed
                                     </label>
@@ -287,7 +287,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="w-full border-2 border-gray-300 rounded-xl mb-4 p-8">
+                        <div class="w-full border-2 border border-gray-300 rounded-xl mb-4 p-8">
                             <p class="font-bold mb-4">Select
                                 <span class="text-judo-600">Main Postal</span> correspondence
                                 address:</p>
@@ -296,7 +296,7 @@
                                        checked
                                 @endif>
                             <label for="postal_head" class="text-gray-600 mr-12">Head Coach</label>
-                            <input type="radio" class="text-gray-600" name="postal" value="Secretary" id="postal_secretary"
+                            <input type="radio" class="input-box text-gray-600" name="postal" value="Secretary" id="postal_secretary"
                                    @if ($club->postal == "Secretary")
                                        checked
                                 @endif>

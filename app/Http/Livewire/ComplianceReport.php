@@ -43,7 +43,6 @@ class ComplianceReport extends Component
 
     public function render()
     {
-        ray($this->report);
         return view('livewire.compliance-report');
     }
 
@@ -51,36 +50,14 @@ class ComplianceReport extends Component
     {
         $this->report = true;
         $this->selectedClub = Club::find($selected);
-        if(!empty(Personnel::secretary()->where('club_id', $this->selectedClub->id)->first())){
-            $this->secretary = Personnel::secretary()->where('club_id', $this->selectedClub->id)->first();
-        }
-        if(!empty(Personnel::headcoach()->where('club_id', $this->selectedClub->id)->first())) {
-            $this->headCoach = Personnel::headcoach()->where('club_id', $this->selectedClub->id)->first();
-        }
-        if(!empty(Personnel::designatedofficer()->where('club_id', $this->selectedClub->id)->first())){
-            $this->designated = Personnel::designatedofficer()->where('club_id', $this->selectedClub->id)->first();
-        }
-        if(!empty(Personnel::childrenofficer()->where('club_id', $this->selectedClub->id)->first())){
-            $this->childrens = Personnel::childrenofficer()->where('club_id', $this->selectedClub->id)->first();
-        }
+
+        $this->secretary = Personnel::secretary()->where('club_id', $this->selectedClub->id)->first() ?? new Personnel();
+        $this->headCoach = Personnel::headcoach()->where('club_id', $this->selectedClub->id)->first() ?? new Personnel();
+        $this->designated = Personnel::designatedofficer()->where('club_id', $this->selectedClub->id)->first() ?? new Personnel();
+        $this->childrens = Personnel::childrenofficer()->where('club_id', $this->selectedClub->id)->first() ?? new Personnel();
 
         $this->coaches = Coach::where('club_id', $this->selectedClub->id)->get();
         $this->volunteers = Volunteer::where('club_id', $this->selectedClub->id)->get();
 
-    }
-
-    public function makePdfReport($selected)
-    {
-        $this->selectedClub = Club::find($selected);
-        $clubArray = $this->toArray($this->selectedClub);
-//        view()->share('data', $clubArray);
-        ray($clubArray);
-        $pdf = PDF::loadView('pdf.compliance-report', compact('clubArray'));
-        return $pdf->download('compliance-report.pdf');
-    }
-
-    public function toArray($selectedClub)
-    {
-        return $this->selectedClub->toArray();
     }
 }
