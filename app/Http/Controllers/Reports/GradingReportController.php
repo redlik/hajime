@@ -6,6 +6,7 @@ use App\Exports\GradingExportFromView;
 use App\Exports\GradingListExport;
 use App\Http\Controllers\Controller;
 use App\Models\Club;
+use App\Models\Gender;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -18,6 +19,7 @@ class GradingReportController extends Controller
         $gender = NULL;
         $selected_membership = NULL;
         $selected_grade = NULL;
+        $genders = Gender::all();
 
         if ($request->get('club') && $request->get('club') != 'all') {
             $selectedClub = $request->get('club');
@@ -61,7 +63,7 @@ class GradingReportController extends Controller
             ->orderBy('last_name', 'asc')
             ->get();
         return view('report.grading',
-            compact('members', 'clubs', 'selectedClub'));
+            compact('members', 'clubs', 'selectedClub', 'genders'));
     }
 
     public function filteredResults(Request $request)

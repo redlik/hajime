@@ -82,6 +82,13 @@
                                     Grading List
                                 </a>
 
+                                <a href="{{ route('report.compliance-status') }}" class="text-gray-300
+                                hover:bg-gray-700
+                                hover:text-white group
+                                flex
+                                items-center px-2 py-2 text-sm font-bold rounded-md">
+                                    Compliance Status
+                                </a>
 
                             </nav>
                         </div>
@@ -165,6 +172,12 @@
                     </div>
 
                     <div class="w-full mt-4">
+                        @isset($members)
+                            <div class="mb-4">
+                                <span class="text-gray-600 text-sm bg-gray-200 px-2 py-1 rounded">
+                                    {{ $memberships->count() }} results found </span>
+                            </div>
+                        @endif
                         <div class="text-xl font-bold text-gray-600">
                             @if (isset($selectedClub))
                             <h2>Active members for {{ $selectedClub->name }}</h2>

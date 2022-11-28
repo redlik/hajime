@@ -118,7 +118,7 @@
                                         @foreach( $clubs as $club)
                                             <option value="{{ $club->id }}"
                                                     @if (isset($selectedClub) && ($selectedClub == $club->id))
-                                                    selected
+                                                        selected
                                                 @endif
                                             >
                                                 {{ $club->name }}
@@ -129,42 +129,43 @@
                                 <div class="md:ml-4 w-full md:w-1/2 lg:w-1/4">
                                     <label for="gender" class="block text-sm text-gray-400 mb-2 font-bold">Gender</label>
                                     <select name="gender" id="gender" class="shadow border-gray-300 rounded w-full py-2
-                                    px-3
-                                                            text-grey-darker">
+                                    px-3 text-grey-darker">
                                         <option value="" selected>All Genders</option>
-                                        <option value="Female" @if(request()->get('gender') == 'Female')
-                                        selected @endif>Female</option>
-                                        <option value="Male" @if(request()->get('gender') == 'Male')
-                                        selected @endif>Male</option>
+                                        @foreach($genders as $gender)
+                                            <option value="{{ $gender->short }}" @if(request()->get('gender') == '{{ $gender->short }}')
+                                                selected @endif>{{ $gender->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="md:ml-4 w-full md:w-1/2 lg:w-1/4">
                                     <label for="gender" class="block text-sm text-gray-400 mb-2
                                                             font-bold">Membership Type</label>
                                     <select name="membership" id="membership" class="shadow border-gray-300 rounded
-                                    w-full
-                                                            py-2
-                                                            px-3
-                                                            text-grey-darker">
+                                    w-full py-2 px-3 text-grey-darker">
                                         <option value="" selected>All Memberships</option>
                                         <option value="Under 12 – Junior Membership" @if(request()->get('membership')
                                          ==
                                         'Under 12 – Junior Membership')
-                                        selected @endif>Under 12 – Junior
-                                            Membership</option>
+                                            selected @endif>Under 12 – Junior
+                                            Membership
+                                        </option>
                                         <option value="Under 18 – Youth Membership" @if(request()->get('membership') ==
                                         'Under 18 – Youth Membership')
-                                        selected @endif>Under 18 – Youth
-                                            Membership</option>
+                                            selected @endif>Under 18 – Youth
+                                            Membership
+                                        </option>
                                         <option value="Over 18 – Adult Membership" @if(request()->get('membership') ==
                                         'Over 18 – Adult Membership')
-                                        selected @endif>Over 18 – Adult Membership</option>
+                                            selected @endif>Over 18 – Adult Membership
+                                        </option>
                                         <option value="Student Membership" @if(request()->get('membership') == 'Student
                                         Membership')
-                                        selected @endif>Student Membership</option>
+                                            selected @endif>Student Membership
+                                        </option>
                                         <option value="Life Membership" @if(request()->get('membership') == 'Life
                                         Membership')
-                                        selected @endif>Life Membership</option>
+                                            selected @endif>Life Membership
+                                        </option>
                                     </select>
                                 </div>
                                 <div class="md:ml-4 w-full md:w-1/2 lg:w-1/4">
@@ -227,8 +228,8 @@
                     </div>
                     <div class="mb-6">
                         @if ($members->count() != 0)
-                        <a href="{{ route('report.grading.export', request()->query()) }}"
-                           class="button-judo"><i class="far fa-file-excel mr-2"></i> Export to Excel</a>
+                            <a href="{{ route('report.grading.export', request()->query()) }}"
+                               class="button-judo"><i class="far fa-file-excel mr-2"></i> Export to Excel</a>
                         @endif
                     </div>
                     <div class="text-sm text-gray-600">
@@ -310,7 +311,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td  colspan="6">
+                                    <td colspan="6">
                                         <p class="text-gray-600 text-center text-xl mt-4">No members found</p>
                                     </td>
                                 </tr>
@@ -323,6 +324,5 @@
         </div>
 
     </div>
-
 
 @endsection
