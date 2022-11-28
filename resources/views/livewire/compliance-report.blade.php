@@ -56,9 +56,21 @@
                             <tbody>
                             <tr>
                                 <td class="hidden px-3 py-2 text-gray-700 lg:table-cell font-bold">{{ $designated->name }}</td>
-                                <td class="hidden px-3 py-2 text-gray-700 lg:table-cell">{{ $designated->vetting_expiry }}</td>
-                                <td class="hidden px-3 py-2 text-gray-700 lg:table-cell">{{ $designated->safeguarding_expiry }}</td>
-                                <td class="hidden px-3 py-2 text-gray-700 lg:table-cell">{{ $designated->first_aid_expiry }}</td>
+                                <td class="hidden px-3 py-2 text-gray-700 lg:table-cell">
+                                    <span @class([
+		                        'text-red-600' => $designated->vetting_expiry < now(),
+                                ])>{{ $designated->vetting_expiry }}</span>
+                                    </td>
+                                <td class="hidden px-3 py-2 text-gray-700 lg:table-cell">
+                                    <span @class([
+		                        'text-red-600' => $designated->safeguarding_expiry < now(),
+                                ])>{{ $designated->safeguarding_expiry }}</span>
+                                    </td>
+                                <td class="hidden px-3 py-2 text-gray-700 lg:table-cell">
+                                    <span @class([
+		                        'text-red-600' => $designated->first_aid_expiry < now(),
+                                ])>{{ $designated->first_aid_expiry }}</span>
+                                    </td>
                             </tr>
                             </tbody>
                         </table>
@@ -81,9 +93,21 @@
                             <tbody>
                             <tr>
                                 <td class="hidden px-3 py-2 text-gray-700 lg:table-cell font-bold">{{ $childrens->name }}</td>
-                                <td class="hidden px-3 py-2 text-gray-700 lg:table-cell">{{ $childrens->vetting_expiry }}</td>
-                                <td class="hidden px-3 py-2 text-gray-700 lg:table-cell">{{ $childrens->safeguarding_expiry }}</td>
-                                <td class="hidden px-3 py-2 text-gray-700 lg:table-cell">{{ $childrens->first_aid_expiry }}</td>
+                                <td class="hidden px-3 py-2 text-gray-700 lg:table-cell">
+                                    <span @class([
+		                        'text-red-600' => $childrens->vetting_expiry < now(),
+                                ])>{{ $childrens->vetting_expiry }}</span>
+                                    </td>
+                                <td class="hidden px-3 py-2 text-gray-700 lg:table-cell">
+                                    <span @class([
+		                        'text-red-600' => $childrens->safeguarding_expiry < now(),
+                                ])>{{ $childrens->safeguarding_expiry }}</span>
+                                    </td>
+                                <td class="hidden px-3 py-2 text-gray-700 lg:table-cell">
+                                    <span @class([
+		                        'text-red-600' => $childrens->first_aid_expiry < now(),
+                                ])>{{ $childrens->first_aid_expiry }}</span>
+                                    </td>
                             </tr>
                             </tbody>
                         </table>
@@ -107,9 +131,21 @@
                             <tbody>
                             <tr>
                                 <td class="hidden px-3 py-2 text-gray-700 lg:table-cell font-bold">{{ $secretary->name }}</td>
-                                <td class="hidden px-3 py-2 text-gray-700 lg:table-cell">{{ $secretary->vetting_expiry }}</td>
-                                <td class="hidden px-3 py-2 text-gray-700 lg:table-cell">{{ $secretary->safeguarding_expiry }}</td>
-                                <td class="hidden px-3 py-2 text-gray-700 lg:table-cell">{{ $secretary->first_aid_expiry }}</td>
+                                <td class="hidden px-3 py-2 text-gray-700 lg:table-cell">
+                                    <span @class([
+		                        'text-red-600' => $secretary->vetting_expiry < now(),
+                                ])>{{ $secretary->vetting_expiry }}</span>
+                                    </td>
+                                <td class="hidden px-3 py-2 text-gray-700 lg:table-cell">
+                                    <span @class([
+		                        'text-red-600' => $secretary->safeguarding_expiry < now(),
+                                ])>{{ $secretary->safeguarding_expiry }}</span>
+                                    </td>
+                                <td class="hidden px-3 py-2 text-gray-700 lg:table-cell">
+                                    <span @class([
+		                        'text-red-600' => $secretary->first_aid_expiry < now(),
+                                ])>{{ $secretary->first_aid_expiry }}</span>
+                                    </td>
                             </tr>
                             </tbody>
                         </table>
@@ -139,9 +175,21 @@
                                 <td class="hidden px-3 py-2 text-gray-700 lg:table-cell">{{ $coach->coaching_qualification }}
                                     <br>
                                     <span class="text-sm">{{ $coach->coaching_date }}</span></td>
-                                <td class="hidden px-3 py-2 text-gray-700 lg:table-cell">{{ $coach->vetting_expiry }}</td>
-                                <td class="hidden px-3 py-2 text-gray-700 lg:table-cell">{{ $coach->safeguarding_expiry }}</td>
-                                <td class="hidden px-3 py-2 text-gray-700 lg:table-cell">{{ $coach->first_aid_expiry }}</td>
+                                <td class="hidden px-3 py-2 text-gray-700 lg:table-cell">
+                                    <span @class([
+		                        'text-red-600' => $coach->vetting_expiry < now(),
+                                ])>{{ $coach->vetting_expiry }}</span>
+                                    </td>
+                                <td class="hidden px-3 py-2 text-gray-700 lg:table-cell">
+                                    <span @class([
+		                        'text-red-600' => $coach->safeguarding_expiry < now(),
+                                ])>{{ $coach->safeguarding_expiry }}</span>
+                                    </td>
+                                <td class="hidden px-3 py-2 text-gray-700 lg:table-cell">
+                                    <span @class([
+		                        'text-red-600' => $coach->first_aid_expiry < now(),
+                                ])>{{ $coach->first_aid_expiry }}</span>
+                                    </td>
                             </tr>
                         @endforeach
                         </tbody>
