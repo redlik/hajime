@@ -60,12 +60,6 @@
                                     Active Coaches
                                 </a>
 
-                                <a href="{{ route('report.email.consent') }}" class="text-gray-300 hover:bg-gray-700
-                                hover:text-white group
-                                flex
-                                items-center px-2 py-2 text-sm font-bold rounded-md">
-                                    Email Consent
-                                </a>
                                 <a href="{{ route('report.invalid.coaches') }}" class="text-gray-300
                                 hover:bg-gray-700
                                 hover:text-white
@@ -74,6 +68,14 @@
                                 items-center px-2 py-2 text-sm font-bold rounded-md">
                                     Invalid Coaches
                                 </a>
+
+                                <a href="{{ route('report.email.consent') }}" class="text-gray-300 hover:bg-gray-700
+                                hover:text-white group
+                                flex
+                                items-center px-2 py-2 text-sm font-bold rounded-md">
+                                    Email Consent
+                                </a>
+
                                 <a href="{{ route('report.grading.list') }}" class="text-gray-300
                                 hover:bg-gray-700
                                 hover:text-white group
