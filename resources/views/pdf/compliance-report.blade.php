@@ -71,7 +71,7 @@
             <th class="table-header">Name of Designated Person</th>
             <th class="table-header">Vetting Expiry Date</th>
             <th class="table-header">Safeguarding 3</th>
-            <th class="table-header">First Date</th>
+            <th class="table-header">First Aid Expiry Date</th>
         </tr>
         <tr>
             <th class="table-left-align">{{ $designated['name'] }}</th>
@@ -101,7 +101,7 @@
             <th class="table-header">Name of Children's Officer</th>
             <th class="table-header">Vetting Expiry Date</th>
             <th class="table-header">Safeguarding 2</th>
-            <th class="table-header">First Date</th>
+            <th class="table-header">First Aid Expiry Date</th>
         </tr>
         <tr>
             <th class="table-left-align">{{ $childrens['name'] }}</th>
@@ -131,7 +131,7 @@
             <th class="table-header">Name of Secretary</th>
             <th class="table-header">Vetting Expiry Date</th>
             <th class="table-header">Safeguarding 1</th>
-            <th class="table-header">First Date</th>
+            <th class="table-header">First Aid Expiry Date</th>
         </tr>
         <tr>
             <th class="table-left-align">{{ $secretary['name'] }}</th>
@@ -164,28 +164,26 @@
             <th class="table-header">Qualification</th>
             <th class="table-header">Vetting Expiry Date</th>
             <th class="table-header">Safeguarding Expiry Date</th>
-            <th class="table-header">First Date Expiry Date</th>
+            <th class="table-header">First Aid Expiry Date</th>
         </tr>
         @foreach($coaches as $coach)
             <tr>
                 <th class="table-left-align">{{ $coach['name'] }}</th>
                 <th class="table-left-align" style="padding-right: 7px">{{ $coach['coaching_qualification'] }}
                     <br>
-                    <span class="text-small" @class([
-		'text-red' => $coach['coaching_date'] < now()
-])>
+                    <span>
                         {{ $coach['coaching_date'] }}
                     </span>
                 </th>
                 <th class="table-left-align"><span @class([
-		'text-red' => $coach['vetting_expiry'] < now()
-])>{{ $coach['vetting_expiry'] }}</span></th>
-                <th class="table-left-align"><span @class([
-		'text-red' => $coach['safeguarding_expiry'] < now()
-])>{{ $coach['safeguarding_expiry'] }}</span></th>
-                <th class="table-left-align"><span @class([
-		'text-red' => $coach['first_aid_expiry'] < now()
-])>{{ $coach['first_aid_expiry'] }}</span></th>
+                        'text-red' => $coach['vetting_expiry'] < now()
+                ])>{{ $coach['vetting_expiry'] }}</span></th>
+                                <th class="table-left-align"><span @class([
+                        'text-red' => $coach['safeguarding_expiry'] < now()
+                ])>{{ $coach['safeguarding_expiry'] }}</span></th>
+                                <th class="table-left-align"><span @class([
+                        'text-red' => $coach['first_aid_expiry'] < now()
+                ])>{{ $coach['first_aid_expiry'] }}</span></th>
             </tr>
         @endforeach
     </table>

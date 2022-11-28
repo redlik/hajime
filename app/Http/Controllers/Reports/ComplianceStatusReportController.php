@@ -31,7 +31,7 @@ class ComplianceStatusReportController extends Controller
         $volunteers = Volunteer::where('club_id', $selected)->get();
         Pdf::setOption(['dpi' => 150, 'defaultFont' => 'sans-serif']);
         $pdf = PDF::loadView('pdf.compliance-report', compact('club', 'secretary', 'headCoach', 'designated', 'childrens', 'coaches', 'volunteers'));
-        return $pdf->download('compliance-report.pdf');
+        return $pdf->download('Compliance report - '.$club->name.'.pdf');
     }
 
     public function toArray($club)
