@@ -14,6 +14,10 @@
             color: red;
         }
 
+        .text-grey {
+            color: black;
+        }
+
         .text-small {
             font-size: 11px;
         }
@@ -61,7 +65,8 @@
     </tr>
     <tr>
         <th class="table-left-header">Name of Head / Lead Coach</th>
-        <th class="table-left-align">{{ $headCoach['name'] ?? 'Not set'}}</th>
+        <th class="table-left-align">
+            {{ $headCoach['name'] ?? 'Not set'}}</th>
     </tr>
 </table>
 
@@ -76,23 +81,17 @@
         <tr>
             <th class="table-left-align">{{ $designated['name'] }}</th>
             <th class="table-left-align">
-            <span @class([
-		'text-red' => $designated['vetting_expiry'] < now()
-])>
-                {{ $designated['vetting_expiry'] }}
+            <span class="{{ $designated['vetting_expiry'] > now() ? 'text-gray' : 'text-red' }}">
+                {{ $designated['vetting_expiry'] ?? 'Outstanding'}}
             </span>
             </th>
             <th class="table-left-align">
-            <span @class([
-		'text-red' => $designated['safeguarding_expiry'] < now()
-])>
-                {{ $designated['safeguarding_expiry'] }}</th>
+            <span class="{{ $designated['safeguarding_expiry'] > now() ? 'text-gray' : 'text-red' }}">
+                {{ $designated['safeguarding_expiry'] ?? 'Outstanding'}}</th>
             </span>
             <th class="table-left-align">
-            <span @class([
-		'text-red' => $designated['first_aid_expiry'] < now()
-])>
-                {{ $designated['first_aid_expiry'] }}</th>
+            <span class="{{ $designated['first_aid_expiry'] > now() ? 'text-gray' : 'text-red' }}">
+                {{ $designated['first_aid_expiry'] ?? 'Outstanding'}}</th>
             </span>
         </tr>
     @endif
@@ -106,23 +105,17 @@
         <tr>
             <th class="table-left-align">{{ $childrens['name'] }}</th>
             <th class="table-left-align">
-            <span @class([
-		'text-red' => $childrens['vetting_expiry'] < now()
-])>
-                {{ $childrens['vetting_expiry'] }}
+            <span class="{{ $childrens['vetting_expiry'] > now() ? 'text-gray' : 'text-red' }}">
+                {{ $childrens['vetting_expiry'] ?? 'Outstanding'}}
             </span>
             </th>
             <th class="table-left-align">
-            <span @class([
-		'text-red' => $childrens['safeguarding_expiry'] < now()
-])>
-                {{ $childrens['safeguarding_expiry'] }}</th>
+            <span class="{{ $childrens['safeguarding_expiry'] > now() ? 'text-gray' : 'text-red' }}">
+                {{ $childrens['safeguarding_expiry'] ?? 'Outstanding'}}</th>
             </span>
             <th class="table-left-align">
-            <span @class([
-		'text-red' => $childrens['first_aid_expiry'] < now()
-])>
-                {{ $childrens['first_aid_expiry'] }}</th>
+            <span class="{{ $childrens['first_aid_expiry'] > now() ? 'text-gray' : 'text-red' }}">
+                {{ $childrens['first_aid_expiry'] ?? 'Outstanding'}}</th>
             </span>
         </tr>
     @endif
@@ -136,23 +129,17 @@
         <tr>
             <th class="table-left-align">{{ $secretary['name'] }}</th>
             <th class="table-left-align">
-            <span @class([
-		'text-red' => $secretary['vetting_expiry'] < now()
-])>
-                {{ $secretary['vetting_expiry'] }}
+            <span class="{{ $secretary['vetting_expiry'] > now() ? 'text-gray' : 'text-red' }}">
+                {{ $secretary['vetting_expiry'] ?? 'Outstanding'}}
             </span>
             </th>
             <th class="table-left-align">
-            <span @class([
-		'text-red' => $secretary['safeguarding_expiry'] < now()
-])>
-                {{ $secretary['safeguarding_expiry'] }}</th>
+            <span class="{{ $secretary['safeguarding_expiry'] > now() ? 'text-gray' : 'text-red' }}">
+                {{ $secretary['safeguarding_expiry'] ?? 'Outstanding'}}</th>
             </span>
             <th class="table-left-align">
-            <span @class([
-		'text-red' => $secretary['first_aid_expiry'] < now()
-])>
-                {{ $secretary['first_aid_expiry'] }}</th>
+            <span class="{{ $secretary['first_aid_expiry'] > now() ? 'text-gray' : 'text-red' }}">
+                {{ $secretary['first_aid_expiry'] ?? 'Outstanding'}}</th>
             </span>
         </tr>
     @endif
@@ -171,19 +158,23 @@
                 <th class="table-left-align">{{ $coach['name'] }}</th>
                 <th class="table-left-align" style="padding-right: 7px">{{ $coach['coaching_qualification'] }}
                     <br>
-                    <span>
+                    <span class="text-small">
                         {{ $coach['coaching_date'] }}
                     </span>
                 </th>
-                <th class="table-left-align"><span @class([
-                        'text-red' => $coach['vetting_expiry'] < now()
-                ])>{{ $coach['vetting_expiry'] }}</span></th>
-                                <th class="table-left-align"><span @class([
-                        'text-red' => $coach['safeguarding_expiry'] < now()
-                ])>{{ $coach['safeguarding_expiry'] }}</span></th>
-                                <th class="table-left-align"><span @class([
-                        'text-red' => $coach['first_aid_expiry'] < now()
-                ])>{{ $coach['first_aid_expiry'] }}</span></th>
+                <th class="table-left-align">
+                    <span class="{{ $coach['vetting_expiry'] > now() ? 'text-gray' : 'text-red' }}">
+                        {{ $coach['vetting_expiry'] ?? 'Outstanding'}}</span></th>
+                <th class="table-left-align">
+                    <span class="{{ $coach['safeguarding_expiry'] > now() ? 'text-gray' : 'text-red' }}">
+                        {{ $coach['safeguarding_expiry'] ?? 'Outstanding'}}
+                    </span>
+                </th>
+                <th class="table-left-align">
+                    <span class="{{ $coach['first_aid_expiry'] > now() ? 'text-gray' : 'text-red' }}">
+                        {{ $coach['first_aid_expiry'] ?? 'Outstanding'}}
+                    </span>
+                </th>
             </tr>
         @endforeach
     </table>
@@ -200,12 +191,16 @@
         @foreach($volunteers as $volunteer)
             <tr>
                 <th class="table-left-align">{{ $volunteer['name'] }}</th>
-                <th class="table-left-align"><span @class([
-		'text-red' => $volunteer['vetting_expiry'] < now()
-                ])>{{ $volunteer['vetting_expiry'] }}</span></th>
-                <th class="table-left-align"><span @class([
-		'text-red' => $volunteer['safeguarding_expiry'] < now()
-                ])>{{ $volunteer['safeguarding_expiry'] }}</span></th>
+                <th class="table-left-align">
+                    <span class="{{ $volunteer['vetting_expiry'] > now() ? 'text-gray' : 'text-red' }}">
+                        {{ $volunteer['vetting_expiry'] ?? 'Outstanding'}}
+                    </span>
+                </th>
+                <th class="table-left-align">
+                    <span class="{{ $volunteer['safeguarding_expiry'] > now() ? 'text-gray' : 'text-red' }}">
+                        {{ $volunteer['safeguarding_expiry'] ?? 'Outstanding'}}
+                    </span>
+                </th>
             </tr>
         @endforeach
     </table>
