@@ -90,8 +90,8 @@
                 {{ $designated['safeguarding_expiry'] ?? 'Outstanding'}}</th>
             </span>
             <th class="table-left-align">
-            <span class="{{ $designated['first_aid_expiry'] > now() ? 'text-gray' : 'text-red' }}">
-                {{ $designated['first_aid_expiry'] ?? 'Outstanding'}}</th>
+            <span>
+                {{ $designated['first_aid_expiry'] ?? ''}}</th>
             </span>
         </tr>
     @endif
@@ -114,8 +114,8 @@
                 {{ $childrens['safeguarding_expiry'] ?? 'Outstanding'}}</th>
             </span>
             <th class="table-left-align">
-            <span class="{{ $childrens['first_aid_expiry'] > now() ? 'text-gray' : 'text-red' }}">
-                {{ $childrens['first_aid_expiry'] ?? 'Outstanding'}}</th>
+            <span">
+                {{ $childrens['first_aid_expiry'] ?? ''}}</th>
             </span>
         </tr>
     @endif
@@ -138,8 +138,8 @@
                 {{ $secretary['safeguarding_expiry'] ?? 'Outstanding'}}</th>
             </span>
             <th class="table-left-align">
-            <span class="{{ $secretary['first_aid_expiry'] > now() ? 'text-gray' : 'text-red' }}">
-                {{ $secretary['first_aid_expiry'] ?? 'Outstanding'}}</th>
+            <span>
+                {{ $secretary['first_aid_expiry'] ?? ''}}</th>
             </span>
         </tr>
     @endif

@@ -73,7 +73,7 @@
                                     <span class="{{ $designated->safeguarding_expiry > now() ? 'text-gray-600' : 'text-red-600' }} font-medium">{{ $designated->safeguarding_expiry ?? 'Outstanding'}}</span>
                         </td>
                         <td class="hidden px-3 py-2 text-gray-700 lg:table-cell">
-                                    <span class="{{ $designated->first_aid_expiry > now() ? 'text-gray-600' : 'text-red-600' }} font-medium">{{ $designated->first_aid_expiry ?? 'Outstanding'}}</span>
+                                    <span>{{ $designated->first_aid_expiry ?? ''}}</span>
                         </td>
                     </tr>
                     </tbody>
@@ -104,7 +104,7 @@
                                     <span class="{{ $childrens->safeguarding_expiry > now() ? 'text-gray-600' : 'text-red-600' }} font-medium">{{ $childrens->safeguarding_expiry ?? 'Outstanding'}}</span>
                         </td>
                         <td class="hidden px-3 py-2 text-gray-700 lg:table-cell">
-                                    <span class="{{ $childrens->first_aid_expiry > now() ? 'text-gray-600' : 'text-red-600' }} font-medium">{{ $childrens->first_aid_expiry ?? 'Outstanding'}}</span>
+                                    <span>{{ $childrens->first_aid_expiry ?? ''}}</span>
                         </td>
                     </tr>
                     </tbody>
@@ -136,7 +136,7 @@
                                     <span class="{{ $secretary->safeguarding_expiry > now() ? 'text-gray-600' : 'text-red-600' }} font-medium">{{ $secretary->safeguarding_expiry ?? 'Outstanding'}}</span>
                         </td>
                         <td class="hidden px-3 py-2 text-gray-700 lg:table-cell">
-                                    <span class="{{ $secretary->first_aid_expiry > now() ? 'text-gray-600' : 'text-red-600' }} font-medium">{{ $secretary->first_aid_expiry ?? 'Outstanding'}}</span>
+                                    <span>{{ $secretary->first_aid_expiry ?? ''}}</span>
                         </td>
                     </tr>
                     </tbody>
