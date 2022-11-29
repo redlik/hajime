@@ -9,12 +9,11 @@ use App\Models\Member;
 class MembersTable extends Component
 {
     use WithPagination;
-
     public $searchQuery;
 
     public function mount() {
-        $this->searchQuery = '';
-        $this->members = Member::simplePaginate(50);
+        $searchQuery = '';
+//        $this->members = Member::simplePaginate(50);
     }
 
     public function updatingSearchquery()
