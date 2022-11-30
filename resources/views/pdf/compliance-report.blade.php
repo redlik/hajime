@@ -75,7 +75,7 @@
         <tr>
             <th class="table-header">Name of Designated Person</th>
             <th class="table-header">Vetting Expiry Date</th>
-            <th class="table-header">Safeguarding 3</th>
+            <th class="table-header">Safeguarding 3 Expiry Date</th>
             <th class="table-header">First Aid Expiry Date</th>
         </tr>
         <tr>
@@ -99,7 +99,7 @@
         <tr>
             <th class="table-header">Name of Children's Officer</th>
             <th class="table-header">Vetting Expiry Date</th>
-            <th class="table-header">Safeguarding 2</th>
+            <th class="table-header">Safeguarding 2 Expiry Date</th>
             <th class="table-header">First Aid Expiry Date</th>
         </tr>
         <tr>
@@ -123,7 +123,7 @@
         <tr>
             <th class="table-header">Name of Secretary</th>
             <th class="table-header">Vetting Expiry Date</th>
-            <th class="table-header">Safeguarding 1</th>
+            <th class="table-header">Safeguarding 1 Expiry Date</th>
             <th class="table-header">First Aid Expiry Date</th>
         </tr>
         <tr>

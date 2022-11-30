@@ -90,7 +90,7 @@
                     <tr>
                         <th scope="col" class="w-1/4 py-2 pl-4 pr-3 text-left text-sm font-semibold text-gray-600 font-bold">Name</th>
                         <th scope="col" class="hidden px-3 py-2 text-left text-sm font-semibold text-gray-600 lg:table-cell">Vetting Expiry Date</th>
-                        <th scope="col" class="hidden px-3 py-2 text-left text-sm font-semibold text-gray-600 lg:table-cell">Safeguarding 3 Expiry Date</th>
+                        <th scope="col" class="hidden px-3 py-2 text-left text-sm font-semibold text-gray-600 lg:table-cell">Safeguarding 2 Expiry Date</th>
                         <th scope="col" class="hidden px-3 py-2 text-left text-sm font-semibold text-gray-600 lg:table-cell">First Aid Expiry Date</th>
                     </tr>
                     </thead>
@@ -121,7 +121,7 @@
                     <tr>
                         <th scope="col" class="w-1/4 py-2 pl-4 pr-3 text-left text-sm font-semibold text-gray-600 font-bold">Name</th>
                         <th scope="col" class="hidden px-3 py-2 text-left text-sm font-semibold text-gray-600 lg:table-cell">Vetting Expiry Date</th>
-                        <th scope="col" class="hidden px-3 py-2 text-left text-sm font-semibold text-gray-600 lg:table-cell">Safeguarding 3 Expiry Date</th>
+                        <th scope="col" class="hidden px-3 py-2 text-left text-sm font-semibold text-gray-600 lg:table-cell">Safeguarding 1 Expiry Date</th>
                         <th scope="col" class="hidden px-3 py-2 text-left text-sm font-semibold text-gray-600 lg:table-cell">First Aid Expiry Date</th>
                         </th>
                     </tr>
@@ -153,7 +153,7 @@
                     <th scope="col" class="py-2 pl-4 pr-3 text-left text-sm font-semibold text-gray-600 font-bold">Name</th>
                     <th scope="col" class="hidden px-3 py-2 text-left text-sm font-semibold text-gray-600 lg:table-cell">Qualifications</th>
                     <th scope="col" class="hidden px-3 py-2 text-left text-sm font-semibold text-gray-600 lg:table-cell">Vetting Expiry Date</th>
-                    <th scope="col" class="hidden px-3 py-2 text-left text-sm font-semibold text-gray-600 lg:table-cell">Safeguarding 3 Expiry Date</th>
+                    <th scope="col" class="hidden px-3 py-2 text-left text-sm font-semibold text-gray-600 lg:table-cell">Safeguarding Expiry Date</th>
                     <th scope="col" class="hidden px-3 py-2 text-left text-sm font-semibold text-gray-600 lg:table-cell">First Aid Expiry Date</th>
                     </th>
                 </tr>
