@@ -53,7 +53,7 @@
     </style>
 </head>
 <body>
-<h2 style="text-align: center;margin-bottom: 30px">IJA CLub Compliance Status Report {{ now()->format('Y') }}</h2>
+<h2 style="text-align: center;margin-bottom: 30px">IJA Club Compliance Status Report {{ now()->format('Y') }}</h2>
 <table>
     <tr>
         <th class="table-left-header">Club Name</th>
@@ -150,7 +150,7 @@
             <th class="table-header">Name of Coach</th>
             <th class="table-header">Qualification</th>
             <th class="table-header">Vetting Expiry Date</th>
-            <th class="table-header">Safeguarding Expiry Date</th>
+            <th class="table-header">Safeguarding 1 Expiry Date</th>
             <th class="table-header">First Aid Expiry Date</th>
         </tr>
         @foreach($coaches as $coach)
