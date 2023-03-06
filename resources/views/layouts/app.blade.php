@@ -97,9 +97,9 @@
                 </div>
                 @guest
                     <a class="no-underline hover:underline hover:text-orange-200" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    @if (Route::has('register'))
-                        <a class="no-underline hover:underline" href="{{ route('register') }}">{{ __('Register') }}</a>
-                    @endif
+{{--                    @if (Route::has('register'))--}}
+{{--                        <a class="no-underline hover:underline" href="{{ route('register') }}">{{ __('Register') }}</a>--}}
+{{--                    @endif--}}
                 @else
                     <a href="{{ route('logout') }}"
                        class="no-underline hover:underline"
