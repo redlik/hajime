@@ -102,4 +102,5 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'exports'], function () {
 
 Route::group(['prefix' => 'club-access'], function() {
    Route::get('register', [ClubViewController::class, 'register'])->name('club.access.register');
+   Route::post('create-account', [ClubViewController::class, 'createClubManager'])->name('club.access.create-user');
 });
