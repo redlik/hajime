@@ -102,6 +102,14 @@
                                             </a>
                                         </p>
                                     @endif
+                                    <div class="text-center text-judo-700 mt-4">
+                                        <p>If you are a Club manager and would like to setup your access account,
+                                            please follow the link below.</p>
+                                        <div class="mt-2">
+                                            <a href="{{ route('club.access.register') }}" class="font-semibold underline hover:text-judo-400">Register club access</a>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </form>
                         </div>
@@ -111,7 +119,7 @@
                         <h3 class="font-bold text-2xl mb-4">Hi {{ Auth::user()->name }}</h3>
                         <h5 class="font-semibold text-xl mb-4">More content coming here soon...</h5>
                     </div>
-                        @endauth
+                    @endauth
                 </div>
             </section>
         </div>

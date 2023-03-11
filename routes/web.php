@@ -2,6 +2,7 @@
 
 use App\Exports\GradingListExport;
 use App\Http\Controllers\ClubDocumentController;
+use App\Http\Controllers\ClubViewController;
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\GradFormController;
 use App\Http\Controllers\MemberDocumentController;
@@ -97,4 +98,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'exports'], function () {
     Route::get('/invalid-coaches', [InvalidCoachReportController::class, 'export'])->name('report.invalid.coach.export');
     Route::get('/consent-list', [EmailConsentReportController::class, 'export'])->name('report.consent.export');
     Route::get('/grading-list/{request?}', [GradingReportController::class, 'export'])->name('report.grading.export');
+});
+
+Route::group(['prefix' => 'club-access'], function() {
+   Route::get('register', [ClubViewController::class, 'register'])->name('club.access.register');
 });
