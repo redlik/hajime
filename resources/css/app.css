@@ -118,4 +118,8 @@
     input:focus, textarea:focus, select:focus {
         @apply focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
     }
+
+    p {
+        @apply leading-6 text-gray-600;
+    }
 }
