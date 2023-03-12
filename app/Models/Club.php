@@ -29,6 +29,11 @@ class Club extends Model
     {
         return ucwords($value);
     }
+
+    public function manager()
+    {
+        return $this->hasMany(User::class);
+    }
 }
 
 
