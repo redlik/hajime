@@ -16,6 +16,7 @@ use App\Http\Controllers\Reports\InvalidCoachReportController;
 use App\Http\Controllers\Reports\InvalidPersonnelReportController;
 use App\Http\Controllers\Reports\MembershipReportController;
 use App\Http\Controllers\Reports\MembersReportController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\VolunteerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClubController;
@@ -104,4 +105,7 @@ Route::group(['prefix' => 'club-access'], function() {
    Route::get('register', [ClubViewController::class, 'register'])->name('club.access.register');
    Route::post('create-account', [ClubViewController::class, 'createClubManager'])->name('club.access.create-user');
    Route::get('users', [ClubViewController::class, 'usersView'])->name('club.access.users');
+   Route::post('activate', [UserController::class, 'activateAccount'])->name('user.activate-account');
+   Route::post('deactivate', [UserController::class, 'deactivateUser'])->name('user.deactivate-user');
+   Route::get('delete/{user}', [UserController::class, 'deleteUser'])->name('user.delete-user');
 });
