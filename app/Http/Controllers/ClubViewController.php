@@ -37,7 +37,19 @@ class ClubViewController extends Controller
         ]);
 
         $user->assignRole('manager');
-        dd($user);
-        return view('home');
+
+        $message = "Account created";
+
+        \Session::flash('registered', $message);
+
+        return view('club-access.account-created');
     }
+
+    public function usersView()
+    {
+        $users = User::whereHas('club_manager')->orderBy('club_id', 'asc')->orderBy('created_at', 'desc')->with('club_manager')->paginate(25);
+
+        return view('club-access.users-list', compact('users'));
+    }
+
 }
