@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Helpers\SpatieRoleCheck;
 use App\Http\Requests\ClubManagerRequest;
+use App\Mail\AccountActivated;
+use App\Mail\AccountSubmitted;
 use App\Models\Club;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Spatie\Permission\Models\Role;
 
 class ClubViewController extends Controller
@@ -39,6 +42,8 @@ class ClubViewController extends Controller
         $user->assignRole('manager');
 
         $message = "Account created";
+        $admin = User::whereEmail('info@collage.ie')->first();
+        Mail::to($admin)->send(new AccountSubmitted($user));
 
         \Session::flash('registered', $message);
 
@@ -47,9 +52,8 @@ class ClubViewController extends Controller
 
     public function usersView()
     {
-        $users = User::whereHas('club_manager')->orderBy('club_id', 'asc')->orderBy('created_at', 'desc')->with('club_manager')->paginate(25);
 
-        return view('club-access.users-list', compact('users'));
+        return view('club-access.users-list');
     }
 
 }
