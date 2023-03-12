@@ -23,6 +23,7 @@ class User extends Authenticatable
         'email',
         'club_id',
         'password',
+        'status'
     ];
 
     /**
