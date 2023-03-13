@@ -108,4 +108,5 @@ Route::group(['prefix' => 'club-access'], function() {
    Route::post('activate', [UserController::class, 'activateAccount'])->name('user.activate-account');
    Route::post('deactivate', [UserController::class, 'deactivateUser'])->name('user.deactivate-user');
    Route::get('delete/{user}', [UserController::class, 'deleteUser'])->name('user.delete-user');
+   Route::get('club', [ClubViewController::class, 'clubIndex'])->name('club.access.club');
 });
