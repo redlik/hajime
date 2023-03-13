@@ -56,4 +56,11 @@ class ClubViewController extends Controller
         return view('club-access.users-list');
     }
 
+    public function clubIndex()
+    {
+        $club = Club::find(Auth::user()->club_id);
+
+       return true;
+    }
+
 }
