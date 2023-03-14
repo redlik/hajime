@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AccountActivated;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -14,6 +16,9 @@ class UserController extends Controller
         $user->update([
             'status' => 'active'
         ]);
+
+        Mail::to($user)->send(new AccountActivated($user));
+
         \Session::flash('message', 'User account activated');
 
         return redirect()->back();

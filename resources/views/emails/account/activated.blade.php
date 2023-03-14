@@ -1,12 +1,17 @@
 <x-mail::message>
-# Introduction
+# Hello
+Your account to Hajime Portal has been activated.
 
-The body of your message.
+You can now login and view your club's data.
 
-<x-mail::button :url="''">
-Button Text
+Your details: {{ $user->email }}
+
+Your club: {{ $user->club_manager->name }}
+
+<x-mail::button :url="$url">
+Login
 </x-mail::button>
 
-Thanks,<br>
+Thank you,<br>
 {{ config('app.name') }}
 </x-mail::message>

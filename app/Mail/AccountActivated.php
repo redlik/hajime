@@ -34,7 +34,7 @@ class AccountActivated extends Mailable
     {
         return new Envelope(
             from: new Address('info@collage.ie', 'Hajime admin'),
-            subject: 'Account Activated',
+            subject: 'Hajime Portal - Account Activated',
         );
     }
 
@@ -47,6 +47,9 @@ class AccountActivated extends Mailable
     {
         return new Content(
             markdown: 'emails.account.activated',
+            with: [
+                'url' => route('home'),
+            ]
         );
     }
 

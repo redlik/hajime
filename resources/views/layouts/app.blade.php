@@ -49,6 +49,7 @@
                 @role('admin')
                 <a class="no-underline hover:underline hover:text-orange-200" href="{{ route('clubs.index') }}">Clubs</a>
                 <a class="no-underline hover:underline hover:text-orange-200" href="{{ route('member.index') }}">Members</a>
+                <a class="no-underline hover:underline hover:text-orange-200" href="{{ route('club.access.users') }}">Users</a>
                 <!-- Profile dropdown -->
                 <div @click.away="dropdown = false" class="ml-3 relative inline-block font-semibold" x-data="{ dropdown:
                 false }">
