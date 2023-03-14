@@ -39,13 +39,11 @@ use App\Http\Controllers\VenueController;
 */
 
 Route::get('/', function() {
-    return view('home');
-});
+    return view('home-new');
+})->name('home');
 
 Auth::routes(['register' => false]);
 //Auth::routes();
-
-Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('clubs', ClubController::class);

@@ -29,6 +29,9 @@
             </div>
         </div>
         <div class="w-full">
+            {{ $active }}
+        </div>
+        <div class="w-full">
             <div class="w-full">
                 @if(Session::has('message'))
                     <p class="bg-green-100 text-green-700 p-6 rounded mb-4">{{ Session::get('message') }}</p>
@@ -76,17 +79,24 @@
                         uppercase tracking-wider shadow-lg">
                         Grade
                     </th>
+                    @role('admin')
                     <th
                         class="px-5 py-3 rounded-r bg-gray-600 text-center text-xs font-semibold text-gray-100
                         uppercase
                         tracking-wider shadow-lg">
                         Actions
                     </th>
+                    @endrole
+                    @role('manager')
+                    <th
+                        class="px-5 py-3 rounded-r bg-gray-600 text-center text-xs font-semibold text-gray-100
+                        uppercase
+                        tracking-wider shadow-lg">
+                    </th>
+                    @endrole
                 </tr>
             </thead>
             <tbody>
-
-
                 @forelse ($members as $member)
                     <tr>
                     <td class="px-5 py-5 border-b border-gray-200 text-sm hidden md:block">
@@ -123,6 +133,7 @@
                     </td>
 
                     <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                        @role('admin')
                         <p class="text-gray-900 whitespace-no-wrap">
                             <a href="{{ route('member.show', $member) }}" class="text-blue-600 font-bold
                             hover:text-blue-300" title="View member details"><i class="far fa-eye"></i></a>
@@ -132,6 +143,7 @@
                             font-bold
                             hover:text-pink-300 ml-3" title="Clone existing member"><i class="far fa-clone"></i></a>
                         </p>
+                        @endrole
                     </td>
                     </tr>
                     @empty

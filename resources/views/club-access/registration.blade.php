@@ -1,16 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-    <main class="sm:container sm:mx-auto sm:max-w-lg sm:mt-10">
-        <div class="flex">
-            <div class="w-full">
-                <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
+    <main class="w-full flex" style="height: calc(100vh - 48px);">
+        <div class="hidden md:block w-1/2 h-full">
+            <img src="{{ asset('images/registration-bg.jpg') }}" class="h-full object-cover" alt="">
+        </div>
+        <div class="w-full lg:w-1/2 flex flex-col bg-white h-full justify-center">
 
-                    <header class="font-semibold bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
+            @if (session('status'))
+                <div
+                    class="text-sm border border-t-8 rounded text-green-700 border-green-600 bg-green-100 px-3 py-4 mb-4"
+                    role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
+            <section class="flex flex-col px-2 md:px-12">
+
+                    <header class="font-semibold text-judo-700 text-2xl py-5 px-6 sm:py-6 text-center">
                         {{ __('Register new club access account') }}
                     </header>
 
-                    <form class="w-full px-6 space-y-4 sm:px-10 sm:space-y-8" method="POST"
+                    <form class="w-full px-6 bg-gray-100 rounded shadown-sm space-y-4 sm:px-10 sm:space-y-8" method="POST"
                           action="{{ route('club.access.create-user') }}">
                         @csrf
 
@@ -105,7 +115,8 @@
                     </form>
 
                 </section>
-            </div>
+
         </div>
     </main>
 @endsection
+

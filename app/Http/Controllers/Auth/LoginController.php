@@ -34,7 +34,7 @@ class LoginController extends Controller
         if (auth()->user()->hasRole('manager')) {
             return '/club';
         }
-        return '/home';
+        return '/clubs';
     }
 
     /**

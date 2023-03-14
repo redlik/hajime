@@ -97,6 +97,9 @@
                         </div></transition>
                 </div>
                 @endrole
+                @role('manager')
+                <a class="no-underline hover:underline hover:text-orange-200" href="{{ route('club.access.club') }}">My Club</a>
+                @endrole
                 @guest
                     <a class="no-underline hover:underline hover:text-orange-200" href="{{ route('login') }}">{{ __('Login') }}</a>
                     <a class="no-underline hover:underline hover:text-orange-200" href="{{ route('club.access.register') }}">{{ __('Register') }}</a>
@@ -111,7 +114,6 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
                         {{ csrf_field() }}
                     </form>
-                    <span>Hi {{ Auth::user()->name }}</span>
                 @endguest
             </nav>
         </div>
