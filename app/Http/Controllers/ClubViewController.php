@@ -57,10 +57,10 @@ class ClubViewController extends Controller
         return view('club-access.users-list');
     }
 
-    public function clubIndex()
+    public function clubShow()
     {
         $user = Auth::user();
-        $club = Club::whereId($user->club_id)->with('venues', 'member')->first();
+        $club = Club::whereId($user->club_id)->with('venues', 'member', 'personnel')->first();
         return view('club-access.club-view', compact('club'));
     }
 

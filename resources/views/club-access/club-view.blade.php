@@ -215,36 +215,59 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td class="px-5 py-5 border-b border-gray-200 font-bold
-                                                text-judo-700">
-                                            Head Coach
-                                        </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-5 py-5 border-b border-gray-200 font-bold
-                                                text-judo-700">
-                                            Secretary
-                                        </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-5 py-5 border-b border-gray-200 font-bold
-                                                text-judo-700">
-                                            Designated Person
-                                        </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-5 py-5 border-b border-gray-200 font-bold
-                                                text-judo-700">
-                                            Children's Officer
-                                        </td>
-                                        <td></td>
-                                    </tr>
+                                    @foreach($club->personnel as $personnel)
+                                    @switch($personnel->role)
+                                        @case('Head Coach')
+                                        <tr>
+                                            <td class="px-5 py-5 border-b border-gray-200 font-bold
+                                                    text-judo-700">
+                                                Head Coach
+                                            </td>
+                                            <td>
+                                                {{ $personnel->name }}
+                                            </td>
+                                        </tr>
+                                        @break
+                                        @case('Secretary')
+                                        <tr>
+                                            <td class="px-5 py-5 border-b border-gray-200 font-bold
+                                                    text-judo-700">
+                                                Secretary
+                                            </td>
+                                            <td>
+                                                {{ $personnel->name }}
+                                            </td>
+                                        </tr>
+                                        @break
+                                        @case('Designated Person')
+                                        <tr>
+                                            <td class="px-5 py-5 border-b border-gray-200 font-bold
+                                                    text-judo-700">
+                                                Designated Person
+                                            </td>
+                                            <td>
+                                                {{ $personnel->name }}
+                                            </td>
+                                        </tr>
+                                        @break
+                                        @case('Childrens Officer')
+                                        <tr>
+                                            <td class="px-5 py-5 border-b border-gray-200 font-bold
+                                                    text-judo-700">
+                                                Children's Officer
+                                            </td>
+                                            <td>
+                                                {{ $personnel->name }}
+                                            </td>
+                                        </tr>
+                                        @break
+                                    @endswitch
+                                    @endforeach
                                     </tbody>
                                 </table>
+                                <div class="text-xs text-gray-600 bg-gray-100 p-2 mt-4">
+                                    First date indicates the complation of the qualification, the second date is its expiry. Expired dates are shown in red.
+                                </div>
                             </div>
                             <div class="w-full mt-12">
                                 <h4 class="font-bold text-xl text-gray-600 mb-4" id="volunteers">Coaches:</h4>
