@@ -13,4 +13,9 @@ class Volunteer extends Model
      */
 
     use HasFactory;
+
+    public function club()
+    {
+        return $this->belongsTo(Club::class);
+    }
 }
