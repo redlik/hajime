@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
 
 class ClubViewController extends Controller
 {
@@ -58,9 +59,9 @@ class ClubViewController extends Controller
 
     public function clubIndex()
     {
-        $club = Club::find(Auth::user()->club_id);
-
-       return true;
+        $user = Auth::user();
+        $club = Club::whereId($user->club_id)->with('venues', 'member')->first();
+        return view('club-access.club-view', compact('club'));
     }
 
 }
