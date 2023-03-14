@@ -46,6 +46,7 @@
             </div>
             <nav class="space-x-4 text-white text-sm sm:text-base font-semibold" x-data="{dropdown: false}">
                 <a class="no-underline hover:underline hover:text-orange-200" href="/">Home</a>
+                @role('admin')
                 <a class="no-underline hover:underline hover:text-orange-200" href="{{ route('clubs.index') }}">Clubs</a>
                 <a class="no-underline hover:underline hover:text-orange-200" href="{{ route('member.index') }}">Members</a>
                 <!-- Profile dropdown -->
@@ -95,8 +96,10 @@
 
                         </div></transition>
                 </div>
+                @endrole
                 @guest
                     <a class="no-underline hover:underline hover:text-orange-200" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    <a class="no-underline hover:underline hover:text-orange-200" href="{{ route('club.access.register') }}">{{ __('Register') }}</a>
 {{--                    @if (Route::has('register'))--}}
 {{--                        <a class="no-underline hover:underline" href="{{ route('register') }}">{{ __('Register') }}</a>--}}
 {{--                    @endif--}}

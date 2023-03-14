@@ -32,7 +32,7 @@ class LoginController extends Controller
     public function redirectTo()
     {
         if (auth()->user()->hasRole('manager')) {
-            return '/club-access/club';
+            return '/club';
         }
         return '/home';
     }
