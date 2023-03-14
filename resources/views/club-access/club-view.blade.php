@@ -215,7 +215,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($club->personnel as $personnel)
+                                    @foreach($personnels as $personnel)
                                     @switch($personnel->role)
                                         @case('Head Coach')
                                         <tr>
@@ -223,8 +223,98 @@
                                                     text-judo-700">
                                                 Head Coach
                                             </td>
-                                            <td>
-                                                {{ $personnel->name }}
+                                            <td class="px-5 py-5 border-b border-gray-200">
+                                                <div class="text-gray-700 font-bold">{{ $personnel->name }}</div>
+                                                <div class="text-sm">
+                                                    <span class="font-bold text-gray-500 w-8">e:</span>
+                                                    <a href="mailto:{{ $personnel->email }}">
+                                                        {{ $personnel->email }}</a>
+                                                    <br>
+                                                    <span
+                                                        class="font-bold text-gray-500 w-8">t:</span>
+                                                    {{ $personnel->phone }}
+                                                </div>
+                                            </td>
+                                            <td class="px-5 py-5 border-b border-gray-200">
+                                                <div class="flex items-center text-sm">
+                                                    <div>
+                                                        <div class="gray-date">
+                                                            {{ $personnel->safeguarding_completion ?? 'Not set' }}</div>
+                                                        @if ( $personnel->safeguarding_expiry)
+                                                            @if($personnel->safeguarding_expiry < now())
+                                                                <div class="expired-date">{{
+                                                                    $personnel->safeguarding_expiry }}</div>
+                                                            @else
+                                                                <div class="valid-date">
+                                                                    {{ $personnel->safeguarding_expiry }}
+                                                                </div>
+                                                            @endif
+                                                        @else
+                                                            <div
+                                                                class="bg-gray-200 text-gray-600 rounded-lg py-1 px-2">
+                                                                Not set
+                                                            </div>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="px-5 py-5 border-b border-gray-200">
+                                                <div class="flex items-center text-sm">
+                                                    <div>
+                                                        <div class="gray-date">
+                                                            {{ $personnel->vetting_completion ?? 'Not set' }}</div>
+                                                        @if ( $personnel->vetting_expiry)
+                                                            @if($personnel->vetting_expiry < now())
+                                                                <div class="expired-date">{{
+                                                                    $personnel->vetting_expiry }}</div>
+                                                            @else
+                                                                <div class="valid-date">
+                                                                    {{ $personnel->vetting_expiry }}
+                                                                </div>
+                                                            @endif
+                                                        @else
+                                                            <div
+                                                                class="gray-date">
+                                                                Not set
+                                                            </div>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="px-5 py-5 border-b border-gray-200">
+                                                <div class="flex items-center text-sm">
+                                                    <div>
+                                                        <div class="gray-date">
+                                                            {{ $personnel->first_aid_completion ?? 'Not set' }}</div>
+                                                        @if ( $personnel->first_aid_expiry)
+                                                            @if($personnel->first_aid_expiry < now())
+                                                                <div class="expired-date">{{
+                                                                    $personnel->first_aid_expiry }}</div>
+                                                            @else
+                                                                <div class="valid-date">
+                                                                    {{ $personnel->first_aid_expiry }}
+                                                                </div>
+                                                            @endif
+                                                        @else
+                                                            <div
+                                                                class="gray-date">
+                                                                Not set
+                                                            </div>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="px-5 py-5 border-b border-gray-200">
+                                                <div class="flex items-center text-sm">
+                                                    <div>
+                                                        <div class="gray-date">
+                                                            {{$personnel->coaching_qualification ?? 'Not set'}}
+                                                        </div>
+                                                        <div class="gray-date">
+                                                            {{ $personnel->coaching_date ?? 'Not set'}}
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
                                         @break
@@ -234,8 +324,69 @@
                                                     text-judo-700">
                                                 Secretary
                                             </td>
-                                            <td>
-                                                {{ $personnel->name }}
+                                            <td class="px-5 py-5 border-b border-gray-200">
+                                                <div class="text-gray-700 font-bold">{{ $personnel->name }}</div>
+                                                <div class="text-sm">
+                                                    <span class="font-bold text-gray-500 w-8">e:</span>
+                                                    <a href="mailto:{{ $personnel->email }}">
+                                                        {{ $personnel->email }}</a>
+                                                    <br>
+                                                    <span
+                                                        class="font-bold text-gray-500 w-8">t:</span>
+                                                    {{ $personnel->phone }}
+                                                </div>
+                                            </td>
+                                            <td class="px-5 py-5 border-b border-gray-200">
+                                                <div class="flex items-center text-sm">
+                                                    <div>
+                                                        <div class="gray-date">
+                                                            {{ $personnel->safeguarding_completion ?? 'Not set' }}</div>
+                                                        @if ( $personnel->safeguarding_expiry)
+                                                            @if($personnel->safeguarding_expiry < now())
+                                                                <div class="expired-date">{{
+                                                                    $personnel->safeguarding_expiry }}</div>
+                                                            @else
+                                                                <div class="valid-date">
+                                                                    {{ $personnel->safeguarding_expiry }}
+                                                                </div>
+                                                            @endif
+                                                        @else
+                                                            <div
+                                                                class="gray-date">
+                                                                Not set
+                                                            </div>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="px-5 py-5 border-b border-gray-200">
+                                                <div class="flex items-center text-sm">
+                                                    <div>
+                                                        <div class="gray-date">
+                                                            {{ $personnel->vetting_completion ?? 'Not set' }}</div>
+                                                        @if ( $personnel->vetting_expiry)
+                                                            @if($personnel->vetting_expiry < now())
+                                                                <div class="expired-date">{{
+                                                                    $personnel->vetting_expiry }}</div>
+                                                            @else
+                                                                <div class="valid-date">
+                                                                    {{ $personnel->vetting_expiry }}
+                                                                </div>
+                                                            @endif
+                                                        @else
+                                                            <div
+                                                                class="gray-date">
+                                                                Not set
+                                                            </div>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="px-5 py-5 border-b border-gray-200">
+
+                                            </td>
+                                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+
                                             </td>
                                         </tr>
                                         @break
@@ -245,8 +396,67 @@
                                                     text-judo-700">
                                                 Designated Person
                                             </td>
-                                            <td>
-                                                {{ $personnel->name }}
+                                            <td class="px-5 py-5 border-b border-gray-200">
+                                                <div class="text-gray-700 font-bold">{{ $personnel->name }}</div>
+                                                <div class="text-sm">
+                                                    <span class="font-bold text-gray-500 w-8">e:</span>
+                                                    <a href="mailto:{{ $personnel->email }}">
+                                                        {{ $personnel->email }}</a>
+                                                    <br>
+                                                    <span
+                                                        class="font-bold text-gray-500 w-8">t:</span>
+                                                    {{ $personnel->phone }}
+                                                </div>
+                                            </td>
+                                            <td class="px-5 py-5 border-b border-gray-200">
+                                                <div class="flex items-center text-sm">
+                                                    <div>
+                                                        <div class="gray-date">
+                                                            {{ $personnel->safeguarding_completion ?? 'Not set' }}</div>
+                                                        @if ( $personnel->safeguarding_expiry)
+                                                            @if($personnel->safeguarding_expiry < now())
+                                                                <div class="expired-date">{{
+                                                                    $personnel->safeguarding_expiry }}</div>
+                                                            @else
+                                                                <div class="valid-date">
+                                                                    {{ $personnel->safeguarding_expiry }}
+                                                                </div>
+                                                            @endif
+                                                        @else
+                                                            <div
+                                                                class="gray-date">
+                                                                Not set
+                                                            </div>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="px-5 py-5 border-b border-gray-200">
+                                                <div class="flex items-center text-sm">
+                                                    <div>
+                                                        <div class="gray-date">
+                                                            {{ $personnel->vetting_completion ?? 'Not set' }}</div>
+                                                        @if ( $personnel->vetting_expiry)
+                                                            @if($personnel->vetting_expiry < now())
+                                                                <div class="expired-date">{{
+                                                                    $personnel->vetting_expiry }}</div>
+                                                            @else
+                                                                <div class="valid-date">
+                                                                    {{ $personnel->vetting_expiry }}
+                                                                </div>
+                                                            @endif
+                                                        @else
+                                                            <div
+                                                                class="gray-date">
+                                                                Not set
+                                                            </div>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="px-5 py-5 border-b border-gray-200">
+                                            </td>
+                                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                             </td>
                                         </tr>
                                         @break
@@ -256,17 +466,77 @@
                                                     text-judo-700">
                                                 Children's Officer
                                             </td>
-                                            <td>
-                                                {{ $personnel->name }}
+                                            <td class="px-5 py-5 border-b border-gray-200">
+                                                <div class="text-gray-700 font-bold">{{ $personnel->name }}</div>
+                                                <div class="text-sm">
+                                                    <span class="font-bold text-gray-500 w-8">e:</span>
+                                                    <a href="mailto:{{ $personnel->email }}">
+                                                        {{ $personnel->email }}</a>
+                                                    <br>
+                                                    <span
+                                                        class="font-bold text-gray-500 w-8">t:</span>
+                                                    {{ $personnel->phone }}
+                                                </div>
                                             </td>
+                                            <td class="px-5 py-5 border-b border-gray-200">
+                                                <div class="flex items-center text-sm">
+                                                    <div>
+                                                        <div class="gray-date">
+                                                            {{ $personnel->safeguarding_completion ?? 'Not set' }}</div>
+                                                        @if ( $personnel->safeguarding_expiry)
+                                                            @if($personnel->safeguarding_expiry < now())
+                                                                <div class="expired-date">{{
+                                                                    $personnel->safeguarding_expiry }}</div>
+                                                            @else
+                                                                <div class="valid-date">
+                                                                    {{ $personnel->safeguarding_expiry }}
+                                                                </div>
+                                                            @endif
+                                                        @else
+                                                            <div
+                                                                class="gray-date">
+                                                                Not set
+                                                            </div>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="px-5 py-5 border-b border-gray-200">
+                                                <div class="flex items-center text-sm">
+                                                    <div>
+                                                        <div class="gray-date">
+                                                            {{ $personnel->vetting_completion ?? 'Not set' }}</div>
+                                                        @if ( $personnel->vetting_expiry)
+                                                            @if($personnel->vetting_expiry < now())
+                                                                <div class="expired-date">{{
+                                                                    $personnel->vetting_expiry }}</div>
+                                                            @else
+                                                                <div class="valid-date">
+                                                                    {{ $personnel->vetting_expiry }}
+                                                                </div>
+                                                            @endif
+                                                        @else
+                                                            <div
+                                                                class="gray-date">
+                                                                Not set
+                                                            </div>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="px-5 py-5 border-b border-gray-200">
+                                            </td>
+                                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                            </td>
+
                                         </tr>
                                         @break
                                     @endswitch
                                     @endforeach
                                     </tbody>
                                 </table>
-                                <div class="text-xs text-gray-600 bg-gray-100 p-2 mt-4">
-                                    First date indicates the complation of the qualification, the second date is its expiry. Expired dates are shown in red.
+                                <div class="text-xs text-gray-500 bg-gray-100 p-2 mt-4 font-medium rounded">
+                                    First date indicates the completion of the qualification, the second date is its expiry. Expired dates are shown in red.
                                 </div>
                             </div>
                             <div class="w-full mt-12">
@@ -350,9 +620,14 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <td></td>
+                                        <tbody>
+                                        @each('volunteer.volunteer-list', $club->volunteer, 'volunteer', 'volunteer.empty')
+                                        </tbody>
                                         </tbody>
                                     </table>
+                                    <div class="text-xs text-gray-500 bg-gray-100 p-2 mt-4 font-medium rounded">
+                                        First date indicates the completion of the qualification, the second date is its expiry. Expired dates are shown in red.
+                                    </div>
                                 </div>
                             </div>
                         </div>

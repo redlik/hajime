@@ -7,6 +7,7 @@ use App\Http\Requests\ClubManagerRequest;
 use App\Mail\AccountActivated;
 use App\Mail\AccountSubmitted;
 use App\Models\Club;
+use App\Models\Personnel;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -60,8 +61,9 @@ class ClubViewController extends Controller
     public function clubShow()
     {
         $user = Auth::user();
-        $club = Club::whereId($user->club_id)->with('venues', 'member', 'personnel')->first();
-        return view('club-access.club-view', compact('club'));
+        $club = Club::whereId($user->club_id)->with('venues', 'member', 'personnel', 'volunteer')->first();
+        $personnels = Personnel::orderByRaw("FIELD(role, 'Head Coach', 'Secretary', 'Designated Person', 'Childrens Officer')")->where('club_id', $club->id)->get();
+        return view('club-access.club-view', compact('club', 'personnels'));
     }
 
 }
