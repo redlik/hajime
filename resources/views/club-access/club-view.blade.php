@@ -22,7 +22,7 @@
                                     }">
                     {{-- TABS SECTION --}}
                     <div class="w-full px-6">
-                        <ul class="flex flex-wrap">
+                        <ul class="flex flex-wrap justify-center">
                             <li class="-mb-px mr-3 md:mb-0 sm:mb-3" :class="{ '-mb-px': openTab === '#details' }"
                                 @click="openTab =
                         '#details'">
@@ -144,11 +144,6 @@
                         </div>
                         <div class="w-full border bg-white border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
                             <h4 class="font-bold text-xl text-gray-600 mb-4" id="venues">Training Venues:</h4>
-                            <div class="w-full mb-6">
-                                <a href="{{ route('venue.create.club', $club->id) }}">
-                                    <button class="button-judo">+ Add new venue</button>
-                                </a>
-                            </div>
                             <table class="min-w-full table leading-normal">
                                 <thead>
                                 <tr>
@@ -163,15 +158,10 @@
                                         font-semibold text-white uppercase tracking-wider">
                                         Contact
                                     </th>
-                                    <th
-                                        class="px-5 py-3 rounded-r bg-gray-600 text-center
-                                        text-xs font-semibold text-white uppercase tracking-wider">
-                                        Actions
-                                    </th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @each('venue.venue-list', $venues, 'venue', 'venue.empty')
+                                @each('venue.venue-list-club', $club->venues, 'venue', 'venue.empty')
                                 </tbody>
                             </table>
                         </div>
@@ -222,12 +212,6 @@
                                             shadow-lg">
                                             Qualifications
                                         </th>
-                                        <th
-                                            class="w-24 py-3 rounded-r bg-gray-600
-                                            text-center text-xs font-semibold text-white uppercase tracking-wider
-                                            shadow-lg">
-                                            Actions
-                                        </th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -236,69 +220,34 @@
                                                 text-judo-700">
                                             Head Coach
                                         </td>
-                                        @if(!$headCoach)
-                                            <td class="px-5 py-5 border-b border-gray-200">
-                                                <a href="{{ route('club.addPersonnel', [$club->id, 'Head Coach'])}}"
-                                                   class="action-button">+ Add new Headcoach</a>
-                                            </td>
-                                        @else
-                                            @include('personnel.headcoach')
-                                        @endif
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td class="px-5 py-5 border-b border-gray-200 font-bold
                                                 text-judo-700">
                                             Secretary
                                         </td>
-                                        @if(!$secretary)
-                                            <td colspan="6" class="px-5 py-5 border-b border-gray-200">
-                                                <a href="{{ route('club.addPersonnel', [$club->id, 'Secretary'])}}"
-                                                   class="action-button">+ Add new Secretary</a>
-                                            </td>
-                                        @else
-                                            @include('personnel.secretary')
-                                        @endif
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td class="px-5 py-5 border-b border-gray-200 font-bold
                                                 text-judo-700">
                                             Designated Person
                                         </td>
-                                        @if(!$designated)
-                                            <td colspan="6" class="px-5 py-5 border-b border-gray-200">
-                                                <a href="{{ route('club.addPersonnel',
-                                                            [$club->id, 'Designated Person'])}}"
-                                                   class="action-button">+ Add new Designated
-                                                    Person</a>
-                                            </td>
-                                        @else
-                                            @include('personnel.designated')
-                                        @endif
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td class="px-5 py-5 border-b border-gray-200 font-bold
                                                 text-judo-700">
                                             Children's Officer
                                         </td>
-                                        @if(!$childrens)
-                                            <td colspan="6" class="px-5 py-5 border-b border-gray-200">
-                                                <a href="{{ route('club.addPersonnel', [$club->id, 'Childrens Officer'])
-                                                }}"
-                                                   class="action-button">+ Add new Children's
-                                                    Officer</a>
-                                            </td>
-                                        @else
-                                            @include('personnel.children')
-                                        @endif
+                                        <td></td>
                                     </tr>
                                     </tbody>
                                 </table>
                             </div>
                             <div class="w-full mt-12">
                                 <h4 class="font-bold text-xl text-gray-600 mb-4" id="volunteers">Coaches:</h4>
-                                <a href="{{ route('coach.addCoach', [$club->id])}}">
-                                    <button class="button-judo">+ Add new Coach</button>
-                                </a>
                                 <table class="min-w-full table leading-normal mt-8">
                                     <thead>
                                     <tr>
@@ -332,16 +281,10 @@
                                             shadow-lg">
                                             Qualifications
                                         </th>
-                                        <th
-                                            class="px-5 py-3 rounded-r bg-gray-600
-                                            text-left text-xs font-semibold text-white uppercase tracking-wider
-                                            shadow-lg">
-                                            Actions
-                                        </th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @each('coach.coach-list', $coaches, 'coach', 'coach.empty')
+                                    <td></td>
                                     </tbody>
                                 </table>
 
@@ -357,9 +300,6 @@
                             <h4 class="font-bold text-xl text-gray-600 mb-4" id="personnel">Club Volunteers:</h4>
                             <div class="w-full flex flex-wrap">
                                 <div class="w-full">
-                                    <a href="{{ route('volunteer.addVolunteer', [$club->id])}}">
-                                        <button class="button-judo">+ Add new volunteer</button>
-                                    </a>
                                     <table class="min-w-full table leading-normal mt-8">
                                         <thead>
                                         <tr>
@@ -384,25 +324,14 @@
                                                 font-semibold text-gray-200 uppercase tracking-wider shadow-lg">
                                                 Safe Guarding
                                             </th>
-                                            <th
-                                                class="px-5 py-3 rounded-r bg-gray-600 text-center
-                                                text-xs
-                                                font-semibold text-gray-200 uppercase tracking-wider shadow-lg">
-                                                Actions
-                                            </th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @each('volunteer.volunteer-list', $volunteers, 'volunteer', 'volunteer.empty')
+                                        <td></td>
                                         </tbody>
                                     </table>
-
-
                                 </div>
-
                             </div>
-
-
                         </div>
                     </div>
 
@@ -410,11 +339,6 @@
                     <div class="w-full px-6 py-2" x-show="openTab === '#members'">
                         <div class="w-full bg-white border-2 border-gray-200 rounded-xl my-4 p-4 flex flex-wrap">
                             <h4 class="font-bold text-xl text-gray-600 mb-4 block w-full">Members:</h4>
-                            <div class="w-full block">
-                                <a href="{{ route('member.createWithClub', ['club' => $club->id]) }}">
-                                    <button class="button-judo">+ Add new member</button>
-                                </a>
-                            </div>
                             <div class="w-full block mb-8">
                                 @livewire('club-members', ['club_id' => $club->id])
                             </div>
