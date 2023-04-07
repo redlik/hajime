@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\AccountActivated;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
@@ -44,5 +45,12 @@ class UserController extends Controller
         \Session::flash('message', 'User account deleted');
 
         return redirect()->back();
+    }
+
+    public function settings()
+    {
+        $user = Auth::user();
+
+        return view('user.settings', compact('user'));
     }
 }
