@@ -103,7 +103,6 @@
                 @endrole
                 @guest
                     <a class="no-underline hover:underline hover:text-orange-200" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    <a class="no-underline hover:underline hover:text-orange-200" href="{{ route('club.access.register') }}">{{ __('Register') }}</a>
 {{--                    @if (Route::has('register'))--}}
 {{--                        <a class="no-underline hover:underline" href="{{ route('register') }}">{{ __('Register') }}</a>--}}
 {{--                    @endif--}}

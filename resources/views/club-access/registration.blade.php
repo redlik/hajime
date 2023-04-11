@@ -17,12 +17,16 @@
             <section class="flex flex-col px-2 md:px-12">
 
                     <header class="font-semibold text-judo-700 text-2xl py-5 px-6 sm:py-6 text-center">
-                        {{ __('Register new club access account') }}
+                        {{ __('Activate new club access account') }}
                     </header>
 
                     <form class="w-full px-6 bg-gray-100 rounded shadown-sm space-y-4 sm:px-10 sm:space-y-8" method="POST"
-                          action="{{ route('club.access.create-user') }}">
+                          action="{{ route('user.account-activated') }}">
                         @csrf
+                        <input type="hidden" name="id" value="{{ $user->id }}">
+                        <div class="text-gray-600 text-sm">
+                            You are activating the account for email: {{ $user->email }} which will access club: {{ $user->club_manager->name }}
+                        </div>
 
                         <div class="flex flex-wrap">
                             <label for="name" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
@@ -33,41 +37,6 @@
                                    name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                             @error('name')
-                            <p class="text-red-500 text-xs italic mt-4">
-                                {{ $message }}
-                            </p>
-                            @enderror
-                        </div>
-
-                        <div class="flex flex-wrap">
-                            <label for="clubs" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
-                                {{ __('Club') }}:
-                            </label>
-
-                            <select name="clubs" id="clubs" class="border-gray-300 rounded shadow-sm focus:shadow-lg w-full" required>
-                                <option value="" disabled selected>Select your club</option>
-                                @foreach($clubs as $club)
-                                    <option value="{{ $club->id }}">{{ $club->name }}</option>
-                                @endforeach
-                            </select>
-
-                            @error('email')
-                            <p class="text-red-500 text-xs italic mt-4">
-                                {{ $message }}
-                            </p>
-                            @enderror
-                        </div>
-
-                        <div class="flex flex-wrap">
-                            <label for="email" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
-                                {{ __('E-Mail Address') }}:
-                            </label>
-
-                            <input id="email" type="email"
-                                   class="border-gray-300 rounded shadow-sm focus:shadow-lg w-full @error('email') border-red-500 @enderror" name="email"
-                                   value="{{ old('email') }}" required autocomplete="email">
-
-                            @error('email')
                             <p class="text-red-500 text-xs italic mt-4">
                                 {{ $message }}
                             </p>
@@ -102,7 +71,7 @@
                         <div class="flex flex-wrap">
                             <button type="submit"
                                     class="w-full select-none font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-judo-500 hover:bg-judo-600 sm:py-4">
-                                {{ __('Register') }}
+                                {{ __('Activate account') }}
                             </button>
 
                             <p class="w-full text-xs text-center text-gray-700 my-6 sm:text-sm sm:my-8">
@@ -119,4 +88,3 @@
         </div>
     </main>
 @endsection
-

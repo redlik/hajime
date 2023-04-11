@@ -101,11 +101,11 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'exports'], function () {
 
 Route::group(['prefix' => 'club-access'], function() {
    Route::get('users', [ClubViewController::class, 'usersView'])->name('club.access.users');
-   Route::post('activate', [UserController::class, 'activateAccount'])->name('user.activate-account');
+   Route::get('activate-user/{user}', [UserController::class, 'userActivationLink'])->name('user.user-activated-account');
+   Route::post('activated', [UserController::class, 'userActivatedAccount'])->name('user.account-activated');
+   Route::post('invite', [UserController::class, 'inviteUser'])->name('user.invite-user');
    Route::post('deactivate', [UserController::class, 'deactivateUser'])->name('user.deactivate-user');
    Route::get('delete/{user}', [UserController::class, 'deleteUser'])->name('user.delete-user');
 });
 
-Route::get('register', [ClubViewController::class, 'register'])->name('club.access.register');
-Route::post('create-account', [ClubViewController::class, 'createClubManager'])->name('club.access.create-user');
 Route::get('club', [ClubViewController::class, 'clubShow'])->middleware(['auth', 'pending'])->name('club.access.club');

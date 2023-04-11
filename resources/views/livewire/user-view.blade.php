@@ -13,9 +13,9 @@
         <thead>
         <tr>
             <th
-                class="px-5 py-3 rounded-l bg-gray-600 text-left text-xs font-semibold text-gray-100 uppercase
+                class="px-5 py-3 rounded-l bg-gray-600 text-center text-xs font-semibold text-gray-100 uppercase
                                     tracking-wider">
-                No
+                #
             </th>
             <th
                 class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold text-gray-100 uppercase
@@ -85,19 +85,6 @@
                 </td>
                 <td class="px-5 py-3 border-b border-gray-200 text-sm">
                     <div class="flex space-x-4 content-center">
-                        @if ($user->status == 'pending' || $user->status == 'deactivated')
-                            <form action="{{ route('user.activate-account') }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="user" value="{{ $user->id }}">
-                                <input type="submit" class="green-pillow cursor-pointer hover:bg-judo-500 hover:text-white" value="Activate">
-                            </form>
-                        @else
-                            <form action="{{ route('user.deactivate-user') }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="user" value="{{ $user->id }}">
-                                <input type="submit" class="red-pillow bg-purple-500 text-white cursor-pointer hover:bg-purple-700" value="Deactivate">
-                            </form>
-                        @endif
                         <a href="{{ route('user.delete-user', $user) }}" onclick="return confirm('Are you sure you want to delete this user?')"
                            class="text-red-700 font-semibold hover:underline">Delete</a>
                     </div>

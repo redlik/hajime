@@ -8,6 +8,7 @@ use App\Models\GradForm;
 use App\Models\Personnel;
 use App\Models\Coach;
 use App\Models\Clubnote;
+use App\Models\User;
 use App\Models\Venue;
 use App\Models\Volunteer;
 use Carbon\Carbon;
@@ -69,6 +70,16 @@ class ClubController extends Controller
      */
     public function show(Club $club)
     {
+        $access = false;
+        $email = '';
+
+        if ($user = User::where('club_id', $club->id)->first() ) {
+            $access = true;
+            $email = $user->email;
+        }
+
+        ray($email);
+
         $headCoach = Personnel::headcoach()->where('club_id', $club->id)->first();
         $secretary = Personnel::secretary()->where('club_id', $club->id)->first();
         $designated = Personnel::designatedofficer()->where('club_id', $club->id)->first();
@@ -83,7 +94,7 @@ class ClubController extends Controller
         $documents = ClubDocument::document($club->id)->get();
 
         return view('clubs.show', compact('club', 'venues', 'volunteers', 'members', 'notes', 'headCoach', 'secretary',
-        'designated', 'childrens', 'forms', 'documents', 'coaches', 'grads' ));
+        'designated', 'childrens', 'forms', 'documents', 'coaches', 'grads', 'access', 'email' ));
     }
 
     /**
