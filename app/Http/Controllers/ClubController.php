@@ -78,7 +78,7 @@ class ClubController extends Controller
             $email = $user->email;
         }
 
-        ray($email);
+        ray($user);
 
         $headCoach = Personnel::headcoach()->where('club_id', $club->id)->first();
         $secretary = Personnel::secretary()->where('club_id', $club->id)->first();
@@ -94,7 +94,7 @@ class ClubController extends Controller
         $documents = ClubDocument::document($club->id)->get();
 
         return view('clubs.show', compact('club', 'venues', 'volunteers', 'members', 'notes', 'headCoach', 'secretary',
-        'designated', 'childrens', 'forms', 'documents', 'coaches', 'grads', 'access', 'email' ));
+        'designated', 'childrens', 'forms', 'documents', 'coaches', 'grads', 'access', 'user' ));
     }
 
     /**

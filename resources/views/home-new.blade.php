@@ -25,7 +25,7 @@
                     @guest
                         <div class="text-center px-12 mb-12">
                             <p class="text-gray-600 text-center leading-6">
-                                This portal is for registered users only. If you're managing a Judo club but don't have an account yet, <a href="{{ route('club.access.register') }}" class="text-judo-700 font-semibold underline hover:text-judo-500">click here to register.</a> Otherwise, use your login details to access your club's page.
+                                This portal is for registered users only. If you're managing a Judo club but don't have an account yet, contact Irish Judo Association office. Otherwise, use your login details to access your club's page.
                             </p>
                         </div>
                         <div class="text-center">

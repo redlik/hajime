@@ -172,9 +172,11 @@
                                 <div class="bg-green-100 text-green-700 p-3 rounded my-4">{{ Session::get('invited') }}</div>
                             @endif
                             @if($access)
-                            <p class="mb-2">The access to the club has been granted to <span class="font-bold">{{ $email }}</span> address.</p>
-                                @if($club->email != $email)
-                                    <a href="{{ route('user.delete-user', $email) }}" class="text-red-700 font-bold mt-4 hover:underline">Delete account</a>
+                            <p class="mb-2">The access to the club has been granted to <span class="font-bold">{{ $user->email }}</span> address.</p>
+                                @if($club->email != $user->email)
+                                    <a href="{{ route('user.delete-user', $user) }}"
+                                       onclick="return confirm('Are you sure you want to delete this user?')"
+                                       class="text-red-700 font-bold mt-4 hover:underline">Delete account</a>
                                 @endif
                             @else
                             <p class="mb-4">Send an invite to the following email: <span class="font-bold"> {{ $club->email }}</span></p>
@@ -186,9 +188,6 @@
                                 <input type="submit" class="button-judo" value="Sent invite">
                             </form>
                             @endif
-
-
-
                         </div>
                         <div class="w-full border bg-white border-gray-300 rounded-xl my-4 p-4 flex flex-wrap">
                             <h4 class="font-bold text-xl text-gray-600 mb-4" id="venues">Training Venues:</h4>
