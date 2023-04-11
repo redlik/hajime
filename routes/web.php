@@ -109,3 +109,4 @@ Route::group(['prefix' => 'club-access'], function() {
 });
 
 Route::get('club', [ClubViewController::class, 'clubShow'])->middleware(['auth', 'pending'])->name('club.access.club');
+Route::get('settings', [UserController::class, 'settings'])->middleware(['auth', 'pending'])->name('user.settings');
