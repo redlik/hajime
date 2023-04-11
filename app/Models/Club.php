@@ -44,4 +44,9 @@ class Club extends Model
     {
         return $this->hasMany(Volunteer::class);
     }
+
+    public function coach()
+    {
+        return $this->hasMany(Coach::class);
+    }
 }
