@@ -41,5 +41,12 @@ class FortifyServiceProvider extends ServiceProvider
         RateLimiter::for('two-factor', function (Request $request) {
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
         });
+<<<<<<< HEAD
+=======
+
+        Fortify::twoFactorChallengeView(function() {
+            return view('auth.two-factor-challenge');
+        });
+>>>>>>> origin/club-access
     }
 }
