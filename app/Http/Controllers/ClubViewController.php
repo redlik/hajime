@@ -61,6 +61,9 @@ class ClubViewController extends Controller
     public function clubShow()
     {
         $user = Auth::user();
+        if(!$user->two_factor_confirmed_at) {
+            return redirect()->route('user.settings');
+        }
         $club = Club::whereId($user->club_id)->with('venues', 'member', 'personnel', 'volunteer')->first();
         $personnels = Personnel::orderByRaw("FIELD(role, 'Head Coach', 'Secretary', 'Designated Person', 'Childrens Officer')")->where('club_id', $club->id)->get();
         return view('club-access.club-view', compact('club', 'personnels'));

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\AccountActivated;
 use App\Mail\UserInvitation;
 use App\Models\User;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -12,6 +13,19 @@ use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
+    public function redirects()
+    {
+        if (Auth::user()->hasRole('admin')) {
+            return redirect()->route('clubs.index');
+        }
+        elseif  (Auth::user()->hasRole('manager')){
+            return redirect()->route('club.access.club');
+        }
+        else {
+            return view('home-new');
+        }
+    }
+
     public function activateAccount(Request $request)
     {
         $user = User::find($request->input('user'));
@@ -52,7 +66,9 @@ class UserController extends Controller
             'status' => 'active',
         ]);
 
-        return view('home')->with('activated', 'Congratulations, your account has been activated.');
+        \Session::flash('activated', 'Congratulations, your account has been activated.');
+
+        return view('home-new');
     }
 
     public function deactivateUser(Request $request)
@@ -96,5 +112,10 @@ class UserController extends Controller
         \Session::flash('message', 'User account deleted');
 
         return redirect()->back();
+    }
+
+    public function settings()
+    {
+        return view('club-access.settings');
     }
 }

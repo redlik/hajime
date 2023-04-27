@@ -23,11 +23,22 @@
                         Welcome to Hajime <br>Judo Membership Portal
                     </h1>
                     @guest
-                        <div class="text-center px-12 mb-12">
-                            <p class="text-gray-600 text-center leading-6">
-                                This portal is for registered users only. If you're managing a Judo club but don't have an account yet, contact Irish Judo Association office. Otherwise, use your login details to access your club's page.
-                            </p>
-                        </div>
+                        @if(session('activated'))
+                            <div class="text-center px-12 mb-12">
+                                <p class="text-gray-600 text-center font-medium leading-6">
+                                    Thank you for activating your account, please use the login form below to finalise the account setup - 2-factor authentication.<br/>
+                                    Once that done you'll be all set to view your club details.</br/>
+                                    Thank you!
+                                </p>
+                            </div>
+                        @else
+                            <div class="text-center px-12 mb-12">
+                                <p class="text-gray-600 text-center leading-6">
+                                    This portal is for registered users only. If you're managing a Judo club but don't have an account yet, contact Irish Judo Association office. Otherwise, use your login details to access your club's page.
+                                </p>
+                            </div>
+                        @endif
+
                         <div class="text-center">
                             <form
                                 class="w-full lg:w-3/4 px-6 py-2 pb-8 rounded space-y-6 sm:px-10 sm:space-y-8 mt-6 mx-auto bg-gray-100"

@@ -42,7 +42,7 @@ Route::get('/', function() {
     return view('home-new');
 })->name('home');
 
-Auth::routes(['register' => false]);
+//Auth::routes(['register' => false]);
 //Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
@@ -106,8 +106,7 @@ Route::group(['prefix' => 'club-access'], function() {
    Route::post('invite', [UserController::class, 'inviteUser'])->name('user.invite-user');
    Route::post('deactivate', [UserController::class, 'deactivateUser'])->name('user.deactivate-user');
    Route::get('delete/{user}', [UserController::class, 'deleteUser'])->name('user.delete-user');
-   Route::get('settings', function() { return view('club-access.settings');})->middleware('auth')->name('user.settings');
 });
-
+Route::get('settings', [UserController::class, 'settings'])->middleware('auth', 'role:manager')->name('user.settings');
+Route::get('redirects', [UserController::class, 'redirects'])->middleware('auth')->name('redirects');
 Route::get('club', [ClubViewController::class, 'clubShow'])->middleware(['auth', 'pending'])->name('club.access.club');
-Route::get('settings', [UserController::class, 'settings'])->middleware(['auth', 'pending'])->name('user.settings');
