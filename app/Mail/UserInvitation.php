@@ -33,7 +33,7 @@ class UserInvitation extends Mailable
     public function envelope()
     {
         return new Envelope(
-            from: new Address('info@collage.ie', 'Hajime admin'),
+            from: new Address('admin@irishjudoassociation.ie', 'Hajime admin'),
             subject: 'Hajime Portal - User account invitation',
         );
     }
