@@ -316,7 +316,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="w-full border-2 border-gray-300 rounded-xl p-8 mb-4" x-data="{adaptive: false}">
+                        <div class="w-full border-2 border-gray-300 rounded-xl p-8 mb-4" x-data="{adaptive: {{ $member->adaptive }}}">
                             <div class="w-full mb-4">
                                 <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2" for="gender">
                                     Adaptive Judo
@@ -324,12 +324,12 @@
                                 <div class="inline-block">
                                     <div class="inline-block mr-6">
                                         <input class="inline-block" type="radio" id="yes" name="adaptive"
-                                               value="1" @click="adaptive = true">
+                                               value="1" @click="adaptive = true" {{ $member->adaptive ? 'checked' : '' }}>
                                         <label for="yes" class="inline-block">Yes</label><br>
                                     </div>
                                     <div class="inline-block">
                                         <input class="inline-block" type="radio" id="no" name="adaptive" value="0"
-                                               checked @click="adaptive = false">
+                                               @click="adaptive = false" {{ ! $member->adaptive ? 'checked' : '' }}>
                                         <label for="no">No</label><br>
                                     </div>
                                 </div>
@@ -341,7 +341,7 @@
                                 </label>
                                 <input
                                     class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
-                                    id="special" name="special" type="text" placeholder="List the requirements">
+                                    id="special" name="special" type="text" placeholder="List the requirements" value="{{ $member->special }}">
                             </div>
                         </div>
                         <div class="mt-6">

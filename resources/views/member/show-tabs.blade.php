@@ -141,7 +141,7 @@
                                         <div class="w-auto">{{ $member->source }}
                                         </div>
                                     </div>
-                                    <div class="w-full flex flex-wrap mb-4">
+                                    <div class="w-full flex flex-wrap mb-3">
                                         <div class="w-48 font-bold">Email Consent:</div>
                                         <div class="w-auto">
                                             @if ($member->email_consent == "Yes")
@@ -151,6 +151,12 @@
                                             @endif
                                         </div>
                                     </div>
+                                    @if($member->adaptive)
+                                        <div class="w-48 font-bold">Adaptive Judo:</div>
+                                        <div class="w-auto">
+                                            {{ $member->special }}
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                      </div>
