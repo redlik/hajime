@@ -154,7 +154,7 @@
                                     @if($member->adaptive)
                                         <div class="w-48 font-bold">Adaptive Judo:</div>
                                         <div class="w-auto">
-                                            {{ $member->special }}
+                                            {{ $member->special ?? "Not specified" }}
                                         </div>
                                     @endif
                                 </div>
