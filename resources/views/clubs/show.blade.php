@@ -495,6 +495,11 @@
                     <div class="w-full px-6 py-2" x-show="openTab === '#grads'">
                         <div class="w-full bg-white border-2 border-gray-200 rounded-xl my-4 p-4">
                             <h4 class="font-bold text-xl text-gray-600 mb-4">Club Grading Forms:</h4>
+                            @if(Session::has('no-file'))
+                                <div class="bg-red-100 text-red-600 rounded-p2 mb-4">
+                                    <p>{{ Session::get('no-file') }}</p>
+                                </div>
+                            @endif
                             <div>
                                 <button class="button-judo" onclick="showForm()">+ Add new grading form</button>
                             </div>

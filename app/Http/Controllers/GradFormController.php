@@ -40,11 +40,15 @@ class GradFormController extends Controller
     public function store(Request $request)
     {
         $gradForm = GradForm::create($request->all());
-        $file = $request->file('link')->store('public/grad-forms');
-
-        $file = ltrim($file, 'public/grad-forms/');
-        $gradForm->link = $file;
-        $gradForm->save();
+        $doc = $request->file('link')->store('public/grad-forms');
+        if (Storage::disk("local")->exists($doc)) {
+            $file = ltrim($doc, 'public/grad-forms/');
+            $gradForm->link = $file;
+            $gradForm->save();
+        } else {
+            $request->session()->flash('no-file', 'The file has not been saved, please rename the original document and try again');
+            return Redirect::to(URL::previous()."#grads");
+        }
 
         return Redirect::to(URL::previous()."#grads");
     }
