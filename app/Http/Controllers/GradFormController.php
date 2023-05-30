@@ -47,6 +47,7 @@ class GradFormController extends Controller
             $gradForm->link = $file;
             $gradForm->save();
         } else {
+            ray($doc);
             $request->session()->flash('no-file', 'The file has not been saved, please rename the original document and try again');
             return Redirect::to(URL::previous()."#grads");
         }
