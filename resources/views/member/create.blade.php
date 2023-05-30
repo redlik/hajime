@@ -294,12 +294,14 @@
                                 <div class="inline-block">
                                     <div class="inline-block mr-6">
                                         <input class="inline-block" type="radio" id="yes" name="adaptive"
-                                               value="1" @click="adaptive = true">
+                                               value="1" @click="adaptive = true"
+                                               onclick="document.getElementById('special').setAttribute('required', 'required')">
                                         <label for="yes" class="inline-block">Yes</label><br>
                                     </div>
                                     <div class="inline-block">
                                         <input class="inline-block" type="radio" id="no" name="adaptive" value="0"
-                                               checked @click="adaptive = false">
+                                               checked @click="adaptive = false"
+                                               onclick="document.getElementById('special').removeAttribute('required')">
                                         <label for="no">No</label><br>
                                     </div>
                                 </div>
@@ -351,4 +353,3 @@
 
     </script>
 @endsection
-
