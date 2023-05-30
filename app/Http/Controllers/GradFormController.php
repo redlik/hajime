@@ -41,6 +41,7 @@ class GradFormController extends Controller
     {
         $doc = $request->file('link')->store('public/grad-forms');
         if (Storage::disk("local")->exists($doc)) {
+            ray($doc);
             $gradForm = GradForm::create($request->all());
             $file = ltrim($doc, 'public/grad-forms/');
             $gradForm->link = $file;
