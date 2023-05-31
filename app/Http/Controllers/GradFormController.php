@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
 use Storage;
+use Illuminate\Support\Facades\Log;
 
 class GradFormController extends Controller
 {
@@ -39,13 +40,16 @@ class GradFormController extends Controller
      */
     public function store(Request $request)
     {
-        $gradForm = GradForm::create($request->all());
         $doc = $request->file('link')->store('public/grad-forms');
-        if (Storage::disk("local")->exists($doc)) {
-            $file = ltrim($doc, 'public/grad-forms/');
+        if (Storage::exists($doc)) {
+            Log::debug('Saved doc: '.$doc);
+            $gradForm = GradForm::create($request->all());
+            $file = str_replace('public/grad-forms/', '', $doc);
+            Log::debug('Trimmed: '.$file);
             $gradForm->link = $file;
             $gradForm->save();
         } else {
+            Log::debug('Failed doc: '.$doc);
             $request->session()->flash('no-file', 'The file has not been saved, please rename the original document and try again');
             return Redirect::to(URL::previous()."#grads");
         }
