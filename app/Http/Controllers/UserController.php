@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\AccountActivated;
+use App\Mail\EmailVerificationRequest;
 use App\Mail\UserInvitation;
 use App\Models\User;
 use Auth;
@@ -117,5 +118,16 @@ class UserController extends Controller
     public function settings()
     {
         return view('club-access.settings');
+    }
+
+    public function requestEmailVerification(User $user)
+    {
+        $user->update([
+            'email_request_status' => 'requested',
+        ]);
+
+        Mail::to(config('mail.admin_email'))->send(new EmailVerificationRequest($user));
+
+        return redirect()->back()->with('request-sent', 'Your request has been passed to Hajime admins');
     }
 }
