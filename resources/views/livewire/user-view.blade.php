@@ -1,9 +1,44 @@
 <div class="p-6">
-    <div class="w-1/2 mb-4">
-        <input type="search" wire:model.debounce.500ms="searchQuery"
-               class="shadow border-gray-300 rounded w-full py-2 px-3 text-grey-darker"
-               placeholder="Filter by person's or a club's name">
+    <div class="flex justify-between mb-4">
+        <div class="w-1/3 mb-4">
+            <input type="search" wire:model.debounce.500ms="searchQuery"
+                   class="shadow border-gray-300 rounded w-full py-2 px-3 text-grey-darker"
+                   placeholder="Filter by person's or a club's name">
+            @if($searchQuery !='')
+                <a href="" wire:click="clear" class="text-xs text-red-700 font-semibold mt-1 ml-2 block">Clear</a>
+            @endif
+        </div>
+        <div class="flex justify-end gap-8 text-gray-600">
+            <div class="flex items-center">
+                <label for="status" class="mr-2 text-sm">Status</label>
+                <select name="status" class="text-sm" wire:model="status">
+                    <option value="" selected>All Statuses</option>
+                    <option value="active" selected>Active</option>
+                    <option value="pending" selected>Pending</option>
+                </select>
+            </div>
+            <div class="flex items-center">
+                <label for="email_status" class="mr-2 text-sm">Email Ver. Status</label>
+                <select name="email_status" class="text-sm" wire:model="email_status">
+                    <option value="" selected>All Statuses</option>
+                    <option value="requested" selected>Requested</option>
+                    <option value="granted" selected>Granted</option>
+                    <option value="rejected" selected>Rejected</option>
+                </select>
+            </div>
+        </div>
     </div>
+
+    @if(Session::has('email_status'))
+        <div class="alert-success">
+            {{ Session::get('email_status') }}
+        </div>
+    @endif
+    @if(Session::has('email_status_rejected'))
+        <div class="alert-danger">
+            {{ Session::get('email_status_rejected') }}
+        </div>
+    @endif
     @if(Session::has('message'))
         <div class="alert-success">
             {{ Session::get('message') }}
@@ -38,6 +73,11 @@
                 Status
             </th>
             <th
+                class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold text-gray-100 uppercase
+                                    tracking-wider">
+                Email 2-FA
+            </th>
+            <th
                 class="px-5 py-3 rounded-r bg-gray-600 text-left text-xs font-semibold text-gray-100 uppercase
                                     tracking-wider">
                 Operations
@@ -45,7 +85,7 @@
         </tr>
         </thead>
         <tbody>
-        @foreach ($users as $user)
+        @forelse ($users as $user)
             <tr class="hover:bg-gray-200">
                 <td class="px-5 py-3 border-b border-gray-200 text-sm">
                     <div class="flex items-center">
@@ -83,6 +123,14 @@
                         @endswitch
                     </p>
                 </td>
+                <td class="px-5 py-3 border-b border-gray-200">
+                    <span class="text-sm font-semibold text-gray-500 mr-4">{{ ucfirst($user->email_request_status) }}</span>
+                    @if($user->email_request_status == 'requested')
+                        <a class="cursor-pointer" title="Grant access" wire:click="grantAccess({{ $user }})"><i class="fas fa-thumbs-up mr-2 text-green-600"></i> </a>
+                        <a class="cursor-pointer" title="Decline access" wire:click="rejectAccess({{ $user }})">
+                            <i class="fas fa-thumbs-down text-red-700"></i></a>
+                    @endif
+                </td>
                 <td class="px-5 py-3 border-b border-gray-200 text-sm">
                     <div class="flex space-x-4 content-center">
                         <a href="{{ route('user.delete-user', $user) }}" onclick="return confirm('Are you sure you want to delete this user?')"
@@ -90,7 +138,11 @@
                     </div>
                 </td>
             </tr>
-        @endforeach
+        @empty
+            <tr>
+                <td colspan="7" class="px-4 py-8 text-xl text-gray-400 font-semibold text-center">No users with this criteria</td>
+            </tr>
+        @endforelse
         </tbody>
     </table>
     <div class="mt-4 text-right">
