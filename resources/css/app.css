@@ -126,4 +126,8 @@
     .alert-success {
         @apply bg-green-100 rounded p-3 shadow-sm mb-4 text-judo-600 font-semibold;
     }
+
+    .alert-danger {
+        @apply bg-red-100 rounded p-3 shadow-sm mb-4 text-red-600 font-semibold;
+    }
 }
