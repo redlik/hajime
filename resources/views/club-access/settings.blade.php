@@ -3,9 +3,9 @@
 @section('content')
     <main class="sm:container sm:mx-auto sm:mt-10">
         <div class="w-full sm:px-6">
-            <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
+            <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg pb-8">
                 <header class="font-semibold text-xl bg-gray-600 text-gray-100 py-4 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
-                    Settings
+                    2 Factor Authentication setup
                 </header>
                 <div id="main" class="p-6">
                     <h3 class="font-bold text-xl mb-4">Welcome to Hajime</h3>
@@ -20,22 +20,38 @@
                         </div>
 
                     @endif
+                    @if(session('request-sent'))
+                        <div class="mb-8 bg-green-50 rounded p-4 text-green-700 font-semibold">
+                            {{ session('request-sent') }}
+                        </div>
+                    @endif
                     @if(!session('status') || session('status') != "two-factor-authentication-confirmed")
-                        <p>Before you access your club page please enable 2FA to access your club page.</p>
-                        <p>You can use authenticator apps on your smartphone such as Google Authenticator, Authy or Microsoft Authenticator. Check your Apple App Store or Google Play Store.</p>
-                        <form action="/user/two-factor-authentication" method="POST" class="mt-8">
-                            @csrf
-                            <button class="button-judo">Enable 2FA</button>
-                        </form>
+                        <p class="mb-2">Before you access your club page please enable 2FA to access your club page.</p>
+                        <p class="mb-2">You can use authenticator apps on your smartphone such as Google Authenticator, Authy or Microsoft Authenticator.
+                        </p>
+                        <p class="">Download the app from Apple App Store or Google Play Store on your phone.</p>
+                        <div class="flex gap-8 my-4">
+                            <form action="/user/two-factor-authentication" method="POST" class="">
+                                @csrf
+                                <button class="button-judo">Enable 2-Factor Authentication</button>
+                            </form>
+                        </div>
+                        @if(! session('request-sent'))
+                            <div>
+                                <p class="my-4 rounded bg-gray-100 p-2 mb-8 mt-16">If you can't use the authenticator app or having trouble with it, you can request a different form of authentication - via email. Use the button below to make the request.</p>
+                                <a href="{{ route('user.email-request', Auth::user()) }}" class="button-judo">Request email verification</a>
+                            </div>
+                        @endif
+
                     @endif
 
                     @if(Auth::user()->two_factor_confirmed_at)
-                        <h3 class="font-bold text-xl mb-4">2-factor authentication already enabled</h3>
+                        <h3 class="font-bold text-xl mb-4">2-Factor authentication already enabled</h3>
                         <p>Your account is all good to go, proceed to your club page</p>
                             <a href="{{ route('club.access.club') }}" class="button-judo">My Club</a>
                     @else
                         @if(session('status') === 'two-factor-authentication-enabled')
-                            <div class="mb-4 font-medium text-green-600">
+                            <div class="mb-4 mt-8 font-medium text-green-600">
                                 Two factor authentication has been enabled, now scan the QR code below with your authenticator app and paste the generated code from the app below.
                             </div>
                             <div class="mb-8">

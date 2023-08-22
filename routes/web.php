@@ -106,6 +106,7 @@ Route::group(['prefix' => 'club-access'], function() {
    Route::post('invite', [UserController::class, 'inviteUser'])->name('user.invite-user');
    Route::post('deactivate', [UserController::class, 'deactivateUser'])->name('user.deactivate-user');
    Route::get('delete/{user}', [UserController::class, 'deleteUser'])->name('user.delete-user');
+   Route::get('email-request/{user}', [UserController::class, 'requestEmailVerification'])->name('user.email-request');
 });
 Route::get('settings', [UserController::class, 'settings'])->middleware('auth', 'role:manager')->name('user.settings');
 Route::get('redirects', [UserController::class, 'redirects'])->middleware('auth')->name('redirects');
