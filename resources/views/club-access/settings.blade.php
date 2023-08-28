@@ -36,12 +36,6 @@
                                 <button class="button-judo">Enable 2-Factor Authentication</button>
                             </form>
                         </div>
-                        @if(! session('request-sent'))
-                            <div>
-                                <p class="my-4 rounded bg-gray-100 p-2 mb-8 mt-16">If you can't use the authenticator app or having trouble with it, you can request a different form of authentication - via email. Use the button below to make the request.</p>
-                                <a href="{{ route('user.email-request', Auth::user()) }}" class="button-judo">Request email verification</a>
-                            </div>
-                        @endif
 
                     @endif
 
@@ -86,6 +80,12 @@
                                 @method('DELETE')
                                 <button class="button-judo">Not now</button>
                             </form>
+                            @if(! session('request-sent'))
+                                <div>
+                                    <p class="my-4 rounded bg-gray-100 p-2 mb-8 mt-16">If you can't use the authenticator app or having trouble with it, you can request a different form of authentication - via email. Use the button below to make the request.</p>
+                                    <a href="{{ route('user.email-request', Auth::user()) }}" class="button-judo">Request email verification</a>
+                                </div>
+                            @endif
                         @endif
                         @if(session('status') == 'two-factor-authentication-confirmed')
                         <div class="mb-4 font-medium text-sm">
