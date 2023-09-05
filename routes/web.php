@@ -4,6 +4,7 @@ use App\Exports\GradingListExport;
 use App\Http\Controllers\ClubDocumentController;
 use App\Http\Controllers\ClubViewController;
 use App\Http\Controllers\CoachController;
+use App\Http\Controllers\EmailTwoFactorController;
 use App\Http\Controllers\GradFormController;
 use App\Http\Controllers\MemberDocumentController;
 use App\Http\Controllers\MembernoteController;
@@ -107,6 +108,9 @@ Route::group(['prefix' => 'club-access'], function() {
    Route::post('deactivate', [UserController::class, 'deactivateUser'])->name('user.deactivate-user');
    Route::get('delete/{user}', [UserController::class, 'deleteUser'])->name('user.delete-user');
    Route::get('email-request/{user}', [UserController::class, 'requestEmailVerification'])->name('user.email-request');
+   Route::get('2fa', [EmailTwoFactorController::class, 'index'])->name('email2fa.index');
+   Route::post('2fa', [EmailTwoFactorController::class, 'store'])->name('email2fa.post');
+   Route::get('2fa/resend', [EmailTwoFactorController::class, 'resend'])->name('email2fa.resend');
 });
 Route::get('settings', [UserController::class, 'settings'])->middleware('auth', 'role:manager')->name('user.settings');
 Route::get('redirects', [UserController::class, 'redirects'])->middleware('auth')->name('redirects');
