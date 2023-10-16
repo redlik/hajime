@@ -24,6 +24,8 @@ class EmailTwoFactorController extends Controller
             ->where('updated_at', '>=', now()->subMinutes(2))
             ->first();
 
+        ray($find);
+
         if (!is_null($find)) {
             Session::put('user_2fa', auth()->user()->id);
             return redirect()->route('club.access.club');
