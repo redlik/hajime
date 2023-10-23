@@ -59,6 +59,7 @@
             @endif
         </div>
     </td>
+    @role('admin')
     <td class="px-8 py-8 border-b border-gray-200 text-sm flex flex-wrap h-full">
         <a href="{{ route('volunteer.edit', $volunteer->id) }}"
            class="text-green-600 font-bold ml-3"
@@ -74,4 +75,5 @@
                 <i class="far fa-trash-alt"></i></button>
         </form>
     </td>
+    @endrole
 </tr>

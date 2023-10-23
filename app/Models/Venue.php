@@ -10,4 +10,9 @@ class Venue extends Model
     protected $guarded = [];
 
     use HasFactory;
+
+    public function club()
+    {
+        return $this->belongsTo(Club::class);
+    }
 }

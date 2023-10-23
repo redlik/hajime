@@ -29,6 +29,24 @@ class Club extends Model
     {
         return ucwords($value);
     }
+
+    public function manager()
+    {
+        return $this->hasMany(User::class);
+    }
+
+    public function venues()
+    {
+        return $this->hasMany(Venue::class);
+    }
+
+    public function volunteer()
+    {
+        return $this->hasMany(Volunteer::class);
+    }
+
+    public function coach()
+    {
+        return $this->hasMany(Coach::class);
+    }
 }
-
-

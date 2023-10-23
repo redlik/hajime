@@ -2,7 +2,9 @@
 
 use App\Exports\GradingListExport;
 use App\Http\Controllers\ClubDocumentController;
+use App\Http\Controllers\ClubViewController;
 use App\Http\Controllers\CoachController;
+use App\Http\Controllers\EmailTwoFactorController;
 use App\Http\Controllers\GradFormController;
 use App\Http\Controllers\MemberDocumentController;
 use App\Http\Controllers\MembernoteController;
@@ -15,6 +17,7 @@ use App\Http\Controllers\Reports\InvalidCoachReportController;
 use App\Http\Controllers\Reports\InvalidPersonnelReportController;
 use App\Http\Controllers\Reports\MembershipReportController;
 use App\Http\Controllers\Reports\MembersReportController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\VolunteerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClubController;
@@ -37,13 +40,11 @@ use App\Http\Controllers\VenueController;
 */
 
 Route::get('/', function() {
-    return view('home');
-});
+    return view('home-new');
+})->name('home');
 
-Auth::routes(['register' => false]);
+//Auth::routes(['register' => false]);
 //Auth::routes();
-
-Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('clubs', ClubController::class);
@@ -98,3 +99,19 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'exports'], function () {
     Route::get('/consent-list', [EmailConsentReportController::class, 'export'])->name('report.consent.export');
     Route::get('/grading-list/{request?}', [GradingReportController::class, 'export'])->name('report.grading.export');
 });
+
+Route::group(['prefix' => 'club-access'], function() {
+   Route::get('users', [ClubViewController::class, 'usersView'])->name('club.access.users');
+   Route::get('activate-user/{user}', [UserController::class, 'userActivationLink'])->name('user.user-activated-account');
+   Route::post('activated', [UserController::class, 'userActivatedAccount'])->name('user.account-activated');
+   Route::post('invite', [UserController::class, 'inviteUser'])->name('user.invite-user');
+   Route::post('deactivate', [UserController::class, 'deactivateUser'])->name('user.deactivate-user');
+   Route::get('delete/{user}', [UserController::class, 'deleteUser'])->name('user.delete-user');
+   Route::get('email-request/{user}', [UserController::class, 'requestEmailVerification'])->name('user.email-request');
+   Route::get('2fa', [EmailTwoFactorController::class, 'index'])->name('email2fa.index');
+   Route::post('2fa', [EmailTwoFactorController::class, 'store'])->name('email2fa.post');
+   Route::get('2fa/resend', [EmailTwoFactorController::class, 'resend'])->name('email2fa.resend');
+});
+Route::get('settings', [UserController::class, 'settings'])->middleware('auth', 'role:manager')->name('user.settings');
+Route::get('redirects', [UserController::class, 'redirects'])->middleware('auth')->name('redirects');
+Route::get('club', [ClubViewController::class, 'clubShow'])->middleware(['auth', 'pending'])->name('club.access.club');
