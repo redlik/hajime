@@ -39,9 +39,7 @@ use App\Http\Controllers\VenueController;
 |
 */
 
-Route::get('/', function() {
-    return view('home-new');
-})->name('home');
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'home'])->name('home');
 
 //Auth::routes(['register' => false]);
 //Auth::routes();

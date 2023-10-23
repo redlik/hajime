@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Club;
+use App\Models\Member;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,18 +13,15 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
      */
-    public function index()
+    public function home()
     {
-        return view('home');
+        $clubs = Club::count();
+        $members = Member::count();
+        return view('home-new', compact('clubs', 'members'));
     }
 }
