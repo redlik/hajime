@@ -31,15 +31,18 @@ class MembersTableForClub extends Component
 
     public function render()
     {
-        $members = Member::when($this->searchQuery != '', function ($query) {
-            $query->where('first_name', 'like', '%' . $this->searchQuery . '%')
-                ->orWhere('last_name', 'like', '%' . $this->searchQuery . '%')
-                ->orWhere('number', 'like', '%' . $this->searchQuery . '%')
-                ->orWhere('eircode', 'like', '%' . $this->searchQuery . '%');
-        })->where('club_id', $this->club_id)
-            ->orderBy($this->sortby, 'asc')
-            ->paginate(15);
+        $members = Member::where('club_id', $this->club_id)
+        ->when($this->searchQuery != '', function ($query) {
+            $query->where('club_id', $this->club_id)
+                ->where(function ($query) {
+                    $query->where('first_name', 'like', '%' . $this->searchQuery . '%')
+                        ->orWhere('last_name', 'like', '%' . $this->searchQuery . '%')
+                        ->orWhere('number', $this->searchQuery);
+                });
+        })
+            ->orderBy('active', 'desc')
+            ->paginate(25);
 
-        return view('livewire.club-members', compact('members'));
+        return view('livewire.members-table-for-club', compact('members'));
     }
 }

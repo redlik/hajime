@@ -638,7 +638,7 @@
                         <div class="w-full bg-white border-2 border-gray-200 rounded-xl my-4 p-4 flex flex-wrap">
                             <h4 class="font-bold text-xl text-gray-600 mb-4 block w-full">Members:</h4>
                             <div class="w-full block mb-8">
-                                @livewire('club-members', ['club_id' => $club->id])
+                                @livewire('members-table-for-club', ['club_id' => $club->id])
                             </div>
                         </div>
                     </div>

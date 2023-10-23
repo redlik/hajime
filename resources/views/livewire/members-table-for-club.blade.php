@@ -1,19 +1,11 @@
 <div class="container">
 
     <div class="w-full">
-        <div class="w-full flex flex-wrap items-center justify-between my-4 p-3 rounded bg-gray-100">
+        <div class="w-full flex flex-wrap items-center gap-8 my-4 p-3 rounded bg-gray-100">
             <div class="">
                 <input type="search" wire:model.debounce.500ms="searchQuery"
-                       class="shadow border-gray-300 rounded w-full py-2 px-3 text-grey-darker"
-                       placeholder="Filter by name, number or eircode">
-            </div>
-            <div class="">
-                <label for="sort">Sort by:</label>
-                <select wire:model="sortby" name="sort" id="sort" class="shadow border-gray-300 rounded w-48
-                text-grey-darker ml-2">
-                    <option value="last_name" selected>Last Name</option>
-                    <option value="number">Memership No</option>
-                </select>
+                       class="shadow border-gray-300 rounded w-[400px] py-2 px-3 text-grey-darker"
+                       placeholder="Filter by name or membership number">
             </div>
         </div>
         <div class="w-full">
@@ -32,13 +24,19 @@
                     class="px-5 py-3 rounded-l bg-gray-600 text-left text-xs font-semibold
                         text-gray-100
                         uppercase tracking-wider shadow-lg">
-                    Memb. No
+                    #
                 </th>
                 <th
                     class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold
                         text-gray-100
                         uppercase tracking-wider shadow-lg">
                     Name
+                </th>
+                <th
+                    class="px-5 py-3 bg-gray-600 text-center text-xs font-semibold
+                        text-gray-100
+                        uppercase tracking-wider shadow-lgg">
+                    Membership No
                 </th>
                 <th
                     class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold
@@ -85,7 +83,7 @@
             @forelse ($members as $member)
                 <tr>
                     <td class="px-5 py-5 border-b border-gray-200 text-sm hidden md:block">
-                        <p class="text-gray-900 whitespace-no-wrap">{{ $member->number }}
+                        <p class="text-gray-900 whitespace-no-wrap">{{ $loop->iteration }}
                     </td>
                     <td class="py-5 border-b border-gray-200 text-sm">
                         <div class="flex items-center">
@@ -95,6 +93,9 @@
                                 </p>
                             </div>
                         </div>
+                    </td>
+                    <td class="py-5 border-b border-gray-200 text-sm text-center">
+                        <p class="text-gray-900 whitespace-no-wrap">{{ $member->number }}
                     </td>
                     <td class="px-5 py-5 border-b border-gray-200 text-sm hidden md:block">
                         <p class="text-gray-900 whitespace-no-wrap">{{ $member->age }} years
@@ -141,6 +142,8 @@
             @endforelse
             </tbody>
         </table>
+
+        <div class="text-sm text-gray-500 mt-4 ml-8">{{ $members->total() }} {{ \Illuminate\Support\Str::of('member')->plural($members->total())}} listed</div>
 
     </div>
 </div>

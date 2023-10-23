@@ -29,9 +29,6 @@
             </div>
         </div>
         <div class="w-full">
-            {{ $active }}
-        </div>
-        <div class="w-full">
             <div class="w-full">
                 @if(Session::has('message'))
                     <p class="bg-green-100 text-green-700 p-6 rounded mb-4">{{ Session::get('message') }}</p>
