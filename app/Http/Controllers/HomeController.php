@@ -21,7 +21,7 @@ class HomeController extends Controller
     public function home()
     {
         $clubs = Club::count();
-        $members = Member::count();
+        $members = Member::where('active', true)->count();
         return view('home-new', compact('clubs', 'members'));
     }
 }
