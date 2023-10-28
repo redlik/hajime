@@ -117,8 +117,36 @@
                         @endguest
                     @auth
                     <div class="w-full text-center mt-6">
-                        <h5 class="font-semibold text-xl mb-4">{{ $clubs }} affiliated clubs and {{ $members }} active members</h5>
+                        <div class="lg:flex gap-6 px-4">
+                            <div class="w-full lg:w-1/2 flex-shrink-0 p-4 border-2 border-judo-600 rounded-lg bg-gray-50 shadow-sm">
+                                <div class="flex gap-6 items-center">
+                                    <div>
+                                        <h3 class="text-7xl text-judo-600 font-bold">{{ $clubs }}</h3>
+                                    </div>
+                                    <div class="text-left">
+                                        <h5 class="font-semibold text-lg uppercase text-gray-600">affiliated</h5>
+                                        <h5 class="font-bold text-3xl text-judo-600 uppercase">clubs</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full lg:w-1/2 flex-shrink-0 p-4 border-2 border-judo-600 rounded-lg bg-gray-50 shadow-sm mt-6 lg:mt-0">
+                                <div class="flex gap-6 items-center">
+                                    <div>
+                                        <h3 class="text-7xl text-judo-600 font-bold">{{ $members }}</h3>
+                                    </div>
+                                    <div class="text-left">
+                                        <h5 class="font-semibold text-lg uppercase text-gray-600">active</h5>
+                                        <h5 class="font-bold text-3xl text-judo-600 uppercase">members</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    @role('manager')
+                        <div class="text-center mt-8">
+                            <a href="{{ route('club.access.club') }}" class="font-bold text-judo-600 underline uppercase">Click to view your club page</a>
+                        </div>
+                    @endrole
                     @endauth
                 </div>
             </section>
