@@ -2,7 +2,7 @@
 
 @section('content')
     <main class="sm:container sm:mx-auto sm:mt-10">
-        <div class="w-full sm:px-6">
+        <div class="w-full sm:px-6 mb-12">
             <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg pb-8">
                 <header class="font-semibold text-xl bg-gray-600 text-gray-100 py-4 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
                     2 Factor Authentication setup
@@ -82,7 +82,7 @@
                             </form>
                             @if(! session('request-sent'))
                                 <div>
-                                    <p class="my-4 rounded bg-gray-100 p-2 mb-8 mt-16">If you can't use the authenticator app or having trouble with it, you can request a different form of authentication - via email. Use the button below to make the request.</p>
+                                    <p class="my-4 rounded bg-red-100 p-2 mb-8 mt-16 text-gray-700">If you can't use the authenticator app or having trouble with it, you can request a different form of authentication - via email. Use the button below to make the request.</p>
                                     <a href="{{ route('user.email-request', Auth::user()) }}" class="button-judo">Request email verification</a>
                                 </div>
                             @endif
