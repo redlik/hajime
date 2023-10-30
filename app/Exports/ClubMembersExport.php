@@ -48,6 +48,7 @@ class ClubMembersExport implements FromQuery, WithMapping, WithHeadings, WithTit
             'Type',
             'Join Date',
             'Last Grade',
+            'Adaptive Judo',
         ];
     }
 
@@ -60,6 +61,12 @@ class ClubMembersExport implements FromQuery, WithMapping, WithHeadings, WithTit
         } else
             $grade = $member->latestGrade()->grade_level;
 
+        if($membership->member->adaptive) {
+            $adaptive = $member->special;
+        } else {
+            $adaptive = 'No';
+        }
+
         return [
             $member->number,
             $member->first_name." ".$member->last_name,
@@ -68,6 +75,7 @@ class ClubMembersExport implements FromQuery, WithMapping, WithHeadings, WithTit
             $membership->membership_type,
             $membership->join_date,
             $grade,
+            $adaptive,
         ];
     }
 
