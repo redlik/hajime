@@ -23,7 +23,7 @@ class UserController extends Controller
             return redirect()->route('club.access.club');
         }
         else {
-            return view('home-new');
+            return route('home');
         }
     }
 
