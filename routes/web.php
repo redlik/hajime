@@ -113,3 +113,4 @@ Route::group(['prefix' => 'club-access'], function() {
 Route::get('settings', [UserController::class, 'settings'])->middleware('auth', 'role:manager')->name('user.settings');
 Route::get('redirects', [UserController::class, 'redirects'])->middleware('auth')->name('redirects');
 Route::get('club', [ClubViewController::class, 'clubShow'])->middleware(['auth', 'pending'])->name('club.access.club');
+Route::get('assign-roles', [UserController::class, 'assignRoles'])->name('assignRoles');

@@ -130,4 +130,14 @@ class UserController extends Controller
 
         return redirect()->back()->with('request-sent', 'Your request has been passed to Hajime admins');
     }
+
+    public function assignRoles()
+    {
+        $users = User::all();
+        foreach ($users as $user) {
+            $user->assignRole('admin');
+        }
+
+        echo('Roles assigned');
+    }
 }
