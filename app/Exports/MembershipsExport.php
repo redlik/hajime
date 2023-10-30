@@ -33,6 +33,12 @@ class MembershipsExport implements FromQuery, WithMapping, WithHeadings, WithTit
      * @return array
      */
     public function map($membership): array {
+        if($membership->member->adaptive) {
+            $adaptive = $membership->member->special;
+        } else {
+            $adaptive = 'No';
+        }
+
         return [
             $membership->member->number,
             $membership->member->first_name." ".$membership->member->last_name,
@@ -42,6 +48,7 @@ class MembershipsExport implements FromQuery, WithMapping, WithHeadings, WithTit
             $membership->join_date,
             $membership->member->club->name,
             ucfirst($membership->member->club->province),
+            $adaptive,
         ];
     }
 
@@ -55,6 +62,7 @@ class MembershipsExport implements FromQuery, WithMapping, WithHeadings, WithTit
             'Join Date',
             'Club Name',
             'Province',
+            'Adaptive Judo'
         ];
     }
 
