@@ -70,7 +70,7 @@ class UserView extends Component
             ->orderBy('club_id', 'asc')
             ->orderBy('created_at', 'desc')
             ->with('club_manager')
-            ->paginate(10);
+            ->paginate(25);
 
         return view('livewire.user-view', compact('users'));
     }
