@@ -1,10 +1,10 @@
 <div class="p-6">
     <div class="flex justify-between mb-4">
         <div class="w-1/3 mb-4">
-            <input type="search" wire:model.debounce.500ms="searchQuery"
+            <input type="search" wire:model.debounce.500ms="search"
                    class="shadow border-gray-300 rounded w-full py-2 px-3 text-grey-darker"
                    placeholder="Filter by person's or a club's name">
-            @if($searchQuery !='')
+            @if($search !='')
                 <a href="" wire:click="clear" class="text-xs text-red-700 font-semibold mt-1 ml-2 block">Clear</a>
             @endif
         </div>
@@ -91,7 +91,7 @@
                     <div class="flex items-center">
                         <div class="ml-3">
                             <p class="text-gray-900 whitespace-no-wrap font-bold">
-                                {{ $loop->iteration }}
+                                {{ $loop->iteration + $users->firstItem() - 1}}
                             </p>
                         </div>
                     </div>

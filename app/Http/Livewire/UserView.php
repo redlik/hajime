@@ -7,11 +7,12 @@ use App\Mail\EmailVerificationRejected;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class UserView extends Component
 {
 
-    public $searchQuery;
+    public $search;
 
     public $status;
 
@@ -41,18 +42,23 @@ class UserView extends Component
 
     public function clear()
     {
-        $this->searchQuery = '';
+        $this->search = '';
+    }
+
+    public function updatingSearch()
+    {
+        $this->reset();
     }
 
 
     public function render()
     {
         $users = User::whereHas('club_manager')
-            ->when($this->searchQuery != '', function($query) {
+            ->when($this->search != '', function($query) {
                 $query
-                    ->where('name', 'like', '%' . $this->searchQuery . '%')
+                    ->where('name', 'like', '%' . $this->search . '%')
                     ->orWhereHas('club_manager', function ($query) {
-                        $query->where('name', 'like', '%' . $this->searchQuery . '%');
+                        $query->where('name', 'like', '%' . $this->search . '%');
                     });
             })
             ->when($this->status != '', function($s){
@@ -64,7 +70,7 @@ class UserView extends Component
             ->orderBy('club_id', 'asc')
             ->orderBy('created_at', 'desc')
             ->with('club_manager')
-            ->paginate(25);
+            ->paginate(10);
 
         return view('livewire.user-view', compact('users'));
     }
