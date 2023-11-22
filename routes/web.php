@@ -44,7 +44,7 @@ Route::get('/', [\App\Http\Controllers\HomeController::class, 'home'])->name('ho
 //Auth::routes(['register' => false]);
 //Auth::routes();
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::resource('clubs', ClubController::class);
     Route::resource('personnel', PersonnelController::class);
     Route::resource('member', MemberController::class);
@@ -71,7 +71,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('club/{id}/add-volunteer', [VolunteerController::class, 'addVolunteer'])->name('volunteer.addVolunteer');
 });
 
-Route::group(['middleware' => ['auth'], 'prefix' => 'reports'], function () {
+Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'reports'], function () {
     Route::get('/membership-list', [MembershipReportController::class, 'index'])->name('report.membership');
     Route::post('/membership-list', [MembershipReportController::class, 'showMembers'])->name('report.membership.list');
     Route::get('/club-members', [MembersReportController::class, 'index'])->name('report.club-members');
@@ -87,7 +87,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'reports'], function () {
     Route::post('/grading-list', [GradingReportController::class, 'filteredResults']);
 });
 
-Route::group(['middleware' => ['auth'], 'prefix' => 'exports'], function () {
+Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'exports'], function () {
     Route::get('/memberships/{start}/{end}', [MembershipReportController::class, 'export'])->name('report.membership.export');
     Route::get('/members/{club}/{start}/{end}', [MembersReportController::class, 'export'])->name('report.members.export');
     Route::get('/clubs-status', [ClubStatusReportController::class, 'export'])->name('report.status.export');
