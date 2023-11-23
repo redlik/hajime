@@ -2,10 +2,10 @@
 
     <div class="w-full">
         <div class="w-full flex flex-wrap items-center justify-between my-4 p-3 rounded bg-gray-100">
-            <div class="">
+            <div class="w-1/4">
                 <input type="search" wire:model.debounce.500ms="searchQuery"
                        class="shadow border-gray-300 rounded w-full py-2 px-3 text-grey-darker"
-                       placeholder="Filter by name, number or eircode">
+                       placeholder="Filter by name or memb number">
             </div>
             <div class="">
                 <label for="sort">Sort by:</label>
