@@ -35,7 +35,11 @@
                 @endif
             </div>
             <div class="w-full my-4">
-                {{ $members->links() }}</div>
+                {{ $members->links() }}
+            </div>
+            <div class="my-4 text-xs text-gray-500">
+                {{ $members->total() }} {{ \Illuminate\Support\Str::of('member')->plural($members->total())}} listed
+            </div>
         </div>
         <table class="min-w-full table-auto leading-normal">
             <thead>
@@ -163,6 +167,9 @@
         </table>
         <div class="mt-4">
             {{ $members->links() }}
+        </div>
+        <div class="my-4 text-xs text-gray-500">
+            {{ $members->total() }} {{ \Illuminate\Support\Str::of('member')->plural($members->total())}} listed
         </div>
 
     </div>
