@@ -44,6 +44,12 @@
                         class="px-5 py-3 rounded-l bg-gray-600 text-left text-xs font-semibold
                         text-gray-100
                         uppercase tracking-wider shadow-lg">
+                        #
+                    </th>
+                    <th
+                        class="px-5 py-3 bg-gray-600 text-center text-xs font-semibold
+                        text-gray-100
+                        uppercase tracking-wider shadow-lg">
                         Memb. No
                     </th>
                     <th
@@ -97,7 +103,10 @@
                 @forelse ($members as $member)
                     <tr>
                     <td class="px-5 py-5 border-b border-gray-200 text-sm hidden md:block">
-                        <p class="text-gray-900 whitespace-no-wrap">{{ $member->number }}
+                        <p class="text-gray-900 whitespace-no-wrap">{{ $loop->iteration + $members->firstItem() - 1}}
+                    </td>
+                    <td class="py-5 border-b border-gray-200 text-sm">
+                        <p class="text-gray-900 whitespace-no-wrap text-center">{{ $member->number }}
                     </td>
                     <td class="py-5 border-b border-gray-200 text-sm">
                         <div class="flex items-center">
@@ -152,6 +161,9 @@
                     @endforelse
             </tbody>
         </table>
+        <div class="mt-4">
+            {{ $members->links() }}
+        </div>
 
     </div>
 </div>
