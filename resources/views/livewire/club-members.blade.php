@@ -8,7 +8,7 @@
                        placeholder="Filter by name or memb number">
             </div>
             <div class="">
-                <label for="sort">Sort by:</label>
+                <label for="sort" class="text-gray-600">Sort by:</label>
                 <select wire:model="sortby" name="sort" id="sort" class="shadow border-gray-300 rounded w-48
                 text-grey-darker ml-2">
                     <option value="last_name" selected>Last Name</option>
@@ -18,9 +18,9 @@
             <div class="">
                 <input type="checkbox" wire:model="active" id="showActive" name="showActive" value="1" checked
                        class="rounded border-judo-300
-                                text-judo-600 shadow-sm focus:border-judo-300 focus:ring focus:ring-judo-200
+                                text-gray-600 shadow-sm focus:border-judo-300 focus:ring focus:ring-judo-200
                                 focus:ring-opacity-50">
-                <label for="showActive">Show active members only</label>
+                <label for="showActive" class="text-gray-600">Show active members only</label>
             </div>
             <div class="">
                 <a href="{{ route('club.checkMemberships', ['club' => $club_id]) }}" class="button-judo">
