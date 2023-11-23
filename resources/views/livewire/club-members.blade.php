@@ -146,8 +146,7 @@
                     @empty
                     <tr>
                         <td colspan="7">
-                            <h4 class="text-xl text-gray-400 my-5 text-center">No member with active
-                                membership registered right now.</h4>
+                            <h4 class="text-xl text-gray-400 my-5 text-center">No members found.</h4>
                         </td>
                     </tr>
                     @endforelse
