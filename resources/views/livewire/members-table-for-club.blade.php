@@ -89,7 +89,7 @@
                         <div class="flex items-center">
                             <div class="ml-3">
                                 <p class="text-gray-900 whitespace-no-wrap font-bold">
-                                    <a href="{{ route('member.show', $member) }}" class="hover:text-cool-gray-400" title="View club page">{{ $member->first_name }} {{ $member->last_name }}</a>
+                                    {{ $member->first_name }} {{ $member->last_name }}
                                 </p>
                             </div>
                         </div>
