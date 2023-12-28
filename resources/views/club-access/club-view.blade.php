@@ -172,7 +172,7 @@
                     <div class="w-full px-6 py-2" x-show="openTab === '#personnel'">
                         <div class="w-full bg-white border-2 border-gray-200 rounded-xl my-4 p-4 flex flex-wrap">
                             <h4 class="font-bold text-xl text-gray-600">Club Personnel:</h4>
-                            <div class="w-full my-4">
+                            <div class="w-full overflow-x-auto my-4 pb-4 lg:pb-0">
                                 <table class="min-w-full table leading-normal">
                                     <thead>
                                     <tr>
@@ -209,7 +209,7 @@
                                         <th
                                             class="px-5 py-3 bg-gray-600
                                             text-left text-xs font-semibold text-white uppercase tracking-wider
-                                            shadow-lg">
+                                            shadow-lg rounded-r">
                                             Qualifications
                                         </th>
                                     </tr>
@@ -225,15 +225,6 @@
                                             </td>
                                             <td class="px-5 py-5 border-b border-gray-200">
                                                 <div class="text-gray-700 font-bold">{{ $personnel->name }}</div>
-                                                <div class="text-sm">
-                                                    <span class="font-bold text-gray-500 w-8">e:</span>
-                                                    <a href="mailto:{{ $personnel->email }}">
-                                                        {{ $personnel->email }}</a>
-                                                    <br>
-                                                    <span
-                                                        class="font-bold text-gray-500 w-8">t:</span>
-                                                    {{ $personnel->phone }}
-                                                </div>
                                             </td>
                                             <td class="px-5 py-5 border-b border-gray-200">
                                                 <div class="flex items-center text-sm">
@@ -326,15 +317,6 @@
                                             </td>
                                             <td class="px-5 py-5 border-b border-gray-200">
                                                 <div class="text-gray-700 font-bold">{{ $personnel->name }}</div>
-                                                <div class="text-sm">
-                                                    <span class="font-bold text-gray-500 w-8">e:</span>
-                                                    <a href="mailto:{{ $personnel->email }}">
-                                                        {{ $personnel->email }}</a>
-                                                    <br>
-                                                    <span
-                                                        class="font-bold text-gray-500 w-8">t:</span>
-                                                    {{ $personnel->phone }}
-                                                </div>
                                             </td>
                                             <td class="px-5 py-5 border-b border-gray-200">
                                                 <div class="flex items-center text-sm">
@@ -398,15 +380,6 @@
                                             </td>
                                             <td class="px-5 py-5 border-b border-gray-200">
                                                 <div class="text-gray-700 font-bold">{{ $personnel->name }}</div>
-                                                <div class="text-sm">
-                                                    <span class="font-bold text-gray-500 w-8">e:</span>
-                                                    <a href="mailto:{{ $personnel->email }}">
-                                                        {{ $personnel->email }}</a>
-                                                    <br>
-                                                    <span
-                                                        class="font-bold text-gray-500 w-8">t:</span>
-                                                    {{ $personnel->phone }}
-                                                </div>
                                             </td>
                                             <td class="px-5 py-5 border-b border-gray-200">
                                                 <div class="flex items-center text-sm">
@@ -468,15 +441,6 @@
                                             </td>
                                             <td class="px-5 py-5 border-b border-gray-200">
                                                 <div class="text-gray-700 font-bold">{{ $personnel->name }}</div>
-                                                <div class="text-sm">
-                                                    <span class="font-bold text-gray-500 w-8">e:</span>
-                                                    <a href="mailto:{{ $personnel->email }}">
-                                                        {{ $personnel->email }}</a>
-                                                    <br>
-                                                    <span
-                                                        class="font-bold text-gray-500 w-8">t:</span>
-                                                    {{ $personnel->phone }}
-                                                </div>
                                             </td>
                                             <td class="px-5 py-5 border-b border-gray-200">
                                                 <div class="flex items-center text-sm">
@@ -540,46 +504,48 @@
                                 </div>
                             </div>
                             <div class="w-full mt-12">
-                                <h4 class="font-bold text-xl text-gray-600 mb-4" id="volunteers">Coaches:</h4>
-                                <table class="min-w-full table leading-normal mt-8">
-                                    <thead>
-                                    <tr>
-                                        <th
-                                            class="px-5 py-3 bg-gray-600
-                                            text-left text-xs font-semibold text-white uppercase tracking-wider
-                                            rounded-l shadow-lg">
-                                            Name
-                                        </th>
-                                        <th
-                                            class="px-5 py-3 bg-gray-600
-                                            text-left text-xs font-semibold text-white uppercase tracking-wider
-                                            shadow-lg">
-                                            Safeguarding
-                                        </th>
-                                        <th
-                                            class="px-5 py-3 bg-gray-600
-                                            text-left text-xs font-semibold text-white uppercase tracking-wider
-                                            shadow-lg">
-                                            Vetting
-                                        </th>
-                                        <th
-                                            class="px-5 py-3 bg-gray-600
-                                            text-left text-xs font-semibold text-white uppercase tracking-wider
-                                            shadow-lg">
-                                            First Aid
-                                        </th>
-                                        <th
-                                            class="px-5 py-3 bg-gray-600
-                                            text-left text-xs font-semibold text-white uppercase tracking-wider
-                                            shadow-lg">
-                                            Qualifications
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <td></td>
-                                    </tbody>
-                                </table>
+                                <h4 class="font-bold text-xl text-gray-600" id="volunteers">Coaches:</h4>
+                                <div class="w-full overflow-x-auto my-4 pb-4 lg:pb-0">
+                                    <table class="min-w-full table leading-normal">
+                                        <thead>
+                                        <tr>
+                                            <th
+                                                class="px-5 py-3 bg-gray-600
+                                                                            text-left text-xs font-semibold text-white uppercase tracking-wider
+                                                                            rounded-l shadow-lg">
+                                                Name
+                                            </th>
+                                            <th
+                                                class="px-5 py-3 bg-gray-600
+                                                                            text-left text-xs font-semibold text-white uppercase tracking-wider
+                                                                            shadow-lg">
+                                                Safeguarding
+                                            </th>
+                                            <th
+                                                class="px-5 py-3 bg-gray-600
+                                                                            text-left text-xs font-semibold text-white uppercase tracking-wider
+                                                                            shadow-lg">
+                                                Vetting
+                                            </th>
+                                            <th
+                                                class="px-5 py-3 bg-gray-600
+                                                                            text-left text-xs font-semibold text-white uppercase tracking-wider
+                                                                            shadow-lg">
+                                                First Aid
+                                            </th>
+                                            <th
+                                                class="px-5 py-3 bg-gray-600
+                                                                            text-left text-xs font-semibold text-white uppercase tracking-wider
+                                                                            shadow-lg rounded-r">
+                                                Qualifications
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @each('coach.coach-list-club-view', $club->coach, 'coach', 'coach.empty')
+                                        </tbody>
+                                    </table>
+                                </div>
 
                             </div>
                         </div>
@@ -592,8 +558,8 @@
                         <div class="w-full bg-white border-2 border-gray-200 rounded-xl my-4 p-4 flex flex-wrap">
                             <h4 class="font-bold text-xl text-gray-600 mb-4" id="personnel">Club Volunteers:</h4>
                             <div class="w-full flex flex-wrap">
-                                <div class="w-full">
-                                    <table class="min-w-full table leading-normal mt-8">
+                                <div class="w-full overflow-x-auto pb-4 lg:pb-0">
+                                    <table class="min-w-full table leading-normal">
                                         <thead>
                                         <tr>
                                             <th
@@ -601,11 +567,6 @@
                                                 text-left text-xs
                                                 font-semibold text-gray-200 uppercase tracking-wider shadow-lg">
                                                 Name
-                                            </th>
-                                            <th
-                                                class="px-5 py-3 bg-gray-600 text-left text-xs
-                                                font-semibold text-gray-200 uppercase tracking-wider shadow-lg">
-                                                Contact
                                             </th>
                                             <th
                                                 class="px-5 py-3 bg-gray-600 text-left text-xs
@@ -620,9 +581,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tbody>
-                                        @each('volunteer.volunteer-list', $club->volunteer, 'volunteer', 'volunteer.empty')
-                                        </tbody>
+                                        @each('volunteer.volunteer-list-club-view', $club->volunteer, 'volunteer', 'volunteer.empty')
                                         </tbody>
                                     </table>
                                     <div class="text-xs text-gray-500 bg-gray-100 p-2 mt-4 font-medium rounded">
