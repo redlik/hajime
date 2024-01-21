@@ -155,7 +155,7 @@
                                     </th>
                                     <th
                                         class="px-5 py-3 bg-gray-600 text-left text-xs
-                                        font-semibold text-white uppercase tracking-wider">
+                                        font-semibold rounded-r text-white uppercase tracking-wider">
                                         Contact
                                     </th>
                                 </tr>
