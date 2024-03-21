@@ -2,7 +2,7 @@
     <div class="w-full">
         <div class="flex flex-wrap content-center justify-between mt-4">
             <div class="w-1/2">
-                <input type="search" wire:model.debounce.500ms="searchQuery"
+                <input type="search" wire:model.live.debounce.500ms="searchQuery"
                        class="shadow border-gray-300 rounded w-full py-2 px-3 text-grey-darker"
                        placeholder="Filter by name, number or eircode"></div>
             <div class="">
@@ -29,7 +29,7 @@
                 <th
                     class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold text-gray-100 uppercase
                     tracking-wider">
-                    Eircode
+                    D.O.B.
                 </th>
                 <th
                     class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold text-gray-100 uppercase
@@ -69,7 +69,7 @@
                         <p class="text-gray-900 whitespace-no-wrap">{{ $member->club->name ?? "Error, why?"}}
                     </td>
                     <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                        <p class="text-gray-900 whitespace-no-wrap">{{ $member->eircode }}
+                        <p class="text-gray-900 whitespace-no-wrap">{{ $member->dob }}
                     </td>
                     <td class="px-5 py-5 border-b border-gray-200 text-sm">
                         <p class="text-gray-900 whitespace-no-wrap">

@@ -3,7 +3,7 @@
     <div class="w-full">
         <div class="w-full flex flex-wrap items-center gap-8 my-4 p-3 rounded bg-gray-100">
             <div class="w-full">
-                <input type="search" wire:model.debounce.500ms="searchQuery"
+                <input type="search" wire:model.live.debounce.500ms="searchQuery"
                        class="shadow border-gray-300 rounded w-full lg:w-[400px] py-2 px-3 text-grey-darker"
                        placeholder="Filter by name or membership number">
             </div>

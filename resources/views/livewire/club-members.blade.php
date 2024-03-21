@@ -3,20 +3,20 @@
     <div class="w-full">
         <div class="w-full flex flex-wrap items-center justify-between my-4 p-3 rounded bg-gray-100">
             <div class="w-1/4">
-                <input type="search" wire:model.debounce.500ms="searchQuery"
+                <input type="search" wire:model.live.debounce.500ms="searchQuery"
                        class="shadow border-gray-300 rounded w-full py-2 px-3 text-grey-darker"
                        placeholder="Filter by name or memb number">
             </div>
             <div class="">
                 <label for="sort" class="text-gray-600">Sort by:</label>
-                <select wire:model="sortby" name="sort" id="sort" class="shadow border-gray-300 rounded w-48
+                <select wire:model.live="sortby" name="sort" id="sort" class="shadow border-gray-300 rounded w-48
                 text-grey-darker ml-2">
                     <option value="last_name" selected>Last Name</option>
                     <option value="number">Memership No</option>
                 </select>
             </div>
             <div class="">
-                <input type="checkbox" wire:model="active" id="showActive" name="showActive" value="1" checked
+                <input type="checkbox" wire:model.live="active" id="showActive" name="showActive" value="1" checked
                        class="rounded border-judo-300
                                 text-gray-600 shadow-sm focus:border-judo-300 focus:ring focus:ring-judo-200
                                 focus:ring-opacity-50">

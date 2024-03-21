@@ -1,7 +1,7 @@
 <div class="p-6">
     <div class="flex justify-between mb-4">
         <div class="w-1/3 mb-4">
-            <input type="search" wire:model.debounce.500ms="search"
+            <input type="search" wire:model.live.debounce.500ms="search"
                    class="shadow border-gray-300 rounded w-full py-2 px-3 text-grey-darker"
                    placeholder="Filter by person's or a club's name">
             @if($search !='')
@@ -11,7 +11,7 @@
         <div class="flex justify-end gap-8 text-gray-600">
             <div class="flex items-center">
                 <label for="status" class="mr-2 text-sm">Status</label>
-                <select name="status" class="text-sm" wire:model="status">
+                <select name="status" class="text-sm" wire:model.live="status">
                     <option value="" selected>All Statuses</option>
                     <option value="active" selected>Active</option>
                     <option value="pending" selected>Pending</option>
@@ -19,7 +19,7 @@
             </div>
             <div class="flex items-center">
                 <label for="email_status" class="mr-2 text-sm">Email Ver. Status</label>
-                <select name="email_status" class="text-sm" wire:model="email_status">
+                <select name="email_status" class="text-sm" wire:model.live="email_status">
                     <option value="" selected>All Statuses</option>
                     <option value="requested" selected>Requested</option>
                     <option value="granted" selected>Granted</option>

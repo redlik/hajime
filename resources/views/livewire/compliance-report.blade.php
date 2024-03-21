@@ -1,11 +1,11 @@
 <main class="flex-1 relative overflow-y-auto focus:outline-none p-6" tabindex="0"
-      x-data="{ report: @entangle('report') }" x-init="$el.focus()">
+      x-data="{ report: @entangle('report').live }" x-init="$el.focus()">
     <div>
-        <form wire:submit.prevent="generateReport({{ $selected }})">
+        <form wire:submit="generateReport({{ $selected }})">
             <div class="flex">
                 <div>
                     <select name="selectedClub" id="selectedClub"
-                            class="shadow border border-gray-300 rounded w-auto py-2 px-3 text-grey-darker mr-4" wire:model="selected" required>
+                            class="shadow border border-gray-300 rounded w-auto py-2 px-3 text-grey-darker mr-4" wire:model.live="selected" required>
                         <option value="" disabled selected>Select Club</option>
                         @foreach ($clubs as $club)
                             <option value="{{ $club->id }}">

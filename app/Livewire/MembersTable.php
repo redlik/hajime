@@ -27,7 +27,7 @@ class MembersTable extends Component
             $query->where('first_name', 'like', '%'.$this->searchQuery.'%')
             ->orWhere('last_name', 'like', '%'.$this->searchQuery.'%')
             ->orWhere('number', 'like', '%'.$this->searchQuery.'%')
-            ->orWhere('eircode', 'like', '%'.$this->searchQuery.'%');
+            ->orWhere('dob', 'like', '%'.$this->searchQuery.'%');
         })
         ->orderBy('last_name', 'asc')
         ->simplePaginate(50);
