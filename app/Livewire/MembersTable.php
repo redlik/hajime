@@ -3,19 +3,12 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Contracts\HasForms;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Concerns\InteractsWithTable;
-use Filament\Tables\Contracts\HasTable;
-use Filament\Tables\Table;
+use Livewire\WithPagination;
 use App\Models\Member;
 
-class MembersTable extends Component implements HasForms, HasTable
+class MembersTable extends Component
 {
-    use InteractsWithTable;
-    use InteractsWithForms;
-
+    use WithPagination;
     public $searchQuery;
 
     public function mount() {
@@ -23,32 +16,22 @@ class MembersTable extends Component implements HasForms, HasTable
 //        $this->members = Member::simplePaginate(50);
     }
 
-    public function table(Table $table): Table
-    {
-        return $table
-        ->query(Member::query())
-        ->columns([
-            TextColumn::make('first_name')->searchable(),
-            TextColumn::make('dob')->date('Y-m-d')->searchable()->label('Date of Birth'),
-        ])
-        ->filters([
-            // ...
-        ])
-        ->actions([
-            // ...
-        ])
-        ->bulkActions([
-            // ...
-        ]);
-    }
-
     public function updatingSearchquery()
     {
-//        $this->resetPage();
+        $this->resetPage();
     }
 
     public function render()
     {
-        return view('livewire.members-table');
+        $members = Member::when($this->searchQuery != '', function($query) {
+            $query->where('first_name', 'like', '%'.$this->searchQuery.'%')
+                ->orWhere('last_name', 'like', '%'.$this->searchQuery.'%')
+                ->orWhere('number', 'like', '%'.$this->searchQuery.'%')
+                ->orWhere('dob', 'like', '%'.$this->searchQuery.'%');
+        })
+            ->orderBy('last_name', 'asc')
+            ->simplePaginate(50);
+
+        return view('livewire.members-table', ['members' => $members ]);
     }
 }
