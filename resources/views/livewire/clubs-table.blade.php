@@ -1,4 +1,4 @@
-<div class="container">
+<div class="">
     <div class="w-full">
         <div class="flex flex-wrap content-center justify-between mt-4">
             <div class="w-full md:w-1/2">
@@ -9,18 +9,23 @@
         </div>
 
 
-        <table class="min-w-full table leading-normal mt-8">
+        <table class="w-full table-auto leading-normal mt-8">
             <thead>
                 <tr>
                     <th
-                        class="px-5 py-3 rounded-l bg-gray-600 text-left text-xs
+                        class="px-5 py-3 rounded-l bg-gray-600 text-center text-xs font-semibold text-gray-100 uppercase
+                    tracking-wider">
+                        #
+                    </th>
+                    <th
+                        class="px-5 py-3 bg-gray-600 text-left text-xs
                         font-semibold
                         text-gray-100 uppercase tracking-wider">
                         Club name
                     </th>
                     <th
                         class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold
-                        text-gray-100 uppercase tracking-wider hidden md:block">
+                        text-gray-100 uppercase tracking-wider hidden lg:block">
                         Location
                     </th>
                     <th
@@ -47,13 +52,22 @@
                     <td class="px-5 py-5 border-b border-gray-200 text-sm">
                         <div class="flex items-center">
                             <div class="ml-3">
+                                <p class="text-gray-400 whitespace-no-wrap">
+                                    {{ ($clubs->currentPage() - 1) * $clubs->perPage() + $loop->iteration }}
+                                </p>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                        <div class="flex items-center">
+                            <div>
                                 <p class="text-gray-900 whitespace-no-wrap font-bold">
                                     <a href="{{ route('clubs.show', $club) }}" class="hover:text-cool-gray-400" title="View club page">{{ $club->name }}</a>
                                 </p>
                             </div>
                         </div>
                     </td>
-                    <td class="px-5 py-5 border-b border-gray-200 text-sm hidden md:block">
+                    <td class="px-5 py-5 border-b border-gray-200 text-sm hidden lg:block">
                         <p class="text-gray-900 whitespace-no-wrap">{{ $club->address1}}, {{$club->city}}
                         </p>
                     </td>
