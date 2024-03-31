@@ -78,8 +78,6 @@ class ClubController extends Controller
             $email = $user->email;
         }
 
-        ray($user);
-
         $headCoach = Personnel::headcoach()->where('club_id', $club->id)->first();
         $secretary = Personnel::secretary()->where('club_id', $club->id)->first();
         $designated = Personnel::designatedofficer()->where('club_id', $club->id)->first();

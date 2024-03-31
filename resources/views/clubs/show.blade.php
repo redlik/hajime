@@ -55,22 +55,22 @@
                             <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#notes'">
                                 <a :class="openTab === '#notes' ? activeClasses : inactiveClasses" class="bg-white
                             inline-block
-                            py-2 px-4 font-semibold" href="#notes">Notes</a>
+                            py-2 px-4 font-semibold" href="#notes">Notes {{ $notes->count()>0 ? $notes->count() : '' }}</a>
                             </li>
                             <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#grads'">
                                 <a :class="openTab === '#grads' ? activeClasses : inactiveClasses" class="bg-white
                             inline-block
-                            py-2 px-4 font-semibold" href="#grads">Gradings</a>
+                            py-2 px-4 font-semibold" href="#grads">Gradings {{ $grads->count()>0 ? $grads->count() : '' }}</a>
                             </li>
                             <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#forms'">
                                 <a :class="openTab === '#forms' ? activeClasses : inactiveClasses" class="bg-white
                             inline-block
-                            py-2 px-4 font-semibold" href="#forms">Forms</a>
+                            py-2 px-4 font-semibold" href="#forms">Forms {{ $forms->count()>0 ? $forms->count() : '' }}</a>
                             </li>
                             <li class="-mb-px mr-1 md:mb-0 sm:mb-3" @click="openTab = '#documents'">
                                 <a :class="openTab === '#documents' ? activeClasses : inactiveClasses" class="bg-white
                             inline-block
-                            py-2 px-4 font-semibold" href="#documents">Documents</a>
+                            py-2 px-4 font-semibold" href="#documents">Documents {{ $documents->count()>0 ? $documents->count() : '' }}</a>
                             </li>
                         </ul>
                     </div>
