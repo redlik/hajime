@@ -30,7 +30,7 @@ class MembersTable extends Component
                 ->orWhere('dob', 'like', '%'.$this->searchQuery.'%');
         })
             ->orderBy('last_name', 'asc')
-            ->simplePaginate(50);
+            ->paginate(100);
 
         return view('livewire.members-table', ['members' => $members ]);
     }

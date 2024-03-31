@@ -1,12 +1,13 @@
-<div class="container">
+<div class="w-full">
     <div class="w-full">
-        <div class="flex flex-wrap content-center justify-between mt-4">
-            <div class="w-1/2">
+        <div class="w-full flex flex-wrap content-center justify-between mt-4">
+            <div class="w-1/3">
                 <input type="search" wire:model.live.debounce.500ms="searchQuery"
                        class="shadow border-gray-300 rounded w-full py-2 px-3 text-grey-darker"
                        placeholder="Filter by name, number or date of birth"></div>
-            <div class="">
-                {{ $members->links() }}</div>
+            <div class="w-2/3 flex justify-end">
+                {{ $members->links() }}
+            </div>
         </div>
         <table class="min-w-full table leading-normal mt-8">
             <thead>
@@ -55,7 +56,7 @@
                         <div class="flex items-center">
                             <div class="ml-3">
                                 <p class="text-gray-400 whitespace-no-wrap">
-                                    {{ $loop->iteration }}
+                                    {{ ($members->currentPage() - 1) * $members->perPage() + $loop->iteration }}
                                 </p>
                             </div>
                         </div>
@@ -108,8 +109,10 @@
             @endforeach
             </tbody>
         </table>
+        <div class="text-sm text-gray-500 my-4 ml-8">{{ $members->total() }} {{ \Illuminate\Support\Str::of('member')->plural($members->total())}} listed</div>
         <div class="mt-4 text-right">
             {{ $members->links() }}
         </div>
+
     </div>
 </div>
