@@ -33,7 +33,7 @@ class MemberController extends Controller
      */
     public function create(Request $request)
     {
-        $clubs = Club::get();
+        $clubs = Club::orderBy('name')->get();
         $selectedClub = $request->query('club');
         $genders = Gender::all();
 
@@ -82,7 +82,7 @@ class MemberController extends Controller
     public function edit(Member $member)
     {
         $member = DB::table('members')->find($member->id);
-        $clubs = Club::all();
+        $clubs = Club::orderBy('name')->get();
         $genders = Gender::all();
 
         return view('member.edit', compact('member', 'clubs', 'genders'));
