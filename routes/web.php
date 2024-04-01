@@ -8,6 +8,7 @@ use App\Http\Controllers\EmailTwoFactorController;
 use App\Http\Controllers\GradFormController;
 use App\Http\Controllers\MemberDocumentController;
 use App\Http\Controllers\MembernoteController;
+use App\Http\Controllers\PagesController;
 use App\Http\Controllers\Reports\ActiveCoachReportController;
 use App\Http\Controllers\Reports\ClubStatusReportController;
 use App\Http\Controllers\Reports\ComplianceStatusReportController;
@@ -69,6 +70,9 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('personnel/delete/{id}', [PersonnelController::class, 'destroy'])->name('personnel.delete');
     Route::get('club/{id}/add-personnel/{role}', [PersonnelController::class, 'addPersonnel'])->name('club.addPersonnel');
     Route::get('club/{id}/add-volunteer', [VolunteerController::class, 'addVolunteer'])->name('volunteer.addVolunteer');
+    Route::group(['prefix' => 'settings'], function() {
+        Route::get('logs', [PagesController::class, 'logsPage'])->name('pages.logsPage');
+    });
 });
 
 Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'reports'], function () {

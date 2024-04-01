@@ -186,6 +186,12 @@
                                             <option value="Over 18 – Adult Membership">Over 18 – Adult Membership</option>
                                             <option value="Student Membership">Student Membership</option>
                                             <option value="Life Membership">Life Membership</option>
+                                            <optgroup label="Women in Sport">
+                                                <option value="WIS – Under 12">WIS – Under 12</option>
+                                                <option value="WIS – Under 18">WIS – Under 18</option>
+                                                <option value="WIS – Over 18">WIS – Over 18</option>
+                                                <option value="WIS - Student">WIS - Student</option>
+                                            </optgroup>
                                         </select>
                                     </div>
                                     <div>

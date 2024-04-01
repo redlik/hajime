@@ -7,6 +7,7 @@ use App\Models\Member;
 use App\Models\Grade;
 use App\Models\Membernote;
 use App\Models\Membership;
+use Auth;
 use Illuminate\Http\Request;
 use App\Models\Club;
 use App\Models\MemberDocument;
@@ -52,8 +53,11 @@ class MemberController extends Controller
         $club = Club::find($request->input('club_id'));
         $member = Member::create($request->all());
 
-//        return redirect()->action('App\Http\Controllers\ClubController@show', ['club' => $club->id]);
-//        return back()->with('message', 'Record Successfully Updated!');
+        activity()
+            ->performedOn($member)
+            ->causedBy(Auth::id())
+            ->log('New member created by :causer.name');
+
         return redirect()->route('member.show', $member);
     }
 
@@ -85,6 +89,8 @@ class MemberController extends Controller
         $clubs = Club::orderBy('name')->get();
         $genders = Gender::all();
 
+
+
         return view('member.edit', compact('member', 'clubs', 'genders'));
     }
 
@@ -99,6 +105,13 @@ class MemberController extends Controller
     {
         $input = $request->all();
         $member->fill($input)->save();
+
+        activity()
+            ->performedOn($member)
+            ->causedBy(Auth::id())
+            ->log('Member details updated by :causer.name');
+
+
         return back()->with('message', 'Record Successfully Updated!');
     }
 
