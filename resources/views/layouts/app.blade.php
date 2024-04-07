@@ -24,7 +24,6 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
     @livewireStyles
-    @filamentStyles
 
 </head>
 <body class="bg-gray-300 h-screen antialiased leading-none font-sans pb-12">
@@ -153,7 +152,6 @@
     @yield('content')
 </div>
 @livewireScripts
-@filamentScripts
 @yield('bottomScripts')
 </body>
 </html>

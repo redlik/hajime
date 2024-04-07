@@ -11,8 +11,6 @@ class PagesController extends Controller
     {
         $logs = Activity::all();
 
-        ray($logs);
-
         return view('pages.logspage', compact('logs'));
     }
 }
