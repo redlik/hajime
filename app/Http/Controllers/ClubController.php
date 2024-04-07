@@ -11,6 +11,7 @@ use App\Models\Clubnote;
 use App\Models\User;
 use App\Models\Venue;
 use App\Models\Volunteer;
+use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Member;
@@ -49,14 +50,19 @@ class ClubController extends Controller
     public function store(Request $request)
     {
         $request->validate(['name' => 'required|unique:clubs']);
-        if($request->input('ethics_assessment') == 0) {
-            $request->merge([
-                'ethics_assessment_date' => '',
-            ]);
-        }
+//        if($request->input('ethics_assessment') == 0) {
+//            $request->merge([
+//                'ethics_assessment_date' => NULL,
+//            ]);
+//        }
         $club = Club::create($request->all());
-//        $personnel = self::personnel($club);
         $personnel = $this->personnel($club);
+
+        activity()
+            ->performedOn($club)
+            ->causedBy(Auth::id())
+            ->withProperty('name', $club->name )
+            ->log('New club created');
 
         return redirect()->action('App\Http\Controllers\ClubController@show', ['club' => $club]);
 
@@ -124,6 +130,14 @@ class ClubController extends Controller
         }
         $input = $request->all();
         $club->fill($input)->save();
+
+        activity()
+            ->performedOn($club)
+            ->causedBy(Auth::id())
+            ->withProperty('name', $club->name )
+            ->log('Club details updated');
+
+
         return back()->with('message', 'Record Successfully Updated!');
     }
 

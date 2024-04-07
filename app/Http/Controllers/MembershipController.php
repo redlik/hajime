@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Membership;
+use Auth;
 use Illuminate\Http\Request;
 use App\Models\Member;
 use Illuminate\Support\Facades\Redirect;
@@ -44,6 +45,12 @@ class MembershipController extends Controller
             $member->active = 1;
             $member->save();
         }
+
+        activity()
+            ->performedOn($member)
+            ->causedBy(Auth::id())
+            ->withProperty('name', $member->first_name . ' ' . $member->last_name )
+            ->log('New membership added');
 
         return Redirect::to(URL::previous() . "#membership");
     }
@@ -104,6 +111,12 @@ class MembershipController extends Controller
                 $member->save();
             }
         }
+
+        activity()
+            ->performedOn($member)
+            ->causedBy(Auth::id())
+            ->withProperty('name', $member->first_name . ' ' . $member->last_name )
+            ->log('Membership removed');
 
         return Redirect::to(URL::previous() . "#membership");
     }

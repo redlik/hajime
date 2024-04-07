@@ -56,7 +56,8 @@ class MemberController extends Controller
         activity()
             ->performedOn($member)
             ->causedBy(Auth::id())
-            ->log('New member created by :causer.name');
+            ->withProperty('name', $member->first_name . ' ' . $member->last_name )
+            ->log('New member created');
 
         return redirect()->route('member.show', $member);
     }
@@ -109,7 +110,8 @@ class MemberController extends Controller
         activity()
             ->performedOn($member)
             ->causedBy(Auth::id())
-            ->log('Member details updated by :causer.name');
+            ->withProperty('name', $member->first_name . ' ' . $member->last_name )
+            ->log('Member details updated');
 
 
         return back()->with('message', 'Record Successfully Updated!');
