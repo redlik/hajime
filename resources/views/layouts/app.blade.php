@@ -44,20 +44,21 @@
                 </div>
                 </a>
             </div>
-            <nav class="space-x-4 text-white text-sm sm:text-base font-semibold" x-data="{dropdown: false}">
+            <nav class="space-x-4 text-white text-sm sm:text-base font-semibold" x-data="{dropdown: false, settings: false}">
                 <a class="no-underline hover:underline hover:text-orange-200" href="/">Home</a>
                 @role('admin')
-                <a class="no-underline hover:underline hover:text-orange-200" href="{{ route('clubs.index') }}">Clubs</a>
-                <a class="no-underline hover:underline hover:text-orange-200" href="{{ route('member.index') }}">Members</a>
+                <a class="no-underline hover:underline hover:text-orange-200"
+                   href="{{ route('clubs.index') }}">Clubs</a>
+                <a class="no-underline hover:underline hover:text-orange-200"
+                   href="{{ route('member.index') }}">Members</a>
                 <a class="no-underline hover:underline hover:text-orange-200" href="{{ route('club.access.users') }}">Users</a>
                 <!-- Profile dropdown -->
-                <div @click.away="dropdown = false" class="ml-3 relative inline-block font-semibold" x-data="{ dropdown:
-                false }">
+                <div @click.away="dropdown = false" class="ml-3 relative inline-block font-semibold">
                     <div class="inline">
                         <button @click="dropdown = !dropdown" class="no-underline hover:underline
                         hover:text-orange-200 font-semibold" id="reports-menu"
                                 aria-haspopup="true" x-bind:aria-expanded="dropdown">
-                            <span class="sr-only">Open user menu</span>
+                            <span class="sr-only">Open reports menu</span>
                             Reports <i class="fas fa-sort-down"></i>
                         </button>
                     </div>
@@ -67,17 +68,20 @@
                                 opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
                         <div x-show="dropdown" x-description="Profile dropdown panel, show/hide based on dropdown
                         state."
-                            class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white
+                             class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white
                             ring-1 ring-black ring-opacity-5 z-50" role="menu" aria-orientation="vertical"
-                            aria-labelledby="reports-menu">
-                            <a href="{{ route('report.membership') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                             aria-labelledby="reports-menu">
+                            <a href="{{ route('report.membership') }}"
+                               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                role="menuitem">Memberships</a>
-                            <a href="{{ route('report.club-members') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            <a href="{{ route('report.club-members') }}"
+                               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                role="menuitem">Club Members</a>
                             <a href="{{ route('report.club.status') }}" class="block px-4 py-2 text-sm text-gray-700
                             hover:bg-gray-100"
                                role="menuitem">Club Status</a>
-                            <a href="{{ route('report.invalid.personnel') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            <a href="{{ route('report.invalid.personnel') }}"
+                               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                role="menuitem">Invalid Personnel</a>
                             <a href="{{ route('report.active.coaches') }}" class="block px-4 py-2 text-sm text-gray-700
                             hover:bg-gray-100"
@@ -85,7 +89,8 @@
                             <a href="{{ route('report.invalid.coaches') }}" class="block px-4 py-2 text-sm text-gray-700
                             hover:bg-gray-100"
                                role="menuitem">Invalid Coaches</a>
-                            <a href="{{ route('report.email.consent') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            <a href="{{ route('report.email.consent') }}"
+                               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                role="menuitem">Email Consent</a>
                             <a href="{{ route('report.grading.list') }}" class="block px-4 py-2 text-sm text-gray-700
                             hover:bg-gray-100"
@@ -93,19 +98,45 @@
                             <a href="{{ route('report.compliance-status') }}" class="block px-4 py-2 text-sm text-gray-700
                             hover:bg-gray-100"
                                role="menuitem">Compliance Status</a>
+                        </div>
+                    </transition>
+                </div>
+                <div @click.away="settings = false" class="ml-3 relative inline-block font-semibold">
+                    <div class="inline">
+                        <button @click="settings = !settings" class="no-underline hover:underline
+                        hover:text-orange-200 font-semibold" id="reports-menu"
+                                aria-haspopup="true" x-bind:aria-expanded="dropdown">
+                            <span class="sr-only">Open settings menu</span>
+                            Settings <i class="fas fa-sort-down"></i>
+                        </button>
+                    </div>
+                    <transition enter-active-class="transition ease-out duration-100" enter-class="transform
+                    opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100"
+                                leave-active-class="transition ease-in duration-75" leave-class="transform
+                                opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+                        <div x-show="settings" x-description="Profile dropdown panel, show/hide based on dropdown
+                        state."
+                             class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white
+                            ring-1 ring-black ring-opacity-5 z-50" role="menu" aria-orientation="vertical"
+                             aria-labelledby="reports-menu">
+                            <a href="{{ route('pages.logsPage') }}"
+                               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                               role="menuitem">Activity Log</a>
 
-
-                        </div></transition>
+                        </div>
+                    </transition>
                 </div>
                 @endrole
                 @role('manager')
-                <a class="no-underline hover:underline hover:text-orange-200" href="{{ route('club.access.club') }}">My Club</a>
+                <a class="no-underline hover:underline hover:text-orange-200" href="{{ route('club.access.club') }}">My
+                    Club</a>
                 @endrole
                 @guest
-                    <a class="no-underline hover:underline hover:text-orange-200" href="{{ route('login') }}">{{ __('Login') }}</a>
-{{--                    @if (Route::has('register'))--}}
-{{--                        <a class="no-underline hover:underline" href="{{ route('register') }}">{{ __('Register') }}</a>--}}
-{{--                    @endif--}}
+                    <a class="no-underline hover:underline hover:text-orange-200"
+                       href="{{ route('login') }}">{{ __('Login') }}</a>
+                    {{--                    @if (Route::has('register'))--}}
+                    {{--                        <a class="no-underline hover:underline" href="{{ route('register') }}">{{ __('Register') }}</a>--}}
+                    {{--                    @endif--}}
                 @else
                     <a href="{{ route('logout') }}"
                        class="no-underline hover:underline"
