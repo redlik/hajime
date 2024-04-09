@@ -118,9 +118,12 @@
                              class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white
                             ring-1 ring-black ring-opacity-5 z-50" role="menu" aria-orientation="vertical"
                              aria-labelledby="reports-menu">
-                            <a href="{{ route('pages.logsPage') }}"
+                            <a href="{{ route('pages.logs-page') }}"
                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                role="menuitem">Activity Log</a>
+                            <a href="{{ route('pages.admin-list') }}"
+                               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                               role="menuitem">Admin Users</a>
 
                         </div>
                     </transition>
