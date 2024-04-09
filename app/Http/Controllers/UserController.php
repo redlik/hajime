@@ -140,4 +140,13 @@ class UserController extends Controller
 
         echo('Roles assigned');
     }
+
+    public function softDeleteAdmin(User $admin)
+    {
+        $admin->delete();
+
+        \Session::flash('message', 'User account deleted');
+
+        return redirect()->back();
+    }
 }
