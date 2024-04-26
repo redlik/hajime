@@ -9,7 +9,10 @@
                 <header class="font-semibold text-xl bg-gray-600 text-gray-100 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
                     Admin Users List
                 </header>
-                <div class="px-8">
+                <div class="px-8 py-8">
+                    <x-button class="button-success bg-judo-green my-8" href="">
+                        + Add new admin
+                    </x-button>
                     <table class="w-full table-auto leading-normal my-8">
                         <thead>
                         <tr>
