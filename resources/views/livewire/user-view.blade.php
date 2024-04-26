@@ -4,7 +4,7 @@
             <input type="search" wire:model.live.debounce.500ms="search"
                    class="shadow border-gray-300 rounded w-full py-2 px-3 text-grey-darker"
                    placeholder="Filter by person's or a club's name">
-            @if($search !='')
+            @if($searchQuery !='')
                 <a href="" wire:click="clear" class="text-xs text-red-700 font-semibold mt-1 ml-2 block">Clear</a>
             @endif
         </div>
