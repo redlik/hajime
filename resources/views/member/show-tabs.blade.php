@@ -260,8 +260,8 @@
                               role="form">
                             @csrf
                             <input type="hidden" name="member_id" value="{{ $member->id }}">
-                            <div class="flex flex-wrap justify-between">
-                                <div class="flex flex-wrap">
+                            <div class="flex flex-wrap justify-between items-end">
+                                <div class="flex flex-wrap gap-4">
                                     <div>
                                         <label for="grade_level" class="block text-sm text-gray-400 mb-2 font-bold">Grade
                                             level</label>
@@ -309,18 +309,20 @@
                                                class="shadow border-gray-300 rounded w-48 py-2 px-3 text-grey-darker mr-2">
                                     </div>
                                     <div>
-                                        <label for="type" class="block text-sm text-gray-400 mb-2 font-bold">Points to
-                                            next
-                                            grade</label>
+                                        <label for="type" class="block text-sm text-gray-400 mb-2 font-bold">Points / Wins</label>
                                         <input type="text" name="grade_points" id="grade_points"
                                                class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker mr-2"
-                                               placeholder="Points to next grade">
+                                               placeholder="Points / Wins">
+                                    </div>
+                                    <div>
+                                        <label for="type" class="block text-sm text-gray-400 mb-2 font-bold">Competition</label>
+                                        <input type="text" name="competition" id="competition"
+                                               class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker mr-2">
                                     </div>
 
                                 </div>
                                 <div>
                                     <input type="submit" value="Submit" class="button-judo">
-
                                 </div>
                             </div>
                         </form>
