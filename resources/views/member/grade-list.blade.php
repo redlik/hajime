@@ -14,7 +14,8 @@
             {{ $grade->grade_points}}
         </p>
     </td>
-    <td class="px-5 py-4 border-b border-gray-200 text-sm text-center">
+    <td class="px-5 py-4 border-b border-gray-200 text-sm text-center flex">
+        <button class="button-judo" @click="gradingModal = true">Edit</button>
         <form action="{{ route('grade.destroy' , $grade)}}" method="POST">
             @csrf
             <input type="hidden" name="_method" value="DELETE"/>

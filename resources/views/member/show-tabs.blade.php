@@ -327,7 +327,9 @@
                             </div>
                         </form>
 
-                        <div class="w-full">
+                        <div class="w-full" x-data="{gradingModal : false}" @keydown.window.escape="gradingModal = false" x-init="$watch(&quot;gradingModal&quot;, o => !o &amp;&amp; window.setTimeout(() => (gradingModal = true), 1000))" class="relative z-10" aria-labelledby="grading-modal" x-ref="dialog" aria-modal="true">
+                            {{--GRADING MODAL--}}
+                            @include('member.grading-modal')
                             <table class="min-w-full table leading-normal mt-8">
                                 <thead>
                                 <tr>
@@ -359,6 +361,7 @@
                                 @each('member.grade-list', $grades, 'grade', 'member.empty-grade')
                                 </tbody>
                             </table>
+
                         </div>
                     </div>
                 </div>
