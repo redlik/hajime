@@ -18,9 +18,6 @@ class PagesController extends Controller
 
     public function adminList()
     {
-        $adminRole = Role::where('name', 'admin')->first();
-        $admins = User::role($adminRole)->get();
-
-        return view('pages.admin-list', compact('admins'));
+        return view('pages.admin-list');
     }
 }
