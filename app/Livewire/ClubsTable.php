@@ -28,7 +28,7 @@ class ClubsTable extends Component
             $query->where('name', 'like', '%'.$this->searchQuery.'%');
         })
         ->orderBy('name', 'asc')
-        ->paginate(25);
+        ->simplePaginate(25);
 
 
         return view('livewire.clubs-table', [
