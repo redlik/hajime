@@ -45,12 +45,25 @@
                                 <input class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                        id="phone" name="phone" type="text" value="{{ $coach->phone }}">
                             </div>
-                            <div>
+                            <div class="mb-4">
                                 <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="email">
                                     Email
                                 </label>
                                 <input class="shadow border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker"
                                        id="email" name="email" type="email" value="{{ $coach->email }}">
+                            </div>
+                            <div>
+                                <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="member">
+                                    Link to member
+                                </label>
+                                <select name="member_id" id="member_id" class="shadow
+                                    border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker">
+                                    <option value="" disabled>Select from list of members</option>
+                                    @foreach($members as $member)
+                                        <option value="{{ $member->id }}"
+                                        @selected($member->id == $coach->member_id)>{{ $member->first_name }} {{ $member->last_name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="w-full border-2 border-gray-300 rounded-xl p-8 flex flex-wrap">

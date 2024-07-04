@@ -24,6 +24,11 @@ class Member extends Model
         return $this->hasMany('App\Models\Grade');
     }
 
+    public function coach()
+    {
+        return $this->hasOne('App\Models\Coach');
+    }
+
     public function getAgeAttribute()
     {
         return Carbon::parse($this->attributes['dob'])->age;

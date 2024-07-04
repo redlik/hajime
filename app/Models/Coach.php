@@ -15,4 +15,9 @@ class Coach extends Model
     {
         return $this->belongsTo('App\Models\Club');
     }
+
+    public function member()
+    {
+        return $this->belongsTo('App\Models\Member');
+    }
 }
