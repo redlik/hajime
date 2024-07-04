@@ -1,6 +1,6 @@
 <tr class="odd:bg-white even:bg-gray-200">
     <td class="px-5 py-4 border-b border-gray-200 text-sm">
-        <p class="text-gray-900 whitespace-no-wrap">
+        <p class="text-gray-900 whitespace-no-wrap" wire:model="grade_level">
             {{ $grade->grade_level}}
         </p>
     </td>
@@ -15,14 +15,15 @@
         </p>
     </td>
     <td class="px-5 py-4 border-b border-gray-200 text-sm">
-        <p class="text-gray-900 whitespace-no-wrap">
+        <p class="text-gray-900 whitespace-no-wrap" wire:model="competition">
             {{ $grade->competition }}
         </p>
     </td>
-    <td class="px-5 py-4 border-b border-gray-200 text-sm text-center flex">
-        <button class="button-judo"
-                wire:click="editModal({{ $grade->id }})">
-            Edit
+    <td class="px-5 py-4 border-b border-gray-200 text-sm justify-center flex items-center gap-4">
+        <button class="text-judo-600 hover:text-judo-300 whitespace-no-wrap"
+                wire:click="editModal({{ $grade->id }})"
+                title="Edit grade entry">
+            <i class="fas fa-edit"></i>
         </button>
         <form action="{{ route('grade.destroy' , $grade)}}" method="POST">
             @csrf
