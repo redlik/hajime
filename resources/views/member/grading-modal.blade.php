@@ -21,9 +21,15 @@
                     <div class="sm:flex sm:items-start">
                         <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                             <h3 class="text-lg leading-6 font-bold text-gray-900" id="modal-title">
-                                Edit grading record <span wire:model=""></span>
+                                Edit grading record
+                                <span>
+                                    @if($grade)
+                                        {{ $grade->id }}
+                                    @endif
+                                </span>
                             </h3>
                             <div class="mt-2">
+                                @if($grade)
                                 <form action="" class="">
                                     <input type="hidden" x-bind:value="grade_id">
                                     <div>
@@ -31,9 +37,9 @@
                                             level</label>
                                         <select name="grade_level" id="grade_level"
                                                 class="shadow border-gray-300 rounded w-48 py-2 px-3 text-grey-darker mr-2">>
-                                            <option value="" selected disabled>Select grade level</option>
+                                            <option value="" disabled>Select grade level</option>
                                             <optgroup label="Junior Grades">
-                                                <option value="1st Mon White">1st Mon White</option>
+                                                <option value="1st Mon White" @selected('grade_level' == $grade->grade_level)>1st Mon White</option>
                                                 <option value="2nd Mon Red">2nd Mon Red</option>
                                                 <option value="3rd Mon White/Yellow">3rd Mon White/Yellow</option>
                                                 <option value="4th Mon Yellow">4th Mon Yellow</option>
@@ -84,6 +90,7 @@
                                                class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker mr-2">
                                     </div>
                                 </form>
+                                @endif
                             </div>
                         </div>
                     </div>
