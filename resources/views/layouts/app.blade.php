@@ -124,6 +124,9 @@
                             <a href="{{ route('pages.admin-list') }}"
                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                role="menuitem">Admin Users</a>
+                            <a href="{{ route('pages.options-page') }}"
+                               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                               role="menuitem">Options</a>
 
                         </div>
                     </transition>
