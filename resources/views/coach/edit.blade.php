@@ -58,7 +58,7 @@
                                 </label>
                                 <select name="member_id" id="member_id" class="shadow
                                     border-gray-300 rounded w-full md:w-1/2 py-2 px-3 text-grey-darker">
-                                    <option value="" disabled>Select from list of members</option>
+                                    <option value="" disabled @selected($coach->member_id == '')>No member attached</option>
                                     @foreach($members as $member)
                                         <option value="{{ $member->id }}"
                                         @selected($member->id == $coach->member_id)>{{ $member->first_name }} {{ $member->last_name }}</option>

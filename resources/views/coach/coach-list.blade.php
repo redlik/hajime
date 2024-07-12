@@ -3,7 +3,11 @@
         <div class="flex items-center">
             <div class="">
                 <p class="text-gray-900 whitespace-no-wrap font-bold">
-                <div class="font-bold">{{ $coach->name }}</div>
+                <div class="font-bold">{{ $coach->name }}
+                    @if($coach->member_id)
+                        <a class="text-judo-500 ml-2" title="View member details" href="{{ route('member.show', $coach->member_id) }}"><i class="fas fa-external-link-alt"></i></a>
+                    @endif
+                </div>
                 <div>
                     <span class="font-bold text-gray-500">e:</span>
                     <a href="mailto:{{ $coach->email }}">{{ $coach->email }}</a>
