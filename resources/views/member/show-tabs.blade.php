@@ -300,6 +300,11 @@
                                                 <option value="7th Dan">7th Dan</option>
                                                 <option value="8th Dan">8th Dan</option>
                                             </optgroup>
+                                            <optgroup label="Shamrock Grades">
+                                                <option value="1st Shamrock">1st Shamrock</option>
+                                                <option value="2nd Shamrock">2nd Shamrock</option>
+                                                <option value="3rd Shamrock">3rd Shamrock</option>
+                                            </optgroup>
                                         </select>
                                     </div>
                                     <div>
