@@ -30,6 +30,7 @@ class ClubMembersExport implements FromQuery, WithMapping, WithHeadings, WithTit
 
     public function query()
     {
+
         return Member::query()->where('club_id', $this->club)
             ->where('active', 1)
             ->whereHas('membership', function (Builder $q) {
@@ -44,7 +45,10 @@ class ClubMembersExport implements FromQuery, WithMapping, WithHeadings, WithTit
             'Number',
             'Name',
             'Gender',
+            'Age',
             'Club Name',
+            'Phone',
+            'Email',
             'Type',
             'Join Date',
             'Last Grade',
@@ -71,6 +75,7 @@ class ClubMembersExport implements FromQuery, WithMapping, WithHeadings, WithTit
             $member->number,
             $member->first_name." ".$member->last_name,
             $member->gender,
+            $member->age,
             $member->club->name,
             $membership->membership_type,
             $membership->join_date,

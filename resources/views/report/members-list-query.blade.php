@@ -3,7 +3,8 @@
 @section('content')
     <div style="min-height: 640px;" class="bg-gray-100">
 
-        <div class="h-screen flex overflow-hidden bg-gray-100" x-data="{ sidebarOpen: false }" @keydown.window.escape="sidebarOpen = false">
+        <div class="h-screen flex overflow-hidden bg-gray-100" x-data="{ sidebarOpen: false }"
+             @keydown.window.escape="sidebarOpen = false">
 
             <!-- Static sidebar for desktop -->
             <div class="hidden md:flex md:flex-shrink-0">
@@ -11,8 +12,11 @@
                     <!-- Sidebar component, swap this element with another sidebar if you like -->
                     <div class="flex flex-col h-0 flex-1">
                         <div class="flex items-center h-16 flex-shrink-0 px-4 bg-gray-900">
-                            <svg class="text-gray-400 mr-3 h-6 w-6" x-description="Heroicon name: outline/chart-bar" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                            <svg class="text-gray-400 mr-3 h-6 w-6" x-description="Heroicon name: outline/chart-bar"
+                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                             </svg>
                             <span class="text-2xl text-gray-300 font-bold">Reports</span>
                         </div>
@@ -99,14 +103,18 @@
             </div>
             <div class="flex flex-col w-0 flex-1 overflow-hidden">
                 <div class="relative z-10 flex-shrink-0 flex h-16 bg-white shadow item">
-                    <button @click.stop="sidebarOpen = true" class="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden">
+                    <button @click.stop="sidebarOpen = true"
+                            class="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden">
                         <span class="sr-only">Open sidebar</span>
-                        <svg class="h-6 w-6" x-description="Heroicon name: outline/menu-alt-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path>
+                        <svg class="h-6 w-6" x-description="Heroicon name: outline/menu-alt-2"
+                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                             aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M4 6h16M4 12h16M4 18h7"></path>
                         </svg>
                     </button>
                     <div class="text-2xl font-bold text-gray-700 pl-8 flex items-center">
-                        <h2>Active Members Report</h2>
+                        <h2>Club Members Report</h2>
                     </div>
                 </div>
 
@@ -117,7 +125,8 @@
                         <form method="POST" action="" role="form" class="flex items-end justify-between">
                             @csrf
                             <div>
-                                <label for="join_date" class="block text-sm text-gray-400 mb-2 font-bold">Start date</label>
+                                <label for="join_date" class="block text-sm text-gray-400 mb-2 font-bold">Start
+                                    date</label>
                                 @error('start_date')
                                 <div class="text-red-600 text-sm"> {{ $message }}</div>
                                 @enderror
@@ -125,21 +134,23 @@
                                        class="shadow border-gray-300 rounded w-48 py-2 px-3
                                                text-grey-darker mr-2" required
                                        @isset($start_date)
-                                       value={{ $start_date }}
+                                           value={{ $start_date }}
                                        @endisset
                                            value={{ old('start_date') }}
                                 >
                             </div>
                             <div>
-                                <label for="join_date" class="block text-sm text-gray-400 mb-2 font-bold">End date</label>
+                                <label for="join_date" class="block text-sm text-gray-400 mb-2 font-bold">End
+                                    date</label>
                                 @error('end_date')
                                 <div class="text-red-600 text-sm"> {{ $message }}</div>
                                 @enderror
                                 <input type="date" name="end_date" id="end_date"
                                        class="shadow border-gray-300 rounded w-48 py-2 px-3
-                                               text-grey-darker mr-2 @error('end_date') border-red-600 @enderror" required
+                                               text-grey-darker mr-2 @error('end_date') border-red-600 @enderror"
+                                       required
                                        @isset($end_date)
-                                       value={{ $end_date }}
+                                           value={{ $end_date }}
                                        @endisset
                                            value={{ old('end_date') }}>
                             </div>
@@ -153,13 +164,19 @@
                                     @foreach ($clubs as $club)
                                         <option value="{{ $club->id }}"
                                                 @if (isset($selectedClub) and $selectedClub->id == $club->id)
-                                                selected
+                                                    selected
                                             @endif>
                                             {{ $club->name}}
                                         </option>
 
                                     @endforeach
                                 </select>
+                            </div>
+                            <div class="mx-4 mb-2">
+                                <input type="checkbox" id="inactive_members" name="inactive_members"
+                                       class="shadow border-gray-300 rounded text-grey-darker mr-2">
+                                <label for="inactive_members" class="text-sm text-gray-400 mb-2 font-bold">Include
+                                    inactive members</label>
                             </div>
                             <div class="ml-2">
                                 <input type="submit" value="Submit" class="button-judo">
@@ -182,7 +199,7 @@
                         @endif
                         <div class="text-xl font-bold text-gray-600">
                             @if (isset($selectedClub))
-                            <h2>Active members for {{ $selectedClub->name }}</h2>
+                                <h2>Active members for {{ $selectedClub->name }}</h2>
                             @endif
                         </div>
                         <table class="min-w-full table-auto leading-normal mt-4">
@@ -230,46 +247,46 @@
                             </thead>
                             <tbody>
                             @isset($members)
-                            @foreach($members as $member)
-                                <tr>
-                                    <td class="px-5 py-4 border-b border-gray-200 text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">
-                                            {{ $member->number }}
-                                        </p>
-                                    </td>
-                                    <td class="px-5 py-4 border-b border-gray-200 text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">
-                                            {{ $member->first_name }} {{ $member->last_name }}
-                                        </p>
-                                    </td>
-                                    <td class="px-5 py-4 border-b border-gray-200 text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">
-                                            {{ $member->gender }}
-                                        </p>
-                                    </td>
-                                    <td class="px-5 py-4 border-b border-gray-200 text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">
-                                            {{ $member->latestMembership()->membership_type }}
-                                        </p>
-                                    </td>
-                                    <td class="px-5 py-4 border-b border-gray-200 text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">
-                                            {{ $member->latestMembership()->join_date }}
-                                        </p>
-                                    </td>
-                                    <td class="px-5 py-4 border-b border-gray-200 text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">
-                                            {{ $member->club->name }}
-                                        </p>
-                                    </td>
-                                    <td class="px-5 py-4 border-b border-gray-200 text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">
-                                            {{ $member->latestGrade()->grade_level ?? 'No grade' }}
-                                        </p>
-                                    </td>
+                                @foreach($members as $member)
+                                    <tr>
+                                        <td class="px-5 py-4 border-b border-gray-200 text-sm">
+                                            <p class="text-gray-900 whitespace-no-wrap">
+                                                {{ $member->number }}
+                                            </p>
+                                        </td>
+                                        <td class="px-5 py-4 border-b border-gray-200 text-sm">
+                                            <p class="text-gray-900 whitespace-no-wrap">
+                                                {{ $member->first_name }} {{ $member->last_name }}
+                                            </p>
+                                        </td>
+                                        <td class="px-5 py-4 border-b border-gray-200 text-sm">
+                                            <p class="text-gray-900 whitespace-no-wrap">
+                                                {{ $member->gender }}
+                                            </p>
+                                        </td>
+                                        <td class="px-5 py-4 border-b border-gray-200 text-sm">
+                                            <p class="text-gray-900 whitespace-no-wrap">
+                                                {{ $member->latestMembership()->membership_type }}
+                                            </p>
+                                        </td>
+                                        <td class="px-5 py-4 border-b border-gray-200 text-sm">
+                                            <p class="text-gray-900 whitespace-no-wrap">
+                                                {{ $member->latestMembership()->join_date }}
+                                            </p>
+                                        </td>
+                                        <td class="px-5 py-4 border-b border-gray-200 text-sm">
+                                            <p class="text-gray-900 whitespace-no-wrap">
+                                                {{ $member->club->name }}
+                                            </p>
+                                        </td>
+                                        <td class="px-5 py-4 border-b border-gray-200 text-sm">
+                                            <p class="text-gray-900 whitespace-no-wrap">
+                                                {{ $member->latestGrade()->grade_level ?? 'No grade' }}
+                                            </p>
+                                        </td>
 
-                                </tr>
-                            @endforeach
+                                    </tr>
+                                @endforeach
                             @else
                                 <td colspan="8">
                                     <h4 class="text-xl text-gray-400 my-8 text-center">Please make a selection at the
@@ -287,5 +304,34 @@
 
     </div>
 
+@endsection
 
+@section('bottomScripts')
+    <script>
+        let inactive = document.getElementById('inactive_members');
+        const date = new Date().toISOString().slice(0, 10);
+        var start_date = document.getElementById('start_date');
+        console.log(start_date);
+
+        start_date.addEventListener('change', function () {
+            console.log('Start Date');
+            console.log(start_date);
+        })
+
+        inactive.addEventListener('change', function () {
+            if (inactive.checked) {
+                document.getElementById('start_date').disabled = true;
+                document.getElementById('start_date').classList.add('bg-gray-200');
+                document.getElementById('end_date').disabled = true;
+                document.getElementById('end_date').classList.add('bg-gray-200');
+            } else {
+                document.getElementById('start_date').disabled = false;
+                document.getElementById('start_date').classList.remove('bg-gray-200');
+                document.getElementById('end_date').disabled = false;
+                document.getElementById('end_date').classList.remove('bg-gray-200');
+            }
+        });
+
+
+    </script>
 @endsection
