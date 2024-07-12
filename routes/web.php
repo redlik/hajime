@@ -72,7 +72,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('club/{id}/add-volunteer', [VolunteerController::class, 'addVolunteer'])->name('volunteer.addVolunteer');
     Route::group(['prefix' => 'settings'], function() {
         Route::get('logs', [PagesController::class, 'logsPage'])->name('pages.logs-page');
-        Route::get('admins', [PagesController::class, 'adminList'])->name('pages.admin-list');
+        Route::get('admins', [PagesController::class, 'adminList'])->middleware('club.access')->name('pages.admin-list');
+        Route::get('options', [PagesController::class, 'optionsPage'])->name('pages.options-page');
     });
 });
 
@@ -118,3 +119,4 @@ Route::group(['prefix' => 'club-access'], function() {
 Route::get('settings', [UserController::class, 'settings'])->middleware('auth', 'role:manager')->name('user.settings');
 Route::get('redirects', [UserController::class, 'redirects'])->middleware('auth')->name('redirects');
 Route::get('club', [ClubViewController::class, 'clubShow'])->middleware(['auth', 'pending'])->name('club.access.club');
+Route::get('club-access-disabled', [PagesController::class, 'clubAccessDisabled'])->name('pages.club-access-disabled');

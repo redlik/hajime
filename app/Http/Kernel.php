@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\CheckClubAccess;
 use App\Http\Middleware\Pending;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -66,4 +67,8 @@ class Kernel extends HttpKernel
         'pending' => Pending::class,
         'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
     ];
+
+    protected $middlewareAliases = [
+        'club.access' => CheckClubAccess::class,
+        ];
 }
