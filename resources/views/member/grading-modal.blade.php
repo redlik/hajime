@@ -148,6 +148,11 @@
                                                         8th Dan
                                                     </option>
                                                 </optgroup>
+                                                <optgroup label="Shamrock Grades">
+                                                    <option value="1st Shamrock" @selected('1st Shamrock' == $grade->grade_level)>1st Shamrock</option>
+                                                    <option value="2nd Shamrock" @selected('2nd Shamrock' == $grade->grade_level)>2nd Shamrock</option>
+                                                    <option value="3rd Shamrock" @selected('3rd Shamrock' == $grade->grade_level)>3rd Shamrock</option>
+                                                </optgroup>
                                             </select>
                                         </div>
                                         <div class="mt-4">
