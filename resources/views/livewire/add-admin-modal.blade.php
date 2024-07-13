@@ -82,15 +82,19 @@
                         </td>
                         <td class="px-5 py-5 border-b border-gray-200 text-sm">
                             @if($admin->id != 1)
-
+                                @if(auth()->user()->id == $admin->id)
+                                    <i class="far fa-trash-alt text-gray-400 text-xl cursor-not-allowed"
+                                       title="Cannot delete your own account"></i>
+                                @else
                                     <button type="button" wire:click="deleteAdmin({{ $admin->id }})"
                                             class="text-red-600 hover:text-red-300 whitespace-no-wrap"
                                             onclick="return confirm('Do you want to delete the user completely?')"
                                             title="Remove user from Hajime">
                                         <i class="far fa-trash-alt text-xl"></i></button>
+                                @endif
                             @else
-                                <i class="far fa-trash-alt text-gray-400 text-xl cursor-not-allowed"
-                                   title="Cannot delete this user"></i>
+                                    <i class="far fa-trash-alt text-gray-400 text-xl cursor-not-allowed"
+                                       title="Cannot delete this user"></i>
                             @endif
                         </td>
                     </tr>
