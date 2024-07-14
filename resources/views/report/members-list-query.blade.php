@@ -266,12 +266,12 @@
                                         </td>
                                         <td class="px-5 py-4 border-b border-gray-200 text-sm">
                                             <p class="text-gray-900 whitespace-no-wrap">
-                                                {{ $member->latestMembership()->membership_type }}
+                                                {{ $member->latestMembership()->membership_type ?? 'None' }}
                                             </p>
                                         </td>
                                         <td class="px-5 py-4 border-b border-gray-200 text-sm">
                                             <p class="text-gray-900 whitespace-no-wrap">
-                                                {{ $member->latestMembership()->join_date }}
+                                                {{ $member->latestMembership()->join_date ?? 'None' }}
                                             </p>
                                         </td>
                                         <td class="px-5 py-4 border-b border-gray-200 text-sm">
@@ -310,24 +310,27 @@
     <script>
         let inactive = document.getElementById('inactive_members');
         const date = new Date().toISOString().slice(0, 10);
+        var year = new Date().getFullYear();
         var start_date = document.getElementById('start_date');
-        console.log(start_date);
-
-        start_date.addEventListener('change', function () {
-            console.log('Start Date');
-            console.log(start_date);
-        })
 
         inactive.addEventListener('change', function () {
             if (inactive.checked) {
                 document.getElementById('start_date').disabled = true;
+                document.getElementById('start_date').required = false;
+                document.getElementById('start_date').value = year + "-01-01";
                 document.getElementById('start_date').classList.add('bg-gray-200');
                 document.getElementById('end_date').disabled = true;
+                document.getElementById('end_date').required = false;
+                document.getElementById('end_date').value = year + "-12-31";
                 document.getElementById('end_date').classList.add('bg-gray-200');
             } else {
                 document.getElementById('start_date').disabled = false;
+                document.getElementById('start_date').required = true;
+                document.getElementById('start_date').value = '';
                 document.getElementById('start_date').classList.remove('bg-gray-200');
                 document.getElementById('end_date').disabled = false;
+                document.getElementById('end_date').required = true;
+                document.getElementById('end_date').value = '';
                 document.getElementById('end_date').classList.remove('bg-gray-200');
             }
         });
