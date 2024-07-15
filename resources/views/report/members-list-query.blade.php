@@ -174,7 +174,7 @@
                             </div>
                             <div class="mx-4 mb-2">
                                 <input type="checkbox" id="inactive_members" name="inactive_members"
-                                       class="shadow border-gray-300 rounded text-grey-darker mr-2">
+                                       class="shadow border-gray-300 rounded text-grey-darker mr-2" @checked($flag)>
                                 <label for="inactive_members" class="text-sm text-gray-400 mb-2 font-bold">Include
                                     inactive members</label>
                             </div>
@@ -183,9 +183,12 @@
                             </div>
                         </form>
                         <div class="pb-2">
-                            @if (isset($selectedClub))
+                            @if (isset($selectedClub) && !$flag)
                                 <a href="{{ route('report.members.export', [$selectedClub->id, $start_date, $end_date]) }}"
                                    class="button-judo">Export to Excel</a>
+                            @elseif (isset($selectedClub))
+                                <a href="{{ route('report.members.export', [$selectedClub->id, $start_date, $end_date]) }}"
+                                   class="button-judo">Export All</a>
                             @endif
                         </div>
                     </div>
@@ -199,7 +202,7 @@
                         @endif
                         <div class="text-xl font-bold text-gray-600">
                             @if (isset($selectedClub))
-                                <h2>Active members for {{ $selectedClub->name }}</h2>
+                                <h2>Members of {{ $selectedClub->name }}</h2>
                             @endif
                         </div>
                         <table class="min-w-full table-auto leading-normal mt-4">
