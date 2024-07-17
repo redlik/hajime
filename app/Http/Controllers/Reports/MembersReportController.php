@@ -14,18 +14,18 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class MembersReportController extends Controller
 {
+    public $flag = false;
     public function index(Request $request)
     {
             $clubs = Club::orderBy('name', 'asc')->get();
-            return view('report.members-list-query', compact('clubs'));
+            return view('report.members-list-query', compact('clubs', '$this->flag'));
     }
 
     public function showMembers(Request $request)
     {
-        $flag = false;
 
         if($request->inactive_members == 'on') {
-            $flag = true;
+            $this->flag = true;
 
             $selectedClub = Club::find($request->input('club_id'));
 
