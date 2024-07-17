@@ -18,7 +18,7 @@ class MembersReportController extends Controller
     public function index(Request $request)
     {
             $clubs = Club::orderBy('name', 'asc')->get();
-            return view('report.members-list-query', compact('clubs', '$this->flag'));
+            return view('report.members-list-query', ['clubs' => $clubs, 'flag' => $this->flag]);
     }
 
     public function showMembers(Request $request)
@@ -46,7 +46,15 @@ class MembersReportController extends Controller
 
             $clubs = Club::orderBy('name', 'asc')->get();
 
-            return view('report.members-list-query', compact('clubs', 'selectedClub', 'members', 'start_date', 'end_date', 'memberships', 'grades', 'flag'));
+            return view('report.members-list-query', [
+                'clubs' => $clubs,
+                'start_date' => $start_date,
+                'end_date' => $end_date,
+                'memberships' => $memberships,
+                'grades' => $grades,
+                'selectedClub' => $selectedClub,
+                'flag' => $this->flag
+            ]);
 
         }
         else
