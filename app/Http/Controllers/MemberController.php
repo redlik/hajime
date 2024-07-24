@@ -131,7 +131,7 @@ class MemberController extends Controller
     public function duplicate(Request $request)
     {
         $member = Member::create($request->all());
-        $clubs = Club::all();
+        $clubs = Club::orderBy('name')->get();
         $genders = Gender::all();
 
         return view('member.duplicate', compact('member', 'clubs', 'genders'));
@@ -142,7 +142,7 @@ class MemberController extends Controller
         $member = $existing->replicate();
         $genders = Gender::all();
 
-        $clubs = Club::all();
+        $clubs = Club::orderBy('name')->get();
 
         return view('member.duplicate', compact('member', 'clubs', 'genders'));
 
