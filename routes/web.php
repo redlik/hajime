@@ -96,6 +96,7 @@ Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'reports'], fu
 Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'exports'], function () {
     Route::get('/memberships/{start}/{end}', [MembershipReportController::class, 'export'])->name('report.membership.export');
     Route::get('/members/{club}/{start}/{end}', [MembersReportController::class, 'export'])->name('report.members.export');
+    Route::get('/all-members/{club}/', [MembersReportController::class, 'exportAll'])->name('report.members.export.all');
     Route::get('/clubs-status', [ClubStatusReportController::class, 'export'])->name('report.status.export');
     Route::get('/invalid-personnel', [InvalidPersonnelReportController::class, 'export'])->name('report.invalid.export');
     Route::get('/active-coaches', [ActiveCoachReportController::class, 'export'])->name('report.active.export');
