@@ -122,75 +122,74 @@
                 .focus()">
                     <div class="flex items-end w-full bg-white border-2
                     border-gray-200 justify-between rounded-xl p-4">
-                        <form method="POST" action="" role="form" class="flex items-end justify-between">
+                        <form method="POST" action="" role="form" class="w-full flex flex-wrap items-end justify-between">
                             @csrf
-                            <div>
-                                <label for="join_date" class="block text-sm text-gray-400 mb-2 font-bold">Start
-                                    date</label>
-                                @error('start_date')
-                                <div class="text-red-600 text-sm"> {{ $message }}</div>
-                                @enderror
-                                <input type="date" name="start_date" id="start_date"
-                                       class="shadow border-gray-300 rounded w-48 py-2 px-3
-                                               text-grey-darker mr-2" required
-                                       @isset($start_date)
-                                           value={{ $start_date }}
-                                       @endisset
-                                           value={{ old('start_date') }}
-                                >
-                            </div>
-                            <div>
-                                <label for="join_date" class="block text-sm text-gray-400 mb-2 font-bold">End
-                                    date</label>
-                                @error('end_date')
-                                <div class="text-red-600 text-sm"> {{ $message }}</div>
-                                @enderror
-                                <input type="date" name="end_date" id="end_date"
-                                       class="shadow border-gray-300 rounded w-48 py-2 px-3
-                                               text-grey-darker mr-2 @error('end_date') border-red-600 @enderror"
-                                       required
-                                       @isset($end_date)
-                                           value={{ $end_date }}
-                                       @endisset
-                                           value={{ old('end_date') }}>
-                            </div>
-                            <div>
-                                @error('club_id')
-                                <div class="text-red-600 text-sm"> {{ $message }}</div>
-                                @enderror
-                                <select name="club_id" id="club_id"
-                                        class="shadow border-gray-300 rounded w-auto py-2 px-3 text-grey-darker">
-                                    <option value="" disabled selected>Select Club</option>
-                                    @foreach ($clubs as $club)
-                                        <option value="{{ $club->id }}"
-                                                @if (isset($selectedClub) and $selectedClub->id == $club->id)
-                                                    selected
-                                            @endif>
-                                            {{ $club->name}}
-                                        </option>
+                            <div class="flex flex-wrap items-end gap-x-2 lg:gap-x-4">
+                                <div class="mt-4 lg:mt-0">
+                                    <label for="join_date" class="block text-sm text-gray-400 mb-2 font-bold">Start
+                                        date</label>
+                                    @error('start_date')
+                                    <div class="text-red-600 text-sm"> {{ $message }}</div>
+                                    @enderror
+                                    <input type="date" name="start_date" id="start_date"
+                                           class="shadow border-gray-300 rounded w-48 py-2 px-3
+                                                                           text-grey-darker" required
+                                           @isset($start_date)
+                                               value={{ $start_date }}
+                                                                   @endisset
+                                                                       value={{ old('start_date') }}
+                                        @disabled($flag == true)
+                                    >
+                                    @ray($flag)
+                                </div>
+                                <div class="mt-4 lg:mt-0">
+                                    <label for="join_date" class="block text-sm text-gray-400 mb-2 font-bold">End
+                                        date</label>
+                                    @error('end_date')
+                                    <div class="text-red-600 text-sm"> {{ $message }}</div>
+                                    @enderror
+                                    <input type="date" name="end_date" id="end_date"
+                                           class="shadow border-gray-300 rounded
+                                           w-48 py-2 px-3 text-grey-darker
+                                           @error('end_date') border-red-600 @enderror"
+                                           required
+                                           @isset($end_date)
+                                               value={{ $end_date }}
+                                           @endisset
+                                           value={{ old('end_date') }}
+                                           @disabled($flag == true)>
+                                </div>
+                                <div class="mt-8 lg:mt-0">
+                                    @error('club_id')
+                                    <div class="text-red-600 text-sm"> {{ $message }}</div>
+                                    @enderror
+                                    <select name="club_id" id="club_id"
+                                            class="shadow border-gray-300 rounded w-auto py-2 px-3 text-grey-darker"
+                                    required>
+                                        <option value="" disabled selected>Select Club</option>
+                                        @foreach ($clubs as $club)
+                                            <option value="{{ $club->id }}"
+                                                    @if (isset($selectedClub) and $selectedClub->id == $club->id)
+                                                        selected
+                                                @endif>
+                                                {{ $club->name}}
+                                            </option>
 
-                                    @endforeach
-                                </select>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="mb-2 mt-4 xl:mt-0 flex items-center">
+                                    <input type="checkbox" id="inactive_members" name="inactive_members"
+                                           class="shadow border-gray-300 rounded text-grey-darker mr-2" @checked($flag)>
+                                    <label for="inactive_members" class="text-sm text-gray-400 font-bold block">Include
+                                        inactive members</label>
+                                </div>
                             </div>
-                            <div class="mx-4 mb-2">
-                                <input type="checkbox" id="inactive_members" name="inactive_members"
-                                       class="shadow border-gray-300 rounded text-grey-darker mr-2" @checked($flag)>
-                                <label for="inactive_members" class="text-sm text-gray-400 mb-2 font-bold">Include
-                                    inactive members</label>
-                            </div>
-                            <div class="ml-2">
-                                <input type="submit" value="Submit" class="button-judo">
+                            <div class="mt-4 lg:mt-0">
+                                <input type="submit" value="Submit" class="button-judo px-6 rounded-lg block">
                             </div>
                         </form>
-                        <div class="pb-2">
-                            @if (isset($selectedClub) && !$flag)
-                                <a href="{{ route('report.members.export', [$selectedClub->id, $start_date, $end_date]) }}"
-                                   class="button-judo">Export to Excel</a>
-                            @elseif (isset($selectedClub))
-                                <a href="{{ route('report.members.export', [$selectedClub->id, $start_date, $end_date]) }}"
-                                   class="button-judo">Export All</a>
-                            @endif
-                        </div>
+
                     </div>
 
                     <div class="w-full mt-4">
@@ -200,10 +199,22 @@
                                     {{ $memberships->count() }} results found </span>
                             </div>
                         @endif
-                        <div class="text-xl font-bold text-gray-600">
-                            @if (isset($selectedClub))
-                                <h2>Members of {{ $selectedClub->name }}</h2>
-                            @endif
+                        <div class="flex justify-between">
+                            <div class="text-xl font-bold text-gray-600">
+                                @if (isset($selectedClub))
+                                    <h2>Members of {{ $selectedClub->name }}</h2>
+                                @endif
+                            </div>
+                            <div>
+                                @if (isset($selectedClub) && !$flag)
+                                    <a href="{{ route('report.members.export', [$selectedClub->id, $start_date, $end_date]) }}"
+                                       class="button-judo">Export to Excel</a>
+                                @elseif (isset($selectedClub))
+                                    <a href="{{ route('report.members.export.all', [$selectedClub->id]) }}"
+                                       class="button-judo">Export All</a>
+                                @endif
+                            </div>
+
                         </div>
                         <table class="min-w-full table-auto leading-normal mt-4">
                             <thead>
@@ -293,7 +304,7 @@
                             @else
                                 <td colspan="8">
                                     <h4 class="text-xl text-gray-400 my-8 text-center">Please make a selection at the
-                                        top first. <br/>For the sake of speed this report will display the first 100
+                                        top first. <br />For the sake of speed this report will display the first 100
                                         results only.
                                     </h4>
                                 </td>
@@ -311,30 +322,43 @@
 
 @section('bottomScripts')
     <script>
-        let inactive = document.getElementById('inactive_members');
+        let inactive = document.getElementById("inactive_members");
         const date = new Date().toISOString().slice(0, 10);
         var year = new Date().getFullYear();
-        var start_date = document.getElementById('start_date');
+        var start_date = document.getElementById("start_date");
 
-        inactive.addEventListener('change', function () {
+        window.onload = function() {
             if (inactive.checked) {
-                document.getElementById('start_date').disabled = true;
-                document.getElementById('start_date').required = false;
-                document.getElementById('start_date').value = year + "-01-01";
-                document.getElementById('start_date').classList.add('bg-gray-200');
-                document.getElementById('end_date').disabled = true;
-                document.getElementById('end_date').required = false;
-                document.getElementById('end_date').value = year + "-12-31";
-                document.getElementById('end_date').classList.add('bg-gray-200');
+                document.getElementById("start_date").disabled = true;
+                document.getElementById("start_date").required = false;
+                document.getElementById("start_date").value = year + "-01-01";
+                document.getElementById("start_date").classList.add("bg-gray-200");
+                document.getElementById("end_date").disabled = true;
+                document.getElementById("end_date").required = false;
+                document.getElementById("end_date").value = year + "-12-31";
+                document.getElementById("end_date").classList.add("bg-gray-200");
+            }
+        }
+
+        inactive.addEventListener("change", function() {
+            if (inactive.checked) {
+                document.getElementById("start_date").disabled = true;
+                document.getElementById("start_date").required = false;
+                document.getElementById("start_date").value = year + "-01-01";
+                document.getElementById("start_date").classList.add("bg-gray-200");
+                document.getElementById("end_date").disabled = true;
+                document.getElementById("end_date").required = false;
+                document.getElementById("end_date").value = year + "-12-31";
+                document.getElementById("end_date").classList.add("bg-gray-200");
             } else {
-                document.getElementById('start_date').disabled = false;
-                document.getElementById('start_date').required = true;
-                document.getElementById('start_date').value = '';
-                document.getElementById('start_date').classList.remove('bg-gray-200');
-                document.getElementById('end_date').disabled = false;
-                document.getElementById('end_date').required = true;
-                document.getElementById('end_date').value = '';
-                document.getElementById('end_date').classList.remove('bg-gray-200');
+                document.getElementById("start_date").disabled = false;
+                document.getElementById("start_date").required = true;
+                document.getElementById("start_date").value = "";
+                document.getElementById("start_date").classList.remove("bg-gray-200");
+                document.getElementById("end_date").disabled = false;
+                document.getElementById("end_date").required = true;
+                document.getElementById("end_date").value = "";
+                document.getElementById("end_date").classList.remove("bg-gray-200");
             }
         });
 
