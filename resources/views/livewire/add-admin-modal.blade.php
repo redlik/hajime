@@ -81,7 +81,8 @@
                             </p>
                         </td>
                         <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                            @if($admin->id != 1)
+                            @ray($protected_admins)
+                            @if(!in_array($admin->id, $protected_admins))
                                 @if(auth()->user()->id == $admin->id)
                                     <i class="far fa-trash-alt text-gray-400 text-xl cursor-not-allowed"
                                        title="Cannot delete your own account"></i>

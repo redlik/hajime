@@ -11,6 +11,8 @@ class AddAdminModal extends Component
 {
     public $admins;
 
+    public $protected_admins = [];
+
     public User $user;
 
     public $message = '';
@@ -29,6 +31,10 @@ class AddAdminModal extends Component
     #[Validate('required')]
     public $password_confirmation;
 
+    public function mount()
+    {
+        $this->protected_admins = [1,4,5];
+    }
     public function render()
     {
         $adminRole = Role::where('name', 'admin')->first();
