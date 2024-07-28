@@ -121,6 +121,9 @@
                                             <option value="Online">Online</option>
                                             <option value="Club">Club</option>
                                             <option value="Direct">Direct</option>
+                                            <option value="WIS">Women in Sport (WIS)</option>
+                                            <option value="URP">Ukrainian Refugee Programme (URP)</option>
+                                            <option value="JFP">Judo for Peace Programme (JFP)</option>
                                         </select>
                                     </div>
                                 </div>
