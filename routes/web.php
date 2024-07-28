@@ -72,7 +72,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('club/{id}/add-volunteer', [VolunteerController::class, 'addVolunteer'])->name('volunteer.addVolunteer');
     Route::group(['prefix' => 'settings'], function() {
         Route::get('logs', [PagesController::class, 'logsPage'])->name('pages.logs-page');
-        Route::get('admins', [PagesController::class, 'adminList'])->middleware('club.access')->name('pages.admin-list');
+        Route::get('admins', [PagesController::class, 'adminList'])->name('pages.admin-list');
         Route::get('options', [PagesController::class, 'optionsPage'])->name('pages.options-page');
     });
 });
