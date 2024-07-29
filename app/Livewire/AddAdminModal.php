@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Auth;
 use Livewire\Component;
 use Livewire\Attributes\Validate;
 use App\Models\User;
@@ -51,14 +52,29 @@ class AddAdminModal extends Component
 
         $this->message = 'Admin added successfully';
 
+        activity()
+            ->performedOn($this->user)
+            ->causedBy(Auth::id())
+            ->withProperty('name', $this->user->name )
+            ->log('New admin account created');
+
         $this->showModal = false;
 
     }
 
     public function deleteAdmin($id)
     {
+
+
         $this->user = User::find($id);
         $this->user->removeRole('admin');
+
+        activity()
+            ->performedOn($this->user)
+            ->causedBy(Auth::id())
+            ->withProperty('name', $this->user->name )
+            ->log('Admin account removed');
+
         $this->user->delete();
 
         $this->message = 'Admin deleted successfully';

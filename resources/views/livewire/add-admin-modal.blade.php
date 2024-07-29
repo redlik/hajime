@@ -136,7 +136,7 @@
                                 <div class="mt-2">
                                     <form id="addAdmin" wire:submit="createAdmin">
                                         <div class="mt-4">
-                                            <label for="name" class="block text-sm text-gray-400 mb-2 font-bold">Name</label>
+                                            <label for="name" class="block text-sm text-gray-400 mb-2 font-bold">Name <span class="text-xs">(6 characters min.)</span></label>
                                             <input type="name" name="name" id="name"
                                                    class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker mr-2"
                                                    wire:model="name">
