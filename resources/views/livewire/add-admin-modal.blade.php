@@ -89,7 +89,7 @@
                                 @else
                                     <button type="button" wire:click="deleteAdmin({{ $admin->id }})"
                                             class="text-red-600 hover:text-red-300 whitespace-no-wrap"
-                                            onclick="return confirm('Do you want to delete the user completely?')"
+                                            wire:confirm="Do you want to delete the user completely?"
                                             title="Remove user from Hajime">
                                         <i class="far fa-trash-alt text-xl"></i></button>
                                 @endif
