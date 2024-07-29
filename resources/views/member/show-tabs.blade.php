@@ -170,7 +170,7 @@
                               role="form">
                             @csrf
                             <input type="hidden" name="member_id" value="{{ $member->id }}">
-                            <div class="flex flex-wrap justify-between">
+                            <div class="flex flex-wrap gap-8 items-end">
                                 <div class="flex flex-wrap">
                                     <div>
                                         <label for="membership_type"
@@ -210,7 +210,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <input type="submit" value="Submit" class="button-judo">
+                                    <input type="submit" value="Submit" class="button-judo px-6 py-3 rounded-lg">
                                 </div>
                             </div>
                         </form>

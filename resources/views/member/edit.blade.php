@@ -115,7 +115,7 @@
                                         </select>
                                     </div>
                                     <div class="mb-4">
-                                        <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
+                                        <label class="inline-block w-32 text-grey-darker text-sm font-bold"
                                                for="number">
                                             Membership no
                                         </label>
@@ -124,11 +124,11 @@
                                             id="number" name="number" type="text" value="{{ $member->number }}" required>
                                     </div>
                                     <div>
-                                        <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
+                                        <label class="inline-block w-32 text-grey-darker text-sm font-bold"
                                                for="source">
                                             Membership Source
                                         </label>
-                                        <select class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker"
+                                        <select class="shadow border-gray-300 rounded w-80 text-grey-darker"
                                                 id="province"
                                                 type="text" placeholder="Province" name="source" required>
                                             <option value="Online"
@@ -144,6 +144,9 @@
                                             selected
                                                 @endif>Direct
                                             </option>
+                                            <option value="WIS" @selected($member->source == "WIS")>Women in Sport (WIS)</option>
+                                            <option value="URP" @selected($member->source == "URP")>Ukrainian Refugee Programme (URP)</option>
+                                            <option value="JFP" @selected($member->source == "JFP")>Judo for Peace Programme (JFP)</option>
                                         </select>
                                     </div>
                                 </div>

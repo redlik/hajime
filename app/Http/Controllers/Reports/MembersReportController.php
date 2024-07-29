@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Reports;
 
+use App\Exports\AllClubMembersExport;
 use App\Exports\ClubMembersExport;
 use App\Exports\MembershipsExport;
 use App\Http\Controllers\Controller;
@@ -47,6 +48,7 @@ class MembersReportController extends Controller
             $clubs = Club::orderBy('name', 'asc')->get();
 
             return view('report.members-list-query', [
+                'members' => $members,
                 'clubs' => $clubs,
                 'start_date' => $start_date,
                 'end_date' => $end_date,
@@ -90,6 +92,8 @@ class MembersReportController extends Controller
 
             $clubs = Club::orderBy('name', 'asc')->get();
 
+            $flag = $this->flag;
+
             return view('report.members-list-query', compact('clubs', 'selectedClub', 'members', 'start_date', 'end_date', 'memberships', 'grades', 'flag'));
         }
 
@@ -100,6 +104,11 @@ class MembersReportController extends Controller
     public function export($club, $start_date, $end_date)
     {
         return Excel::download(new ClubMembersExport($club, $start_date, $end_date), 'club_members.xlsx');
+    }
+
+    public function exportAll($club)
+    {
+        return Excel::download(new AllClubMembersExport($club), 'all_club_members.xlsx');
     }
 
 }

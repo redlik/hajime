@@ -77,6 +77,8 @@ class ClubMembersExport implements FromQuery, WithMapping, WithHeadings, WithTit
             $member->gender,
             $member->age,
             $member->club->name,
+            $member->phone,
+            $member->email,
             $membership->membership_type,
             $membership->join_date,
             $grade,
