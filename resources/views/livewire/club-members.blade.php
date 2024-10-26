@@ -138,7 +138,7 @@
                     </td>
                     <td class="px-5 py-5 border-b border-gray-200 text-sm">
                         @if($member->grade()->exists())
-                        <p class="text-gray-900">{{ $member->grade->last()->grade_level }}</p>
+                        <p class="text-gray-900">{{ $member->latestGrade()->grade_level }}</p>
                         @endif
                     </td>
 
