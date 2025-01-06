@@ -513,16 +513,16 @@
                     {{-- Club Grad Forms Section--}}
                     <div class="w-full px-6 py-2" x-show="openTab === '#grads'">
                         <div class="w-full bg-white border-2 border-gray-200 rounded-xl my-4 p-4">
-                            <h4 class="font-bold text-xl text-gray-600 mb-4">Club Grading Forms:</h4>
+                            <h4 class="font-bold text-xl text-gray-600 mb-4">Club grading forms:</h4>
                             @if(Session::has('no-file'))
                                 <div class="bg-red-100 text-red-600 rounded-p2 mb-4">
                                     <p>{{ Session::get('no-file') }}</p>
                                 </div>
                             @endif
                             <div>
-                                <button class="button-judo" onclick="showForm()">+ Add new grading form</button>
+                                <button class="button-judo" onclick="showGradForm()">+ Add new grading form</button>
                             </div>
-                            <div class="w-full my-4 hidden bg-gray-100 p-2 rounded" id="addForm">
+                            <div class="w-full my-4 hidden bg-gray-100 p-2 rounded" id="addGradForm">
                                 <form action="{{ route('gradform.store') }}" method="POST" role="form" class="w-full flex
                                             flex-wrap
                                             justify-between" enctype="multipart/form-data">
@@ -552,7 +552,7 @@
                                             <input type="submit" value="Submit" class="button-judo">
                                         </div>
                                         <div class="py-2">
-                                            <button class="button-danger" onclick="hideForm()">Cancel</button>
+                                            <button class="button-danger" onclick="hideGradForm()">Cancel</button>
                                         </div>
                                     </div>
                                 </form>
@@ -775,14 +775,25 @@
 
 @section('bottomScripts')
     <script>
+        function showGradForm() {
+            let gradForm = document.getElementById('addGradForm');
+            gradForm.classList.remove("hidden");
+        }
+
+        function hideGradForm() {
+            let gradForm = document.getElementById('addGradForm');
+            gradForm.classList.add("hidden");
+        }
+
         function showForm() {
-            let docForm = document.getElementById('addForm');
-            docForm.classList.remove("hidden");
+            let clubForm = document.getElementById('addForm');
+            clubForm.classList.remove("hidden");
+            console.log(clubForm);
         }
 
         function hideForm() {
-            let docForm = document.getElementById('addForm');
-            docForm.classList.add("hidden");
+            let clubForm = document.getElementById('addForm');
+            clubForm.classList.add("hidden");
         }
 
         function showDocForm() {
