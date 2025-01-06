@@ -3,7 +3,7 @@
         <div class="flex items-center">
             <div class="ml-3">
                 <p class="text-gray-900 whitespace-no-wrap font-bold">
-                    <a href="{{ asset('/storage/attachments/'.$grad->link) }}"
+                    <a href="{{ asset('/storage/grad-forms/'.$grad->link) }}"
                        target="_blank">
                         {{ $grad->title }}
                     </a>
