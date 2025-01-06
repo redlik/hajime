@@ -44,7 +44,7 @@ class GradFormController extends Controller
         if (Storage::exists($doc)) {
             Log::debug('Saved doc: '.$doc);
             $gradForm = GradForm::create($request->all());
-            $file = ltrim($doc, 'public/grad-forms/');
+            $file = substr($doc, 18);
             Log::debug('Trimmed: '.$file);
             $gradForm->link = $file;
             $gradForm->save();
