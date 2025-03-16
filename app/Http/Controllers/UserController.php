@@ -149,4 +149,27 @@ class UserController extends Controller
 
         return redirect()->back();
     }
+
+    public function registerAPIuser(Request $request)
+    {
+        $validator = \Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|regex:/(.*)@cloudni\.co\.uk/i|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors'=>$validator->errors()]);
+        } else {
+            $user = User::create([
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+                'password' => Hash::make($request->input('password')),
+            ]);
+
+            $token = $user->createToken('api_token');
+
+            return response()->json(['api_token' => $token->plainTextToken]);
+        }
+    }
 }
