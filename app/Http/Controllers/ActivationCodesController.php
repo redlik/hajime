@@ -45,7 +45,7 @@ class ActivationCodesController extends Controller
 
         $this->checkIfValid($activation);
 
-        $member = Member::where('number', $request->licence)
+        $member = Member::where('number', trim($request->licence))
                 ->where('email', $activation->email)
                 ->firstOrFail();
 
