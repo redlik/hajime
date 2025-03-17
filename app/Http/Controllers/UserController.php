@@ -4,13 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Mail\AccountActivated;
 use App\Mail\EmailVerificationRequest;
+use App\Mail\SendMobileActivationCode;
 use App\Mail\UserInvitation;
+use App\Models\Grade;
+use App\Models\Member;
+use App\Models\Membership;
+use App\Models\MobileToken;
 use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -170,6 +176,65 @@ class UserController extends Controller
             $token = $user->createToken('api_token');
 
             return response()->json(['api_token' => $token->plainTextToken]);
+        }
+    }
+
+    public function activateMobile(Request $request)
+    {
+        $activator = new ActivationCodesController();
+
+        $validator = \Validator::make($request->all(), [
+            'email' => 'required|string|email|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors'=>$validator->errors()]);
+        } else {
+            $member = Member::where('email', $request->input('email'))->firstOrFail();
+            $code = $activator->generateCode();
+
+            $activator->saveCode($member->email);
+
+            Mail::to($member->email)->send(new SendMobileActivationCode($code));
+
+            return response()->json([
+                'email' => $member->email,
+                'code' =>$code,
+            ]);
+        }
+    }
+
+    public function refreshMobileApplication(Request $request)
+    {
+        $validator = \Validator::make($request->all(), [
+            'token' => 'required|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors'=>$validator->errors()]);
+        } else {
+            $token = MobileToken::where('token', $request->input('token'))->firstOrFail();
+            $member = Member::where('id', $token->member_id)->first();
+
+            $membership = Membership::where('member_id', $member->id)
+                ->orderBy('expiry_date', 'desc')
+                ->first();
+
+            $grade = Grade::where('member_id', $member->id)
+                ->orderBy('grade_date', 'desc')
+                ->first();
+
+            return response()->json([
+                'first_name' => $member->first_name,
+                'last_name' => $member->last_name,
+                'licence_number' => $member->number,
+                'club' => $member->club->name,
+                'membership_type' => $membership->membership_type ?? 'none',
+                'membership_expiry' => $membership->expiry_date ?? 'none',
+                'grade_level' => $grade->grade_level ?? 'none',
+                'grade_points' => $grade->grade_points ?? 'none',
+                'updated_at' => Carbon::now()->toDateString(),
+            ]);
         }
     }
 }

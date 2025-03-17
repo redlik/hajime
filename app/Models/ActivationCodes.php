@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class ActivationCodes extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'email',
+        'code',
+        'expires_at',
+    ];
 }
