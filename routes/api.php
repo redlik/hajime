@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivationCodesController;
 use App\Http\Controllers\UserController;
 use App\Models\Member;
 use Illuminate\Http\Request;
@@ -25,4 +26,11 @@ Route::middleware('auth:sanctum')->get('/member/{id}', function ($id) {
 });
 
 //Registration
-Route::post('registerUser', [UserController::class, 'registerAPIuser'])->name('register_api_user');
+Route::post('register-user', [UserController::class, 'registerAPIuser'])->name('register_api_user');
+
+//Activation
+Route::post('activate', [UserController::class, 'activateMobile'])->name('activate_mobile');
+Route::post('activate-code', [ActivationCodesController::class, 'activateCode'])->name('activate_code');
+
+//Refresh
+Route::post('refresh', [UserController::class, 'refreshToken'])->name('refresh_token');
