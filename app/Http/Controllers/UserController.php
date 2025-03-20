@@ -199,7 +199,7 @@ class UserController extends Controller
 
             return response()->json([
                 'email' => $member->email,
-                'code' =>$code,
+                'message' =>"Activation code sent to the email",
             ]);
         }
     }

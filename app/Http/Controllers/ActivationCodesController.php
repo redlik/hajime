@@ -8,6 +8,7 @@ use App\Models\Member;
 use App\Models\Membership;
 use App\Models\MobileToken;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -41,13 +42,21 @@ class ActivationCodesController extends Controller
         if ($validator->fails()) {
             return response()->json(['errors'=>$validator->errors()]);
         }
-        $activation = ActivationCodes::where('code', $request->code)->firstOrFail();
+        try {
+            $activation = ActivationCodes::query()->where('code', $request->code)->firstOrFail();
+        } catch (ModelNotFoundException) {
+            return response()->json(['error'=>'Activation code not found']);
+        }
 
         $this->checkIfValid($activation);
 
-        $member = Member::where('number', trim($request->licence))
+        try {
+            $member = Member::query()->where('number', trim($request->licence))
                 ->where('email', $activation->email)
                 ->firstOrFail();
+        } catch (ModelNotFoundException) {
+            return response()->json(['error'=>'Licence number not found']);
+        }
 
         $membership = Membership::where('member_id', $member->id)
             ->orderBy('expiry_date', 'desc')
