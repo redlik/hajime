@@ -32,8 +32,6 @@ class ActivationCodesController extends Controller
 
     public function activateCode(Request $request)
     {
-        $mobileToken = new MobileToken();
-
         $validator = \Validator::make($request->all(), [
             'code' => 'required|string|max:6',
             'licence' => 'required',
@@ -42,6 +40,7 @@ class ActivationCodesController extends Controller
         if ($validator->fails()) {
             return response()->json(['errors'=>$validator->errors()]);
         }
+
         try {
             $activation = ActivationCodes::query()->where('code', $request->code)->firstOrFail();
         } catch (ModelNotFoundException) {
@@ -58,6 +57,8 @@ class ActivationCodesController extends Controller
             return response()->json(['error'=>'Licence number not found']);
         }
 
+        $this->checkDeviceLimit($member);
+
         $membership = Membership::where('member_id', $member->id)
             ->orderBy('expiry_date', 'desc')
             ->first();
@@ -69,7 +70,7 @@ class ActivationCodesController extends Controller
         $mobileToken = new MobileTokenController();
         $token = MobileToken::create(
             [
-                'token' => Str::random(16),
+                'token' => Str::random(128),
                 'member_id' => $member->id,
                 'status' => true,
                 'expires_at' => now()->addDays(365),
@@ -96,6 +97,18 @@ class ActivationCodesController extends Controller
         if ($activation->expires_at < now()) {
             $activation->delete();
             return response()->json('The activation code has expired');
+        }
+    }
+
+    public function checkDeviceLimit($member)
+    {
+        $activations = MobileToken::query()->where('member_id', $member->id)->count();
+        ray($activations);
+        if($activations >= 2) {
+//            return response()->json([
+//                'error' => "You've reached the maximum number of activations for this membership"
+//            ]);
+            abort(403, "Device limit exceeded");
         }
     }
 }

@@ -225,9 +225,6 @@ class UserController extends Controller
                 ->first();
 
             return response()->json([
-                'first_name' => $member->first_name,
-                'last_name' => $member->last_name,
-                'licence_number' => $member->number,
                 'club' => $member->club->name,
                 'membership_type' => $membership->membership_type ?? 'none',
                 'membership_expiry' => $membership->expiry_date ?? 'none',

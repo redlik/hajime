@@ -11,7 +11,7 @@ use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
 use App\Models\Member;
 
-class MembersTable extends Component implements HasForms, HasTable
+class MembersTableFilament extends Component implements HasForms, HasTable
 {
     use InteractsWithTable;
     use InteractsWithForms;
