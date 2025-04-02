@@ -78,6 +78,8 @@ class ActivationCodesController extends Controller
         );;
         $activation->delete();
 
+        $tokens = MobileToken::where('member_id', $member->id)->count();
+
         return response()->json([
             'first_name' => $member->first_name,
             'last_name' => $member->last_name,
@@ -88,6 +90,7 @@ class ActivationCodesController extends Controller
             'grade_level' => $grade->grade_level ?? 'none',
             'grade_points' => $grade->grade_points ?? 'none',
             'token' => $token->token,
+            'active_tokens' => $tokens,
             'updated_at' => Carbon::now()->toDateString(),
         ]);
 
@@ -105,10 +108,7 @@ class ActivationCodesController extends Controller
         $activations = MobileToken::query()->where('member_id', $member->id)->count();
         ray($activations);
         if($activations >= 2) {
-//            return response()->json([
-//                'error' => "You've reached the maximum number of activations for this membership"
-//            ]);
-            abort(403, "Device limit exceeded");
+            exit(json_encode(['error' => "Device limit exceeded"]));
         }
     }
 }

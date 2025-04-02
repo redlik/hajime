@@ -224,12 +224,17 @@ class UserController extends Controller
                 ->orderBy('grade_date', 'desc')
                 ->first();
 
+            $tokens = MobileToken::where('member_id', $member->id)->count();
+
+            $token->touch();
+
             return response()->json([
                 'club' => $member->club->name,
                 'membership_type' => $membership->membership_type ?? 'none',
                 'membership_expiry' => $membership->expiry_date ?? 'none',
                 'grade_level' => $grade->grade_level ?? 'none',
                 'grade_points' => $grade->grade_points ?? 'none',
+                'active_tokens' => $tokens,
                 'updated_at' => Carbon::now()->toDateString(),
             ]);
         }
