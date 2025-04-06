@@ -114,7 +114,7 @@ class ActivationCodesController extends Controller
             Cache::add($reset_code, $member->id, Carbon::now()->addMinutes(30));
             exit(json_encode([
                 'error' => "Device limit exceeded",
-                'reset_code' => $reset_code]));
+                'reset' => $reset_code]));
         }
     }
 
