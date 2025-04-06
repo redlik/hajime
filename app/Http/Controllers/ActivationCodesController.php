@@ -10,6 +10,7 @@ use App\Models\MobileToken;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 
 class ActivationCodesController extends Controller
@@ -21,11 +22,12 @@ class ActivationCodesController extends Controller
         return $this->code;
     }
 
-    public function saveCode($email)
+    public function saveCode(Member $member): void
     {
         ActivationCodes::create([
-            'email' => $email,
             'code' => $this->code,
+            'email' => $member->email,
+            'licence' => $member->number,
             'expires_at' => now()->addMinutes(120),
         ]);
     }
@@ -34,7 +36,6 @@ class ActivationCodesController extends Controller
     {
         $validator = \Validator::make($request->all(), [
             'code' => 'required|string|max:6',
-            'licence' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -49,15 +50,16 @@ class ActivationCodesController extends Controller
 
         $this->checkIfValid($activation);
 
+//        $this->resetLimit($request);
+
         try {
-            $member = Member::query()->where('number', trim($request->licence))
-                ->where('email', $activation->email)
+            $member = Member::query()->where('number', $activation->licence)
                 ->firstOrFail();
         } catch (ModelNotFoundException) {
             return response()->json(['error'=>'Licence number not found']);
         }
 
-        $this->checkDeviceLimit($member);
+//        $this->checkDeviceLimit($member);
 
         $membership = Membership::where('member_id', $member->id)
             ->orderBy('expiry_date', 'desc')
@@ -106,9 +108,23 @@ class ActivationCodesController extends Controller
     public function checkDeviceLimit($member)
     {
         $activations = MobileToken::query()->where('member_id', $member->id)->count();
-        ray($activations);
+        ray("Activations ".$activations);
         if($activations >= 2) {
-            exit(json_encode(['error' => "Device limit exceeded"]));
+            $reset_code = Str::random(6);
+            Cache::add($reset_code, $member->id, Carbon::now()->addMinutes(30));
+            exit(json_encode([
+                'error' => "Device limit exceeded",
+                'reset_code' => $reset_code]));
+        }
+    }
+
+    public function resetLimit($request) {
+        if($request->reset && Cache::has($request->reset)) {
+            $oldest_token = MobileToken::where('member_id', Cache::get($request->reset))
+                ->orderBy('updated_at', 'asc')
+                ->first();
+            ray($oldest_token);
+            $oldest_token->delete();
         }
     }
 }

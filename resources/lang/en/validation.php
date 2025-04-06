@@ -130,8 +130,11 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'licence' => [
+            'exists' => 'The licence code is invalid, make sure you type it correctly.',
+        ],
+        'email' => [
+            'exists' => 'This emails does not exists in the database, make sure you type it correctly.',
         ],
     ],
 

@@ -12,6 +12,7 @@ class ActivationCodes extends Model
     protected $fillable = [
         'email',
         'code',
+        'licence',
         'expires_at',
     ];
 }

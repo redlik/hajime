@@ -12,6 +12,7 @@ use App\Models\Membership;
 use App\Models\MobileToken;
 use App\Models\User;
 use Auth;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -204,6 +205,51 @@ class UserController extends Controller
         }
     }
 
+    public function activateMobileWithLicence(Request $request)
+    {
+        $activator = new ActivationCodesController();
+
+        $validator = \Validator::make($request->all(), [
+            'email' => 'required|string|email|max:255|exists:members,email',
+            'licence' => 'required|exists:members,number',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors'=>$validator->errors()]);
+        } else {
+            $member = $this->checkIfFieldsMatch($request);
+            ray($member);
+
+            $activator->resetLimit($request);
+
+            $activator->checkDeviceLimit($member);
+
+            $code = $activator->generateCode();
+
+            $activator->saveCode($member);
+
+            Mail::to($member->email)->send(new SendMobileActivationCode($code));
+
+            return response()->json([
+                'email' => $member->email,
+                'message' =>"Activation code sent to the email",
+            ]);
+        }
+    }
+
+    public function checkIfFieldsMatch(Request $request)
+    {
+        try {
+            $member = Member::where('email', $request->email)
+                ->where('number', trim($request->licence))
+                ->firstOrFail();
+        }
+        catch (ModelNotFoundException) {
+            exit(json_encode(['error'=>'The email and licence number do not match']));
+        }
+
+        return $member;
+    }
     public function refreshMobileApplication(Request $request)
     {
         $validator = \Validator::make($request->all(), [

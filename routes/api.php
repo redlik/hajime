@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('register-user', [UserController::class, 'registerAPIuser'])->name('register_api_user');
 
 //Activation
-Route::post('send-activation-code', [UserController::class, 'activateMobile'])->name('activate_mobile');
+Route::post('send-activation-code', [UserController::class, 'activateMobileWithLicence'])->name('activate_mobile');
 Route::post('activate-code', [ActivationCodesController::class, 'activateCode'])->name('activate_code');
 
 //Refresh
