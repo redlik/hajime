@@ -28,6 +28,10 @@ class ClearOldLogs extends Command
     public function handle()
     {
         $days = Cache::get('retentionLogDays');
+        if (!$days) {
+            $this->info('Retention day not defined');
+            return;
+        }
         $deletedCount = Activity::where('created_at', '<', now()->subDays($days))->delete();
         $this->info("Deleted {$deletedCount} activity log(s) older than {$days} days.");
     }
