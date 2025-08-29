@@ -27,7 +27,7 @@ class ClearOldLogs extends Command
      */
     public function handle()
     {
-        $days = Cache::get('retentionLogDays');
+        $days = Cache::get('retentionLogTime');
         if (!$days) {
             $this->info('Retention day not defined');
             return;
