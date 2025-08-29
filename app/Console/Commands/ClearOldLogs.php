@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 use Spatie\Activitylog\Models\Activity;
 
 class ClearOldLogs extends Command
@@ -29,10 +30,10 @@ class ClearOldLogs extends Command
     {
         $days = Cache::get('retentionLogTime');
         if (!$days) {
-            $this->info('Retention day not defined');
+            Log::info('Retention day not defined');
             return;
         }
         $deletedCount = Activity::where('created_at', '<', now()->subDays($days))->delete();
-        $this->info("Deleted {$deletedCount} activity log(s) older than {$days} days.");
+        Log::info("Deleted {$deletedCount} activity log(s) older than {$days} days.");
     }
 }
