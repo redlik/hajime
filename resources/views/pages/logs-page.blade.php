@@ -10,7 +10,9 @@
                     Activity log
                 </header>
                 <div class="px-8">
-                    <div class="text-gray-500 text-sm mt-4 text-right">Sorted from newest to oldest</div>
+                    <div class="flex justify-end mt-4">
+                        @livewire('retention-log')
+                    </div>
                     <table class="w-full table-auto leading-normal mt-4 mb-8">
                         <thead>
                         <tr>
