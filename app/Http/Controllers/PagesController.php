@@ -13,7 +13,7 @@ class PagesController extends Controller
 {
     public function logsPage()
     {
-        $logs = Activity::latest()->get();
+        $logs = Activity::latest()->paginate(25)->withQueryString();
 
         return view('pages.logs-page', compact('logs'));
     }

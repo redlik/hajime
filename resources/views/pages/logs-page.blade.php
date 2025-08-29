@@ -100,7 +100,9 @@
                         @endforeach
                         </tbody>
                     </table>
-
+                    <div class="mb-8">
+                        {{ $logs->links() }}
+                    </div>
                 </div>
             </section>
         </div>
