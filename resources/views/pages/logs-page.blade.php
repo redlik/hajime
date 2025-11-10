@@ -42,12 +42,6 @@
                         text-gray-100 uppercase tracking-wider">
                                 Date & Time
                             </th>
-                            <th
-                                class="px-5 py-3 rounded-r bg-gray-600 text-left text-xs
-                        font-semibold
-                        text-gray-100 uppercase tracking-wider">
-                                Operations
-                            </th>
                         </tr>
                         </thead>
                         <tbody>
@@ -91,11 +85,6 @@
                                 <td class="py-5 border-b border-gray-200 text-sm">
                                     <p class="text-gray-900 whitespace-no-wrap text-center">
                                         {{ \Carbon\Carbon::parse($log->created_at)->format('d/m/Y H:i') }}
-                                    </p>
-                                </td>
-
-                                <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                    <p class="text-gray-900 whitespace-no-wrap">
                                     </p>
                                 </td>
                             </tr>
