@@ -6,6 +6,7 @@ use App\Mail\AccountActivated;
 use App\Mail\EmailVerificationRequest;
 use App\Mail\SendMobileActivationCode;
 use App\Mail\UserInvitation;
+use App\Models\Club;
 use App\Models\Grade;
 use App\Models\Member;
 use App\Models\Membership;
@@ -108,11 +109,13 @@ class UserController extends Controller
 
         $user->assignRole('manager');
 
+        $club = Club::find($request->input('club'));
+
         activity()
             ->performedOn($user)
             ->causedBy(Auth::id())
             ->withProperty('name', $user->email )
-            ->log('New invitation sent');
+            ->log('New invitation to manage '. Str::limit($club->name, 25 , '(...)'));
 
         Mail::to($user)->send(new UserInvitation($user));
 
