@@ -108,6 +108,12 @@ class UserController extends Controller
 
         $user->assignRole('manager');
 
+        activity()
+            ->performedOn($user)
+            ->causedBy(Auth::id())
+            ->withProperty('name', $user->email )
+            ->log('New invitation sent');
+
         Mail::to($user)->send(new UserInvitation($user));
 
         return redirect()->back()->with('invited', "Account invitation has been sent");
