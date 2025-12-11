@@ -15,7 +15,7 @@ use Illuminate\Support\Str;
 
 class ActivationCodesController extends Controller
 {
-    public $code;
+    public int $code;
     public function generateCode()
     {
         $this->code = rand(100000, 999999);
@@ -28,7 +28,8 @@ class ActivationCodesController extends Controller
             'code' => $this->code,
             'email' => $member->email,
             'licence' => $member->number,
-            'expires_at' => now()->addMinutes(120),
+            'expires_at' => now()->addHours(72),
+            // TODO: Change back to 120 minutes when done testing ->addMinutes(120)
         ]);
     }
 
@@ -77,7 +78,7 @@ class ActivationCodesController extends Controller
                 'status' => true,
                 'expires_at' => now()->addDays(365),
             ]
-        );;
+        );
         $activation->delete();
 
         $tokens = MobileToken::where('member_id', $member->id)->count();
