@@ -28,8 +28,7 @@ class ActivationCodesController extends Controller
             'code' => $this->code,
             'email' => $member->email,
             'licence' => $member->number,
-            'expires_at' => now()->addHours(72),
-            // TODO: Change back to 120 minutes when done testing ->addMinutes(120)
+            'expires_at' => now()->addMinutes(120),
         ]);
     }
 
