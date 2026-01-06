@@ -127,6 +127,9 @@
                             <a href="{{ route('pages.options-page') }}"
                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                role="menuitem">Options</a>
+                            <a href="{{ route('members.checkMemberships') }}"
+                               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                               role="menuitem">Check memberships</a>
 
                         </div>
                     </transition>

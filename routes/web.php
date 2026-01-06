@@ -1,6 +1,7 @@
 <?php
 
 use App\Exports\GradingListExport;
+use App\Http\Controllers\ActiveMemberController;
 use App\Http\Controllers\ClubDocumentController;
 use App\Http\Controllers\ClubViewController;
 use App\Http\Controllers\CoachController;
@@ -75,6 +76,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         Route::get('admins', [PagesController::class, 'adminList'])->name('pages.admin-list');
         Route::get('options', [PagesController::class, 'optionsPage'])->name('pages.options-page');
     });
+    Route::get('members-memberships', [ActiveMemberController::class, 'showView'])->name('members.checkMemberships');
+    Route::get('members-memberships-check', [ActiveMemberController::class, 'checkMembershipsGlobally'])->name('members.checkMembershipsGlobally');
 });
 
 Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'reports'], function () {
