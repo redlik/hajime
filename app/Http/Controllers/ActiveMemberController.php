@@ -16,17 +16,8 @@ class ActiveMemberController extends Controller
 
     public function checkMembershipsGlobally()
     {
-        $members = Member::where('active', 1)->with('membership')->get();
-        $changed = 0;
-        foreach ($members as $member) {
-            $membership = Membership::where('member_id', $member->id)->orderBy('expiry_date', 'desc')->first();
-            if (Carbon::now()->greaterThan($membership->expiry_date))
-            {
-                $member->active = 0;
-                $member->save();
-                $changed += 1;
-            }
-        }
+        $changed = Member::deactivateExpiredMemberships();
+
         $message = 'Memberships updated successfully. Changed records: '.$changed;
 
         return redirect()->to(url()->previous())->with('message', $message);

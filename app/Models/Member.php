@@ -58,6 +58,11 @@ class Member extends Model
         return $this->hasOne('App\Models\Membership')->latestOfMany('join_date');
     }
 
+    public function latestExpiryMembership()
+    {
+        return $this->hasOne('App\Models\Membership')->latestOfMany('expiry_date');
+    }
+
     public function latestGrade()
     {
         return $this->hasMany('App\Models\Grade')->latest('grade_date')->first();
@@ -66,5 +71,25 @@ class Member extends Model
     public function currentGrade()
     {
         return $this->hasOne('App\Models\Grade')->latestOfMany();
+    }
+
+    public static function deactivateExpiredMemberships(): int
+    {
+        $members = self::where('active', 1)
+            ->with('latestExpiryMembership')
+            ->get();
+
+        $changed = 0;
+
+        foreach ($members as $member) {
+            $membership = $member->latestExpiryMembership;
+
+            if ($membership && Carbon::now()->greaterThan($membership->expiry_date)) {
+                $member->update(['active' => 0]);
+                $changed++;
+            }
+        }
+
+        return $changed;
     }
 }
