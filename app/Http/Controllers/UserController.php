@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
+use Log;
 
 class UserController extends Controller
 {
@@ -238,6 +239,8 @@ class UserController extends Controller
             $activator->saveCode($member);
 
             Mail::to($member->email)->send(new SendMobileActivationCode($code));
+
+            Log::info("Mobile activation code sent to {$member->email}");
 
             return response()->json([
                 'email' => $member->email,

@@ -28,7 +28,7 @@ class ActivationCodesController extends Controller
             'code' => $this->code,
             'email' => $member->email,
             'licence' => $member->number,
-            'expires_at' => now()->addMinutes(120),
+            'expires_at' => now()->addMinutes(240),
         ]);
     }
 
