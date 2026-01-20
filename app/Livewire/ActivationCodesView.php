@@ -37,6 +37,7 @@ class ActivationCodesView extends Component implements HasForms, HasTable
                     ->sortable(),
                 TextColumn::make('email')->searchable()->sortable()->toggleable(),
                 TextColumn::make('member_full_name')
+                    ->toggleable()
                     ->getStateUsing(function ($record) {
                         // 1. Fetch the related member using the license code from the current row
                         $member = Member::where('number', $record->licence)->first();
@@ -49,8 +50,10 @@ class ActivationCodesView extends Component implements HasForms, HasTable
                         return 'Unknown Member';
                     })
                 ->label('Member Name'),
-                TextColumn::make('licence')->searchable()
-                ->label('Licence Number'),
+                TextColumn::make('licence')
+                    ->searchable()
+                    ->toggleable()
+                    ->label('Licence Number'),
                 TextColumn::make('created_at')->dateTime()->sortable(),
                 TextColumn::make('expires_at')
                     ->dateTime()
