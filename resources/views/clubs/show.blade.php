@@ -26,7 +26,7 @@
                                       activeClasses:
                                       'bg-gray-600 text-gray-100 rounded-full shadow-inner shadow outline-none',
                                       inactiveClasses:
-                                      'text-gray-500 bg-gray-100 hover:text-gray-700 hover:bg-gray-200 rounded-full'
+                                      'text-gray-500 bg-white hover:text-gray-700 hover:bg-gray-200 rounded-full'
                                     }">
                     {{-- TABS SECTION --}}
                     <div class="w-full px-6">
@@ -34,41 +34,41 @@
                             <li class="-mb-px mr-3 md:mb-0 sm:mb-3" :class="{ '-mb-px': openTab === '#details' }"
                                 @click="openTab =
                         '#details'">
-                                <a :class="openTab === '#details' ? activeClasses : inactiveClasses" class="bg-white
+                                <a :class="openTab === '#details' ? activeClasses : inactiveClasses" class="
                             inline-block py-2 px-4 font-semibold" href="#details">Club Details</a>
                             </li>
                             <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#personnel'">
-                                <a :class="openTab === '#personnel' ? activeClasses : inactiveClasses" class="bg-white
+                                <a :class="openTab === '#personnel' ? activeClasses : inactiveClasses" class="
                             inline-block
                             py-2 px-4 font-semibold" href="#personnel">Club Personnel</a>
                             </li>
                             <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#volunteers'">
-                                <a :class="openTab === '#volunteers' ? activeClasses : inactiveClasses" class="bg-white
+                                <a :class="openTab === '#volunteers' ? activeClasses : inactiveClasses" class="
                             inline-block
                             py-2 px-4 font-semibold" href="#volunteers">Volunteers</a>
                             </li>
                             <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#members'">
-                                <a :class="openTab === '#members' ? activeClasses : inactiveClasses" class="bg-white
+                                <a :class="openTab === '#members' ? activeClasses : inactiveClasses" class="
                             inline-block
                             py-2 px-4 font-semibold" href="#members">Members</a>
                             </li>
                             <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#notes'">
-                                <a :class="openTab === '#notes' ? activeClasses : inactiveClasses" class="bg-white
+                                <a :class="openTab === '#notes' ? activeClasses : inactiveClasses" class="
                             inline-block
                             py-2 px-4 font-semibold" href="#notes">Notes {{ $notes->count()>0 ? $notes->count() : '' }}</a>
                             </li>
                             <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#grads'">
-                                <a :class="openTab === '#grads' ? activeClasses : inactiveClasses" class="bg-white
+                                <a :class="openTab === '#grads' ? activeClasses : inactiveClasses" class="
                             inline-block
                             py-2 px-4 font-semibold" href="#grads">Gradings {{ $grads->count()>0 ? $grads->count() : '' }}</a>
                             </li>
                             <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#forms'">
-                                <a :class="openTab === '#forms' ? activeClasses : inactiveClasses" class="bg-white
+                                <a :class="openTab === '#forms' ? activeClasses : inactiveClasses" class="
                             inline-block
                             py-2 px-4 font-semibold" href="#forms">Forms {{ $forms->count()>0 ? $forms->count() : '' }}</a>
                             </li>
                             <li class="-mb-px mr-1 md:mb-0 sm:mb-3" @click="openTab = '#documents'">
-                                <a :class="openTab === '#documents' ? activeClasses : inactiveClasses" class="bg-white
+                                <a :class="openTab === '#documents' ? activeClasses : inactiveClasses" class="
                             inline-block
                             py-2 px-4 font-semibold" href="#documents">Documents {{ $documents->count()>0 ? $documents->count() : '' }}</a>
                             </li>

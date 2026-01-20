@@ -31,38 +31,38 @@
                                       activeClasses:
                                       'bg-gray-600 text-gray-100 rounded-full shadow-inner shadow outline-none',
                                       inactiveClasses:
-                                      'text-gray-500 bg-gray-100 hover:text-gray-700 hover:bg-gray-200 rounded-full'
+                                      'text-gray-500 bg-white hover:text-gray-700 hover:bg-gray-200 rounded-full'
                                     }">
                 {{-- TABS SECTION --}}
                 <div class="w-full px-6 ">
                     <ul class="flex">
                         <li class="-mb-px mr-3 md:mb-0 sm:mb-3" :class="{ '-mb-px': openTab === '#personal' }" @click="openTab =
                         '#personal'">
-                            <a :class="openTab === '#personal' ? activeClasses : inactiveClasses" class="bg-white
+                            <a :class="openTab === '#personal' ? activeClasses : inactiveClasses" class="
                             inline-block py-2 px-4 font-semibold" href="#details">Personal Details</a>
                         </li>
                         <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#membership'">
-                            <a :class="openTab === '#membership' ? activeClasses : inactiveClasses" class="bg-white
+                            <a :class="openTab === '#membership' ? activeClasses : inactiveClasses" class="
                             inline-block
                             py-2 px-4 font-semibold" href="#membership">Membership</a>
                         </li>
                         <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#grading'">
-                            <a :class="openTab === '#grading' ? activeClasses : inactiveClasses" class="bg-white
+                            <a :class="openTab === '#grading' ? activeClasses : inactiveClasses" class="
                             inline-block
                             py-2 px-4 font-semibold" href="#grading">Grading</a>
                         </li>
                         <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#notes'">
-                            <a :class="openTab === '#notes' ? activeClasses : inactiveClasses" class="bg-white
+                            <a :class="openTab === '#notes' ? activeClasses : inactiveClasses" class="
                             inline-block
                             py-2 px-4 font-semibold" href="#notes">Notes {{ $notes->count()>0 ? $notes->count() : '' }}</a>
                         </li>
                         <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#forms'">
-                            <a :class="openTab === '#forms' ? activeClasses : inactiveClasses" class="bg-white
+                            <a :class="openTab === '#forms' ? activeClasses : inactiveClasses" class="
                             inline-block
                             py-2 px-4 font-semibold" href="#forms">Forms {{ $forms->count()>0 ? $forms->count() : '' }}</a>
                         </li>
                         <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#documents'">
-                            <a :class="openTab === '#documents' ? activeClasses : inactiveClasses" class="bg-white
+                            <a :class="openTab === '#documents' ? activeClasses : inactiveClasses" class="
                             inline-block
                             py-2 px-4 font-semibold" href="#documents" id="documents">Documents {{ $documents->count()>0 ? $documents->count() : '' }}</a>
                         </li>
