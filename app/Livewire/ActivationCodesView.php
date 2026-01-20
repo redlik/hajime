@@ -10,6 +10,7 @@ use Filament\Support\Facades\FilamentColor;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
+use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
@@ -60,6 +61,10 @@ class ActivationCodesView extends Component implements HasForms, HasTable
             ])
             ->actions([
                 DeleteAction::make(),
+            ])
+            ->bulkActions([
+                // Add this to delete multiple selected rows at once
+                DeleteBulkAction::make(),
             ]);
     }
 
