@@ -58,7 +58,13 @@ class ActivationCodesView extends Component implements HasForms, HasTable
                 TextColumn::make('expires_at')
                     ->dateTime()
                     ->since()
-                    ->dateTimeTooltip()
+                    ->tooltip(function ($state): string {
+                        // If $state is null, return an empty string or a default message
+                        if (! $state) return 'No expiration set';
+
+                        // Return the exact database value or a high-precision format
+                        return 'Exact Expiry: ' . $state;
+                    })
                     ->sortable()
                     ->label('Code expiry'),
             ])
