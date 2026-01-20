@@ -78,6 +78,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     });
     Route::get('members-memberships', [ActiveMemberController::class, 'showView'])->name('members.checkMemberships');
     Route::get('members-memberships-check', [ActiveMemberController::class, 'checkMembershipsGlobally'])->name('members.checkMembershipsGlobally');
+    Route::get('activation-codes', [UserController::class, 'activationCodesView'])->name('pages.activation_codes');
 });
 
 Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'reports'], function () {

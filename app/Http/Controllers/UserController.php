@@ -297,4 +297,9 @@ class UserController extends Controller
             ]);
         }
     }
+
+    public function activationCodesView()
+    {
+        return view('pages.activation-codes');
+    }
 }

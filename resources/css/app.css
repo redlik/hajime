@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Ensure Filament variables are available */
+:root {
+    /* These define the RGB values for the 'danger' (red) color */
+    --danger-50: 254, 242, 242;
+    --danger-100: 254, 226, 226;
+    --danger-200: 254, 202, 202;
+    --danger-300: 252, 165, 165;
+    --danger-400: 248, 113, 113;
+    --danger-500: 239, 68, 68;
+    --danger-600: 220, 38, 38;
+    --danger-700: 185, 28, 28;
+    --danger-800: 153, 27, 27;
+    --danger-900: 127, 29, 29;
+    --danger-950: 69, 10, 10;
+}
+
 @layer components {
     .button {
         @apply px-4 py-2 text-white rounded shadow cursor-pointer;

@@ -20,10 +20,13 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
     @livewireStyles
+    @filamentStyles
+
 
 </head>
 <body class="bg-gray-300 h-screen antialiased leading-none font-sans pb-12">
@@ -130,6 +133,9 @@
                             <a href="{{ route('members.checkMemberships') }}"
                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                role="menuitem">Check memberships</a>
+                            <a href="{{ route('pages.activation_codes') }}"
+                               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                               role="menuitem">Activation codes</a>
 
                         </div>
                     </transition>
@@ -161,6 +167,7 @@
     @yield('content')
 </div>
 @livewireScripts
+@filamentScripts
 @yield('bottomScripts')
 </body>
 </html>

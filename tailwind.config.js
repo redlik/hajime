@@ -1,14 +1,25 @@
 const colors = require('tailwindcss/colors')
+const preset = require('./vendor/filament/support/tailwind.config.preset')
 
 module.exports = {
-  purge: {
-      content: [
-          './resources/**/*.blade.php',
-          './resources/**/*.js',
-          './resources/**/*.vue',
-          './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
-      ]
-  },
+    presets: [preset],
+    content: [
+        './app/Filament/**/*.php',
+        './app/Livewire/**/*.php',
+        './resources/views/filament/**/*.blade.php',
+        './vendor/filament/**/*.blade.php',
+        './resources/**/*.blade.php',
+        './resources/**/*.js',
+        './resources/**/*.vue',
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+    ],
+    safelist: [
+        'text-danger-600',
+        'bg-danger-600',
+        'hover:bg-danger-500',
+        'focus:ring-danger-500',
+        'fi-color-danger',
+    ],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
