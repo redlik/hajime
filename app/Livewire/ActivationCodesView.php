@@ -57,6 +57,9 @@ class ActivationCodesView extends Component implements HasForms, HasTable
                     ->dateTimeTooltip()
                     ->sortable()
                     ->label('Code expiry'),
+            ])
+            ->actions([
+                DeleteAction::make(),
             ]);
     }
 
