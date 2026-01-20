@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind variants;
 
 /* Ensure Filament variables are available */
 :root {
@@ -145,5 +146,13 @@
 
     .alert-danger {
         @apply bg-red-100 rounded p-3 shadow-sm mb-4 text-red-600 font-semibold;
+    }
+
+    .bg-custom-600 {
+        @apply bg-red-600;
+    }
+
+    .bg-custom-500 {
+        @apply bg-red-500;
     }
 }
