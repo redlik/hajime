@@ -53,7 +53,11 @@ class UserController extends Controller
 
     public function userActivationLink($user_id)
     {
-        $user = User::find($user_id);
+        try {
+            $user = User::findOrFail($user_id);
+        } catch (ModelNotFoundException $e) {
+            return view('club-access.user-not-found');
+        }
         if ($user->status == 'active') {
             abort(403, 'Account is already activated');
         }
