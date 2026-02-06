@@ -13,6 +13,7 @@ use App\Models\Membership;
 use App\Models\MobileToken;
 use App\Models\User;
 use Auth;
+use Hashids\Hashids;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -51,8 +52,11 @@ class UserController extends Controller
         return redirect()->back();
     }
 
-    public function userActivationLink($user_id)
+    public function userActivationLink($hash)
     {
+        $hashed = new Hashids('User Account', 10);
+        $decoded = $hashed->decode($hash);
+        $user_id = $decoded[0];
         try {
             $user = User::findOrFail($user_id);
         } catch (ModelNotFoundException $e) {

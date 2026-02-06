@@ -60,6 +60,11 @@
             <th
                 class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold text-gray-100 uppercase
                                     tracking-wider">
+                ID
+            </th>
+            <th
+                class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold text-gray-100 uppercase
+                                    tracking-wider">
                 Club
             </th>
             <th
@@ -101,6 +106,9 @@
                         <br>
                         <span class="text-xs text-gray-500">{{ $user->email }}</span></p>
 
+                </td>
+                <td class="px-5 py-3 border-b border-gray-200 text-sm">
+                    <p class="text-gray-900 whitespace-no-wrap">{{ $user->id }}</p>
                 </td>
                 <td class="px-5 py-3 border-b border-gray-200 text-sm">
                     <p class="text-gray-900 whitespace-no-wrap">{{ $user->club_manager->name }}</p>

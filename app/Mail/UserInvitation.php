@@ -3,6 +3,7 @@
 namespace App\Mail;
 
 use App\Models\User;
+use Hashids\Hashids;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -45,10 +46,13 @@ class UserInvitation extends Mailable
      */
     public function content()
     {
+        $hashed = new Hashids('User Account', 10);
+        $id = $hashed->encode($this->user->id);
+
         return new Content(
             markdown: 'emails.account.invitation',
             with: [
-                'url' => route('user.user-activated-account', $this->user->id),
+                'url' => route('user.user-activated-account', $id),
             ]
         );
     }
