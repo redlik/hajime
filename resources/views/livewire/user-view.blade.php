@@ -70,7 +70,7 @@
             <th
                 class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold text-gray-100 uppercase
                                     tracking-wider">
-                Registered at
+                Invite date
             </th>
             <th
                 class="px-5 py-3 bg-gray-600 text-left text-xs font-semibold text-gray-100 uppercase
@@ -114,7 +114,7 @@
                     <p class="text-gray-900 whitespace-no-wrap">{{ $user->club_manager->name }}</p>
                 </td>
                 <td class="px-5 py-3 border-b border-gray-200 text-sm">
-                    <p class="text-gray-900 whitespace-no-wrap">{{ $user->created_at->format('d M Y') }}</p>
+                    <p class="text-gray-900 whitespace-no-wrap">{{ $user->created_at->format('d M Y h:m') }}</p>
                 </td>
                 <td class="px-5 py-3 border-b border-gray-200 text-sm">
                     <p class="text-gray-900 whitespace-no-wrap font-semibold">
