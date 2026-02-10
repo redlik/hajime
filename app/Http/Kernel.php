@@ -71,5 +71,8 @@ class Kernel extends HttpKernel
 
     protected $middlewareAliases = [
         'club.access' => CheckClubAccess::class,
+        'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
+        'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
+        'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
         ];
 }
