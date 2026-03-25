@@ -1,7 +1,7 @@
 <main class="flex-1 relative overflow-y-auto focus:outline-none p-6" tabindex="0"
       x-data="{ report: @entangle('report').live }" x-init="$el.focus()">
     <div>
-        <form wire:submit="generateReport({{ $selected }})">
+        <form wire:submit="generateReport">
             <div class="flex">
                 <div>
                     <select name="selectedClub" id="selectedClub"
@@ -201,13 +201,13 @@
                             {{ $volunteer->name }}</td>
                         <td class="hidden px-3 py-2 lg:table-cell">
                                 <span class="{{ $volunteer->vetting_expiry > now() ? 'text-gray-600' : 'text-red-600' }} font-medium">
-                                    {{ $volunteer->vetting_expiry ?? 'Outstanding'}}
+                                    {{ $volunteer->vetting_expiry ?? 'Outstanding' }}
                                 </span>
 
                         </td>
                         <td class="hidden px-3 py-2 text-gray-700 lg:table-cell">
                                 <span class="{{ $volunteer->safeguarding_expiry > now() ? 'text-gray-600' : 'text-red-600' }} font-medium">
-                                    {{ $volunteer->safeguarding_expiry ?? 'Outstanding'}}
+                                    {{ $volunteer->safeguarding_expiry ?? 'Outstanding' }}
                                 </span>
                         </td>
                     </tr>

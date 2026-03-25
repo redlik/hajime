@@ -46,10 +46,10 @@ class ComplianceReport extends Component
         return view('livewire.compliance-report');
     }
 
-    public function generateReport($selected)
+    public function generateReport()
     {
         $this->report = true;
-        $this->selectedClub = Club::find($selected);
+        $this->selectedClub = Club::find($this->selected);
 
         $this->secretary = Personnel::secretary()->where('club_id', $this->selectedClub->id)->first() ?? new Personnel();
         $this->headCoach = Personnel::headcoach()->where('club_id', $this->selectedClub->id)->first() ?? new Personnel();
