@@ -350,6 +350,68 @@
                                     id="special" name="special" type="text" placeholder="List the requirements" value="{{ $member->special }}">
                             </div>
                         </div>
+                        <div class="w-full border-2 border-gray-300 rounded-xl p-8 mb-4" id="compliance-edit">
+                            <h4 class="font-bold text-xl text-gray-500 mb-4">Compliance details:</h4>
+                            <div class="mb-4 flex flex-wrap">
+                                <div class="w-full md:w-1/2">
+                                    <div class="mb-4">
+                                        <label class="inline-block w-40 text-grey-darker text-sm font-bold mb-2" for="safeguarding_completion">
+                                            Safeguarding completed
+                                        </label>
+                                        <input class="shadow border-gray-300 rounded py-2 px-3 text-grey-darker"
+                                               id="safeguarding_completion" name="safeguarding_completion" type="date"
+                                               value="{{ $member->safeguarding_completion }}">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="inline-block w-40 text-grey-darker text-sm font-bold mb-2" for="safeguarding_expiry">
+                                            Safeguarding expiry
+                                        </label>
+                                        <input class="shadow border-gray-300 rounded py-2 px-3 text-grey-darker"
+                                               id="safeguarding_expiry" name="safeguarding_expiry" type="date"
+                                               value="{{ $member->safeguarding_expiry }}">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="inline-block w-40 text-grey-darker text-sm font-bold mb-2" for="vetting_completion">
+                                            Vetting completed
+                                        </label>
+                                        <input class="shadow border-gray-300 rounded py-2 px-3 text-grey-darker"
+                                               id="vetting_completion" name="vetting_completion" type="date"
+                                               value="{{ $member->vetting_completion }}">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="inline-block w-40 text-grey-darker text-sm font-bold mb-2" for="vetting_expiry">
+                                            Vetting expiry
+                                        </label>
+                                        <input class="shadow border-gray-300 rounded py-2 px-3 text-grey-darker"
+                                               id="vetting_expiry" name="vetting_expiry" type="date"
+                                               value="{{ $member->vetting_expiry }}">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="inline-block w-40 text-grey-darker text-sm font-bold mb-2" for="first_aid_completion">
+                                            First Aid completed
+                                        </label>
+                                        <input class="shadow border-gray-300 rounded py-2 px-3 text-grey-darker"
+                                               id="first_aid_completion" name="first_aid_completion" type="date"
+                                               value="{{ $member->first_aid_completion }}">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="inline-block w-40 text-grey-darker text-sm font-bold mb-2" for="first_aid_expiry">
+                                            First Aid expiry
+                                        </label>
+                                        <input class="shadow border-gray-300 rounded py-2 px-3 text-grey-darker"
+                                               id="first_aid_expiry" name="first_aid_expiry" type="date"
+                                               value="{{ $member->first_aid_expiry }}">
+                                    </div>
+                                </div>
+                                <div class="w-full md:w-1/2">
+                                    <label class="inline-block text-grey-darker text-sm font-bold mb-2" for="compliance_comments">
+                                        Comments <span class="font-normal text-gray-400">(e.g. notes on volunteering at more than one club)</span>
+                                    </label>
+                                    <textarea class="shadow border-gray-300 rounded w-full py-2 px-3 text-grey-darker" rows="6"
+                                              id="compliance_comments" name="compliance_comments">{{ $member->compliance_comments }}</textarea>
+                                </div>
+                            </div>
+                        </div>
                         <div class="mt-6">
                             <input type="submit" value="Update record" class="button-judo">
                         </div>

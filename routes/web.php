@@ -27,6 +27,7 @@ use App\Http\Controllers\PersonnelController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\GradeController;
+use App\Http\Controllers\QualificationController;
 use App\Http\Controllers\ClubnoteController;
 use App\Http\Controllers\VenueController;
 
@@ -53,6 +54,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::resource('coach', CoachController::class);
     Route::resource('membership', MembershipController::class);
     Route::resource('grade', GradeController::class);
+    Route::resource('qualification', QualificationController::class);
     Route::resource('clubnote', ClubnoteController::class);
     Route::resource('membernote', MembernoteController::class);
     Route::resource('volunteer', VolunteerController::class);

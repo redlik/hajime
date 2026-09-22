@@ -51,6 +51,26 @@
                             inline-block
                             py-2 px-4 font-semibold" href="#grading">Grading</a>
                         </li>
+                        <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#referee'">
+                            <a :class="openTab === '#referee' ? activeClasses : inactiveClasses" class="
+                            inline-block
+                            py-2 px-4 font-semibold" href="#referee">Referee</a>
+                        </li>
+                        <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#tableofficial'">
+                            <a :class="openTab === '#tableofficial' ? activeClasses : inactiveClasses" class="
+                            inline-block
+                            py-2 px-4 font-semibold" href="#tableofficial">Table Official</a>
+                        </li>
+                        <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#coach'">
+                            <a :class="openTab === '#coach' ? activeClasses : inactiveClasses" class="
+                            inline-block
+                            py-2 px-4 font-semibold" href="#coach">Coach</a>
+                        </li>
+                        <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#compliance'">
+                            <a :class="openTab === '#compliance' ? activeClasses : inactiveClasses" class="
+                            inline-block
+                            py-2 px-4 font-semibold" href="#compliance">Compliance</a>
+                        </li>
                         <li class="-mb-px mr-3 md:mb-0 sm:mb-3" @click="openTab = '#notes'">
                             <a :class="openTab === '#notes' ? activeClasses : inactiveClasses" class="
                             inline-block
@@ -333,6 +353,184 @@
                         </form>
 
                         @livewire('grade-list', ['member' => $member->id])
+                    </div>
+                </div>
+
+                {{-- REFEREE SECTION --}}
+                <div class="w-full px-6 py-2" x-show="openTab === '#referee'">
+                    <div class="w-full bg-white border-2 border-gray-200 rounded-xl my-4 p-4">
+                        <h4 class="font-bold text-xl text-gray-500 mb-4">Referee qualifications:</h4>
+                        <form method="POST" action="{{ action('App\Http\Controllers\QualificationController@store') }}"
+                              role="form">
+                            @csrf
+                            <input type="hidden" name="member_id" value="{{ $member->id }}">
+                            <input type="hidden" name="type" value="referee">
+                            <div class="flex flex-wrap justify-between items-end">
+                                <div class="flex flex-wrap gap-4">
+                                    <div>
+                                        <label for="referee_level" class="block text-sm text-gray-400 mb-2 font-bold">Qualification
+                                            level</label>
+                                        <select name="level" id="referee_level"
+                                                class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker mr-2" required>
+                                            @include('member.qualification-options', ['type' => 'referee', 'selected' => null])
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="referee_date" class="block text-sm text-gray-400 mb-2 font-bold">Date
+                                            attained</label>
+                                        <input type="date" name="date_attained" id="referee_date"
+                                               class="shadow border-gray-300 rounded w-48 py-2 px-3 text-grey-darker mr-2">
+                                    </div>
+                                    <div>
+                                        <label for="referee_notes" class="block text-sm text-gray-400 mb-2 font-bold">Notes</label>
+                                        <input type="text" name="notes" id="referee_notes"
+                                               class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker mr-2">
+                                    </div>
+                                </div>
+                                <div>
+                                    <input type="submit" value="Submit" class="button-judo">
+                                </div>
+                            </div>
+                        </form>
+
+                        @livewire('qualification-list', ['member' => $member->id, 'type' => 'referee'])
+                    </div>
+                </div>
+
+                {{-- TABLE OFFICIAL SECTION --}}
+                <div class="w-full px-6 py-2" x-show="openTab === '#tableofficial'">
+                    <div class="w-full bg-white border-2 border-gray-200 rounded-xl my-4 p-4">
+                        <h4 class="font-bold text-xl text-gray-500 mb-4">Table Official qualifications:</h4>
+                        <form method="POST" action="{{ action('App\Http\Controllers\QualificationController@store') }}"
+                              role="form">
+                            @csrf
+                            <input type="hidden" name="member_id" value="{{ $member->id }}">
+                            <input type="hidden" name="type" value="table_official">
+                            <div class="flex flex-wrap justify-between items-end">
+                                <div class="flex flex-wrap gap-4">
+                                    <div>
+                                        <label for="tableofficial_level" class="block text-sm text-gray-400 mb-2 font-bold">Qualification
+                                            level</label>
+                                        <select name="level" id="tableofficial_level"
+                                                class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker mr-2" required>
+                                            @include('member.qualification-options', ['type' => 'table_official', 'selected' => null])
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="tableofficial_date" class="block text-sm text-gray-400 mb-2 font-bold">Date
+                                            attained</label>
+                                        <input type="date" name="date_attained" id="tableofficial_date"
+                                               class="shadow border-gray-300 rounded w-48 py-2 px-3 text-grey-darker mr-2">
+                                    </div>
+                                    <div>
+                                        <label for="tableofficial_notes" class="block text-sm text-gray-400 mb-2 font-bold">Notes</label>
+                                        <input type="text" name="notes" id="tableofficial_notes"
+                                               class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker mr-2">
+                                    </div>
+                                </div>
+                                <div>
+                                    <input type="submit" value="Submit" class="button-judo">
+                                </div>
+                            </div>
+                        </form>
+
+                        @livewire('qualification-list', ['member' => $member->id, 'type' => 'table_official'])
+                    </div>
+                </div>
+
+                {{-- COACH QUALIFICATION SECTION --}}
+                <div class="w-full px-6 py-2" x-show="openTab === '#coach'">
+                    <div class="w-full bg-white border-2 border-gray-200 rounded-xl my-4 p-4">
+                        <h4 class="font-bold text-xl text-gray-500 mb-4">Coach qualifications:</h4>
+                        <form method="POST" action="{{ action('App\Http\Controllers\QualificationController@store') }}"
+                              role="form">
+                            @csrf
+                            <input type="hidden" name="member_id" value="{{ $member->id }}">
+                            <input type="hidden" name="type" value="coach">
+                            <div class="flex flex-wrap justify-between items-end">
+                                <div class="flex flex-wrap gap-4">
+                                    <div>
+                                        <label for="coach_level" class="block text-sm text-gray-400 mb-2 font-bold">Qualification
+                                            level</label>
+                                        <select name="level" id="coach_level"
+                                                class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker mr-2" required>
+                                            @include('member.qualification-options', ['type' => 'coach', 'selected' => null])
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="coach_date" class="block text-sm text-gray-400 mb-2 font-bold">Date
+                                            attained</label>
+                                        <input type="date" name="date_attained" id="coach_date"
+                                               class="shadow border-gray-300 rounded w-48 py-2 px-3 text-grey-darker mr-2">
+                                    </div>
+                                    <div>
+                                        <label for="coach_notes" class="block text-sm text-gray-400 mb-2 font-bold">Notes</label>
+                                        <input type="text" name="notes" id="coach_notes"
+                                               class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker mr-2">
+                                    </div>
+                                </div>
+                                <div>
+                                    <input type="submit" value="Submit" class="button-judo">
+                                </div>
+                            </div>
+                        </form>
+
+                        @livewire('qualification-list', ['member' => $member->id, 'type' => 'coach'])
+                    </div>
+                </div>
+
+                {{-- COMPLIANCE SECTION --}}
+                <div class="w-full px-6 py-2" x-show="openTab === '#compliance'">
+                    <div class="w-full bg-white border-2 border-gray-200 rounded-xl my-4 p-4">
+                        <h4 class="font-bold text-xl text-gray-500 mb-4">Compliance:</h4>
+                        <div class="w-full flex flex-wrap gap-8">
+                            <div>
+                                <div class="font-bold text-gray-500 mb-2">Safeguarding</div>
+                                <div class="gray-date">{{ $member->safeguarding_completion ?? 'Not set' }}</div>
+                                @if ($member->safeguarding_expiry)
+                                    @if($member->safeguarding_expiry < now())
+                                        <div class="expired-date">{{ $member->safeguarding_expiry }}</div>
+                                    @else
+                                        <div class="valid-date">{{ $member->safeguarding_expiry }}</div>
+                                    @endif
+                                @else
+                                    <div class="amber-date">Not set</div>
+                                @endif
+                            </div>
+                            <div>
+                                <div class="font-bold text-gray-500 mb-2">Vetting</div>
+                                <div class="gray-date">{{ $member->vetting_completion ?? 'Not set' }}</div>
+                                @if ($member->vetting_expiry)
+                                    @if($member->vetting_expiry < now())
+                                        <div class="expired-date">{{ $member->vetting_expiry }}</div>
+                                    @else
+                                        <div class="valid-date">{{ $member->vetting_expiry }}</div>
+                                    @endif
+                                @else
+                                    <div class="amber-date">Not set</div>
+                                @endif
+                            </div>
+                            <div>
+                                <div class="font-bold text-gray-500 mb-2">First Aid</div>
+                                <div class="gray-date">{{ $member->first_aid_completion ?? 'Not set' }}</div>
+                                @if ($member->first_aid_expiry)
+                                    @if($member->first_aid_expiry < now())
+                                        <div class="expired-date">{{ $member->first_aid_expiry }}</div>
+                                    @else
+                                        <div class="valid-date">{{ $member->first_aid_expiry }}</div>
+                                    @endif
+                                @else
+                                    <div class="amber-date">Not set</div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="w-full mt-6">
+                            <div class="font-bold text-gray-500 mb-2">Comments <span class="text-xs font-normal text-gray-400">(e.g. notes on volunteering at more than one club)</span></div>
+                            <div class="w-full whitespace-pre-line">{{ $member->compliance_comments ?? 'No comments recorded.' }}</div>
+                        </div>
+                        <div class="w-full mt-6">
+                            <a href="{{ route('member.edit', $member) }}#compliance-edit" class="blue-pillow">Edit compliance details</a>
+                        </div>
                     </div>
                 </div>
 
