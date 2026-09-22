@@ -19,30 +19,24 @@ class Member extends Model implements HasMedia
 
     /**
      * A member has at most one profile photo; adding a new one replaces
-     * (and deletes) the previous file automatically.
+     * (and deletes) the previous file automatically. The uploaded file is
+     * converted to webp before being added to this collection (see
+     * MemberController), so only webp ever actually lands here.
      */
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('photo')
             ->singleFile()
-            ->acceptsMimeTypes([
-                'image/jpeg',
-                'image/png',
-                'image/webp',
-                'image/heic',
-                'image/heif',
-            ]);
+            ->acceptsMimeTypes(['image/webp']);
     }
 
     /**
-     * Resize the uploaded photo to fit a 400x400 box and convert it to webp
-     * for display, so browsers that can't render HEIC directly (or very
-     * large originals) still get a fast, consistent image on the profile.
+     * Crop the uploaded photo to a 400x400 square thumbnail for display.
      */
     public function registerMediaConversions(?Media $media = null): void
     {
         $this->addMediaConversion('profile')
-            ->fit(Fit::Contain, 400, 400)
+            ->fit(Fit::Crop, 400, 400)
             ->format('webp')
             ->nonQueued();
     }

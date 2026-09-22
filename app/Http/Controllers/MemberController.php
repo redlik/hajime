@@ -9,10 +9,12 @@ use App\Models\Membernote;
 use App\Models\Membership;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use App\Models\Club;
 use App\Models\MemberDocument;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
+use Spatie\Image\Image;
 
 class MemberController extends Controller
 {
@@ -57,7 +59,7 @@ class MemberController extends Controller
         $member = Member::create($request->except('photo'));
 
         if ($request->hasFile('photo')) {
-            $member->addMediaFromRequest('photo')->toMediaCollection('photo');
+            $this->attachPhoto($member, $request->file('photo'));
         }
 
         activity()
@@ -116,7 +118,7 @@ class MemberController extends Controller
         $member->fill($input)->save();
 
         if ($request->hasFile('photo')) {
-            $member->addMediaFromRequest('photo')->toMediaCollection('photo');
+            $this->attachPhoto($member, $request->file('photo'));
         }
 
         activity()
@@ -147,6 +149,23 @@ class MemberController extends Controller
         $genders = Gender::all();
 
         return view('member.duplicate', compact('member', 'clubs', 'genders'));
+    }
+
+    /**
+     * Convert the uploaded photo to webp before storing it, so the original
+     * (often much larger jpg/heic) is never kept on disk alongside it.
+     */
+    private function attachPhoto(Member $member, UploadedFile $photo): void
+    {
+        $webpPath = sys_get_temp_dir() . '/' . uniqid('member-photo-', true) . '.webp';
+
+        Image::load($photo->getRealPath())
+            ->format('webp')
+            ->save($webpPath);
+
+        $member->addMedia($webpPath)
+            ->usingFileName(pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME) . '.webp')
+            ->toMediaCollection('photo');
     }
 
     public function duplicateExisting($id) {
