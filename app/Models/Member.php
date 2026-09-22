@@ -5,12 +5,47 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
+use Spatie\Image\Enums\Fit;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Member extends Model
+class Member extends Model implements HasMedia
 {
     use HasFactory;
+    use InteractsWithMedia;
 
     protected $guarded = [];
+
+    /**
+     * A member has at most one profile photo; adding a new one replaces
+     * (and deletes) the previous file automatically.
+     */
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('photo')
+            ->singleFile()
+            ->acceptsMimeTypes([
+                'image/jpeg',
+                'image/png',
+                'image/webp',
+                'image/heic',
+                'image/heif',
+            ]);
+    }
+
+    /**
+     * Resize the uploaded photo to fit a 400x400 box and convert it to webp
+     * for display, so browsers that can't render HEIC directly (or very
+     * large originals) still get a fast, consistent image on the profile.
+     */
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this->addMediaConversion('profile')
+            ->fit(Fit::Contain, 400, 400)
+            ->format('webp')
+            ->nonQueued();
+    }
 
     public function club() {
         return $this->belongsTo('App\Models\Club');

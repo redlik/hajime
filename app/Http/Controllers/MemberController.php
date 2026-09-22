@@ -11,7 +11,6 @@ use Auth;
 use Illuminate\Http\Request;
 use App\Models\Club;
 use App\Models\MemberDocument;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
 
@@ -50,8 +49,16 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'photo' => 'nullable|file|mimes:jpg,jpeg,png,webp,heic,heif|max:5120',
+        ]);
+
         $club = Club::find($request->input('club_id'));
-        $member = Member::create($request->all());
+        $member = Member::create($request->except('photo'));
+
+        if ($request->hasFile('photo')) {
+            $member->addMediaFromRequest('photo')->toMediaCollection('photo');
+        }
 
         activity()
             ->performedOn($member)
@@ -86,11 +93,8 @@ class MemberController extends Controller
      */
     public function edit(Member $member)
     {
-        $member = DB::table('members')->find($member->id);
         $clubs = Club::orderBy('name')->get();
         $genders = Gender::all();
-
-
 
         return view('member.edit', compact('member', 'clubs', 'genders'));
     }
@@ -104,8 +108,16 @@ class MemberController extends Controller
      */
     public function update(Request $request, Member $member)
     {
-        $input = $request->all();
+        $request->validate([
+            'photo' => 'nullable|file|mimes:jpg,jpeg,png,webp,heic,heif|max:5120',
+        ]);
+
+        $input = $request->except('photo');
         $member->fill($input)->save();
+
+        if ($request->hasFile('photo')) {
+            $member->addMediaFromRequest('photo')->toMediaCollection('photo');
+        }
 
         activity()
             ->performedOn($member)

@@ -95,6 +95,19 @@
                      p-4">
                             <div class="w-full md:w-1/2">
                                 <h4 class="font-bold text-xl text-gray-500 mb-4">Personal details:</h4>
+                                <div class="mb-6">
+                                    @if ($member->getFirstMedia('photo'))
+                                        <img src="{{ $member->getFirstMediaUrl('photo', 'profile') }}"
+                                             class="w-32 h-32 object-contain rounded border border-gray-300" alt="Member photo">
+                                        <div class="text-xs text-gray-500 mt-1">
+                                            Uploaded {{ $member->getFirstMedia('photo')->created_at->format('d/m/Y') }}
+                                        </div>
+                                    @else
+                                        <div class="w-32 h-32 flex items-center justify-center rounded border border-dashed border-gray-300 text-xs text-gray-400 text-center p-2">
+                                            No photo on file
+                                        </div>
+                                    @endif
+                                </div>
                                 <div class="mb-8">
                                     <div class="w-full md:w-1/2 mb-4">
                                         <div class="w-full flex flex-wrap mb-4">
