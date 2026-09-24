@@ -6,25 +6,22 @@
       $type      - 'referee' | 'table_official' | 'coach'
       $selected  - the currently-selected value (string) or null
 
-    NOTE: the 11 named Referee grades below are a placeholder pending confirmation
-    from IJA (CR26-001 / Request 1 only specifies "11 named refereeing grades +
-    Other", not the exact names). Update this list once confirmed - it is the only
-    place the option list needs to change.
+    NOTE: the 11 named Referee grades below are confirmed by IJA (CR26-001 / R1).
 --}}
 <option value="" @selected(!$selected) disabled>Select qualification level</option>
 
 @if ($type === 'referee')
-    <option value="Club Referee" @selected($selected == 'Club Referee')>Club Referee</option>
-    <option value="Regional Referee" @selected($selected == 'Regional Referee')>Regional Referee</option>
-    <option value="National C" @selected($selected == 'National C')>National C</option>
-    <option value="National B" @selected($selected == 'National B')>National B</option>
-    <option value="National A" @selected($selected == 'National A')>National A</option>
-    <option value="Candidate International" @selected($selected == 'Candidate International')>Candidate International</option>
-    <option value="International B" @selected($selected == 'International B')>International B</option>
-    <option value="International A" @selected($selected == 'International A')>International A</option>
-    <option value="IJF Continental Open" @selected($selected == 'IJF Continental Open')>IJF Continental Open</option>
-    <option value="IJF Referee" @selected($selected == 'IJF Referee')>IJF Referee</option>
-    <option value="IJF Referee A" @selected($selected == 'IJF Referee A')>IJF Referee A</option>
+    <option value='National "C" Trainee' @selected($selected == 'National "C" Trainee')>National "C" Trainee</option>
+    <option value='National "C"' @selected($selected == 'National "C"')>National "C"</option>
+    <option value='National "B"' @selected($selected == 'National "B"')>National "B"</option>
+    <option value='National "A"' @selected($selected == 'National "A"')>National "A"</option>
+    <option value='Senior IJA Referee' @selected($selected == 'Senior IJA Referee')>Senior IJA Referee</option>
+    <option value='National "A" and IJF Honorary Referee' @selected($selected == 'National "A" and IJF Honorary Referee')>National "A" and IJF Honorary Referee</option>
+    <option value='IJF Continental Referee "B"' @selected($selected == 'IJF Continental Referee "B"')>IJF Continental Referee "B"</option>
+    <option value='IJF International "B" Referee' @selected($selected == 'IJF International "B" Referee')>IJF International "B" Referee</option>
+    <option value='IJF International "A" Referee' @selected($selected == 'IJF International "A" Referee')>IJF International "A" Referee</option>
+    <option value='IJF Honorary Referee' @selected($selected == 'IJF Honorary Referee')>IJF Honorary Referee</option>
+    <option value='Other National Federation referee' @selected($selected == 'Other National Federation referee')>Other National Federation referee</option>
     <option value="Other" @selected($selected == 'Other')>Other</option>
 @elseif ($type === 'table_official')
     <option value="Level 1" @selected($selected == 'Level 1')>Level 1</option>
