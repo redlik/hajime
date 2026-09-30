@@ -21,7 +21,7 @@
                         </div>
                     @endif
                     <form method="POST" action="{{ action('App\Http\Controllers\MemberController@store') }}"
-                          role="form">
+                          role="form" enctype="multipart/form-data">
                         @csrf
                         <div class="w-full border-2 border-gray-300 rounded-xl p-8 mb-4">
                             <div class="mb-4 flex flex-wrap">
@@ -76,6 +76,15 @@
                                                 <label for="{{ $gender->short }}" class="inline-block">{{ $gender->name }}</label><br>
                                             </div>
                                         @endforeach
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="inline-block w-32 text-grey-darker text-sm font-bold mb-2"
+                                               for="photo">
+                                            Photo
+                                        </label>
+                                        <input class="inline-block" id="photo" name="photo" type="file"
+                                               accept="image/jpeg,image/png,image/webp,image/heic,image/heif">
+                                        <p class="text-xs text-gray-500 mt-1">JPG, PNG, WEBP or HEIC, up to 5MB.</p>
                                     </div>
                                 </div>
                                 <div class="w-full md:w-1/2">
