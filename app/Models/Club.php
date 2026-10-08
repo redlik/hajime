@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Support\CertificateExpiry;
 use Illuminate\Database\Eloquent\Model;
 
 class Club extends Model
@@ -48,5 +49,89 @@ class Club extends Model
     public function coach()
     {
         return $this->hasMany(Coach::class);
+    }
+
+    /**
+     * Linked people (personnel, coaches, volunteers) as [type => records].
+     */
+    private function linkedPeople(): array
+    {
+        return [
+            'Personnel' => $this->personnel,
+            'Coach' => $this->coach,
+            'Volunteer' => $this->volunteer,
+        ];
+    }
+
+    /**
+     * Certificate problems for a check, as
+     * [['person' => name, 'role' => role, 'certificate' => label], ...].
+     */
+    private function certificateIssues(callable $check): array
+    {
+        $issues = [];
+
+        foreach ($this->linkedPeople() as $type => $records) {
+            foreach ($records as $record) {
+                foreach ($check($record) as $certificate) {
+                    $issues[] = [
+                        'person' => $record->name,
+                        'role' => $record->role ?? $type,
+                        'certificate' => $certificate,
+                    ];
+                }
+            }
+        }
+
+        return $issues;
+    }
+
+    public function hasNoLinkedPeople(): bool
+    {
+        return collect($this->linkedPeople())->every(fn ($records) => $records->isEmpty());
+    }
+
+    public function expiredCertificates(): array
+    {
+        return $this->certificateIssues([CertificateExpiry::class, 'expiredCertificates']);
+    }
+
+    public function missingCertificates(): array
+    {
+        return $this->certificateIssues([CertificateExpiry::class, 'missingCertificates']);
+    }
+
+    /**
+     * 'no' when any certificate has expired, 'missing' when none has expired
+     * but a required expiry date is blank or nobody is linked to the club,
+     * otherwise 'yes'.
+     */
+    public function complianceStatus(): string
+    {
+        if (count($this->expiredCertificates()) > 0) {
+            return 'no';
+        }
+
+        return $this->hasNoLinkedPeople() || count($this->missingCertificates()) > 0 ? 'missing' : 'yes';
+    }
+
+    public function isCompliant(): bool
+    {
+        return $this->complianceStatus() === 'yes';
+    }
+
+    /**
+     * Recalculate from current data and persist to the `compliant` column.
+     */
+    public function recalculateCompliance(): bool
+    {
+        $this->load(['personnel', 'coach', 'volunteer']);
+        $compliant = $this->isCompliant();
+
+        if ((bool) $this->compliant !== $compliant) {
+            $this->forceFill(['compliant' => $compliant])->saveQuietly();
+        }
+
+        return $compliant;
     }
 }
