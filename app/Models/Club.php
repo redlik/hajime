@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Support\CertificateExpiry;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Club extends Model
 {
@@ -129,9 +130,33 @@ class Club extends Model
         $compliant = $this->isCompliant();
 
         if ((bool) $this->compliant !== $compliant) {
+            $wasCompliant = (bool) $this->compliant;
             $this->forceFill(['compliant' => $compliant])->saveQuietly();
+
+            if ($wasCompliant && ! $compliant) {
+                $this->logComplianceDeactivated();
+            }
         }
 
         return $compliant;
+    }
+
+    /**
+     * Audit entry (Spatie Activitylog) each time the club stops being compliant.
+     * The causer is the logged-in user, or empty when the nightly job did it.
+     */
+    private function logComplianceDeactivated(): void
+    {
+        activity()
+            ->performedOn($this)
+            ->causedBy(Auth::id())
+            ->withProperties([
+                'name' => $this->name,
+                'status' => $this->complianceStatus(),
+                'expired' => $this->expiredCertificates(),
+                'missing' => $this->missingCertificates(),
+                'no_people' => $this->hasNoLinkedPeople(),
+            ])
+            ->log('Club compliance deactivated');
     }
 }
