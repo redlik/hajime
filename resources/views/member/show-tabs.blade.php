@@ -95,7 +95,8 @@
                      p-4">
                             <div class="w-full md:w-1/2">
                                 <h4 class="font-bold text-xl text-gray-500 mb-4">Personal details:</h4>
-                                <div class="mb-6">
+                                <div class="flex flex-wrap gap-6 mb-8">
+                                <div class="shrink-0">
                                     @if ($member->getFirstMedia('photo'))
                                         <img src="{{ $member->getFirstMediaUrl('photo', 'profile') }}"
                                              class="w-48 h-48 object-contain rounded border border-gray-300" alt="Member photo">
@@ -108,8 +109,8 @@
                                         </div>
                                     @endif
                                 </div>
-                                <div class="mb-8">
-                                    <div class="w-full md:w-1/2 mb-4">
+                                <div>
+                                    <div class="w-full mb-4">
                                         <div class="w-full flex flex-wrap mb-4">
                                             <div class="w-36 font-bold">Date of birth:</div>
                                             <div class="w-auto">{{ $member->dob }}
@@ -131,6 +132,7 @@
                                         </div>
                                         @endif
                                     </div>
+                                </div>
                                 </div>
                             </div>
                             <div class="w-full md:w-1/2">
