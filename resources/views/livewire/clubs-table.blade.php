@@ -37,6 +37,11 @@
                     <th
                         class="px-5 py-3 bg-gray-600 text-center text-xs font-semibold
                         text-gray-100 uppercase tracking-wider">
+                        Club Compliance
+                    </th>
+                    <th
+                        class="px-5 py-3 bg-gray-600 text-center text-xs font-semibold
+                        text-gray-100 uppercase tracking-wider">
                         Status
                     </th>
                     <th
@@ -75,6 +80,17 @@
                     <td class="py-5 border-b border-gray-200 text-sm">
                         <p class="text-gray-900 whitespace-no-wrap text-center">
                             {{ $club->activeMembersCount() }}
+                        </p>
+                    </td>
+                    <td class="py-5 border-b border-gray-200 text-sm">
+                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                            @if ($club->isCompliant())
+                                <span class="green-pillow">YES</span>
+                            @elseif ($club->complianceStatus() === 'missing')
+                                <span class="orange-pillow">Missing data</span>
+                            @else
+                                <span class="red-pillow">NO</span>
+                            @endif
                         </p>
                     </td>
                     <td class="py-5 border-b border-gray-200 text-sm">
