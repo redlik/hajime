@@ -15,6 +15,11 @@
 
                     @livewire('club-access-toggle')
                 </div>
+                <div class="px-8 py-8 border-t">
+                    <h3 class="text-xl font-bold mb-4">Certificate expiry emails</h3>
+
+                    @livewire('expiry-email-settings')
+                </div>
             </section>
         </div>
 
