@@ -106,8 +106,10 @@
                                     <div class="mb-4">
                                         <div class="w-36 inline-block">Full compliance:</div>
                                         <div class="w-auto inline-block font-bold">
-                                            @if ($club->compliant)
+                                            @if ($club->isCompliant())
                                                 <span class="green-pillow">YES</span>
+                                            @elseif ($club->complianceStatus() === 'missing')
+                                                <span class="orange-pillow">Missing data</span>
                                             @else
                                                 <span class="red-pillow">NO</span>
                                             @endif
@@ -172,6 +174,7 @@
                     <div class="w-full px-6 py-2" x-show="openTab === '#personnel'">
                         <div class="w-full bg-white border-2 border-gray-200 rounded-xl my-4 p-4 flex flex-wrap">
                             <h4 class="font-bold text-xl text-gray-600">Club Personnel:</h4>
+                            @include('clubs.compliance-indicator')
                             <div class="w-full overflow-x-auto my-4 pb-4 lg:pb-0">
                                 <table class="min-w-full table leading-normal">
                                     <thead>
@@ -557,6 +560,7 @@
                     <div class="w-full px-6 py-2" x-show="openTab === '#volunteers'">
                         <div class="w-full bg-white border-2 border-gray-200 rounded-xl my-4 p-4 flex flex-wrap">
                             <h4 class="font-bold text-xl text-gray-600 mb-4" id="personnel">Club Volunteers:</h4>
+                            @include('clubs.compliance-indicator')
                             <div class="w-full flex flex-wrap">
                                 <div class="w-full overflow-x-auto pb-4 lg:pb-0">
                                     <table class="min-w-full table leading-normal">

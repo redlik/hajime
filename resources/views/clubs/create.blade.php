@@ -181,21 +181,6 @@
 
                     <div class="w-full border-2 border border-gray-300 rounded-xl mb-4 p-8">
                         <div class="mb-4">
-                            <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="compliant">
-                                Club fully compliant
-                            </label>
-                            <div class="inline-block w-64">
-                                <div class="inline-block mr-6">
-                                    <input class="inline-block" type="radio" id="yes" name="compliant" value="1">
-                                    <label for="yes" class="inline-block">Yes</label><br>
-                                </div>
-                                <div class="inline-block">
-                                    <input class="inline-block" type="radio" id="no" name="compliant" value="0">
-                                    <label for="no">No</label><br>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-4">
                             <label class="inline-block w-48 text-grey-darker text-sm font-bold mb-2" for="voting">
                                 Voting rights obtained
                             </label>

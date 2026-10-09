@@ -25,6 +25,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
          $schedule->command('app:clear-old-logs')->daily();
+         $schedule->command('app:recalculate-club-compliance')->dailyAt('00:05');
     }
 
     /**
