@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Club;
 use App\Models\Grade;
 use Livewire\Component;
 
@@ -15,6 +16,7 @@ class GradeList extends Component
     public $grade_date;
     public $grade_points = '';
     public $competition = '';
+    public $club_id = '';
 
     public $showModal = false;
 
@@ -23,7 +25,8 @@ class GradeList extends Component
     public function render()
     {
         $this->grades = Grade::where('member_id', $this->member)->orderBy('grade_date', 'desc')->get();
-        return view('livewire.grade-list');
+        $clubs = Club::orderBy('name')->get(['id', 'name', 'status']);
+        return view('livewire.grade-list', compact('clubs'));
     }
 
     public function editModal($grade)
@@ -33,17 +36,20 @@ class GradeList extends Component
         $this->grade_level = $this->grade->grade_level;
         $this->grade_date = $this->grade->grade_date;
         $this->grade_points = $this->grade->grade_points;
+        $this->club_id = $this->grade->club_id ?? '';
         $this->showModal = true;
     }
 
     public function updateGrade()
     {
-        ray($this->grade);
+        $this->validate(['club_id' => 'nullable|exists:clubs,id']);
+
         $this->grade->update([
             'grade_level' => $this->grade_level,
             'grade_date' => $this->grade_date,
             'grade_points' => $this->grade_points,
             'competition' => $this->competition,
+            'club_id' => $this->club_id ?: null,
         ]);
         $this->showModal = false;
     }
