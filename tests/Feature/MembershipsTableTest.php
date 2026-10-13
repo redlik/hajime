@@ -71,4 +71,42 @@ class MembershipsTableTest extends TestCase
             ->sortTable('processed_at', 'desc')
             ->assertCanSeeTableRecords([$b, $a], inOrder: true);
     }
+
+    private function admin(): User
+    {
+        $user = User::factory()->create();
+        $user->assignRole(\Spatie\Permission\Models\Role::findOrCreate('admin'));
+
+        return $user;
+    }
+
+    public function test_admin_can_fill_blank_processed_at_once(): void
+    {
+        $member = Member::factory()->for(Club::factory())->create();
+        $blank = $this->membership($member, '2027-01-01');
+
+        $component = Livewire::actingAs($this->admin())
+            ->test(MembershipsTable::class, ['member_id' => $member->id])
+            ->call('updateTableColumnState', 'processed_at', $blank->getKey(), '2026-07-01T14:30');
+
+        // 14:30 Dublin (IST, UTC+1) is stored as 13:30 UTC.
+        $this->assertSame('2026-07-01 13:30:00', $blank->fresh()->processed_at->format('Y-m-d H:i:s'));
+        $this->assertDatabaseHas('activity_log', ['description' => 'Membership processed-at date filled in manually']);
+
+        // Second attempt is ignored.
+        $component->call('updateTableColumnState', 'processed_at', $blank->getKey(), '2030-01-01T00:00');
+        $this->assertSame('2026-07-01 13:30:00', $blank->fresh()->processed_at->format('Y-m-d H:i:s'));
+    }
+
+    public function test_non_admin_cannot_set_processed_at(): void
+    {
+        $member = Member::factory()->for(Club::factory())->create();
+        $blank = $this->membership($member, '2027-01-01');
+
+        Livewire::actingAs(User::factory()->create())
+            ->test(MembershipsTable::class, ['member_id' => $member->id])
+            ->call('updateTableColumnState', 'processed_at', $blank->getKey(), '2026-07-01T14:30');
+
+        $this->assertNull($blank->fresh()->processed_at);
+    }
 }
