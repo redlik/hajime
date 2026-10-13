@@ -39,7 +39,9 @@ class MembershipController extends Controller
      */
     public function store(Request $request)
     {
-        $membership = Membership::create($request->all());
+        $membership = Membership::create(
+            $request->except('processed_at') + ['processed_at' => \Carbon\Carbon::now()]
+        );
         $member = Member::find($request->input('member_id'));
         if (\Carbon\Carbon::now()->lessThan($membership->expiry_date)) {
             $member->active = 1;

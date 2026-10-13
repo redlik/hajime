@@ -9,11 +9,12 @@ use App\Models\Membernote;
 use App\Models\Membership;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use App\Models\Club;
 use App\Models\MemberDocument;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
+use Spatie\Image\Image;
 
 class MemberController extends Controller
 {
@@ -50,8 +51,16 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'photo' => 'nullable|file|mimes:jpg,jpeg,png,webp,heic,heif|max:5120',
+        ]);
+
         $club = Club::find($request->input('club_id'));
-        $member = Member::create($request->all());
+        $member = Member::create($request->except('photo'));
+
+        if ($request->hasFile('photo')) {
+            $this->attachPhoto($member, $request->file('photo'));
+        }
 
         activity()
             ->performedOn($member)
@@ -86,11 +95,8 @@ class MemberController extends Controller
      */
     public function edit(Member $member)
     {
-        $member = DB::table('members')->find($member->id);
         $clubs = Club::orderBy('name')->get();
         $genders = Gender::all();
-
-
 
         return view('member.edit', compact('member', 'clubs', 'genders'));
     }
@@ -104,8 +110,16 @@ class MemberController extends Controller
      */
     public function update(Request $request, Member $member)
     {
-        $input = $request->all();
+        $request->validate([
+            'photo' => 'nullable|file|mimes:jpg,jpeg,png,webp,heic,heif|max:5120',
+        ]);
+
+        $input = $request->except('photo');
         $member->fill($input)->save();
+
+        if ($request->hasFile('photo')) {
+            $this->attachPhoto($member, $request->file('photo'));
+        }
 
         activity()
             ->performedOn($member)
@@ -135,6 +149,23 @@ class MemberController extends Controller
         $genders = Gender::all();
 
         return view('member.duplicate', compact('member', 'clubs', 'genders'));
+    }
+
+    /**
+     * Convert the uploaded photo to webp before storing it, so the original
+     * (often much larger jpg/heic) is never kept on disk alongside it.
+     */
+    private function attachPhoto(Member $member, UploadedFile $photo): void
+    {
+        $webpPath = sys_get_temp_dir() . '/' . uniqid('member-photo-', true) . '.webp';
+
+        Image::load($photo->getRealPath())
+            ->format('webp')
+            ->save($webpPath);
+
+        $member->addMedia($webpPath)
+            ->usingFileName(pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME) . '.webp')
+            ->toMediaCollection('photo');
     }
 
     public function duplicateExisting($id) {
