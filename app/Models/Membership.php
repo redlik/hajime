@@ -11,6 +11,10 @@ class Membership extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'processed_at' => 'datetime',
+    ];
+
     public function member()
     {
         return $this->belongsTo(Member::class, 'member_id');

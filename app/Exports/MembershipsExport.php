@@ -49,6 +49,7 @@ class MembershipsExport implements FromQuery, WithMapping, WithHeadings, WithTit
             $membership->member->club->name,
             ucfirst($membership->member->club->province),
             $adaptive,
+            $membership->processed_at?->timezone('Europe/Dublin')->format('d/m/Y H:i'),
         ];
     }
 
@@ -62,7 +63,8 @@ class MembershipsExport implements FromQuery, WithMapping, WithHeadings, WithTit
             'Join Date',
             'Club Name',
             'Province',
-            'Adaptive Judo'
+            'Adaptive Judo',
+            'Membership Processed At',
         ];
     }
 
