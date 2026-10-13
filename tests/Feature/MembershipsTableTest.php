@@ -52,4 +52,23 @@ class MembershipsTableTest extends TestCase
         $this->assertModelMissing($membership);
         $this->assertEquals(0, $member->fresh()->active);
     }
+
+    public function test_all_columns_are_sortable(): void
+    {
+        $member = Member::factory()->for(Club::factory())->create();
+        $a = $this->membership($member, '2027-01-01', ['processed_at' => '2026-01-01 09:00:00']);
+        $b = $this->membership($member, '2028-01-01', ['processed_at' => '2026-03-01 09:00:00']);
+
+        foreach (['membership_type', 'join_date', 'expiry_date', 'processed_at'] as $column) {
+            Livewire::actingAs(User::factory()->create())
+                ->test(MembershipsTable::class, ['member_id' => $member->id])
+                ->sortTable($column)
+                ->assertCanSeeTableRecords([$a, $b]);
+        }
+
+        Livewire::actingAs(User::factory()->create())
+            ->test(MembershipsTable::class, ['member_id' => $member->id])
+            ->sortTable('processed_at', 'desc')
+            ->assertCanSeeTableRecords([$b, $a], inOrder: true);
+    }
 }

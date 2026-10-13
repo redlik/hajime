@@ -33,13 +33,14 @@ class MembershipsTable extends Component implements HasForms, HasTable
             ->paginated(false)
             ->emptyStateHeading('No membership registered for this member yet.')
             ->columns([
-                TextColumn::make('membership_type')->label('Membership type'),
-                TextColumn::make('join_date')->label('Join date')->date('Y-m-d'),
-                TextColumn::make('expiry_date')->label('Expiry date')->date('Y-m-d'),
+                TextColumn::make('membership_type')->label('Membership type')->sortable(),
+                TextColumn::make('join_date')->label('Join date')->date('Y-m-d')->sortable(),
+                TextColumn::make('expiry_date')->label('Expiry date')->date('Y-m-d')->sortable(),
                 TextColumn::make('processed_at')
                     ->label('Membership processed at')
                     ->dateTime('d/m/Y H:i', 'Europe/Dublin')
-                    ->placeholder('—'),
+                    ->placeholder('—')
+                    ->sortable(),
             ])
             ->actions([
                 Action::make('delete')
