@@ -11,6 +11,11 @@ class Grade extends Model
 
     protected $guarded = [];
 
+    public function club()
+    {
+        return $this->belongsTo(Club::class, 'club_id');
+    }
+
     public function member()
     {
         return $this->belongsTo(Member::class, 'member_id');

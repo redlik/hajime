@@ -38,6 +38,7 @@ class GradeController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate(['club_id' => 'nullable|exists:clubs,id']);
         $grade = Grade::create($request->all());
         $member = Member::find($request->input('member_id'));
 

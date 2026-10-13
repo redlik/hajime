@@ -19,6 +19,11 @@
             {{ $grade->competition }}
         </p>
     </td>
+    <td class="px-5 py-4 border-b border-gray-200 text-sm">
+        <p class="text-gray-900 whitespace-no-wrap">
+            {{ $grade->club?->name ?? '—' }}
+        </p>
+    </td>
     <td class="px-5 py-4 border-b border-gray-200 text-sm justify-center flex items-center gap-4">
         <button class="text-judo-600 hover:text-judo-300 whitespace-no-wrap"
                 wire:click="editModal({{ $grade->id }})"

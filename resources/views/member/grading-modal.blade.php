@@ -174,6 +174,17 @@
                                                    class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker mr-2"
                                                    wire:model="competition">
                                         </div>
+                                        <div class="mt-4">
+                                            <label for="club_id" class="block text-sm text-gray-400 mb-2 font-bold">Club</label>
+                                            <select name="club_id" id="club_id"
+                                                    class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker mr-2"
+                                                    wire:model="club_id">
+                                                <option value="">— No club —</option>
+                                                @foreach($clubs as $club)
+                                                    <option value="{{ $club->id }}">{{ $club->name . ($club->status !== 'Active' ? ' (' . $club->status . ')' : '') }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </form>
                                 @endif
                             </div>
