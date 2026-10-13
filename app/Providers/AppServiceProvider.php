@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Coach;
+use App\Models\Personnel;
+use App\Models\Volunteer;
+use App\Observers\ClubComplianceObserver;
 use Filament\Support\Colors\Color;
 use Filament\Support\Facades\FilamentColor;
 use Illuminate\Support\ServiceProvider;
@@ -25,6 +29,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Personnel::observe(ClubComplianceObserver::class);
+        Coach::observe(ClubComplianceObserver::class);
+        Volunteer::observe(ClubComplianceObserver::class);
+
         FilamentColor::register([
             'danger' => Color::Red,
             'gray' => Color::Zinc,

@@ -55,7 +55,7 @@ class ClubController extends Controller
 //                'ethics_assessment_date' => NULL,
 //            ]);
 //        }
-        $club = Club::create($request->all());
+        $club = Club::create($request->except('compliant'));
         $personnel = $this->personnel($club);
 
         activity()
@@ -128,7 +128,7 @@ class ClubController extends Controller
                 'ethics_assessment_date' => NULL,
             ]);
         }
-        $input = $request->all();
+        $input = $request->except('compliant');
         $club->fill($input)->save();
 
         activity()
