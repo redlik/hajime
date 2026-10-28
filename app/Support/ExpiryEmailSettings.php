@@ -36,20 +36,34 @@ class ExpiryEmailSettings
         return self::get('expiry_email_enabled', '0') === '1';
     }
 
-    public static function subject(): string
+    /**
+     * Each certificate (safeguarding|vetting|first_aid) has its own subject,
+     * body and attachments. Falls back to the original single-template
+     * options so existing installs keep their saved copy until re-saved.
+     */
+    public static function subject(string $certificate): string
     {
-        return self::get('expiry_email_subject') ?: self::DEFAULT_SUBJECT;
+        return self::get("expiry_email_{$certificate}_subject")
+            ?: self::get('expiry_email_subject')
+            ?: self::DEFAULT_SUBJECT;
     }
 
-    public static function body(): string
+    public static function body(string $certificate): string
     {
-        return self::get('expiry_email_body') ?: self::DEFAULT_BODY;
+        return self::get("expiry_email_{$certificate}_body")
+            ?: self::get('expiry_email_body')
+            ?: self::DEFAULT_BODY;
     }
 
     /** @return string[] storage paths on the local disk */
-    public static function attachments(): array
+    public static function attachments(string $certificate): array
     {
-        return json_decode(self::get('expiry_email_attachments', '[]'), true) ?: [];
+        $value = self::get("expiry_email_{$certificate}_attachments");
+        if ($value === null) {
+            $value = self::get('expiry_email_attachments', '[]');
+        }
+
+        return json_decode($value, true) ?: [];
     }
 
     public static function render(string $template, array $values): string

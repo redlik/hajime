@@ -12,31 +12,50 @@
             One email is sent per expired certificate, and never twice for the same expiry date.
         </p>
 
-        <h4 class="font-bold text-gray-600 mb-2">Email copy</h4>
-        <p class="text-xs text-gray-500 mb-2">Placeholders: {name} {certificate} {expiry_date} {club}</p>
-        <div class="mb-2">
-            <label class="block text-sm font-bold mb-1">Subject</label>
-            <input type="text" class="input-box w-full" wire:model="subject">
-            @error('subject') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
-        </div>
-        <div class="mb-6">
-            <label class="block text-sm font-bold mb-1">Message</label>
-            <textarea rows="8" class="input-box w-full" wire:model="body"></textarea>
-            @error('body') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
-        </div>
+        <p class="text-xs text-gray-500 mb-3">Each certificate has its own email. Placeholders: {name} {certificate} {expiry_date} {club}</p>
 
-        <h4 class="font-bold text-gray-600 mb-2">Attachments (included in every email)</h4>
-        @forelse ($attachments as $i => $path)
-            <div class="flex items-center text-sm mb-1">
-                <span>{{ basename($path) }}</span>
-                <button type="button" class="text-red-600 ml-3" wire:click="removeAttachment({{ $i }})">Remove</button>
+        <div x-data="{ tab: '{{ array_key_first($certificates) }}' }">
+            <div class="flex border-b mb-4">
+                @foreach ($certificates as $key => $label)
+                    <button type="button" @click="tab = '{{ $key }}'"
+                            :class="tab === '{{ $key }}' ? 'border-b-2 border-gray-700 font-bold text-gray-800' : 'text-gray-500'"
+                            class="px-4 py-2 -mb-px">
+                        {{ $label }}
+                        @if ($errors->has("subject.$key") || $errors->has("body.$key") || $errors->has("newAttachments.$key.*"))
+                            <span class="text-red-600">&bull;</span>
+                        @endif
+                    </button>
+                @endforeach
             </div>
-        @empty
-            <p class="text-sm text-gray-500 mb-1">No attachments.</p>
-        @endforelse
-        <input type="file" multiple wire:model="newAttachments" class="mt-2 text-sm">
-        <div class="text-xs text-gray-500">PDF, Word or image files, up to 5MB each.</div>
-        @error('newAttachments.*') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
+
+            @foreach ($certificates as $key => $label)
+                <div x-show="tab === '{{ $key }}'" @if (! $loop->first) x-cloak @endif>
+                    <div class="mb-2">
+                        <label class="block text-sm font-bold mb-1">Subject</label>
+                        <input type="text" class="input-box w-full" wire:model="subject.{{ $key }}">
+                        @error("subject.$key") <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-bold mb-1">Message</label>
+                        <textarea rows="8" class="input-box w-full" wire:model="body.{{ $key }}"></textarea>
+                        @error("body.$key") <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
+                    </div>
+
+                    <h4 class="font-bold text-gray-600 mb-2">Attachments (included in every {{ $label }} email)</h4>
+                    @forelse ($attachments[$key] as $i => $path)
+                        <div class="flex items-center text-sm mb-1">
+                            <span>{{ basename($path) }}</span>
+                            <button type="button" class="text-red-600 ml-3" wire:click="removeAttachment('{{ $key }}', {{ $i }})">Remove</button>
+                        </div>
+                    @empty
+                        <p class="text-sm text-gray-500 mb-1">No attachments.</p>
+                    @endforelse
+                    <input type="file" multiple wire:model="newAttachments.{{ $key }}" class="mt-2 text-sm">
+                    <div class="text-xs text-gray-500">PDF, Word or image files, up to 5MB each.</div>
+                    @error("newAttachments.$key.*") <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
+                </div>
+            @endforeach
+        </div>
 
         <div class="mt-6">
             <button class="button-judo">Save</button>
