@@ -31,7 +31,7 @@ class CertificateExpiredMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: ExpiryEmailSettings::render(ExpiryEmailSettings::subject(), $this->values),
+            subject: ExpiryEmailSettings::render(ExpiryEmailSettings::subject($this->certificateKey), $this->values),
         );
     }
 
@@ -39,7 +39,7 @@ class CertificateExpiredMail extends Mailable
     {
         return new Content(
             view: 'emails.certificate-expired',
-            with: ['body' => ExpiryEmailSettings::render(ExpiryEmailSettings::body(), $this->values)],
+            with: ['body' => ExpiryEmailSettings::render(ExpiryEmailSettings::body($this->certificateKey), $this->values)],
         );
     }
 
@@ -47,7 +47,7 @@ class CertificateExpiredMail extends Mailable
     {
         $attachments = [];
 
-        foreach (ExpiryEmailSettings::attachments() as $path) {
+        foreach (ExpiryEmailSettings::attachments($this->certificateKey) as $path) {
             if (Storage::disk('local')->exists($path)) {
                 $attachments[] = Attachment::fromStorageDisk('local', $path);
             }
