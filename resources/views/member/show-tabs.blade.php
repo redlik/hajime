@@ -325,6 +325,16 @@
                                         <input type="text" name="competition" id="competition"
                                                class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker mr-2">
                                     </div>
+                                    <div>
+                                        <label for="grade_club_id" class="block text-sm text-gray-400 mb-2 font-bold">Club</label>
+                                        <select name="club_id" id="grade_club_id"
+                                                class="shadow border-gray-300 rounded w-64 py-2 px-3 text-grey-darker mr-2">
+                                            <option value="" selected>— No club —</option>
+                                            @foreach($clubs as $club)
+                                                <option value="{{ $club->id }}">{{ $club->name . ($club->status !== 'Active' ? ' (' . $club->status . ')' : '') }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
 
                                 </div>
                                 <div>

@@ -62,6 +62,7 @@ class GradingListExport implements FromQuery, WithMapping, WithHeadings, WithTit
             $member->gender,
             $member->latestMembership()->membership_type,
             $member->latestGrade()->grade_level,
+            $member->latestGrade()->club?->name,
         ];
     }
 
@@ -74,6 +75,7 @@ class GradingListExport implements FromQuery, WithMapping, WithHeadings, WithTit
             'Gender',
             'Membership Type',
             'Current Grade',
+            'Grade Awarded At Club',
         ];
     }
 

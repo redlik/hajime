@@ -84,7 +84,9 @@ class MemberController extends Controller
         $notes = Membernote::where('member_id', $member->id)->orderBy('created_at', 'desc')->get();
         $forms = MemberDocument::form($member->id)->get();
         $documents = MemberDocument::document($member->id)->get();
-        return view('member.show-tabs', compact('member', 'grades', 'memberships', 'notes', 'forms', 'documents'));
+        $clubs = Club::orderBy('name')->get(['id', 'name', 'status']);
+
+        return view('member.show-tabs', compact('member', 'grades', 'memberships', 'notes', 'forms', 'documents', 'clubs'));
     }
 
     /**

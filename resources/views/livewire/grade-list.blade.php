@@ -26,6 +26,11 @@
                 Competition
             </th>
             <th
+                class="px-5 py-3 bg-gray-600 text-left text-xs
+                                        font-semibold text-gray-100 uppercase tracking-wider">
+                Club
+            </th>
+            <th
                 class="px-5 py-3 rounded-r bg-gray-600 text-center text-xs font-semibold
                                         text-gray-100
                                         uppercase tracking-wider">
