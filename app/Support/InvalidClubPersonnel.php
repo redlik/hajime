@@ -29,6 +29,11 @@ class InvalidClubPersonnel
         return self::REQUIRED_SAFEGUARDING_LEVEL[$role] ?? 1;
     }
 
+    private static function onlyExpired($date)
+    {
+        return CertificateExpiry::isExpired($date) ? $date : null;
+    }
+
     public static function rows(): Collection
     {
         $activeClubs = Club::where('status', 'Active')->pluck('name', 'id');
@@ -85,11 +90,12 @@ class InvalidClubPersonnel
                     'name' => $person->name,
                     'role' => $person->role,
                     'reason' => implode(' / ', $reasons),
-                    'vetting_expiry' => $person->vetting_expiry,
-                    'safeguarding_l1_expiry' => $levels[1],
-                    'safeguarding_l2_expiry' => $levels[2],
-                    'safeguarding_l3_expiry' => $levels[3],
-                    'first_aid_expiry' => $person->first_aid_expiry ?? null,
+                    // Only expired dates are shown; still-valid dates are hidden.
+                    'vetting_expiry' => self::onlyExpired($person->vetting_expiry),
+                    'safeguarding_l1_expiry' => self::onlyExpired($levels[1]),
+                    'safeguarding_l2_expiry' => self::onlyExpired($levels[2]),
+                    'safeguarding_l3_expiry' => self::onlyExpired($levels[3]),
+                    'first_aid_expiry' => self::onlyExpired($person->first_aid_expiry ?? null),
                     'invalid' => $reasons !== [],
                 ];
             })
